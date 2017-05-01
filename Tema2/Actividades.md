@@ -9,25 +9,30 @@
 
 ## Test
 
-MODELO ENTIDAD-RELACIÓN
+> **MODELO ENTIDAD-RELACIÓN**
 
 Para cada una de las siguientes cuestiones elige razonadamente cada una de las respuestas correctas.
+
 1. Un modelo conceptual de datos:
 a) Define una serie de símbolos para describir la realidad de la BD que se desea crear.
 b) Es un modelo que describe como se almacenan los datos a nivel físico.
 c) Permite realizar una representación del mundo real.
+
 2. El modelo Entidad/Relación:
 a) Utiliza rombos para representar las entidades.
 b) Utiliza círculos para representar las relaciones.
 c) Cuenta con símbolos diferentes para representar las entidades fuertes y las débiles.
+
 3. Las relaciones del modelo E/R...
 a) Son objetos reales o abstractos de los que se desea guardar información en una BD.
 b) Pueden ser fuerte o débiles.
 c) Pueden ser de dependencia en identificación o en existencia.
+
 4. Los atributos del modelo E/R ...
 a) Que identifican unívocamente cada ocurrencia de la entidad se llaman Clave principal.
 b) Aparecen sólo en las entidades.
 c) Aparecen sólo en las relaciones.
+
 5. La cardinalidad...
 a) 1:1 es una cardinalidad binaria que significa que a cada ocurrencia de una entidad le corresponde una sola ocurrencia de la otra entidad.
 b) En el caso de relaciones entre tres entidades pueden ser de los tipos: 1:1, 1:N o N:M.
@@ -39,49 +44,65 @@ c) Toma las participaciones máximas de cada entidad.
 
 ### 1. Define brevemente los siguientes conceptos:
 a) Entidad.
+
 Una entidad es cualquier objeto o elemento acerca del cual se pueda almacenar información en la BD. Las entidades pueden ser concretas como una persona o abstractas como una fecha.
+
 b) Relación.
+
 Una relación es la asociación que existe entre dos a más entidades. Cada relación tiene un nombre que describe su función. 
+
 c) Atributo de una entidad.
+
 Un atributo es una propiedad o campo, que representa alguna característica de una entidad. Los atributos de una entidad pueden tomar un conjunto de valores permitidos al que se le conoce como dominio del atributo.
+
 d) Identificador de una entidad.
+
 Es un atributo o conjunto de atributos que identifican de manera unívoca cada ocurrencia de una entidad. También se llaman clave primaria o clave principal.
+
 e) Atributo de una relación.
+
 Es aquel cuyo valor sólo se puede obtener en la relación, puesto que dependen de todas las entidades que participan en la relación. Se denominan atributos propios. 
+
 f) Rol de una entidad en una relación.
+
 Es la función que tiene la entidad en una relación. También se conoce como papel.
 En el siguiente ejemplo se representa en texto color verde:
 
 
 
 g) Participación de una entidad en una relación.
+
 Se conoce también como cardinalidad de la entidad dentro de una relación. La participación de una entidad nos indica las ocurrencias mínimas y máximas de dicha entidad dentro de una relación concreta. En el siguiente ejemplo se representa en texto color azul:
 
 
 
 
 h) Cardinalidad de una relación.
+
 Es el número de ocurrencias de una entidad asociadas a una ocurrencia de la otra entidad. Se obtiene a partir de las participaciones máximas de las entidades involucradas.
 
 ### 2. Indica cuales son los dos tipos posibles de entidades y explica brevemente cada una de ellas.
+
 Hay dos tipos de entidades: 
-Fuertes: es una entidad que no depende de ninguna otra para su existencia.
-Débiles: es una entidad cuya existencia depende de la existencia de otra entidad. 
+- Fuertes: es una entidad que no depende de ninguna otra para su existencia.
+- Débiles: es una entidad cuya existencia depende de la existencia de otra entidad. 
 
 ### 3. Clasifica los distintos tipos de relaciones existentes entre dos entidades según su cardinalidad y pon un ejemplo de cada una de ellas distinto de los vistos en el tema.
+
 Existen 3 tipos:
-Relación uno a uno 1:1  → A cada elemento de la primera entidad le corresponde no más de un elemento de la segunda entidad, y a la inversa. Por ejemplo una relación entre PRESIDENTE y el PAÍS que gobierna.
-Relación uno a muchos 1:N → Significa que cada elemento de una entidad del tipo A puede relacionarse con cualquier cantidad de elementos de una entidad del tipo B, y un elemento de una entidad del tipo B solo puede estar relacionado con un elemento de una entidad del tipo A. Por ejemplo una relación entre un PAIS y sus distintas REGIONES.
-Muchos a muchos N:M →  Establece que cualquier cantidad de elementos de una entidad del tipo A pueden estar relacionados con cualquier cantidad de elementos de una entidad del tipo B. Por ejemplo una relación entre los CLIENTES y los tipos de PRODUCTOS comprados en un mercado.
+- Relación uno a uno 1:1  → A cada elemento de la primera entidad le corresponde no más de un elemento de la segunda entidad, y a la inversa. Por ejemplo una relación entre PRESIDENTE y el PAÍS que gobierna.
+- Relación uno a muchos 1:N → Significa que cada elemento de una entidad del tipo A puede relacionarse con cualquier cantidad de elementos de una entidad del tipo B, y un elemento de una entidad del tipo B solo puede estar relacionado con un elemento de una entidad del tipo A. Por ejemplo una relación entre un PAIS y sus distintas REGIONES.
+- Muchos a muchos N:M →  Establece que cualquier cantidad de elementos de una entidad del tipo A pueden estar relacionados con cualquier cantidad de elementos de una entidad del tipo B. Por ejemplo una relación entre los CLIENTES y los tipos de PRODUCTOS comprados en un mercado.
 
 ### 4. Clasifica los distintos tipos de relaciones de dependencia existentes y pon un ejemplo de cada una de ellas distinto de los vistos en el tema.
 Hay dos tipos de relaciones de dependencia:
-Dependencia en existencia
-Se produce cuando una entidad débil necesita de la presencia de una fuerte para existir. Si desaparece la existencia de la entidad fuerte, la de la débil carece de sentido. Suele darse pocas veces. Un caso sería el de una SUBCONTRATA con sus propios TRABAJADORES.  Si nuestra empresa no necesita más los servicios de dicha SUBCONTRATA, entonces no tiene sentido registrar en nuestra base de datos dichos TRABAJADORES.
-Dependencia en identificación
-Se produce cuando una entidad débil necesita de la fuerte para identificarse. Por sí sola la débil no es capaz de identificar de manera unívoca sus ocurrencias. Por ejemplo si tenemos una entidad fuerte HOTEL y una entidad débil HABITACIÓN. Para identificar de forma unívoca cada HABITACIÓN, dentro de un conjunto de hoteles, necesitamos la combinación CodHotel + NumHabitación.
+- Dependencia en existencia
+  Se produce cuando una entidad débil necesita de la presencia de una fuerte para existir. Si desaparece la existencia de la entidad fuerte, la de la débil carece de sentido. Suele darse pocas veces. Un caso sería el de una SUBCONTRATA con sus propios TRABAJADORES.  Si nuestra empresa no necesita más los servicios de dicha SUBCONTRATA, entonces no tiene sentido registrar en nuestra base de datos dichos TRABAJADORES.
+- Dependencia en identificación
+  Se produce cuando una entidad débil necesita de la fuerte para identificarse. Por sí sola la débil no es capaz de identificar de manera unívoca sus ocurrencias. Por ejemplo si tenemos una entidad fuerte HOTEL y una entidad débil HABITACIÓN. Para identificar de forma unívoca cada HABITACIÓN, dentro de un conjunto de hoteles, necesitamos la combinación CodHotel + NumHabitación.
 
 ### 5. Explica brevemente la Restricción de exclusividad entre dos tipos de relaciones R1 y R2 respecto a la entidad E1. Pon un ejemplo distinto del visto en el tema.
+
 La restricción de exclusividad entre dos tipos de relaciones R1 y R2 respecto a la entidad E1 significa que E1 está relacionada, o bien con E2 o bien con E3, pero  no pueden darse ambas relaciones simultáneamente.
 	
 
@@ -90,6 +111,7 @@ La restricción de exclusividad entre dos tipos de relaciones R1 y R2 respecto a
 Un ejemplo sería el de una aerolínea donde el PERSONAL trabaja como PILOTO o como AZAFATA, pero no puede trabajar en los 2 puestos.
 
 ### 6. Explica brevemente la Restricción de inclusión entre dos tipos de relaciones R1 y R2. Pon un ejemplo distinto del visto en el tema.
+
 La restricción de inclusión entre dos tipos de relaciones R1 y R2 significa que la entidad E1 participa en la relación R2 con E2 solo si antes previamente ha participado en  la relación R1.
 
 
