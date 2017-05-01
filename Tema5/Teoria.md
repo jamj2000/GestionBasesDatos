@@ -1,7 +1,4 @@
-
-
-
-MODIFICACIÓN DE BASES DE DATOS.  LENGUAJE DE MANIPULACIÓN DE DATOS
+# MODIFICACIÓN DE BASES DE DATOS.  LENGUAJE DE MANIPULACIÓN DE DATOS
 
 
 
@@ -10,16 +7,14 @@ MODIFICACIÓN DE BASES DE DATOS.  LENGUAJE DE MANIPULACIÓN DE DATOS
 
 
 
-IES Luis Vélez de Guevara
-Departamento de Informática
-Apuntes reelaborados. 
-Originales de Elena Fernández Chirino.
-Algún contenido de jorgesanchez.net
+> IES Luis Vélez de Guevara  
+> Departamento de Informática
 
 
 
 
-Sumario
+Contenido
+
 1.   INTRODUCCIÓN	3
 2.   LENGUAJE DE MANIPULACIÓN DE DATOS: DML	3
 2.1.   Inserción de datos	3
@@ -55,39 +50,54 @@ Sumario
 
 
 
-1. INTRODUCCIÓN
+## 1. INTRODUCCIÓN
 En esta unidad veremos 3 sentencias SQL DML para la modificación de datos. Además aprenderemos el funcionamiento de las transacciones y realizaremos una introducción al lenguaje PL/SQL.
-2. LENGUAJE DE MANIPULACIÓN DE DATOS: DML
+
+## 2. LENGUAJE DE MANIPULACIÓN DE DATOS: DML
 Una vez que se ha creado de forma conveniente las tablas, el siguiente paso consiste en insertar datos en ellas, es decir, añadir tuplas. Durante la vida de la base de datos será necesario, además, borrar determinadas tuplas o modificar los valores que contienen.
 Los comandos de SQL que se van a estudiar en este apartado son INSERT, UPDATE y DELETE. Estos comandos pertenecen al DML.
-2.1. Inserción de datos
+
+### 2.1. Inserción de datos
 El comando INSERT de SQL permite introducir tatos en una tabla o en una vista de la base de datos. La sintaxis del comando es la siguiente:
+```sql
 INSERT INTO {nombre_tabla | nombre_vista } [(columna1 [, columna2]...)]
 VALUES (valor1 [, valor2] ... );
+```
 
 Indicando la tabla se añaden los datos que se especifiquen tras el apartado VALUES en un nuevo registro. Los valores deben corresponderse con el orden de las columnas. Si no es así se puede indicar tras el nombre de la tabla y entre paréntesis.
 Ejemplos:
 Supongamos que tenemos el siguiente diseño físico de una tabla:
+```sql
 CREATE TABLE EMPLEADOS (
   COD       NUMBER(2)    PRIMARY KEY, 
   NOMBRE    VARCHAR2(50) NOT NULL,
   LOCALIDAD VARCHAR2(50) DEFAULT 'Écija',
   FECHANAC  DATE
 );
+```
+
 La forma más habitual de introducir datos es la siguiente:
+```sql
 INSERT INTO EMPLEADOS VALUES (1, 'Pepe', 'Osuna', '01/01/1970');
 INSERT INTO EMPLEADOS VALUES (2, 'Juan', DEFAULT, NULL);
 INSERT INTO EMPLEADOS VALUES (3, 'Sara', NULL, NULL);
+```
 
 Es obligatorio introducir valores para los campos COD y NOMBRE. Dichos campos no pueden tener valor NULL. Podemos insertar sólo el valor de ciertos campos. En este caso hay que indicar los campos a insertar y el orden en el que los introducimos:
+```sql
 INSERT INTO EMPLEADOS(NOMBRE, COD) VALUES ('Ana', 5);
+```
 
 Inserción de datos obtenidos de una consulta
 También es posible insertar datos en una tabla que hayan sido obtenidos de una consulta realizada a otra tabla/vista u otras tablas/vistas. Su forma es:
+```sql
 INSERT INTO tabla
 SELECT ...
+```
+
 Debe respetarse lo dicho anteriormente respecto a los campos. La consulta SELECT debe devolver la misma cantidad y tipo de campos que los definidos en la tabla.
 Por ejemplo, suponiendo que disponemos de una tabla SOLICITANTES con el siguiente diseño:
+```sql
 CREATE TABLE SOLICITANTES (
   NUM        NUMBER(2) PRIMARY KEY, 
   NOMBRE     VARCHAR2(50),
@@ -100,20 +110,28 @@ INSERT INTO EMPLEADOS
 SELECT NUM, NOMBRE, CIUDAD, NACIMIENTO 
 FROM SOLICITANTES 
 WHERE ESTUDIOS='CFGS ASIR';
+```
 
 También podemos indicar los campos a insertar, teniendo en cuenta que, en este caso los campos COD y NOMBRE de la tabla EMPLEADO no aceptan valores NULL, por tanto es obligatorio introducir valores para ellos:
+```sql
 INSERT INTO EMPLEADOS(FECHANAC, NOMBRE, COD)
 SELECT NACIMIENTO, NOMBRE, NUM 
 FROM SOLICITANTES 
 WHERE ESTUDIOS='CFGS ASIR';
-2.2. Modificación de datos
+```
+
+
+### 2.2. Modificación de datos
 Para la modificación de registros dentro de una tabla o vista se utiliza el comando UPDATE. La sintaxis del comando es la siguiente:
+```
 UPDATE {nombre_tabla | nombre_vista}
 SET columna1=valor1 [, columna2=valor2] ...
 [WHERE condición];
+```
 
 Se modifican las columnas indicadas en el apartado SET con los valores indicados. La cláusula WHERE permite especificar qué registros serán modificados.
 Ejemplos:
+```sql
 -- Ponemos todos los nombres a mayúsculas 
 -- y todas las localidades a Estepa
 UPDATE EMPLEADOS
@@ -132,13 +150,19 @@ UPDATE empleados
 SET sueldo=sueldo*1.10
 WHERE id_seccion = (SELECT id_seccion FROM secciones
                     WHERE nom_seccion='Producción');
+```
 Esta instrucción aumenta un 10% el sueldo de los empleados que están dados de alta en la sección llamada Producción. 
-2.3. Eliminación de datos
+
+
+### 2.3. Eliminación de datos
 Es más sencilla que el resto, elimina los registros de la tabla que cumplan la condición indicada. Se realiza mediante la instrucción DELETE:
+```
 DELETE [ FROM ] {nombre_tabla|nombre_vista}
 [WHERE condición] ;
+```
 
 Ejemplos:
+```sql
 -- Borramos empleados de Estepa
 DELETE EMPLEADOS
 WHERE LOCALIDAD='Estepa';
@@ -152,20 +176,26 @@ WHERE FECHANAC < '01/01/1970' AND LOCALIDAD = 'Osuna';
 
 -- Borramos TODOS los empleados;
 DELETE EMPLEADOS;
+```
 
 Hay que tener en cuenta que el borrado de un registro no puede provocar fallos de integridad y que la opción de integridad ON DELETE CASCADE (clave secundaria o foránea) hace que no sólo se borren los registros indicados sino todos los relacionados. En la práctica esto significa que no se pueden borrar registros cuya clave primaria sea referenciada por alguna clave foránea en otra tabla, a no ser que dicha tabla secundaria tenga activada la clausula ON DELETE CASCADE en su clave foránea, en cuyo caso se borraría el/los registro/s de la tabla principal y los registros de tabla secundaria cuya clave foránea coincide con la clave primaria eliminada en la tabla primera.
 Eliminación de datos usando una subconsulta
 Al igual que en el caso de las instrucciones INSERT o SELECT, DELETE dispone de cláusula WHERE y en dicha cláusulas podemos utilizar subconsultas. Por ejemplo:
+```sql
 DELETE empleados
 WHERE id_empleado IN (SELECT id_empleado FROM operarios);
+```
+
 En este caso se trata de una subconsulta creada con el operador IN, se eliminarán los empleados cuyo identificador esté dentro de la tabla operarios.
-2.4. Ejecución de comandos DML sobre vistas.
+
+### 2.4. Ejecución de comandos DML sobre vistas.
 Las instrucciones DML ejecutadas sobre las vistas permiten añadir o modificar los datos de las tablas relacionados con las filas de la vista. Ahora bien, no es posible ejecutar instrucciones DML sobre vistas que:
 • Utilicen funciones de grupo (SUM, AVG,...)
 • Usen GROUP BY o DISTINCT
 • Posean columnas con cálculos (P. ej: PRECIO * 1.16)
 Además no se pueden añadir datos a una vista si en las tablas referencias en la consulta SELECT hay campos NOT NULL que no aparecen en la consulta (es lógico ya que al añadir el dato se tendría que añadir el registro colocando el valor NULL en el campo).
 Si tenemos la siguiente vista:
+```sql
 CREATE VIEW resumen (id_localidad, localidad, poblacion,
                      n_provincia, provincia, superficie, 
                      id_comunidad, comunidad)
@@ -174,56 +204,66 @@ AS SELECT L.IdLocalidad, L.Nombre, L.Poblacion,
            C.IdComunidad, C.Nombre
    FROM LOCALIDADES L JOIN PROVINCIAS P ON L.IdProvincia=P.IdProvincia
                       JOIN COMUNIDADES C ON P.IdComunidad=C.IdComunidad;
+```
 
 Si realizamos la siguiente inserción:
+```sql
 INSERT INTO resumen (id_localidad, localidad, poblacion)
 VALUES (10000, 'Sevilla', 750000');
+```
 
 Se producirá un error, puesto que estamos insertando un registro dentro de la vista donde muchos de sus campos no tienen especificado un valor y por tanto serán insertados a NULL. El problema es que no puede insertarse un NULL en n_provincia ni id_comunidad puesto que son claves primarias de las tablas subyacentes PROVINCIAS y COMUNIDADES.
 La solución al problema anterior se soluciona creando un disparador (trigger) de sustitución, que veremos en el apartado de triggers.
-3. GESTIÓN DE TRANSACCIONES
+
+
+## 3. GESTIÓN DE TRANSACCIONES
 En términos teóricos, una transacción es un conjunto de tareas relacionadas que se realizan de forma satisfactoria o incorrecta como una unidad. En términos de procesamiento, las transacciones se confirman o se anulan. Para que una transacción se confirme se debe garantizar la permanencia de los cambios efectuados en los datos. Los cambios deben conservarse aunque el sistema se bloquee o tengan lugar otros eventos imprevistos. Existen 4 propiedades necesarias, que son conocidas como propiedades ACID: 
-atomicidad (Atomicity)
-coherencia (Consistency)
-aislamiento (Isolation)
-permanencia (Durability). 
+- atomicidad (Atomicity)
+- coherencia (Consistency)
+- aislamiento (Isolation)
+- permanencia (Durability). 
 
 Estas propiedades garantizan un comportamiento predecible, reforzando la función de las transacciones como proposiciones de todo o nada.
-Atomicidad: Una transacción es una unidad de trabajo el cual se realiza en su totalidad o no se realiza en ningún caso. Las operaciones asociadas a una transacción comparten normalmente un objetivo común y son interdependientes. Si el sistema ejecutase únicamente una parte de las operaciones, podría poner en peligro el objetivo final de la transacción. 
-Coherencia: Una transacción es una unidad de integridad porque mantiene la coherencia de los datos, transformando un estado coherente de datos en otro estado de datos igualmente coherente.
-Aislamiento: Una transacción es una unidad de aislamiento, permitiendo que transacciones concurrentes se comporten como si cada una fuera la única transacción que se ejecuta en el sistema. El aislamiento requiere que parezca que cada transacción sea la única que manipula el almacén de datos, aunque se puedan estar ejecutando otras transacciones al mismo tiempo. Una transacción nunca debe ver las fases intermedias de otra transacción.
-Permanencia: Una transacción también es una unidad de recuperación. Si una transacción se realiza satisfactoriamente, el sistema garantiza que sus actualizaciones se mantienen aunque el equipo falle inmediatamente después de la confirmación. El registro especializado permite que el procedimiento de reinicio del sistema complete las operaciones no finalizadas, garantizando la permanencia de la transacción.
+- *Atomicidad*: Una transacción es una unidad de trabajo el cual se realiza en su totalidad o no se realiza en ningún caso. Las operaciones asociadas a una transacción comparten normalmente un objetivo común y son interdependientes. Si el sistema ejecutase únicamente una parte de las operaciones, podría poner en peligro el objetivo final de la transacción. 
+- *Coherencia*: Una transacción es una unidad de integridad porque mantiene la coherencia de los datos, transformando un estado coherente de datos en otro estado de datos igualmente coherente.
+- *Aislamiento*: Una transacción es una unidad de aislamiento, permitiendo que transacciones concurrentes se comporten como si cada una fuera la única transacción que se ejecuta en el sistema. El aislamiento requiere que parezca que cada transacción sea la única que manipula el almacén de datos, aunque se puedan estar ejecutando otras transacciones al mismo tiempo. Una transacción nunca debe ver las fases intermedias de otra transacción.
+- *Permanencia*: Una transacción también es una unidad de recuperación. Si una transacción se realiza satisfactoriamente, el sistema garantiza que sus actualizaciones se mantienen aunque el equipo falle inmediatamente después de la confirmación. El registro especializado permite que el procedimiento de reinicio del sistema complete las operaciones no finalizadas, garantizando la permanencia de la transacción.
 
 En términos más prácticos, una transacción está formada por una serie de instrucciones DML. Una transacción comienza con la primera instrucción DML que se ejecute y finaliza con una operación COMMIT (si la transacción se confirma) o una operación ROLLBACK (si la operación se cancela).
 Hay que tener en cuenta que cualquier instrucción DDL o DCL da lugar a un COMMIT implícito, es decir todas las instrucciones DML ejecutadas hasta ese instante pasan a ser definitivas.
-
-
 
 Para poder hacer uso de transacciones en SQL*Plus debemos tener desactivado el modo AUTOCOMMIT.  Podemos ver su estado con la orden:
 SHOW AUTOCOMMIT
 
 Para desactivar dicho modo, usamos la orden:
 SET AUTOCOMMIT OFF
-3.1. COMMIT
+
+### 3.1. COMMIT
 La instrucción COMMIT hace que los cambios realizados por la transacción sean definitivos, irrevocables. Sólo se debe utilizar si estamos de acuerdo con los cambios, conviene asegurarse mucho antes de realizar el COMMIT ya que las instrucciones ejecutadas pueden afectar a miles de registros.
 Además el cierre correcto de la sesión da lugar a un COMMIT, aunque siempre conviene ejecutar explícitamente esta instrucción a fin de asegurarnos de lo que hacemos.
-3.2. ROLLBACK
+
+### 3.2. ROLLBACK
 Esta instrucción regresa a la instrucción anterior al inicio de la transacción, normalmente el último COMMIT, la última instrucción DDL o DCL o al inicio de sesión. 
 Anula definitivamente los cambios, por lo que conviene también asegurarse de esta operación.
 Un abandono de sesión incorrecto o un problema de comunicación o de caída del sistema dan lugar a un ROLLBACK implícito.
-3.3. SAVEPOINT
+
+### 3.3. SAVEPOINT
 Esta instrucción permite establecer un punto de ruptura. El problema de la combinación ROLLBACK/COMMIT es que un COMMIT acepta todo y un ROLLBACK anula todo.
 SAVEPOINT permite señalar un punto intermedio entre el inicio de la transacción y la situación actual. Su sintaxis es: 
+```
 ... instrucciones DML…
 
 SAVEPOINT nombre
 
 ... instrucciones DML...
+```
 
 Para regresar a un punto de ruptura concreto se utiliza ROLLBACK TO SAVEPOINT seguido del nombre dado al punto de ruptura. También es posible hacer ROLLBACK TO nombre de punto de ruptura. Cuando se vuelve a un punto marcado, las instrucciones que siguieron a esa marca se anulan definitivamente.
 Ejemplo de uso:
+```
 SET AUTOCOMMIT OFF;
-
+```
+```sql
 CREATE TABLE T (FECHA DATE);
 
 INSERT INTO T VALUES ('01/01/2017');
@@ -242,66 +282,76 @@ ROLLBACK TO febrero;
 -- También puede escribirse ROLLBACK TO SAVEPOINT febrero;
 -- En este ejemplo sólo se guardan en la tabla 
 -- los 2 primeros registros o filas.
+```
 
-3.4. Estado de los datos durante la transacción
+### 3.4. Estado de los datos durante la transacción
 Si se inicia una transacción usando comandos DML hay que tener en cuenta que:
 Se puede volver a la instrucción anterior a la transacción cuando se desee.
 Las instrucciones de consulta SELECT realizadas por el usuario que inició la transacción muestran los datos ya modificados por las instrucciones DML.
 El resto de usuarios ven los datos tal cual estaban antes de la transacción, de hecho los registros afectados por la transacción aparecen bloqueados hasta que la transacción finalice. Esos usuarios no podrán modificar los valores de dichos registros.
 Tras la transacción todos los usuarios ven los datos tal cual quedan tras el fin de transacción. Los bloqueos son liberados y los puntos de ruptura borrados.
-4. INTRODUCCIÓN A PL/SQL
+
+
+## 4. INTRODUCCIÓN A PL/SQL
 Cuando se desea realizar una aplicación completa para el manejo de una base de datos relacional, resulta necesario utilizar alguna herramienta que soporte la capacidad de consulta del SQL y la versatilidad de los lenguajes de programación tradicionales. PL/SQL es el lenguaje de programación que proporciona Oracle para extender el SQL estándar con otro tipo de instrucciones.
 Casi todos los grandes Sistemas Gestores de Datos incorporan utilidades que permiten ampliar el lenguaje SQL para producir pequeñas utilidades que añaden al SQL mejoras de la programación estructurada (bucles, condiciones, funciones,....). 
 A diferencia de SQL, que es un lenguaje declarativo (indicamos qué deseamos obtener sin indicar cómo), PL/SQL es el lenguaje procedimental (indicamos cómo queremos obtener los resultados)
 PL/SQL es implementado por el precompilador de Oracle que permite utilizar condiciones y bucles al estilo de lenguajes como Basic, Cobol, C++, Java, etc.
 En otros sistemas gestores de bases de datos existen otros lenguajes procedimentales: 
-SQL Server utiliza Transact SQL
-PostgreSQL usa PL/pgSQL
-Informix usa Informix 4GL
-… 
+- SQL Server utiliza Transact SQL
+- PostgreSQL usa PL/pgSQL
+- Informix usa Informix 4GL
+- … 
+
 El código PL/SQL puede almacenarse:
-En la propia base de datos
-En archivos externos
+- En la propia base de datos
+- En archivos externos
 Las funciones más destacadas que pueden realizarse con PL/SQL son las siguientes:
-Facilitar la realización de tareas administrativas sobre la base de datos (copia de valores antiguos, auditorías, control de usuarios,...)
-Validación y verificación avanzada de usuarios
-Consultas muy avanzadas
-Tareas imposibles de realizar con SQL
+- Facilitar la realización de tareas administrativas sobre la base de datos (copia de valores antiguos, auditorías, control de usuarios,...)
+- Validación y verificación avanzada de usuarios
+- Consultas muy avanzadas
+- Tareas imposibles de realizar con SQL
 
 
-4.1. Conceptos básicos
+### 4.1. Conceptos básicos
 bloque PL/SQL
 Se trata de un trozo de código que puede ser interpretado por Oracle. Se encuentra inmerso dentro de las palabras BEGIN y END.
-programa PL/SQL
+- programa PL/SQL
 Conjunto de bloques que realizan una determinada labor.
-procedimiento
+- procedimiento
 Programa PL/SQL almacenado en la base de datos y que puede ser ejecutado si se desea con solo saber su nombre (y teniendo permiso para su acceso).
-función
+- función
 Programa PL/SQL que a partir de unos datos de entrada obtiene un resultado (datos de salida). Una función puede ser utilizada en cualquier expresión desde cualquier otro programa PL/SQL e incluso desde una instrucción SQL.
-paquete
+- paquete
 Colección de procedimientos y funciones agrupados dentro de la misma estructura. Similar a las bibliotecas y librerías de los lenguajes convencionales.
-trigger (disparador)
+- trigger (disparador)
 Programa PL/SQL que se ejecuta automáticamente cuando ocurre un determinado suceso a un objeto de la base de datos.
-4.2. Bloques
+
+### 4.2. Bloques
 Cada programa en PL/SQL está formado por grupos de órdenes SQL llamadas bloques.
 Cada bloque puede contener, a su vez, nuevos bloques.
 ESTRUCTURA DE UN BLOQUE PL/SQL
 La estructura más sencilla es la siguiente:
+```sql
 BEGIN
   Sentencias
   ...
 END;
 /
-
+```
 Ejemplo:
+```sql
 BEGIN
   DBMS_OUTPUT.PUT_LINE ('Hola Mundo');
 END;
 /
+```
+
 La barra / se utiliza para ejecutar el código.
-NOTA IMPORTANTE: Si usas SQL*Plus deberás ejecutar al inicio de sesión la siguiente orden para que se habilite la salida:
-SET SERVEROUTPUT ON
+> NOTA IMPORTANTE: Si usas SQL*Plus deberás ejecutar al inicio de sesión la siguiente orden para que se habilite la salida:
+> `SET SERVEROUTPUT ON`
 La estructura general es:
+```
 [ DECLARE 
    constantes,
    variables, 
@@ -315,8 +365,10 @@ BEGIN
    Acciones a realizar cuando se produce alguna excepción  ]
 END;
 /
+```
 
 Ejemplo:
+```sql
 DECLARE
   fecha DATE;
 BEGIN
@@ -327,20 +379,23 @@ BEGIN
   );
 END;
 /
+```
 
 NOTA IMPORTANTE: Dentro de un bloque BEGIN … END la sentencia SELECT adquiere la forma SELECT campos INTO variable ...
 Tipos de Bloques
-Anónimos (anonymous blocks): Se construyen normalmente de manera dinámica para un objetivo muy concreto y se ejecutan, en general, una única vez. Por eso no llevan nombre.
-Nominados (named blocks): Son similares a los bloques anónimos pero con una etiqueta que da nombre al bloque.
-Subprogramas o procedimientos: Se construyen para efectuar algún tipo de operación más o menos frecuente y se almacenan para ejecutarlos cuantas veces se desee. Se ejecutan con una llamada al procedimiento.
-Funciones: Son similares a los procedimientos. Al igual que estos realizan algún tipo de operación, pero además las funciones devuelven un valor que puede ser usado en cualquier sentencia PL/SQL e incluso en sentencias SQL.
-Paquetes: Se usan para agrupar procedimientos y funciones. Facilitan la descomposición modular y el mantenimiento.
-Disparadores (triggers): Son bloques nominados que se almacenan en la BD. Su ejecución está condicionada a cierta condición, como por ejemplo usar una orden concreta del DML.
-Comentarios: Pueden incluirse siempre que se desee.
-Monolínea: Empiezan con 2 guiones -- y terminan a final de línea.
-Multilínea: Empiezan con /* y terminan con */ (como en C).
+- Anónimos (anonymous blocks): Se construyen normalmente de manera dinámica para un objetivo muy concreto y se ejecutan, en general, una única vez. Por eso no llevan nombre.
+- Nominados (named blocks): Son similares a los bloques anónimos pero con una etiqueta que da nombre al bloque.
+- Subprogramas o procedimientos: Se construyen para efectuar algún tipo de operación más o menos frecuente y se almacenan para ejecutarlos cuantas veces se desee. Se ejecutan con una llamada al procedimiento.
+- Funciones: Son similares a los procedimientos. Al igual que estos realizan algún tipo de operación, pero además las funciones devuelven un valor que puede ser usado en cualquier sentencia PL/SQL e incluso en sentencias SQL.
+- Paquetes: Se usan para agrupar procedimientos y funciones. Facilitan la descomposición modular y el mantenimiento.
+- Disparadores (triggers): Son bloques nominados que se almacenan en la BD. Su ejecución está condicionada a cierta condición, como por ejemplo usar una orden concreta del DML.
+- Comentarios: Pueden incluirse siempre que se desee.
+  - Monolínea: Empiezan con 2 guiones -- y terminan a final de línea.
+  - Multilínea: Empiezan con /* y terminan con */ (como en C).
+
 Ejemplos de Bloques
 Ejemplo de Bloque Anónimo
+```sql
 DECLARE 
   fecha  DATE;
 BEGIN
@@ -349,10 +404,12 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE ('Fecha:  ' || fecha);
 END;
 /
+```sql
 
 Ejemplo de Bloque Nominado
 La única diferencia con el ejemplo anterior es que debemos poner una etiqueta al bloque anónimo para referirnos a él. Dicha etiqueta se pondrá antes de la cláusula DECLARE y entre ángulos dobles: <<nombre_bloque>>.
 Es buena costumbre, aunque es opcional, poner el nombre también después de la palabra END.
+```sql
 <<fecha>>
 DECLARE 
   fecha  DATE;
@@ -362,12 +419,14 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE ('Fecha:  ' || fecha);
 END fecha;
 /
+```
 
 Los otros tipos de bloques los veremos con mayor detenimiento más adelante.
-4.3. Ejecución selectiva: Condicionales
+
+### 4.3. Ejecución selectiva: Condicionales
 Para ejecutar un serie de instrucciones según se cumpla o no una condición tenemos dos estructuras:
-IF
-CASE
+- IF
+- CASE
 Estas estructuras necesitan que indiquemos la condición o condiciones que deseamos evaluar. Dicha condición se evalúa en la mayoría de los lenguajes de programación como TRUE o FALSE. 
 En SQL se usa una lógica trivaluada (TRUE, FALSE y NULL), donde NULL tiene el significado de ”desconocido o no definido”. Cualquier expresión relacional con un operando nulo, devuelve NULL.
 Tablas de Verdad:
@@ -375,6 +434,7 @@ Tablas de Verdad:
 
 Estructura IF-THEN-ELSE
 Formato:
+```
 IF  Expresión_Booleana1 THEN
   Secuencia_de_Órdenes1;
 [ ELSIF Expresión_Booleana2 THEN
@@ -383,12 +443,14 @@ IF  Expresión_Booleana1 THEN
 [ ELSE
   Secuencia_de_Órdenes; ]
 END IF;
+```
 
 Como se muestra, las cláusulas ELSIF y ELSE son opcionales y puede haber tantas cláusulas ELSIF como se desee.
 Se ejecuta la Secuencia_de_Órdenes1 si Expresión_Booleana1 es TRUE. Si esa expresión vale FALSE o NULL, no se ejecutará y pasará a ejecutar las siguientes cláusulas.
 Los valores NULL hacen que no sea equivalente intercambiar las secuencias de órdenes si se niega la Expresión_Booleana1.
 Ejemplos
 Antes de pasar a ver el ejemplo vamos dar unas indicaciones sobre la importancia de comprobar previamente valores nulos, si los hubiera.
+```sql
 IF  A < B THEN
   C := 1;
 ELSE
@@ -414,10 +476,13 @@ ELSIF A < B THEN
 ELSE
   C := 2;
 END IF;
+```
 
 El código completo del ejemplo anterior es:
+```
 SET SERVEROUTPUT ON 
-
+```
+```sql
 DECLARE
    A NUMBER := NULL;
    B NUMBER := 2;
@@ -436,10 +501,13 @@ BEGIN
 
 END;
 /
+```sql
 Y la salida sería:
+```
 El valor de C es 3
-
+```
 Ejemplo:
+```sql
 DECLARE
   nota NUMBER(2);
 
@@ -462,6 +530,7 @@ BEGIN
 
 END;
 /
+```
 
 Estructura CASE
 La estructura CASE tiene la misma finalidad que la estructura IF vista anteriormente. Es decir, para realizar una operación de selección podemos hacer uso de IF o de CASE: son equivalentes. A diferencia de IF, la estructura CASE no está limitada a expresiones booleanas. La evaluación de la expresión puede ser, y a menudo es, un valor númerico o texto.
@@ -515,7 +584,8 @@ BEGIN
 END;
 /
 Observa como en este segundo caso no hay nada inmediatamente después de CASE.
-4.4. Ejecución repetitiva: Bucles
+
+### 4.4. Ejecución repetitiva: Bucles
 Para realizar una operación un número elevado de veces utilizamos bucles. Un bucle es una estructura del lenguaje que nos permite indicar que determinado código se repetirá en su ejecución. Existen 3 formas de hacerlo que pasamos a ver a continuación:
 LOOP
 WHILE
@@ -583,7 +653,8 @@ BEGIN
 END;
 /
 Este código inserta 10 filas en la tabla Tabla_Temp con valores  10, 20, 30, … , 100.
-4.5. Procedimientos
+
+### 4.5. Procedimientos
 Un procedimiento es un bloque que puede recibir parámetros, lo cual permite trabajar con unos datos de entrada, realizar las operaciones deseadas con dichos datos y, en algunos casos guardar ciertos resultados como parámetros de salida.
 Se usa la palabra reservada PROCEDURE. Su estructura simplificada es:
 PROCEDURE nombre IS
@@ -661,7 +732,8 @@ o también en SQL*Plus:
 EXEC ESCRIBE('HOLA');
 
 Al declarar cada parámetro se indica el tipo de los mismos, pero no su tamaño; es decir sería VARCHAR2 y no VARCHAR2(50).
-4.6. Funciones
+
+### 4.6. Funciones
 Una función es prácticamente idéntica a un procedimiento. También puede recibir parámetros de entrada y realizar operaciones con dichos datos. Lo que distingue a una función de un procedimiento es que la función siempre devuelve algún valor.
 Se usa la palabra reservada FUNCTION. Su estructura simplificada es:
 FUNCTION nombre RETURN tipoDedatos IS
@@ -701,7 +773,7 @@ SELECT SUMA(5.7, 9.3)*3         FROM DUAL;
 SELECT 150/(SUMA(5.7, 9.3)*3)   FROM DUAL;
 SELECT SYSDATE+SUMA(10,2)-2     FROM DUAL;
 
-4.7. Variables
+### 4.7. Variables
 Una variable es el nombre que se da a una zona de memoria donde se guardarán ciertos datos.  PL/SQL soporta todos los tipos de SQL más algunos más que veremos a continuación.
 Formato:
 La variables PL/SQL se declaran con el siguiente formato:
@@ -791,7 +863,7 @@ El hotel con ID 2 es Mediano
 El hotel con ID 3 es Grande
 El hotel con ID 99 es de tamaño indeterminado
  
-4.8. Registros
+### 4.8. Registros
 Son agrupaciones de datos relacionados. Permite crear estructuras que albergan un conjunto de tipos de datos. Por ejemplo, podemos crear el registro PERSONA con los campos código, nombre y edad, cada uno de estos campos con diferentes tipos de datos. 
 En PL/SQL su importancia proviene de su similitud a la fila (registro) de tabla.
 Es necesario definir un Tipo de Dato Registro, para declarar variables.
@@ -869,7 +941,7 @@ BEGIN
 END;
 /
 
-4.9. Cursores
+### 4.9. Cursores
 PL/SQL utiliza cursores para gestionar las instrucciones SELECT. Un cursor es un conjunto de registros devuelto por una instrucción SQL. Técnicamente los cursores son fragmentos de memoria reservados para procesar los resultados de una consulta SELECT.
 Hay dos tipos de cursores: Implícitos y Explícitos.
 Un cursor se define como cualquier otra variable de PL/SQL y debe nombrarse de acuerdo a los mismos convenios que cualquier otra variable. Los cursores implícitos no necesitan declaración como tales. Los cursores explícitos debemos declararlos con la palabra CURSOR.
@@ -977,7 +1049,7 @@ BEGIN
    CLOSE c;
 END;
 
-4.10. Paquetes
+### 4.10. Paquetes
 Los paquetes sirven para agrupar bajo un mismo nombre funciones y procedimientos. Facilitan la modularización de programas y su mantenimiento. 
 Los paquetes constan de dos partes:
 Especificación. Que sirve para declarar los elementos de los que consta el paquete. En esta especificación se indican los procedimientos, funciones y variables públicos del paquete (los que se podrán invocar desde fuera del paquete). De los procedimientos sólo se indica su nombre y parámetros (sin el cuerpo).
@@ -1063,13 +1135,15 @@ END;
 Oracle incorpora una serie de paquetes para ser utilizados dentro del código PL/SQL. Es el caso del paquete DBMS_OUTPUT que sirve para utilizar funciones y procedimientos de escritura como PUT_LINE. 
 Otro ejemplo es el paquete DBMS_RANDOM, que contiene diversas funciones para utilizar número aleatorios. Quizá la más útil es la función DBMS_RANDOM.RANDOM que devuelve un número entero (positivo o negativo) aleatorio (y muy grande). 
 Ejemplos:
+```sql
 -- Si deseamos un número aleatorio entre 1 y 10
 MOD(ABS(DBMS_RANDOM.RANDOM),10)+1
 
 -- Entre 20 y 50
 MOD(ABS(DBMS_RANDOM.RANDOM),31)+20
+```
 
-4.11. Disparadores (Triggers)
+### 4.11. Disparadores (Triggers)
 Es un bloque PL/SQL que se ejecuta de forma implícita cuando se ejecuta cierta operación DML: INSERT, DELETE o UPDATE. Contrariamente, los procedimientos y las funciones se ejecutan haciendo una llamada explícita a ellos. Un disparador NO admite argumentos.
 Sus aplicaciones son inmensas, como por ejemplo:
 Mantenimiento de Restricciones de Integridad complejas. Ej: Restricciones de Estado (como que el sueldo sólo puede aumentar).
@@ -1297,7 +1371,8 @@ WHERE name='CONTROL_EMPLEADOS' AND type='TRIGGER';
 
 Otra forma más cómoda de hacerlo es con la sentencia: 
 SHOW ERRORS;
-4.12. Gestión de excepciones
+
+### 4.12. Gestión de excepciones
 Se llama excepción a todo hecho que le sucede a un programa que causa que la ejecución del mismo finalice. Lógicamente eso causa que el programa termine de forma anormal.
 Las excepciones se deben a:
 Que ocurra un error detectado por Oracle (por ejemplo si un SELECT no devuelve datos ocurre el error ORA-01403 llamado NO_DATA_FOUND).
@@ -1643,6 +1718,7 @@ PL/SQL: Paquetes y excepciones
 5.6.2. Al paquete anterior añade una función llamada RESTO que reciba dos parámetros, el dividendo y el divisor, y devuelva el resto de la división.
 5.6.3. Al paquete anterior añade un procedimiento sin parámetros llamado AYUDA que muestre un mensaje por pantalla de los procedimientos y funciones disponibles en el paquete, su utilidad y forma de uso.
 5.6.4. Desarrolla el paquete GESTION. En un principio tendremos los procedimientos para gestionar los departamentos. Dado el archivo de especificación mostrado más abajo crea el archivo para el cuerpo. Realiza varias pruebas para comprobar que las llamadas a funciones y procedimientos funcionan correctamente.
+```sql
 -- PAQUETE GESTION – Especificación 
 -- PACKAGE_GESTION.SQL 
 CREATE OR REPLACE 
@@ -1654,7 +1730,7 @@ PACKAGE GESTION AS
   PROCEDURE MODIFICAR_DEP  (numero NUMBER, presupuesto NUMBER);
 END GESTION;
 /
-
+```
 
 
 5.7. Práctica 7
