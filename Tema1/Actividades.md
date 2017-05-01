@@ -10,34 +10,34 @@
 Para cada una de las siguientes cuestiones elige razonadamente cada una de las respuestas correctas.
 
 ### 6.1.1. ¿Cuáles de los siguientes puntos representan inconvenientes de los Sistemas de Ficheros?
-a) Redundancia e Inconsistencia.
-b) Sistema de Gestión de Datos independiente de la máquina y del SO.
-c) Control de concurrencia.
-d) Difícil modificación de los datos.
+a. Redundancia e Inconsistencia.
+b. Sistema de Gestión de Datos independiente de la máquina y del SO.
+c. Control de concurrencia.
+d. Difícil modificación de los datos.
 
 ### 6.1.2. Los sistemas orientados a BD presentan las siguientes ventajas...
-a) Integridad de los datos.
-b) Redundancia.
-c) Cada aplicación maneja sus propios datos.
-d) Independencia entre los datos y las aplicaciones que los usan.
+a. Integridad de los datos.
+b. Redundancia.
+c. Cada aplicación maneja sus propios datos.
+d. Independencia entre los datos y las aplicaciones que los usan.
 
 ### 6.1.3. Los datos son ...
-a) ... todo aquello de lo cual interesa guardar información.
-b) ... hechos conocidos que pueden registrarse y que tienen un significado implícito.
-c) ... información acerca de los metadados.
-d) ... las claves primarias y foráneas de cada entidad.
+a. ... todo aquello de lo cual interesa guardar información.
+b. ... hechos conocidos que pueden registrarse y que tienen un significado implícito.
+c. ... información acerca de los metadados.
+d. ... las claves primarias y foráneas de cada entidad.
 
 ### 6.1.4. Un SGBD ...
-a) ... esta formado por datos acerca de los datos presentes en la base de datos.
-b) ... es una aplicación que permite a los usuarios definir, crear y mantener una base de datos, y proporciona acceso controlado a la misma.
-c)  ... permite a los usuarios tener acceso a la BD completa impidiendo restricciones.
-d) ... permite la inserción, actualización, eliminación y consulta de datos mediante el lenguaje de manejo o manipulación de datos.
+a. ... esta formado por datos acerca de los datos presentes en la base de datos.
+b. ... es una aplicación que permite a los usuarios definir, crear y mantener una base de datos, y proporciona acceso controlado a la misma.
+c.  ... permite a los usuarios tener acceso a la BD completa impidiendo restricciones.
+d. ... permite la inserción, actualización, eliminación y consulta de datos mediante el lenguaje de manejo o manipulación de datos.
 
 ## 6.2. Cuestiones
 
 ### 6.2.1. Contesta los siguientes apartados
-a) Explica brevemente los antecedentes de las BD actuales.
-b) Enumera y explica brevemente los inconvenientes que presentan los antiguos sistemas de Archivos o de Ficheros.
+a. Explica brevemente los antecedentes de las BD actuales.
+b. Enumera y explica brevemente los inconvenientes que presentan los antiguos sistemas de Archivos o de Ficheros.
 
 ### 6.2.2. ¿Qué significa que los datos de una BD tienen un significado implícito? Por tres ejemplos, diferentes de los expuesto en el tema, que ilustren tu explicación.
 
@@ -54,14 +54,14 @@ b) Enumera y explica brevemente los inconvenientes que presentan los antiguos si
 ### 6.2.8. ¿Qué es un script o guión?
 
 ### 6.2.9. Define los siguientes conceptos:
-- Dato
-- Tipo de Dato
-- Campo
-- Registro
-- Tabla
-- Relación
-- Consulta
-- Procedimiento
+1. Dato
+2. Tipo de Dato
+3. Campo
+4. Registro
+5. Tabla
+6. Relación
+7. Consulta
+8. Procedimiento
 
 ### 6.2.10. ¿Qué es el diccionario de datos?
 
@@ -184,12 +184,12 @@ Tiempo de procesamiento elevado
 
 Nota 1: La tabla la deberás entregar en formato apaisado para que puedas dar las explicaciones sin límite de espacio.
 b) Supongamos ahora que quisiéramos resolver el problema real usando el enfoque actual de BD. Detecta en el enunciado ejemplos de los siguientes elementos fundamentales de una BD:
-• Datos
-• Entidades
-• Claves principales
-• Claves foráneas
-• Integridad referencial
-• Metadatos
+- Datos
+- Entidades
+- Claves principales
+- Claves foráneas
+- Integridad referencial
+- Metadatos
 Nota 2: Los tres últimos elementos pueden ser más difíciles de encontrar. Si es así, no os preocupéis porque estamos empezando.
 c) Utiliza los ejemplos sobre datos detectados en el enunciado para explicar el concepto de “significado implícito” de los mismos.
 
@@ -205,17 +205,17 @@ Se quiere realizar una BD para una empresa dedicada a la comercialización de co
 Primera parte
 a) Detecta en el enunciado anterior todas las ENTIDADES y DATOS. Indica a qué tipo de Base de Datos de entre los vistos en el tema, corresponde la solución planteada.
 Al igual que antes de construir un edificio, se deben pasar por una serie de fases previas:
-• recogerse con detalle las características que debe reunir,
-• realizar los planos necesarios y una especificación de calidades,… antes de realizar una base de datos realizaremos también un diseño previo.
+- recogerse con detalle las características que debe reunir,
+- realizar los planos necesarios y una especificación de calidades,… antes de realizar una base de datos realizaremos también un diseño previo.
 El Diseño de base de datos, se verá con detalle a partir de la próxima unidad. No obstante, y a modo de introducción, nos aceremos al mismo en el siguiente ejemplo guiado. Para entenderlo, hacemos una breve introducción de las distintas fases por las que pasa el análisis y el diseño de una BD:
 Fase de análisis: Especificación de Requisitos Software o E.R.S. Los informáticos se reúnen con los futuros usuarios del sistema para recopilar la información que necesitan para saber que desean dichos usuarios.
 Supongamos que después de unas entrevistas previas, obtenemos que la empresa lo que desea es lo siguiente:
 Especificación de requisitos
 La empresa desea realizar un control de sus ventas y montajes, para lo cual se tiene en cuenta:
-• De cada modelo de cocina nos interesa el número de referencia del modelo.
-• De un montador nos interesa su NIF, nombre, dirección, teléfono de contacto y el número de cocinas que ha montado de cada modelo.
-• Cada modelo cocina lo debe montar al menos un montador, y el mismo montador puede montar varios modelos, porque no se especializan en ninguno en concreto.
-• De un cliente nos interesa su NIF, nombre, dirección y teléfono. Cada modelo de cocina pueden comprarlo uno o varios clientes, y el mismo cliente puede comprar varias modelos de cocinas.
+- De cada modelo de cocina nos interesa el número de referencia del modelo.
+- De un montador nos interesa su NIF, nombre, dirección, teléfono de contacto y el número de cocinas que ha montado de cada modelo.
+- Cada modelo cocina lo debe montar al menos un montador, y el mismo montador puede montar varios modelos, porque no se especializan en ninguno en concreto.
+- De un cliente nos interesa su NIF, nombre, dirección y teléfono. Cada modelo de cocina pueden comprarlo uno o varios clientes, y el mismo cliente puede comprar varias modelos de cocinas.
 Fase 1 del Diseño: Diseño Conceptual: A partir de la E.R.S., se diseñará un modelo que tienen un gran poder expresivo para poder comunicarse con el usuario que no experto en informática. El modelo que utilizaremos en este módulo y que explicaremos en la siguiente unidad es el modelo Entidad/relación.
 Diseño Conceptual
 A partir de la E.R.S, que supone una descripción del mundo real sobre el que queremos diseñar nuestra base de datos, el primer paso será diseñar el esquema conceptual que lo describe.
@@ -240,9 +240,9 @@ d) ¿Detectas algún ejemplo en el modelo que ilustre el concepto de “signific
 Fase 3 del diseño: Diseño físico: Es el resultado de aplicar el modelo lógico a un SGBD concreto. Generalmente está expresado en un lenguaje de programación de BBDD tipo SQL. Aunque en este primer ejemplo introductorio utilizaremos como SGBD Access, que se basa en herramientas gráficas para implementar la BD.
 Diseño Físico
 A partir del esquema lógico, aprenderemos a crear físicamente nuestra BD en el SGBD. Para interpretar el esquema sólo es necesario saber que:
-• Cada relación o caja será una tabla en nuestro SGBD.
-• Los campos precedidos de “PK” serán las claves principales en nuestras tablas.
-• Los campos precedidos de “FK” serán las claves foráneas en nuestras tablas.
+- Cada relación o caja será una tabla en nuestro SGBD.
+- Los campos precedidos de “PK” serán las claves principales en nuestras tablas.
+- Los campos precedidos de “FK” serán las claves foráneas en nuestras tablas.
 Nota 1: Para resolver la última parte de esta práctica utilizaremos como SGBD
 Microsoft ACCESS. Aunque es una aplicación muy extendida no es una herramienta verdaderamente potente para un Técnico informático. Es por eso que sólo la usaremos en las secciones introductorias y cuando nos adentremos en el módulo, pasaremos al uso de ORACLE. En concreto vamos a usar el manual de ACCESS 2007 y podréis consultarlo en todo momento ya que estará a vuestra disposición en la MOODLE. 
 Cuarta parte
@@ -284,8 +284,10 @@ i) Muestra el NIF de los clientes que han adquirido la cocina de modelo 2 y la c
 
 j) Muestra los nombres de los clientes que han adquirido una cocina del modelo 2 o del modelo 6
 
-6.3.3. PRÁCTICA 3
+### 6.3.3. PRÁCTICA 3
+
 OBJETIVO: Adentrarse en el diseño e implementación de BD a través de un ejemplo no guiado.
+
 ENUNCIADO: Se plantea el enunciado de una base de datos y los esquemas conceptuales y lógicos que resultan y a partir de los cuales se deberán crear las tablas relacionadas en ACCESS.
 Un banco desea informatizar el seguimiento de las cuentas de ahorro que sus clientes tienen en sus sucursales así como la gestión del personal. Realiza la BD que represente este sistema y que cumpla las siguientes restricciones:
 Cada Cuenta de Ahorro tiene un número e interesa conocer el saldo de las mismas.
@@ -294,19 +296,21 @@ El cliente se identifica por su DNI y guardamos también su nombre y dirección.
 De una cuenta de ahorro pueden ser titulares varios clientes.
 Cada sucursal se conoce por su número de sucursal y su dirección.
 El personal del banco se divide en: empleados de sucursal y directores de sucursal. De todos interesa conocer su código de empleado, DNI y su nombre.
+
 Los empleados se encuentran destinados de forma exclusiva a una sucursal. De ellos interesa conocer además su sueldo.
 Cada sucursal tiene un único director de sucursal.
-a) Identifica las entidades y los datos que detectas en el enunciado anterior. I
 
-b) Observa el siguiente modelo Entidad/Relación que se obtendría a partir del enunciado anterior. Detecta en él cuáles serían las entidades y los datos.
+a. Identifica las entidades y los datos que detectas en el enunciado anterior. I
 
-c) Observa el siguiente modelo Relacional que se obtendrá a partir del modelo Entidad/Relación anterior. Indica en él:
+b. Observa el siguiente modelo Entidad/Relación que se obtendría a partir del enunciado anterior. Detecta en él cuáles serían las entidades y los datos.
+
+c. Observa el siguiente modelo Relacional que se obtendrá a partir del modelo Entidad/Relación anterior. Indica en él:
 Cuáles son las tablas que deberás crear en ACCESS.
 Cuáles son las claves principales.
 Cuáles son las claves foráneas.
 A qué tipo de Base de Datos y Sistema Gestor de Bases de Datos corresponde el diseño planteado.
 
-d) Utiliza el modelo Relacional para crear la BD correspondiente en ACCESS. Deberás tener en cuenta que los campos cumplirán las siguientes condiciones:
+d. Utiliza el modelo Relacional para crear la BD correspondiente en ACCESS. Deberás tener en cuenta que los campos cumplirán las siguientes condiciones:
 Los códigos del personal empezarán por la letra P e irán seguidos de un número correlativo. Ejemplo: P1, P2, P3...
 Los números de cuentas bancarios actuales están formados por 20 dígitos que tienen la estructura siguiente:
 El código del banco al que pertenece la cuenta (4 dígitos).
@@ -317,9 +321,14 @@ Como en nuestra BD todas las cuentas pertenecen a la misma entidad bancaria, el 
 Los DNI incluirán la letra. Tendrá un tamaño de 9 caracteres.
 El Saldo y el Sueldo serán campos numéricos. El sueldo siempre será un número mayor que 0, pero el saldo puede ser negativo (números rojos).
 Los campos "Nombre" y "dirección" deben tener el tamaño adecuado para incluir los datos. Ponemos tamaño 50.
-6.3.4. PRÁCTICA 4
+
+
+### 6.3.4. PRÁCTICA 4
+
 OBJETIVO: Se trata de una práctica de ampliación. Con ella se pretende que el alumno utilice el manual “Biblia de ACCESS 2007”. Para ello se proponen una serie de prácticas enumeradas del 1 al 12 para cuya realización se deberá buscar la información del manual. Es deseable que el alumno adquiera autonomía en el manejo de documentación y por eso habrá que intentar consultar al profesor sólo cuando sea estrictamente necesario. Todo lo que se requiere para solucionar la práctica está en el manual que podéis consultar en la plataforma Moodle del curso GBD.
+
 ENUNCIADO: Ejercicio de Microsoft ACCESS.
+
 1. Creación de una Base de Datos y diseño de varias tablas.
 1) Crear una nueva Base de Datos. Llamarla CURSACC01.MDB
 2) Crear una tabla nueva para registrar la información de fichas de Clientes. Llamarla CLIENTES. Estará compuesta por los siguientes campos:
@@ -335,6 +344,7 @@ ENUNCIADO: Ejercicio de Microsoft ACCESS.
 8) Crear una Tabla nueva para registrar la información de las zonas de Ventas. Llamarla ZONAS. Compuesta por los siguientes campos:
 
 9) Asignar como Clave principal el campo ZONA.
+
 2. Adquirir práctica en el uso de las hojas de datos
 1) Abra la tabla ARTICULOS, y cumplimente 6 ó 7 registros.
 Para los precios indique diversas cantidades entre 100 y 500 (esto será útil para algunos de los ejercicios posteriores).
@@ -344,9 +354,10 @@ Sugerencia: zonas Norte, Sur, Este y Oeste
 3) Abra la tabla CLIENTES y cumplimente al menos 10 registros.
 No es preciso cumplimentar todos los campos, pero necesariamente debe rellenar CODCLIENTE, NOMBRECLI, CODPOSTAL, POBLACION, DESCUENTO y ZONAVENTAS, pues utilizaremos estos datos más adelante.
 En el campo ZONAVENTAS utilice exclusivamente datos que haya insertado en el campo ZONA de la tabla ZONAS.
-• Varios clientes deberán ser de Barcelona y Madrid.
-• Sugerencia: invéntese los datos, pero utilice números consecutivos para el campo CODCLIENTE, para facilitar más adelante la introducción de datos en PEDIDOS.
+- Varios clientes deberán ser de Barcelona y Madrid.
+- Sugerencia: invéntese los datos, pero utilice números consecutivos para el campo CODCLIENTE, para facilitar más adelante la introducción de datos en PEDIDOS.
 Observe como las propiedades de campos que hemos definido, determinan el comportamiento de Access al introducir códigos postales (máscara) y descuentos (regla de validación); observe también que ocurre cuando intenta omitir ZONAVENTAS en algún registro (requerido). Observe como los nombres de los campos difieren de los de las columnas en aquellos campos para los cuales se ha definido la propiedad título.
+
 4) Con la tabla CLIENTES practique los siguientes puntos:
 Redimensione el tamaño de las columnas a las necesidades de su contenido.
 Ordene todos sus registros en base a los datos de la columna NOMBRECLI.
@@ -358,7 +369,9 @@ Mostrar solo clientes de la Población de Barcelona
 Mostrar solo clientes de Barcelona y con un Descuento superior al 5%
 9) Mueva la columna TELEFONO a la derecha de la columna NOMBRECLI. Pruebe otros movimientos.
 10) Oculte las columnas DESCUENTO y ZONAVENTAS. Vuelva a mostrarlas. Pruebe otras.
-11) Cree un nuevo registro con la particularidad que el contenido del campo CODCLIENTE ya exista en otro de sus registros. Observe la reacción del sistema (bloqueo frente la violación de la clave principal.)
+11) Cree un nuevo registro con la particularidad que el contenido del campo CODCLIENTE ya exista en otro de sus registros. 
+Observe la reacción del sistema (bloqueo frente la violación de la clave principal.)
+
 3. Establecer relaciones entre tablas y experimentar con la integridad referencial.
 1) Abrir la ventana de Relaciones.
 2) Agregar las tablas CLIENTES, ARTICULOS, PEDIDOS y zonas para crear las relaciones entre las mismas.
