@@ -123,7 +123,7 @@ WHERE ESTUDIOS='CFGS ASIR';
 
 ### 2.2. Modificación de datos
 Para la modificación de registros dentro de una tabla o vista se utiliza el comando UPDATE. La sintaxis del comando es la siguiente:
-```
+```sql
 UPDATE {nombre_tabla | nombre_vista}
 SET columna1=valor1 [, columna2=valor2] ...
 [WHERE condición];
@@ -156,7 +156,7 @@ Esta instrucción aumenta un 10% el sueldo de los empleados que están dados de 
 
 ### 2.3. Eliminación de datos
 Es más sencilla que el resto, elimina los registros de la tabla que cumplan la condición indicada. Se realiza mediante la instrucción DELETE:
-```
+```sql
 DELETE [ FROM ] {nombre_tabla|nombre_vista}
 [WHERE condición] ;
 ```
@@ -448,21 +448,23 @@ Tablas de Verdad:
 
 
 Estructura IF-THEN-ELSE
+
 Formato:
 ```sql
-IF  Expresión_Booleana1 THEN
-  Secuencia_de_Órdenes1;
-[ ELSIF Expresión_Booleana2 THEN
-  Secuencia_de_Órdenes2; ]
+IF  ExpresiónBooleana1 THEN
+  SecuenciaÓrdenes1;
+[ ELSIF ExpresiónBooleana2 THEN
+  SecuenciaÓrdenes2; ]
 ...
 [ ELSE
-  Secuencia_de_Órdenes; ]
+  SecuenciaÓrdenes; ]
 END IF;
 ```
 
 Como se muestra, las cláusulas ELSIF y ELSE son opcionales y puede haber tantas cláusulas ELSIF como se desee.
-Se ejecuta la Secuencia_de_Órdenes1 si Expresión_Booleana1 es TRUE. Si esa expresión vale FALSE o NULL, no se ejecutará y pasará a ejecutar las siguientes cláusulas.
-Los valores NULL hacen que no sea equivalente intercambiar las secuencias de órdenes si se niega la Expresión_Booleana1.
+Se ejecuta la SecuenciaÓrdenes1 si ExpresiónBooleana1 es TRUE. Si esa expresión vale FALSE o NULL, no se ejecutará y pasará a ejecutar las siguientes cláusulas.
+Los valores NULL hacen que no sea equivalente intercambiar las secuencias de órdenes si se niega la ExpresiónBooleana1.
+
 Ejemplos
 Antes de pasar a ver el ejemplo vamos dar unas indicaciones sobre la importancia de comprobar previamente valores nulos, si los hubiera.
 ```sql
@@ -547,6 +549,7 @@ END;
 ```
 
 Estructura CASE
+
 La estructura CASE tiene la misma finalidad que la estructura IF vista anteriormente. Es decir, para realizar una operación de selección podemos hacer uso de IF o de CASE: son equivalentes. A diferencia de IF, la estructura CASE no está limitada a expresiones booleanas. La evaluación de la expresión puede ser, y a menudo es, un valor númerico o texto.
 Su sintaxis es la siguiente:
 ```
@@ -612,7 +615,7 @@ Para realizar una operación un número elevado de veces utilizamos bucles. Un b
 - FOR
 
 Estructura LOOP
-```
+```sql
 LOOP
   Sentencias;
 END LOOP;
@@ -642,7 +645,7 @@ END;
 
 Este código inserta 10 filas en la tabla Tabla_Temp con valores del 10 al 100.
 Estructura WHILE
-```
+```sql
 WHILE condición LOOP
   Sentencias;
 END LOOP;
@@ -666,7 +669,7 @@ END;
 Este código inserta 10 filas en la tabla Tabla_Temp con valores del 10 al 100.
 
 Estructura FOR
-```
+```sql
 FOR i IN [REVERSE] min..max LOOP
   Sentencias;
 END LOOP;
@@ -693,12 +696,12 @@ Este código inserta 10 filas en la tabla Tabla_Temp con valores  10, 20, 30, �
 ### 4.5. Procedimientos
 Un procedimiento es un bloque que puede recibir parámetros, lo cual permite trabajar con unos datos de entrada, realizar las operaciones deseadas con dichos datos y, en algunos casos guardar ciertos resultados como parámetros de salida.
 Se usa la palabra reservada PROCEDURE. Su estructura simplificada es:
-```
+```sql
 PROCEDURE nombre IS
 bloque sin palabra DECLARE
 ```
 Su estructura en detalle es:
-```
+```sql
 PROCEDURE nombre 
 [(parámetro1 [modo] tipoDatos[,parámetro2 [modo] tipoDatos [,...])]
 {IS|AS}
@@ -712,13 +715,13 @@ Parámetros IN OUT. Son una mezcla de los dos anteriores. Se trata de variables 
 
 Para crear el procedimiento debemos anteponer la sentencia 
 
-```
+```sql
 CREATE [ OR REPLACE ]
 ```
 
 La opción REPLACE hace que si ya existe un procedimiento con ese nombre, se reemplaza con el que se crea ahora. Los parámetros son la lista de variables que necesita el procedimiento para realizar su tarea. 
-Para invocar al procedimiento o procedimientos definidos debemos hacerlo dentro de un bloque BEGIN … END; o también con la sentencia EXEC si lo ejecutamos desde SQL*Plus.
-```
+Para invocar al procedimiento o procedimientos definidos debemos hacerlo dentro de un bloque BEGIN … END; o también con la sentencia EXEC si lo ejecutamos desde SQL\*Plus.
+```sql
 BEGIN
   procedimiento1;
   procedimiento2();
@@ -728,9 +731,9 @@ END;
 /
 ```
 
-o también en SQL*Plus:
+o también en SQL\*Plus:
 
-```sql
+```
 EXEC procedimiento1;
 EXEC procedimiento2();
 EXEC procedimiento3(parametro1, parametro2);
@@ -738,10 +741,13 @@ EXEC procedimiento3(parametro1, parametro2);
 Cuando se invoca a un procedimiento, si éste no tiene parámetros, se pueden omitir los paréntesis (es decir la llamada al procedimiento procedimiento2() se puede hacer simplemente escribiendo procedimiento2, sin paréntesis)
 
 Para eliminar un procedimiento utilizamos la sentencia DROP PROCEDURE.
+```sql
 DROP PROCEDURE procedimiento;
+```
 
 Ejemplo:
 Para crear el procedimiento muestra_fecha sin parámetros.
+```sql
 CREATE OR REPLACE
 PROCEDURE muestra_fecha IS 
   fecha  DATE;
@@ -751,16 +757,23 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE ('Fecha:  ' || fecha);
 END muestra_fecha;
 /
+```
 
 Para invocar el procedimiento muestra_fecha:
+```sql
 BEGIN
   muestra_fecha;
 END;
 /
+```
+
 o también en SQL*Plus:
+```sql
 EXEC muestra_fecha;
+```
 
 Ejemplo de procedimiento con parámetros:
+```sql
 CREATE OR REPLACE 
 PROCEDURE escribe (texto VARCHAR2)
 IS
@@ -773,9 +786,12 @@ BEGIN
   ESCRIBE('HOLA');
 END;
 /
+```
 
 o también en SQL*Plus:
+```
 EXEC ESCRIBE('HOLA');
+```
 
 Al declarar cada parámetro se indica el tipo de los mismos, pero no su tamaño; es decir sería VARCHAR2 y no VARCHAR2(50).
 
