@@ -137,7 +137,7 @@ Teniendo en cuenta:
 - Una asignatura es impartida por un único profesor.
 - Un profesor podrá impartir varias asignaturas.
 
-![Modelo Entidad-Relación](images/Tema2-Cuestion08.png)
+![Modelo Entidad-Relación](images/Tema2-Cuestion08.png =200px)
 
 
 ### 9. Obtén el diagrama E/R con las cuatro entidades siguientes:
