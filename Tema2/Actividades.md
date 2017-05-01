@@ -408,7 +408,7 @@ Su diagrama Relacional es:
 ![Modelo Entidad-Relación](images/Tema2-Cuestion24a.png)
 
 
-** Solución 2**
+**Solución 2**
 
 Su diagrama E/R es:
 
@@ -443,228 +443,143 @@ Su diagrama Relacional es:
 
 
 ### 25. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 11.
+
 El diagrama E/R es:
 
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion11.png)
 
 Su diagrama Relacional es:
 
+![Modelo Entidad-Relación](images/Tema2-Cuestion25.png)
 
 
+>Un mismo cliente puede comprar un modelo en distintas fechas. Por tanto la combinación (NIF_C, Modelo) puede repetirse, por tanto no podría funcionar como PK. Si añadimos FechaCompra a la clave primaria sí, siempre que entendamos que no puede comprar el mismo modelo varias veces el mismo día.  Igualmente ocurre en la relación del montador con el modelo de dormitorio.
 
-
-
-
-
-
-
-
-Un mismo cliente puede comprar un modelo en distintas fechas. Por tanto la combinación (NIF_C, Modelo) puede repetirse, por tanto no podría funcionar como PK. Si añadimos FechaCompra a la clave primaria sí, siempre que entendamos que no puede comprar el mismo modelo varias veces el mismo día.  Igualmente ocurre en la relación del montador con el modelo de dormitorio.
 ### 26. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 12.
+
 El diagrama E/R es:
 
-
-
-
-
-
-
-
-
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion12.png)
 
 Su diagrama Relacional es:
 
-
-
-
-
-
-
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion26.png)
 
 
 ### 27. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 13.
+
 El diagrama E/R es:
 
-
-
-
-
-
-
-
-
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion13.png)
 
 Su diagrama Relacional es:
 
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion27.png)
 
 
 
 ### 28. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 14.
+
 El diagrama E/R es:
 
-
-
-
-
-
-
-
-
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion14.png)
 
 Su diagrama Relacional es:
 
+![Modelo Entidad-Relación](images/Tema2-Cuestion28.png)
 
 
 
 ### 29. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 15.
+
 El diagrama E/R es:
 
-
-
-
-
-
-
-
-
-
-
-	
+![Modelo Entidad-Relación](images/Tema2-Cuestion15.png)
 
 Su diagrama Relacional es:
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion29.png)
+
 
 
 ### 30. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 16.
+
 El diagrama E/R es:
 
-
-
-
-
-
-
-
-
-
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion16.png)
 
 Su diagrama Relacional es:
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion30.png)
 
 
 ### 31. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 17.
+
 El diagrama E/R es:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion17.png)
 
 Su diagrama Relacional es:
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion31.png)
+
 
 ### 32. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 18.
+
 El diagrama E/R es:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion18.png)
 
 Su diagrama Relacional es:
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion32.png)
 
 
 ### 33. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 19.
+
 El diagrama E/R es:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion19.png)
 
 Su diagrama Relacional es:
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion33.png)
+
 
 ### 34. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 20.
+
 El diagrama E/R es:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion20.png)
 
 Su diagrama Relacional es:
+
+
+
 Vamos a realizar una aproximación inicial y después simplificaremos el esquema.
-Solución 1
+
+**Solución 1**
+
 Dentro de la tabla Empleado descomponemos el atributo compuesto Cuenta en 3 campos. Como resulta, además, que la Cuenta participa en otras relaciones, creamos una tabla para ella.
 
-Solución 2
+![Modelo Entidad-Relación](images/Tema2-Cuestion34a.png)
+
+**Solución 2**
+
 Como se puede observar en la solución anterior nos quedaban claves primarias compuestas por numerosos campos. Podemos simplificar esto creando un nueva clave primaria para su identificación (posteriormente puede implementarse mediante un código autononúmerico) y pasando la clave primaria compuesta anterior a clave alternativa. Para no perder contenido semántico debemos establecer una restricción de unicidad en dicha clave alternativa. 
 Asimismo hemos eliminado la tabla Línea, puesto que no participa en ninguna relación fuera la jerarquía, y sus campos han pasado a las entidades subtipo.
 
+![Modelo Entidad-Relación](images/Tema2-Cuestion34b.png)
+
 ### 35. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 21.
+
 El diagrama E/R es:
 
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion21.png)
 
 Su diagrama Relacional es:
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion35.png)
+
 
 
