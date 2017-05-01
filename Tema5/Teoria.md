@@ -422,7 +422,7 @@ END;
 
 Ejemplo de Bloque Nominado
 
-La única diferencia con el ejemplo anterior es que debemos poner una etiqueta al bloque anónimo para referirnos a él. Dicha etiqueta se pondrá antes de la cláusula DECLARE y entre ángulos dobles: <<nombre_bloque>>.
+La única diferencia con el ejemplo anterior es que debemos poner una etiqueta al bloque anónimo para referirnos a él. Dicha etiqueta se pondrá antes de la cláusula DECLARE y entre ángulos dobles: \<\<nombre_bloque\>\>.
 Es buena costumbre, aunque es opcional, poner el nombre también después de la palabra END.
 ```sql
 <<fecha>>
@@ -767,8 +767,8 @@ END;
 /
 ```
 
-o también en SQL*Plus:
-```sql
+o también en SQL\*Plus:
+```
 EXEC muestra_fecha;
 ```
 
