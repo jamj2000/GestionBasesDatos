@@ -14,31 +14,38 @@
 Para cada una de las siguientes cuestiones elige razonadamente cada una de las respuestas correctas.
 
 1. Un modelo conceptual de datos:
-
-  1. Define una serie de símbolos para describir la realidad de la BD que se desea crear.
-  1. Es un modelo que describe como se almacenan los datos a nivel físico.
-  1. Permite realizar una representación del mundo real.
-
+```
+a. Define una serie de símbolos para describir la realidad de la BD que se desea crear.
+b. Es un modelo que describe como se almacenan los datos a nivel físico.
+c. Permite realizar una representación del mundo real.
+```
 2. El modelo Entidad/Relación:
-
-  1. Utiliza rombos para representar las entidades.
-  1. Utiliza círculos para representar las relaciones.
-  1. Cuenta con símbolos diferentes para representar las entidades fuertes y las débiles.
+```
+a. Utiliza rombos para representar las entidades.
+b. Utiliza círculos para representar las relaciones.
+c. Cuenta con símbolos diferentes para representar las entidades fuertes y las débiles.
+```
 
 3. Las relaciones del modelo E/R...
-  a) Son objetos reales o abstractos de los que se desea guardar información en una BD.
-  b) Pueden ser fuerte o débiles.
-  c) Pueden ser de dependencia en identificación o en existencia.
+```
+a. Son objetos reales o abstractos de los que se desea guardar información en una BD.
+b. Pueden ser fuerte o débiles.
+c. Pueden ser de dependencia en identificación o en existencia.
+```
 
 4. Los atributos del modelo E/R ...
-a) Que identifican unívocamente cada ocurrencia de la entidad se llaman Clave principal.
-b) Aparecen sólo en las entidades.
-c) Aparecen sólo en las relaciones.
+```
+a. Que identifican unívocamente cada ocurrencia de la entidad se llaman Clave principal.
+b. Aparecen sólo en las entidades.
+c. Aparecen sólo en las relaciones.
+```
 
 5. La cardinalidad...
-a) 1:1 es una cardinalidad binaria que significa que a cada ocurrencia de una entidad le corresponde una sola ocurrencia de la otra entidad.
-b) En el caso de relaciones entre tres entidades pueden ser de los tipos: 1:1, 1:N o N:M.
-c) Toma las participaciones máximas de cada entidad.
+```
+a. 1:1 es una cardinalidad binaria que significa que a cada ocurrencia de una entidad le corresponde una sola ocurrencia de la otra entidad.
+b. En el caso de relaciones entre tres entidades pueden ser de los tipos: 1:1, 1:N o N:M.
+c. Toma las participaciones máximas de cada entidad.
+```
 
 ## Cuestiones
 
