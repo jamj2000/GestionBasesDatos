@@ -319,23 +319,25 @@ Las funciones más destacadas que pueden realizarse con PL/SQL son las siguiente
 
 
 ### 4.1. Conceptos básicos
-bloque PL/SQL
-Se trata de un trozo de código que puede ser interpretado por Oracle. Se encuentra inmerso dentro de las palabras BEGIN y END.
+- bloque PL/SQL
+  Se trata de un trozo de código que puede ser interpretado por Oracle. Se encuentra inmerso dentro de las palabras BEGIN y END.
 - programa PL/SQL
-Conjunto de bloques que realizan una determinada labor.
+  Conjunto de bloques que realizan una determinada labor.
 - procedimiento
-Programa PL/SQL almacenado en la base de datos y que puede ser ejecutado si se desea con solo saber su nombre (y teniendo permiso para su acceso).
+  Programa PL/SQL almacenado en la base de datos y que puede ser ejecutado si se desea con solo saber su nombre (y teniendo permiso para su acceso).
 - función
-Programa PL/SQL que a partir de unos datos de entrada obtiene un resultado (datos de salida). Una función puede ser utilizada en cualquier expresión desde cualquier otro programa PL/SQL e incluso desde una instrucción SQL.
+  Programa PL/SQL que a partir de unos datos de entrada obtiene un resultado (datos de salida). Una función puede ser utilizada en cualquier expresión desde cualquier otro programa PL/SQL e incluso desde una instrucción SQL.
 - paquete
-Colección de procedimientos y funciones agrupados dentro de la misma estructura. Similar a las bibliotecas y librerías de los lenguajes convencionales.
+  Colección de procedimientos y funciones agrupados dentro de la misma estructura. Similar a las bibliotecas y librerías de los lenguajes convencionales.
 - trigger (disparador)
-Programa PL/SQL que se ejecuta automáticamente cuando ocurre un determinado suceso a un objeto de la base de datos.
+  Programa PL/SQL que se ejecuta automáticamente cuando ocurre un determinado suceso a un objeto de la base de datos.
 
 ### 4.2. Bloques
 Cada programa en PL/SQL está formado por grupos de órdenes SQL llamadas bloques.
 Cada bloque puede contener, a su vez, nuevos bloques.
+
 ESTRUCTURA DE UN BLOQUE PL/SQL
+
 La estructura más sencilla es la siguiente:
 ```sql
 BEGIN
@@ -354,8 +356,8 @@ END;
 
 La barra / se utiliza para ejecutar el código.
 > NOTA IMPORTANTE: Si usas SQL*Plus deberás ejecutar al inicio de sesión la siguiente orden para que se habilite la salida:
-
-`SET SERVEROUTPUT ON`
+>
+> `SET SERVEROUTPUT ON`
 
 La estructura general es:
 ```
@@ -388,7 +390,11 @@ END;
 /
 ```
 
-NOTA IMPORTANTE: Dentro de un bloque BEGIN … END la sentencia SELECT adquiere la forma SELECT campos INTO variable ...
+> NOTA IMPORTANTE: Dentro de un bloque BEGIN … END la sentencia SELECT adquiere la forma 
+> ```sql
+> SELECT campos INTO variable ...
+> ```
+
 Tipos de Bloques
 - Anónimos (anonymous blocks): Se construyen normalmente de manera dinámica para un objetivo muy concreto y se ejecutan, en general, una única vez. Por eso no llevan nombre.
 - Nominados (named blocks): Son similares a los bloques anónimos pero con una etiqueta que da nombre al bloque.
@@ -401,6 +407,7 @@ Tipos de Bloques
   - Multilínea: Empiezan con /* y terminan con */ (como en C).
 
 Ejemplos de Bloques
+
 Ejemplo de Bloque Anónimo
 ```sql
 DECLARE 
@@ -414,6 +421,7 @@ END;
 ```
 
 Ejemplo de Bloque Nominado
+
 La única diferencia con el ejemplo anterior es que debemos poner una etiqueta al bloque anónimo para referirnos a él. Dicha etiqueta se pondrá antes de la cláusula DECLARE y entre ángulos dobles: <<nombre_bloque>>.
 Es buena costumbre, aunque es opcional, poner el nombre también después de la palabra END.
 ```sql
@@ -486,7 +494,7 @@ END IF;
 ```
 
 El código completo del ejemplo anterior es:
-```
+```sql
 SET SERVEROUTPUT ON 
 
 DECLARE
@@ -507,7 +515,7 @@ BEGIN
 
 END;
 /
-```sql
+```
 Y la salida sería:
 ```
 El valor de C es 3
@@ -541,6 +549,7 @@ END;
 Estructura CASE
 La estructura CASE tiene la misma finalidad que la estructura IF vista anteriormente. Es decir, para realizar una operación de selección podemos hacer uso de IF o de CASE: son equivalentes. A diferencia de IF, la estructura CASE no está limitada a expresiones booleanas. La evaluación de la expresión puede ser, y a menudo es, un valor númerico o texto.
 Su sintaxis es la siguiente:
+```
   CASE Expresion
     WHEN valor1 THEN 
       Secuencia_de_Órdenes1;
@@ -550,9 +559,11 @@ Su sintaxis es la siguiente:
     [ ELSE 
       Secuencia_de_Órdenes; ]
   END CASE;
+```
 
 Ejemplos:
 El mismo caso anterior, esta vez con CASE.
+```sql
 DECLARE
   nota NUMBER(2);
 BEGIN
@@ -573,8 +584,10 @@ BEGIN
   END CASE;
 END;
 /
+```
 
 O de forma más resumida:
+```sql
 DECLARE
   nota NUMBER(2);
 BEGIN
@@ -589,26 +602,32 @@ BEGIN
   END CASE;
 END;
 /
+```
 Observa como en este segundo caso no hay nada inmediatamente después de CASE.
 
 ### 4.4. Ejecución repetitiva: Bucles
 Para realizar una operación un número elevado de veces utilizamos bucles. Un bucle es una estructura del lenguaje que nos permite indicar que determinado código se repetirá en su ejecución. Existen 3 formas de hacerlo que pasamos a ver a continuación:
-LOOP
-WHILE
-FOR
+- LOOP
+- WHILE
+- FOR
+
 Estructura LOOP
+```
 LOOP
   Sentencias;
 END LOOP;
+```
 
 Se ejecutará “infinitamente” hasta que se ejecute la orden:
-EXIT [WHEN condición];
+
+`EXIT [WHEN condición];`
 
 Son equivalentes:
 a) EXIT WHEN condición;
 b) IF condición THEN EXIT; END IF;
 
 Ejemplo:
+```sql
 DECLARE
   i  BINARY_INTEGER := 1;
 BEGIN
@@ -619,16 +638,20 @@ BEGIN
   END LOOP;
 END;
 /
+```
 
 Este código inserta 10 filas en la tabla Tabla_Temp con valores del 10 al 100.
 Estructura WHILE
+```
 WHILE condición LOOP
   Sentencias;
 END LOOP;
+```
 
 Se ejecuta cero o más veces mientras la condición sea cierta. Puede usarse también la orden EXIT.
 
 Ejemplo:
+```sql
 DECLARE
   i  BINARY_INTEGER := 1;
 BEGIN
@@ -638,39 +661,49 @@ BEGIN
   END LOOP;
 END;
 /
+```
 
 Este código inserta 10 filas en la tabla Tabla_Temp con valores del 10 al 100.
+
 Estructura FOR
+```
 FOR i IN [REVERSE] min..max LOOP
   Sentencias;
 END LOOP;
+```
 
 i es una variable que se declara automáticamente de tipo BINARY_INTEGER. No hay que declararla. Si se declara una variable de igual nombre ambas serán variables distintas (como en bloques anidados).
-• La variable i tomará valores desde min hasta max,
-• incrementándose automáticamente en una unidad.
-• Con REVERSE los valores se toman en orden inverso, desde max hasta min.
-• min y max pueden ser constantes, variables o expresiones.
+- La variable i tomará valores desde min hasta max,
+- incrementándose automáticamente en una unidad.
+- Con REVERSE los valores se toman en orden inverso, desde max hasta min.
+- min y max pueden ser constantes, variables o expresiones.
 
 Ejemplo:
+```sql
 BEGIN
   FOR i IN 1..10 LOOP
     INSERT INTO Tabla_Temp VALUES (i*10);
   END LOOP;
 END;
 /
+```
+
 Este código inserta 10 filas en la tabla Tabla_Temp con valores  10, 20, 30, … , 100.
 
 ### 4.5. Procedimientos
 Un procedimiento es un bloque que puede recibir parámetros, lo cual permite trabajar con unos datos de entrada, realizar las operaciones deseadas con dichos datos y, en algunos casos guardar ciertos resultados como parámetros de salida.
 Se usa la palabra reservada PROCEDURE. Su estructura simplificada es:
+```
 PROCEDURE nombre IS
 bloque sin palabra DECLARE
-
+```
 Su estructura en detalle es:
+```
 PROCEDURE nombre 
 [(parámetro1 [modo] tipoDatos[,parámetro2 [modo] tipoDatos [,...])]
 {IS|AS}
 bloque sin palabra DECLARE
+```
 
 Los procedimientos permiten utilizar parámetros para realizar su tarea.  El modo, que es opcional, puede ser de 3 tipos: IN, OUT o  IN OUT. Si no se indica nada, por defecto es IN.
 Parámetros IN. Son los parámetros que en otros lenguajes se denominan como parámetros por valor. El procedimiento recibe una copia del valor o variable que se utiliza como parámetro al llamar al procedimiento. Estos parámetros pueden ser: valores literales (18 por ejemplo), variables (v_num por ejemplo) o expresiones (como v_num+18). A estos parámetros se les puede asignar un valor por defecto.
@@ -678,10 +711,14 @@ Parámetros OUT. Relacionados con el paso por variable de otros lenguajes. Sólo
 Parámetros IN OUT. Son una mezcla de los dos anteriores. Se trata de variables declaradas anteriormente cuyo valor puede ser utilizado por el procedimiento que, además, puede almacenar un valor en ellas. No se las puede asignar un valor por defecto.
 
 Para crear el procedimiento debemos anteponer la sentencia 
+
+```
 CREATE [ OR REPLACE ]
+```
 
 La opción REPLACE hace que si ya existe un procedimiento con ese nombre, se reemplaza con el que se crea ahora. Los parámetros son la lista de variables que necesita el procedimiento para realizar su tarea. 
 Para invocar al procedimiento o procedimientos definidos debemos hacerlo dentro de un bloque BEGIN … END; o también con la sentencia EXEC si lo ejecutamos desde SQL*Plus.
+```
 BEGIN
   procedimiento1;
   procedimiento2();
@@ -689,12 +726,15 @@ BEGIN
   ...
 END;
 /
+```
 
 o también en SQL*Plus:
+
+```sql
 EXEC procedimiento1;
 EXEC procedimiento2();
 EXEC procedimiento3(parametro1, parametro2);
-
+```
 Cuando se invoca a un procedimiento, si éste no tiene parámetros, se pueden omitir los paréntesis (es decir la llamada al procedimiento procedimiento2() se puede hacer simplemente escribiendo procedimiento2, sin paréntesis)
 
 Para eliminar un procedimiento utilizamos la sentencia DROP PROCEDURE.
