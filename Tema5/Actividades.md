@@ -261,6 +261,7 @@ DELETE ALUMNO;
 
 ## Práctica 2
 > INSERT / UPDATE / DELETE  
+
 Haciendo uso del esquema E07 cuyo diseño físico realizamos en el tema 3, realiza las operaciones de manipulación de datos indicadas a continuación.
 Teniendo en cuenta las siguientes restricciones que teníamos declaradas:
 - No pueden ser nulos los siguientes campos: Nombre de Socio, Título de Película. 
@@ -446,8 +447,8 @@ VALUES (15405979, 004,02, '01/04/2017', '03/04/2017');
 
 
 ### 2. Inserta valores para comprobar que la siguiente restricción funciona correctamente:
-```sql
 - No pueden ser nulos los siguientes campos: Nombre de Socio, Título de Película.
+```sql
 -- 2. Comprobación de restricciones
 INSERT INTO SOCIO 
 VALUES (15405918, NULL, 'C/ ROSAL, 3', 697565656, NULL);
