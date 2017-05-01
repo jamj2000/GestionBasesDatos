@@ -14,11 +14,13 @@
 Para cada una de las siguientes cuestiones elige razonadamente cada una de las respuestas correctas.
 
 1. Un modelo conceptual de datos:
+
   1. Define una serie de símbolos para describir la realidad de la BD que se desea crear.
   1. Es un modelo que describe como se almacenan los datos a nivel físico.
   1. Permite realizar una representación del mundo real.
 
 2. El modelo Entidad/Relación:
+
   1. Utiliza rombos para representar las entidades.
   1. Utiliza círculos para representar las relaciones.
   1. Cuenta con símbolos diferentes para representar las entidades fuertes y las débiles.
