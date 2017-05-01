@@ -60,14 +60,20 @@ La definición presentada anteriormente hace referencia a dos elementos para que
 Para manipular y gestionar las bases de datos surgieron herramientas software denominadas: sistemas gestores de bases de datos (SGBD en lo sucesivo) sobre los que se profundizará en las siguientes secciones.
 
 ## 3. EVOLUCIÓN HISTÓRICA Y TIPOS DE BD
+
 ### 3.1. Introducción
+
 Los predecesores de los sistemas gestores de bases de datos fueron los sistemas gestores de ficheros o sistemas de archivos tradicionales.
 1. Archivos tradicionales. Consiste en almacenar los datos en archivos individuales, exclusivos para cada aplicación particular. En este sistema los datos pueden ser redundantes (repetidos innecesariamente) y la actualización de los archivos es más lenta que en una base de datos.
 2. Base de datos. Es un almacenamiento de datos formalmente definido, controlado centralmente para intentar servir a múltiples y diferentes aplicaciones. La base de datos es una fuente de datos que son compartidos por numerosos usuarios para diversas aplicaciones.
+
 Así, en un Sistema de archivos tradicional la información está dispersa en varios ficheros de datos y existe un cierto número de programas que los recuperan y agrupan.
 Aunque los sistemas de ficheros o archivos supusieron un gran avance sobre los sistemas manuales, tienen inconvenientes bastante importantes que se solventaron, en gran medida, con la aparición de los sistemas de bases de datos.
+
 ### 3.2. Evolución y tipos de base de datos
+
 Coincidiendo con la evolución histórica de las bases de datos éstas han utilizado distintos modelos:
+
 - Jerárquicos
 - En red.
 - Relacionales.
