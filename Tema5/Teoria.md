@@ -357,12 +357,12 @@ END;
 
 La barra / se utiliza para ejecutar el código.
 > NOTA IMPORTANTE: Si usas SQL*Plus deberás ejecutar al inicio de sesión la siguiente orden para que se habilite la salida:
->```sql
-> SET SERVEROUTPUT ON
->```
+```sql
+ SET SERVEROUTPUT ON
+```
 
 La estructura general es:
-```
+```sql
 [ DECLARE 
    constantes,
    variables, 
@@ -455,7 +455,9 @@ Se ejecuta la SecuenciaÓrdenes1 si ExpresiónBooleana1 es TRUE. Si esa expresi�
 Los valores NULL hacen que no sea equivalente intercambiar las secuencias de órdenes si se niega la ExpresiónBooleana1.
 
 Ejemplos
+
 Antes de pasar a ver el ejemplo vamos dar unas indicaciones sobre la importancia de comprobar previamente valores nulos, si los hubiera.
+
 ```sql
 IF  A < B THEN
   C := 1;
@@ -485,6 +487,7 @@ END IF;
 ```
 
 El código completo del ejemplo anterior es:
+
 ```sql
 SET SERVEROUTPUT ON 
 
@@ -554,7 +557,9 @@ Su sintaxis es la siguiente:
 ```
 
 Ejemplos:
+
 El mismo caso anterior, esta vez con CASE.
+
 ```sql
 DECLARE
   nota NUMBER(2);
@@ -595,6 +600,7 @@ BEGIN
 END;
 /
 ```
+
 Observa como en este segundo caso no hay nada inmediatamente después de CASE.
 
 ### 4.4. Ejecución repetitiva: Bucles
@@ -621,6 +627,7 @@ a. EXIT WHEN condición;
 b. IF condición THEN EXIT; END IF;
 
 Ejemplo:
+
 ```sql
 DECLARE
   i  BINARY_INTEGER := 1;
@@ -660,6 +667,7 @@ END;
 Este código inserta 10 filas en la tabla Tabla_Temp con valores del 10 al 100.
 
 Estructura FOR
+
 ```sql
 FOR i IN [REVERSE] min..max LOOP
   Sentencias;
@@ -673,6 +681,7 @@ i es una variable que se declara automáticamente de tipo BINARY_INTEGER. No hay
 - min y max pueden ser constantes, variables o expresiones.
 
 Ejemplo:
+
 ```sql
 BEGIN
   FOR i IN 1..10 LOOP
@@ -687,6 +696,7 @@ Este código inserta 10 filas en la tabla Tabla_Temp con valores  10, 20, 30, �
 ### 4.5. Procedimientos
 Un procedimiento es un bloque que puede recibir parámetros, lo cual permite trabajar con unos datos de entrada, realizar las operaciones deseadas con dichos datos y, en algunos casos guardar ciertos resultados como parámetros de salida.
 Se usa la palabra reservada PROCEDURE. Su estructura simplificada es:
+
 ```sql
 PROCEDURE nombre IS
 bloque sin palabra DECLARE
@@ -712,6 +722,7 @@ CREATE [ OR REPLACE ]
 
 La opción REPLACE hace que si ya existe un procedimiento con ese nombre, se reemplaza con el que se crea ahora. Los parámetros son la lista de variables que necesita el procedimiento para realizar su tarea. 
 Para invocar al procedimiento o procedimientos definidos debemos hacerlo dentro de un bloque BEGIN … END; o también con la sentencia EXEC si lo ejecutamos desde SQL\*Plus.
+
 ```sql
 BEGIN
   procedimiento1;
@@ -729,15 +740,18 @@ EXEC procedimiento1;
 EXEC procedimiento2();
 EXEC procedimiento3(parametro1, parametro2);
 ```
+
 Cuando se invoca a un procedimiento, si éste no tiene parámetros, se pueden omitir los paréntesis (es decir la llamada al procedimiento procedimiento2() se puede hacer simplemente escribiendo procedimiento2, sin paréntesis)
 
 Para eliminar un procedimiento utilizamos la sentencia DROP PROCEDURE.
+
 ```sql
 DROP PROCEDURE procedimiento;
 ```
 
 Ejemplo:
 Para crear el procedimiento muestra_fecha sin parámetros.
+
 ```sql
 CREATE OR REPLACE
 PROCEDURE muestra_fecha IS 
@@ -751,6 +765,7 @@ END muestra_fecha;
 ```
 
 Para invocar el procedimiento muestra_fecha:
+
 ```sql
 BEGIN
   muestra_fecha;
@@ -759,11 +774,13 @@ END;
 ```
 
 o también en SQL\*Plus:
+
 ```
 EXEC muestra_fecha;
 ```
 
 Ejemplo de procedimiento con parámetros:
+
 ```sql
 CREATE OR REPLACE 
 PROCEDURE escribe (texto VARCHAR2)
@@ -780,6 +797,7 @@ END;
 ```
 
 o también en SQL*Plus:
+
 ```
 EXEC ESCRIBE('HOLA');
 ```
@@ -789,12 +807,14 @@ Al declarar cada parámetro se indica el tipo de los mismos, pero no su tamaño;
 ### 4.6. Funciones
 Una función es prácticamente idéntica a un procedimiento. También puede recibir parámetros de entrada y realizar operaciones con dichos datos. Lo que distingue a una función de un procedimiento es que la función siempre devuelve algún valor.
 Se usa la palabra reservada FUNCTION. Su estructura simplificada es:
+
 ```sql
 FUNCTION nombre RETURN tipoDedatos IS
 bloque sin palabra DECLARE
 ```
 
 Su estructura en detalle es:
+
 ```sql
 FUNCTION nombre 
 [(parámetro1 [modelo] tipoDatos
@@ -805,20 +825,26 @@ bloque sin palabra DECLARE
 ```
 
 Para crear la función debemos anteponer la sentencia 
+
 ```sql
 CREATE [ OR REPLACE ]
 ```
 
 La opción REPLACE hace que si ya existe una función con ese nombre, se reemplaza con la que se crea ahora. Los parámetros son la lista de variables que necesita la función para realizar su tarea. 
 Para invocar la función debemos hacerlo dentro de una expresión. Ejemplo:
+
 ```sql
 SELECT ...función... FROM DUAL;
 ```
+
 Para eliminar una función utilizamos la sentencia DROP FUNCTION.
+
 ```sql
 DROP FUNCTION función;
 ```
+
 Ejemplo:
+
 ```sql
  CREATE OR REPLACE
  FUNCTION SUMA (NUM1 NUMBER, NUM2 NUMBER)
@@ -831,6 +857,7 @@ Ejemplo:
 ```
 
 Para invocar la función definida debemos hacerlo dentro de una expresión. Ejemplos:
+
 ```sql
 SELECT SUMA(5.7, 9.3)           FROM DUAL;
 SELECT SUMA(5.7, 9.3)*3         FROM DUAL;
@@ -842,6 +869,7 @@ SELECT SYSDATE+SUMA(10,2)-2     FROM DUAL;
 Una variable es el nombre que se da a una zona de memoria donde se guardarán ciertos datos.  PL/SQL soporta todos los tipos de SQL más algunos más que veremos a continuación.
 Formato:
 La variables PL/SQL se declaran con el siguiente formato:
+
 ```sql
 Nombre Tipo  [[CONSTANT|NOT NULL] := Valor_Inicial ];
 ```
@@ -855,9 +883,11 @@ Puede ser cualquier tipo válido en una columna de tabla (vistos anteriormente) 
 El valor por defecto es NULL, excepto que se especifique un valor como Valor_Inicial (puede sustituirse := por DEFAULT). 
 Con NOT NULL se requiere la inicialización.
 - Tipos Escalares:
-  - Numéricos Reales. NUMBER(p,e) y sus subtipos totalmente equivalentes definidos por cuestiones de compatibilidad: DEC, DECIMAL, DOUBLE PRECISION, INT, INTEGER, NUMERIC, SMALLINT y REAL.Se almacenan en formato decimal: Para operaciones aritméticas deben traducirse a binario.
-  - Numéricos Enteros. BINARY_INTEGER, que es un entero en binario (complemento a 2) con rango ±2147483647, ideal para variables sobre las que se efectuarán operaciones (contadores...). Tiene definidos subtipos restringidos en su rango: NATURAL [0, 2147483647], NATURALN (igual que NATURAL pero NOT NULL), POSITIVE [1, 2147483647], POSITIVEN, SIGNTYPE (–1, 0 y 1).
-PLS_INTEGER es similar a BINARY_INTEGER, pero más rápido en las operaciones aritméticas y que genera un error si se produce un desbordamiento (ORA-1426) al asignarlo a un NUMBER.
+  - Numéricos Reales. 
+    - NUMBER(p,e) y sus subtipos totalmente equivalentes definidos por cuestiones de compatibilidad: DEC, DECIMAL, DOUBLE PRECISION, INT, INTEGER, NUMERIC, SMALLINT y REAL.Se almacenan en formato decimal: Para operaciones aritméticas deben traducirse a binario.
+  - Numéricos Enteros. 
+    - BINARY_INTEGER, que es un entero en binario (complemento a 2) con rango ±2147483647, ideal para variables sobre las que se efectuarán operaciones (contadores...). Tiene definidos subtipos restringidos en su rango: NATURAL [0, 2147483647], NATURALN (igual que NATURAL pero NOT NULL), POSITIVE [1, 2147483647], POSITIVEN, SIGNTYPE (–1, 0 y 1).
+    - PLS_INTEGER es similar a BINARY_INTEGER, pero más rápido en las operaciones aritméticas y que genera un error si se produce un desbordamiento (ORA-1426) al asignarlo a un NUMBER.
 - Carácter: 
   - VARCHAR2(max_tam), con max_tam<=32676 bytes (como columna de tabla admite 4000 → Cuidado con los errores). Si se usa un código distinto al código ASCII, el número total de caracteres puede ser menor.
   - CHAR (tam_fijo) con 1 por defecto y 32767 como máximo (como columna de tabla admite 255), se rellena siempre con blancos. LONG es una cadena de longitud variable con un máximo de 32760 (como columna de tabla admite 2GB). 
@@ -883,6 +913,7 @@ PLS_INTEGER es similar a BINARY_INTEGER, pero más rápido en las operaciones ar
   - Tabla%ROWTYPE: el tipo que tenga asignado una fila de una tabla, independientemente de cómo esté definida ésta.
 
 Ejemplos:
+
 ```
 CODIGO         HOTEL.ID%TYPE;
 HABS        HOTEL.NHABS%TYPE;
@@ -893,10 +924,13 @@ HOTEL             HOTEL%ROWTYPE;
 Esto hace los programas más robustos frente a cambios de tipo.
 Ejemplo completo:
 Supongamos que disponemos de una tabla llamada Hotel con el siguiente diseño físico:
+
 ```sql
 CREATE TABLE HOTEL (ID NUMBER(2) PRIMARY KEY, NHABS NUMBER(3) );
 ```
+
 Si insertamos los siguientes valores:
+
 ```sql
 INSERT INTO HOTEL VALUES (1, 10);
 INSERT INTO HOTEL VALUES (2, 60);
@@ -905,6 +939,7 @@ INSERT INTO HOTEL VALUES (99, NULL);
 ```
 
 Y definimos el siguiente procedimiento:
+
 ```sql
 CREATE OR REPLACE
 PROCEDURE TAMHOTEL (cod Hotel.ID%TYPE)
@@ -932,6 +967,7 @@ END;
 ```
 
 Si ejecutamos:
+
 ```sql
 BEGIN
    TAMHOTEL(1);
@@ -943,6 +979,7 @@ END;
 ```
 
 Los resultados serán:
+
 ```
 El hotel con ID 1 es Pequeño
 El hotel con ID 2 es Mediano
@@ -955,7 +992,9 @@ El hotel con ID 99 es de tamaño indeterminado
 Son agrupaciones de datos relacionados. Permite crear estructuras que albergan un conjunto de tipos de datos. Por ejemplo, podemos crear el registro PERSONA con los campos código, nombre y edad, cada uno de estos campos con diferentes tipos de datos. 
 En PL/SQL su importancia proviene de su similitud a la fila (registro) de tabla.
 Es necesario definir un Tipo de Dato Registro, para declarar variables.
+
 Formato:
+
 ```sql
 TYPE Tipo_Registro IS RECORD 
 (
@@ -970,13 +1009,15 @@ Igual que en los lenguajes de programación, para acceder a un campo se usa la N
 Se permite asignar registros si son del mismo tipo. 
 Si son de tipos distintos no se pueden asignar, aunque estén definidos igual. En ese caso, se pueden asignar campo a campo.
 También se pueden asignar los campos de un SELECT en un registro compatible.
-Tabla%ROWTYPE
+
+#### Tabla%ROWTYPE
+
 Esta especificación sirve para dar a una variable el tipo que tenga asignado una fila de una tabla, independientemente de cómo esté definida ésta. Esto hace los programas más robustos frente a cambios de tipo.
 
-Ejemplos:
-
 Ejemplo 1
+
 Podemos crear un registro indicando el tipo de datos de cada campo.
+
 ```sql
 DECLARE
   TYPE RegPersona IS RECORD 
@@ -997,9 +1038,11 @@ BEGIN
 END;
 / 
 ```
+
 > NOTA: Para no tener problemas con la sentencia INSERT deberemos tener creada previamente una tabla cuyas filas (o registros) sean idénticas al registro Pepe. 
 
 Por ejemplo:
+
 ```sql
 CREATE TABLE PERSONAS 
 (
@@ -1010,7 +1053,9 @@ CREATE TABLE PERSONAS
 ```
 
 Ejemplo 2 (Usando atributo %TYPE)
+
 Podemos crear un registro indicando que el tipo de datos de cada campo coincide con  campos de una tabla.
+
 ```sql
 DECLARE
   TYPE RegHotel IS RECORD 
@@ -1028,7 +1073,9 @@ END;
 ```
 
 Ejemplo 3 (Usando atributo %ROWTYPE)
+
 Podemos indicar que una variable registro coincide con el formato de fila de una tabla. El ejemplo anterior puede simplificarse así:
+
 ```sql
 DECLARE
   Hotel99 Hotel%ROWTYPE;
@@ -1045,8 +1092,11 @@ END;
 PL/SQL utiliza cursores para gestionar las instrucciones SELECT. Un cursor es un conjunto de registros devuelto por una instrucción SQL. Técnicamente los cursores son fragmentos de memoria reservados para procesar los resultados de una consulta SELECT.
 Hay dos tipos de cursores: **Implícitos** y **Explícitos**.
 Un cursor se define como cualquier otra variable de PL/SQL y debe nombrarse de acuerdo a los mismos convenios que cualquier otra variable. Los cursores implícitos no necesitan declaración como tales. Los cursores explícitos debemos declararlos con la palabra CURSOR.
+
 - **IMPLÍCITOS**: Este tipo de cursores se utiliza para operaciones SELECT INTO. Se usan cuando la consulta devuelve un único registro y no es necesario declararlos como tales.
+
 Ejemplo:
+
 ```sql
 DECLARE
   Hotel99 Hotel%ROWTYPE;  
@@ -1061,7 +1111,9 @@ END;
 ```
 
 - **EXPLÍCITOS**: Se utilizan cuando la consulta devuelve un conjunto de registros. Ocasionalmente también se utilizan en consultas que devuelven un único registro por razones de eficiencia. Son más rápidos. 
+
 Ejemplo:
+
 ```sql
 DECLARE
   CURSOR Hoteles IS        -- Hoteles es un cursor explícito
@@ -1132,6 +1184,7 @@ Cuando se usa con cursores implícitos se antepone la palabra SQL.
 Cuando se usa con cursores explícitos se antepone el nombre del cursor.
 
 Ejemplos para cursores implícitos:
+
 ```sql
 UPDATE empleados SET salar = salar * 1.05 WHERE numem = 120;
 IF  SQL%NOTFOUND THEN
@@ -1140,6 +1193,7 @@ END IF;
 ```
 
 En el siguiente ejemplo, usamos %ROWCOUNT para lanzar una excepción si se borran más de 5 filas:
+
 ```sql
 DELETE empleados WHERE numhi > 0;
 IF  SQL%ROWCOUNT > 5 THEN  -- más de 5 filas borradas
@@ -1148,6 +1202,7 @@ END IF;
 ```
 
 Ejemplos para cursores implícitos:
+
 ```sql
 DECLARE
    CURSOR c IS
@@ -1175,6 +1230,7 @@ Los paquetes sirven para agrupar bajo un mismo nombre funciones y procedimientos
 Los paquetes constan de dos partes:
 - **Especificación**. Que sirve para declarar los elementos de los que consta el paquete. En esta especificación se indican los procedimientos, funciones y variables públicos del paquete (los que se podrán invocar desde fuera del paquete). De los procedimientos sólo se indica su nombre y parámetros (sin el cuerpo).
 - **Cuerpo**. En la que se especifica el funcionamiento del paquete. Consta de la definición de los procedimientos indicados en la especificación. Además se pueden declarar y definir variables y procedimientos privados (sólo visibles para el cuerpo del paquete, no se pueden invocar desde fuera del mismo).
+
 ```sql
 -- PAQUETE ARITMETICA – Especificación 
 -- PACKAGE_ARITMETICA.SQL 
@@ -1190,6 +1246,7 @@ PACKAGE aritmetica IS
 END aritmetica;
 /
 ```
+
 ```sql
 -- PAQUETE ARITMETICA – Cuerpo 
 -- PACKAGE_BODY_ARITMETICA.SQL 
@@ -1229,6 +1286,7 @@ END aritmetica;
 Para utilizar el paquete debemos llamar al procedimiento y funciones deseadas.
 
 Ejemplo de uso, sencillo:
+
 ```sql
 BEGIN
   ARITMETICA.MOSTRAR_INFO;  
@@ -1241,6 +1299,7 @@ SELECT ARITMETICA.DIVIDE(4,3) FROM DUAL;
 ```
 
 Ejemplo de uso, más elaborado:
+
 ```sql
 DECLARE
   num1      NUMBER:= 2;
@@ -1263,6 +1322,7 @@ END;
 Oracle incorpora una serie de paquetes para ser utilizados dentro del código PL/SQL. Es el caso del paquete DBMS_OUTPUT que sirve para utilizar funciones y procedimientos de escritura como PUT_LINE. 
 Otro ejemplo es el paquete DBMS_RANDOM, que contiene diversas funciones para utilizar número aleatorios. Quizá la más útil es la función DBMS_RANDOM.RANDOM que devuelve un número entero (positivo o negativo) aleatorio (y muy grande). 
 Ejemplos:
+
 ```sql
 -- Si deseamos un número aleatorio entre 1 y 10
 MOD(ABS(DBMS_RANDOM.RANDOM),10)+1
@@ -1278,6 +1338,7 @@ Mantenimiento de Restricciones de Integridad complejas. Ej: Restricciones de Est
 Auditoría de una Tabla, registrando los cambios efectuados y la identidad del que los llevó a cabo.
 Lanzar cualquier acción cuando una tabla es modificada.
 Su estructura general es:
+
 ```sql
 CREATE [OR REPLACE] 
 TRIGGER Nombre
@@ -1287,19 +1348,23 @@ Bloque_del_TRIGGER;
 ```
 
 Para borrar un disparador: 
+
 ```sql
 DROP TRIGGER Nombre ;
 ```
 
 Para habilitar/deshabilitar un disparador:
+
 ```sql
 ALTER TRIGGER Nombre { ENABLE | DISABLE };
 ```
 
 Para desactivar o activar todos los triggers de una tabla:
+
 ```sql
 ALTER TABLE nombreTabla { DISABLE | ENABLE } ALL TRIGGERS;
 ```
+
 Eso permite en una sola instrucción operar con todos los triggers relacionados con una determinada tabla (es decir actúa sobre los triggers que tienen dicha tabla en el apartado ON del trigger). 
 
 Tipos de disparadores
@@ -1315,24 +1380,33 @@ Los triggers se utilizan para:
 - Realizar tareas administrativas de forma automática
 - Evitar errores
 - Crear reglas de integridad complejas
+
 El código que se lanza con el trigger es PL/SQL. No es conveniente realizar excesivos triggers, sólo los necesarios, de otro modo se ralentiza en exceso la base de datos.
+
 Elementos de los triggers
 Puesto que un trigger es un código que se dispara, al crearle se deben indicar las siguientes cosas:
 1) El evento que da lugar a la ejecución del trigger:
-```sql
+
+```
 INSERT
 UPDATE
 DELETE
 ```
+
 2) Cuando se lanza el evento en relación a dicho evento:
+```
 BEFORE. El código del trigger se ejecuta antes de ejecutar la instrucción DML que causó el lanzamiento del trigger.
 AFTER. El código del trigger se ejecuta después de haber ejecutado la instrucción DML que causó el lanzamiento del trigger.
 INSTEAD OF. El trigger sustituye a la operación DML . Se utiliza para vistas que no admiten instrucciones DML.
+```
+
 3)  Las veces que el trigger se ejecuta o tipo de trigger:
 de Instrucción. El cuerpo del trigger se ejecuta una sola vez por cada evento que lance el trigger. Esta es la opción por defecto. El código se ejecuta aunque la instrucción DML no genere resultados.
 de Fila. El código se ejecuta una vez por cada fila afectada por el evento. Por ejemplo si hay una cláusula UPDATE que desencadena un trigger y dicho UPDATE actualiza 10 filas; si el trigger es de fila se ejecuta una vez por cada fila, si es de instrucción se ejecuta sólo una vez.
+
 4) El cuerpo del trigger, es decir el código que ejecuta dicho trigger
 Ejemplo:
+
 ```sql
 -- TRIGGER para realizar auditoría sobre operaciones en Empleados
 CREATE OR REPLACE 
@@ -1352,7 +1426,9 @@ CREATE TABLE CTRL_EMPLEADOS
   FECHA    DATE
 );
 ```
-Triggers de instrucción
+
+#### Triggers de instrucción
+
 ```sql
 CREATE [ OR REPLACE ] 
 TRIGGER Nombre
@@ -1367,10 +1443,16 @@ END;
 ```
 
 El evento tiene esta sintaxis:
+
+```
 { INSERT | UPDATE [OF columna1 [,columna2, ...]] | DELETE}
+```
+
 Los eventos asocian el trigger al uso de una instrucción DML. En el caso de la instrucción UPDATE, el apartado OF hace que el trigger se ejecute sólo cuando se modifique la columna indicada (o columnas si se utiliza una lista de columnas separada por comas).
 En la sintaxis del trigger, el apartado OR permite asociar más de un evento al trigger (se puede indicar INSERT OR UPDATE por ejemplo).
+
 Ejemplo:
+
 ```sql
 CREATE OR REPLACE 
 TRIGGER ins_personal
@@ -1384,8 +1466,11 @@ END;
 ```
 
 Este trigger impide que se puedan añadir registros a la tabla de personal si no estamos entre las 10 y las 13 horas.
-Triggers de fila
+
+#### Triggers de fila
+
 Sintaxis básica:
+
 ```sql
 CREATE [ OR REPLACE ] 
 TRIGGER Nombre
@@ -1404,6 +1489,7 @@ La cláusula FOR EACH ROW hace que el trigger sea de fila, es decir que se repit
 Referencias NEW y OLD
 Cuando se ejecutan instrucciones UPDATE, hay que tener en cuenta que se modifican valores antiguos (OLD) para cambiarles por valores nuevos (NEW). Las palabras NEW y OLD permiten acceder a los valores nuevos y antiguos respectivamente. En el apartado de instrucciones del trigger (BEGIN ...END)  serían :NEW.nombre y :OLD.nombre.
 Imaginemos que deseamos hacer una auditoría sobre una tabla en la que tenemos un listado de las piezas mecánicas que fabrica una determinada empresa. Esa tabla es PIEZAS y contiene el tipo y el modelo de la pieza (los dos campos forman la clave de la tabla) y el precio de venta de la misma. Deseamos almacenar en otra tabla diferente los cambios de precio que realizamos a las piezas, para lo cual creamos la siguiente tabla:
+
 ```sql
 CREATE TABLE PIEZAS_AUDITORIA
 (
@@ -1416,6 +1502,7 @@ CREATE TABLE PIEZAS_AUDITORIA
 ```
 
 Como queremos que la tabla se actualice automáticamente, creamos el siguiente trigger:
+
 ```sql
 CREATE OR REPLACE 
 TRIGGER hacer_auditoria_piezas
@@ -1438,9 +1525,12 @@ END hacer_auditoria_piezas;
 Con este trigger cada vez que se modifiquen un registros de la tabla de piezas, siempre y cuando se esté incrementado el precio, se añade una nueva fila por registro modificado en la tabla de auditorías, observar el uso de NEW y de OLD y el uso de los dos puntos (:NEW y :OLD) en la sección ejecutable.
 Cuando se añaden registros, los valores de OLD son todos nulos. Cuando se borran registros, son los valores de NEW los que se borran.
 
+```
 IF INSERTING, IF UPDATING e IF DELETING
+```
 
 Son palabras que se utilizan para determinar la instrucción DML que se estaba realizando cuando se lanzó el trigger. Esto se utiliza en triggers que se lanza para varias operaciones (utilizando INSERT OR UPDATE por ejemplo). En ese caso se pueden utilizar sentencias IF seguidas de INSERTING, UPDATING o DELETING; éstas palabras devolverán TRUE si se estaba realizando dicha operación.
+
 ```sql
 CREATE OR REPLACE 
 TRIGGER nombre
@@ -1458,8 +1548,10 @@ BEGIN
 END;
 ```
 
-Triggers sobre vistas 
+#### Triggers sobre vistas 
+
 Hay un tipo de trigger especial que se llama INSTEAD OF y que sólo se utiliza con las vistas. Una vista es una consulta SELECT almacenada. En general sólo sirven para mostrar datos, pero podrían ser interesantes para actualizar, por ejemplo en esta declaración de vista:
+
 ```sql
 CREATE VIEW existenciasCompleta (tipo,modelo,precio,almacen,cantidad)
 AS
@@ -1469,12 +1561,14 @@ ORDER BY p.tipo,p.modelo,e.n_almacen;
 ```
 
 Esta instrucción daría lugar a error
+
 ```sql
 INSERT INTO existenciasCompleta VALUES('ZA',3,4,3,200);
 ```
 
 Indicando que esa operación no es válida en esa vista (al utilizar dos tablas). Esta situación la puede arreglar un trigger que inserte primero en la tabla de piezas (sólo si no se encuentra ya insertada esa pieza) y luego inserte en existencias.
 Eso lo realiza el trigger de tipo INSTEAD OF, que sustituirá el INSERT original por el código indicado por el trigger:
+
 ```sql
 CREATE OR REPLACE 
 TRIGGER ins_piezas_exis
@@ -1492,6 +1586,7 @@ END;
 Este trigger permite añadir a esa vista añadiendo los campos necesarios en las tablas relacionadas en la vista. Se podría modificar el trigger para permitir actualizar, eliminar o borrar datos directamente desde la vista y así cualquiera desde cualquier acceso a la base de datos utilizaría esa vista como si fuera una tabla más.
 Orden de ejecución de los triggers
 Puesto que sobre una misma tabla puede haber varios triggers, es necesario conocer en qué orden se ejecutan los mismos. El orden es:
+
 1. Primero disparadores de tipo BEFORE de tipo instrucción
 2. Disparadores de tipo BEFORE por cada fila
 3. Se ejecuta la propia orden que desencadenó al trigger.
@@ -1499,18 +1594,22 @@ Puesto que sobre una misma tabla puede haber varios triggers, es necesario conoc
 5. Disparadores de tipo AFTER con nivel de instrucción.
 
 Errores de compilación
+
 Es frecuente que cometamos algún tipo de error cuando definimos distintos tipos de bloques. Podemos consultar los errores de compilación mediante la vista USER_ERRORS;
+
 ```sql
 SELECT * FROM USER_ERRORS;
 ```
 
 Podemos acotar la consulta estableciendo una condición de búsqueda. Las más interesantes suelen ser el nombre del bloque y el tipo de bloque.  
+
 ```sql
 SELECT * FROM USER_ERRORS 
 WHERE NAME='nombre_bloque' AND TYPE='tipo_bloque';
 ```
 
 La columna TYPE puede tomar uno de los siguientes valores:
+
 ```sql
 PROCEDURE
 FUNCTION
@@ -1520,6 +1619,7 @@ TRIGGER
 ```
 
 Por ejemplo, para ver los errores producidos en el siguiente trigger:
+
 ```sql
 CREATE OR REPLACE 
 TRIGGER Control_Empleados
@@ -1533,11 +1633,14 @@ END Control_Empleados;
 ```
 
 podemos realizar la siguiente consulta:
+
 ```sql
 SELECT name, type, text FROM user_errors 
 WHERE name='CONTROL_EMPLEADOS' AND type='TRIGGER';
 ```
+
 Otra forma más cómoda de hacerlo es con la sentencia: 
+
 ```sql
 SHOW ERRORS;
 ```
@@ -1556,6 +1659,7 @@ Las excepciones pueden ser de estos tipos:
 - Definidas por el usuario. Las lanza el programador.
 
 La captura de excepciones se realiza con esta sintaxis:
+
 ```sql
 DECLARE
   sección de declaraciones
@@ -1576,33 +1680,20 @@ Si existen cláusula WHEN OTHERS, entonces las excepciones que no estaban reflej
 Excepciones predefinidas
 Oracle tiene muchas excepciones predefinidas. Son errores a los que Oracle asigna un nombre de excepción. Algunas de las que aparecen con mayor frecuencia son:
 
-Nombre de excepción
-Número
-Ocurre cuando...
-CASE_NOT_FOUND
-ORA-06592
-Ninguna opción WHEN dentro de la instrucción CASE captura el valor, y no hay instrucción ELSE
-DUP_VAL_ON_INDEX
-ORA-00001
-Se intentó añadir una fila que provoca que un índice único repita valores
-INVALID_NUMBER
-ORA-01722
-Falla la conversión de carácter a número
-NO_DATA_FOUND
-ORA-01403
-El SELECT de fila única no devolvió valores
-TOO_MANY_ROWS
-ORA-01422
-El SELECT de fila única devuelve más de una fila
-VALUE_ERROR
-ORA-06502
-Hay un error aritmético, de conversión, de redondeo o de tamaño en una operación
-ZERO_DIVIDE
-ORA-01476
-Se intenta dividir entre el número cero.
+Nombre de excepción |Número | Ocurre cuando...
+--------------------|-------|------------------
+CASE_NOT_FOUND | ORA-06592 | Ninguna opción WHEN dentro de la instrucción CASE captura el valor, y no hay instrucción ELSE
+DUP_VAL_ON_INDEX | ORA-00001 Se intentó añadir una fila que provoca que un índice único repita valores
+INVALID_NUMBER | ORA-01722 | Falla la conversión de carácter a número
+NO_DATA_FOUND | ORA-01403 | El SELECT de fila única no devolvió valores
+TOO_MANY_ROWS | ORA-01422 | El SELECT de fila única devuelve más de una fila
+VALUE_ERROR | ORA-06502 | Hay un error aritmético, de conversión, de redondeo o de tamaño en una operación
+ZERO_DIVIDE | ORA-01476 | Se intenta dividir entre el número cero.
 
 Ejemplos:
+
 En el siguiente ejemplo  se producirá una excepción ZERO_DIVIDE puesto que el divisor x es igual a 0.
+
 ```sql
 DECLARE
   x NUMBER := 0;
@@ -1623,6 +1714,7 @@ END;
 ```
 
 En el siguiente ejemplo el cursor implícito Hotel99 sólo puede recibir una única fila o registro como resultado de una consulta. En este caso podrían producirse 2 excepciones: NO_DATA_FOUND (la consulta select no devuelve ningún registro) o TO_MANY_ROWS (la consulta select devuelve más de un registro). En el primer caso insertamos un nuevo registro. En el segundo caso borramos el registro duplicado.
+
 ```sql
 DECLARE
   Hotel99 Hotel%ROWTYPE;
@@ -1643,11 +1735,11 @@ END;
 Si una instrucción SELECT INTO no devuelve una fila, PL/SQL lanza la excepción predefinida NO_DATA_FOUND tanto si se comprueba SQL%NOTFOUND en la línea siguiente como si no. Si una instrucción  SELECT INTO devuelve más de una fila, PL/SQL lanza la excepción predefinida TOO_MANY_ROWS tanto si se comprueba SQL%ROWCOUNT en la línea siguiente como si no.
 Funciones de uso con excepciones
 Se suelen usar dos funciones cuando se trabaja con excepciones:
-SQLCODE. Retorna el código de error del error ocurrido
-SQLERRM. Devuelve el mensaje de error de Oracle asociado a ese número de error.
-
+- SQLCODE. Retorna el código de error del error ocurrido
+- SQLERRM. Devuelve el mensaje de error de Oracle asociado a ese número de error.
 
 Ejemplo:
+
 ```sql
 EXCEPTION
   ...
@@ -1661,16 +1753,19 @@ Excepciones de usuario
 El programador puede lanzar sus propias excepciones simulando errores del programa.
 Para ello hay que:
 1) Declarar un nombre para la excepción en el apartado DECLARE, al igual que para las excepciones sin definir:
+
 ```sql
 miExcepcion EXCEPTION;
 ```
 
 2) En la sección ejecutable (BEGIN … END) utilizar la instrucción RAISE para lanzar la excepción:
+
 ```sql
 RAISE miExcepcion;
 ```
 
 3) En el apartado de excepciones capturar el nombre de excepción declarado:
+
 ```sql
 EXCEPTION
   ...
@@ -1680,6 +1775,7 @@ EXCEPTION
 
 
 Ejemplo:
+
 ```sql
 DECLARE
   error_al_eliminar EXCEPTION;
@@ -1696,12 +1792,14 @@ END;
 ```
 
 Otra forma es utilizar la función RAISE_APPLICATION_ERROR que simplifica los tres pasos anteriores. Sintaxis:
+
 ```sql
 RAISE_APPLICATION_ERROR (noDeError, mensaje, [,{TRUE|FALSE}]);
 ```
 
 Esta instrucción se coloca en la sección ejecutable o en la de excepciones y sustituye a los tres pasos anteriores. Lo que hace es lanzar un error cuyo número debe de estar entre el -20000 y el -20999 y hace que Oracle muestre el mensaje indicado. El tercer parámetro opciones puede ser TRUE o FALSE (por defecto TRUE) e indica si el error se añade a la pila de errores existentes.
 Ejemplo con RAISE_APPLICATION_ERROR:
+
 ```sql
 DECLARE
 BEGIN
