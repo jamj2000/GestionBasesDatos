@@ -449,6 +449,7 @@ VALUES (15405979, 004,02, '01/04/2017', '03/04/2017');
 
 ### 2. Inserta valores para comprobar que la siguiente restricción funciona correctamente:
 - No pueden ser nulos los siguientes campos: Nombre de Socio, Título de Película.
+
 ```sql
 -- 2. Comprobación de restricciones
 INSERT INTO SOCIO 
@@ -465,6 +466,7 @@ VALUES (010, NULL, 'TELE5', 'RUSA', '10/03/1987', 'JUAN');
 
 ### 3. Inserta valores para comprobar que la siguiente restricción funciona correctamente:
 - Sexo toma los valores H o M.
+
 ```sql
 -- 3. Comprobación de restricciones
 INSERT INTO ACTORES VALUES ('PUTIN', 'RUSA',     'H');
@@ -477,6 +479,7 @@ INSERT INTO ACTORES VALUES ('ROSA',  'RUSA',     'K');
 
 ### 4. Inserta valores para comprobar que la siguiente restricción funciona correctamente:
 - Por defecto si no se indica nada un actor o actriz no es Protagonista (este campo toma valores S o N).
+
 ```sql
 -- 4. Comprobación de restricciones
 INSERT INTO ACTUA (ACTOR, IDPELICULA) VALUES ('ANA', 002);
@@ -489,6 +492,7 @@ SELECT * FROM ACTUA WHERE ACTOR = 'ANA' AND IDPELICULA = 002;
 
 ### 5. Inserta valores para comprobar que la siguiente restricción funciona correctamente:
 - FechaDevolución debe ser mayor que FechaAlquiler.
+
 ```sql
 -- 5. Comprobación de restricciones
 INSERT INTO ALQUILA 
@@ -507,6 +511,7 @@ WHERE NACIONALIDAD = 'ESPAÑOLA';
 
 
 ### 7. Cambia la nacionalidad para los actores. Por ejemplo de 'Estadounidense' a 'USA' o similar, dependiendo de los valores que hayas introducido.
+
 ```sql
 -- 7. Actualización de registros.
 UPDATE ACTORES SET NACIONALIDAD = 'ESP' 
@@ -515,6 +520,7 @@ WHERE NACIONALIDAD = 'ESPAÑOLA';
 
 
 ### 8. Modifica los datos de todos los socios para que el avalista sea un único socio, siempre el mismo para todos, excepto para el avalista mismo que no dispone de ninguno.
+
 ```sql
 -- 8. Actualización de registros.
 UPDATE SOCIO SET AVALADOR = '15405978' WHERE DNI != 15405978;
@@ -522,6 +528,7 @@ UPDATE SOCIO SET AVALADOR = '15405978' WHERE DNI != 15405978;
 
 
 ### 9. Elimina los socios cuyo número de teléfono empiece por una cifra inferior a 5. ¿Qué sucede?¿Por qué?
+
 ```sql
 -- 9. Eliminación de registros que posiblemente participan
 -- en una relación.
@@ -533,6 +540,7 @@ DELETE SOCIO WHERE REGEXP_LIKE(TELEFONO, '[0-4].*');
 
 
 ### 10. Elimina los socios cuyo número de teléfono empiece por una cifra superior o igual a 5. ¿Qué sucede?¿Por qué?
+
 ```sql
 -- 10. Eliminación de registros que posiblemente participan
 -- en una relación.
@@ -544,6 +552,7 @@ DELETE SOCIO WHERE REGEXP_LIKE(TELEFONO, '[5-9].*');
 
 
 ### 11. ¿Como lo solucionarías los problemas anteriores? ¿Podría haberse evitado el problema con otro diseño físico?¿Cómo?
+
 ```sql
 -- 11. Modificación de FK para añadir ON DELETE CASCADE.
 -- La mejor forma de proceder sería eliminar la clave foránea FK1_DNI
@@ -557,6 +566,7 @@ ALTER TABLE ALQUILA ADD  CONSTRAINT FK1_DNI FOREIGN KEY(DNI)
 
 
 ### 12. Elimina todos los directores. ¿Qué sucede?¿Por qué?
+
 ```sql
 -- 12. Modificación de FK.
 DELETE DIRECTOR;
@@ -576,6 +586,7 @@ ALTER TABLE PELICULA ADD  CONSTRAINT FK_DIRECTOR FOREIGN KEY(DIRECTOR)
 
 
 ### 13. Elimina 2 películas, las que desees.¿Qué sucede?¿Por qué?¿Como lo solucionarías? ¿Podría haberse evitado el problema con otro diseño físico?¿Cómo?
+
 ```sql
 -- 13. Modificación de FK.
 DELETE PELICULA WHERE ID = 001 OR ID = 002;
@@ -610,6 +621,7 @@ Las siguientes prácticas se realizarán dentro del esquema EMPLEADOS.
 
 
 ### 1. Realiza una conexión utilizando el cliente SQL*Plus y muestra el valor de las siguientes variables: USER, ESCAPE, LINESIZE, COLSEP, PAGESIZE, ECHO, SQLPROMPT
+
 ```
 SHOW USER
 SHOW ESCAPE
@@ -622,6 +634,7 @@ SHOW SQLPROMPT
 
 
 ### 2. Desde el cliente SQL*Plus muestra el valor de las variables AUTOCOMMIT y SERVEROUTPUT.
+
 ```
 SHOW AUTOCOMMIT
 -- autocommit OFF
@@ -632,12 +645,14 @@ SHOW SERVEROUTPUT
 
 
 ### 3.  Desde el cliente SQL*Plus ejecuta el comando HELP SHOW para ver la ayuda acerca del comando SHOW.
+
 ```
 HELP SHOW
 ```
 
 
 ### 4.  Desde el cliente SQL*Plus ejecuta el comando HELP SET para ver la ayuda acerca del comando SET.
+
 ```
 HELP SET
 ```
@@ -651,6 +666,7 @@ SET AUTOCOMMIT   ON
 
 
 ### 6. Crea un esquema llamado PLSQL con contraseña PLSQL y rol DBA para realizar las siguientes actividades.Ejecuta el siguiente bloque. Indica cuál es la salida.
+
 ```sql
 BEGIN
   IF 10 > 5 THEN
@@ -666,6 +682,7 @@ END;
 
 
 ### 7. Ejecuta el siguiente bloque. Indica cuál es la salida.
+
 ```sql
 BEGIN
  IF 10 > 5 AND 5 > 1 THEN
@@ -681,6 +698,7 @@ END;
 
 
 ### 8. Ejecuta el siguiente bloque. Indica cuál es la salida.
+
 ```sql
 BEGIN
  IF 10 > 5 AND 5 > 50 THEN
@@ -696,6 +714,7 @@ END;
 
 
 ### 9. Ejecuta el siguiente bloque. Indica cuál es la salida.
+
 ```sql
 BEGIN
  CASE 
@@ -712,6 +731,7 @@ END;
 
 
 ### 10. Ejecuta el siguiente bloque. Indica cuál es la salida.
+
 ```sql
 BEGIN
   FOR i IN 1..10 LOOP
@@ -730,6 +750,7 @@ END;
 
 
 ### 11. Ejecuta el siguiente bloque. Indica cuál es la salida.
+
 ```sql
 BEGIN
   FOR i IN REVERSE 1..10 LOOP
@@ -748,6 +769,7 @@ END;
 
 
 ### 12. Ejecuta el siguiente bloque. Indica cuál es la salida.
+
 ```sql
 DECLARE
   num NUMBER(3) := 0;
@@ -769,6 +791,7 @@ END;
 
 
 ### 13. Ejecuta el siguiente bloque. Indica cuál es la salida.
+
 ```sql
 DECLARE
   num NUMBER(3) := 0;
@@ -817,6 +840,7 @@ END;
 > PL/SQL: Procedimientos y Funciones
 
 ### 1. Crea un procedimiento llamado ESCRIBE para mostrar por pantalla el mensaje HOLA MUNDO.
+
 ```sql
 CREATE OR REPLACE
 PROCEDURE ESCRIBE IS
@@ -895,6 +919,7 @@ END NOTA;
 > PL/SQL: Variables, registros y cursores
 
 ### 1. Escribe un procedimiento que muestre el número de empleados y el salario mínimo, máximo y medio del departamento de FINANZAS. Debe hacerse uso de cursores implícitos, es decir utilizar SELECT ... INTO. 
+
 ```sql
 CREATE OR REPLACE 
 PROCEDURE Finanzas AS
@@ -925,6 +950,7 @@ END Finanzas;
 
 
 ### 2. Escribe un procedimiento que suba un 10% el salario a los EMPLEADOS con más de 2 hijos y que ganen menos de 2000 €. Para cada empleado se mostrará por pantalla el código de empleado, nombre, salario anterior y final. Utiliza un cursor explícito. La transacción no puede quedarse a medias. Si por cualquier razón no es posible actualizar todos estos salarios, debe deshacerse el trabajo a la situación inicial.
+
 ```sql
 CREATE OR REPLACE 
 PROCEDURE Subir_salarios AS
@@ -954,6 +980,7 @@ END Subir_salarios;
 
 
 ### 3. Escribe un procedimiento que reciba dos parámetros (número de departamento, hijos). Deberá crearse un cursor explícito al que se le pasarán estos parámetros y que mostrará los datos de los empleados que pertenezcan al departamento y con el número de hijos indicados. Al final se indicará el número de empleados obtenidos. 
+
 ```sql
 CREATE OR REPLACE 
 PROCEDURE Dpto_Empleados_Hijos (
@@ -980,6 +1007,7 @@ END Dpto_Empleados_Hijos;
 
 
 ### 4. Escribe un procedimiento con un parámetro para el nombre de empleado, que nos muestre la edad de dicho empleado en años, meses y días. 
+
 ```sql
 CREATE OR REPLACE
 PROCEDURE Edad_Empleado (nombre EMPLEADOS.NOMEM%TYPE) AS
@@ -1021,6 +1049,7 @@ END Edad_Empleado;
 ### 3. Al paquete anterior añade un procedimiento sin parámetros llamado AYUDA que muestre un mensaje por pantalla de los procedimientos y funciones disponibles en el paquete, su utilidad y forma de uso.
 
 El resultado de los 3 ejercicios anteriores quedaría de las siguiente forma:
+
 ```sql
 -- PAQUETE ARITMETICA – Especificación 
 -- PACKAGE_ARITMETICA.SQL 
@@ -1037,7 +1066,9 @@ PACKAGE aritmetica IS
   FUNCTION resto      (a NUMBER, b NUMBER) RETURN NUMBER;
 END aritmetica;
 /
+```
 
+```sql
 -- PAQUETE ARITMETICA – Cuerpo 
 -- PACKAGE_BODY_ARITMETICA.SQL 
 CREATE OR REPLACE 
@@ -1094,7 +1125,9 @@ PACKAGE BODY aritmetica IS
 
 END aritmetica;
 /
+```
 
+```sql
 -- Pruebas
 BEGIN
   ARITMETICA.MOSTRAR_INFO;  
@@ -1123,7 +1156,9 @@ PACKAGE GESTION AS
   PROCEDURE MODIFICAR_DEP  (numero NUMBER, presupuesto NUMBER);
 END GESTION;
 /
+```
 
+```sql
 -- PAQUETE GESTION – Cuerpo 
 -- PACKAGE_BODY_GESTION.SQL 
 CREATE OR REPLACE
@@ -1206,7 +1241,9 @@ PACKAGE BODY GESTION AS
 
 END GESTION;
 /
+```
 
+```sql
 -- Pruebas
 DECLARE
   num NUMBER;
@@ -1240,11 +1277,13 @@ END;
 > PL/SQL: Triggers y Excepciones
 
 Previamente deberemos crear una tabla AUDITORIA_EMPLEADOS para registrar los eventos a auditar que ocurran sobre la tabla EMPLEADOS.
+
 ```sql
 CREATE TABLE AUDITORIA_EMPLEADOS (descripcion VARCHAR2(200));
 ```
 
 Y también crearemos una vista SEDE_DEPARTAMENTOS acerca de los departamentos y su localización.
+
 ```sql
 CREATE VIEW SEDE_DEPARTAMENTOS AS
 SELECT C.NUMCE, C.NOMCE, C.DIRCE, 
@@ -1253,11 +1292,13 @@ FROM CENTROS C JOIN DEPARTAMENTOS D ON C.NUMCE=D.NUMCE;
 ```
 
 También insertaremos en la tabla DEPARTAMENTOS uno llamado TEMP donde serán movidos los empleados cuyo departamento desaparezca.
+
 ```sql
 INSERT INTO DEPARTAMENTOS VALUES (0, 10,  260, 'F', 10, 100, 'TEMP');
 ```
 
 ### 1. Crea un trigger que, cada vez que se inserte o elimine un empleado, registre una entrada en la tabla AUDITORIA_EMPLEADOS con la fecha del suceso, número y nombre de empleado, así como el tipo de operación realizada (INSERCIÓN o ELIMINACIÓN).
+
 ```sql
 CREATE OR REPLACE
 TRIGGER Insercion_eliminacion_empleado
@@ -1283,6 +1324,7 @@ END Insercion_eliminacion_empleado;
 
 
 ### 2. Crea un trigger que, cada vez que se modifiquen datos de un empleado, registre una entrada en la tabla AUDITORIA_EMPLEADOS con la fecha del suceso, valor antiguo y valor nuevo de cada campo, así como el tipo de operación realizada (en este caso MODIFICACIÓN).
+
 ```sql 
 CREATE OR REPLACE
 TRIGGER Modificacion_empleado
@@ -1338,6 +1380,7 @@ END Modificacion_empleado;
 ```
 
 ### 3. Crea un trigger para que registre en la tabla AUDITORIA_EMPLEADOS las subidas de salarios superiores al 5%. 
+
 ```sql
 CREATE OR REPLACE
 TRIGGER Subida_salario
@@ -1357,6 +1400,7 @@ END Subida_salario;
 
 
 ### 4. Deseamos operar sobre los datos de los departamentos y los centros donde se hallan. Para ello haremos uso de la vista SEDE_DEPARTAMENTOS creada anteriormente. Al tratarse de una vista que involucra más de una tabla, necesitaremos crear un trigger de sustitución para gestionar las operaciones de actualización de la información. Crea el trigger necesario para realizar inserciones, eliminaciones y modificaciones en la vista anterior.  
+
 ```sql
 CREATE OR REPLACE 
 TRIGGER Actualizacion_departamento
@@ -1438,6 +1482,7 @@ END Actualizacion_departamento;
 
 
 ### 5. Realiza las siguientes operaciones para comprobar si el disparador anterior funciona correctamente.
+
 ```sql
 -- Inserción de datos
 INSERT INTO SEDE_DEPARTAMENTOS (NUMCE, NUMDE, NOMDE) 
