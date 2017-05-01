@@ -135,53 +135,20 @@ Al emitir cada factura se ingresan nuevamente los datos num, nombre, domicilio.
 
 CLIENTES
 
-Num
-Nombre
-Dirección
-Teléfono
-FechaNacimiento
-e-mail
-1225
-Juan García
-Guaná 1202
-985674863
-13/08/1972
-jgarcia@adinet.com
-1226
-Fernando Martínez 
-Rincón 876 
-984568643
-23/02/1987 
-fmar@gmail.com
-…
-…
-…
-…
-...
+Num | Nombre | Dirección | Teléfono | FechaNacimiento | e-mail
+----|--------|-----------|----------|-----------------|-------
+1225|Juan García | Guaná 1202 | 985674863 | 13/08/1972 | jgarcia@adinet.com
+1226|Fernando Martínez | Rincón 876 | 984568643 | 23/02/1987 | fmar@gmail.com
+… | … | … | … | … | …
 
 
 FACTURAS
 
-Num
-Nombre
-Dirección
-Producto
-Precio
-1225
-Joaquín García
-Guaná 1202
-Azulejos
-1250
-1226
-Fernando Martínez
-Rincón 876
-Pintura
-900
-…
-…
-…
-…
-...
+Num | Nombre | Dirección | Producto | Precio 
+1225| Joaquín García | Guaná 1202 | Azulejos | 1250 
+1226 | Fernando Martínez | Rincón 876 | Pintura | 900
+… | … | … | … | …
+
 
 Desventajas:
 - Se presentan redundancias de datos (datos repetidos innecesariamente: nombre, dirección). Se duplican esfuerzos.
