@@ -344,52 +344,77 @@ COMMIT
 
 ### 2. Práctica 2: Consultas Sencillas
 1.- Hallar, por orden alfabético, los nombres de los departamentos cuyo director lo es en funciones y no en propiedad.
-SELECT nomde
-FROM DEPARTAMENTOS
-WHERE tidir = 'F'
-ORDER BY 1; 
+
+    NOMDE                                    
+    ------------------------------                     
+    ORGANIZACIÓN                                    
+    SECTOR INDUSTRIAL   
+
+
 
 2.- Obtener un listín telefónico de los empleados del departamento 121 incluyendo nombre de empleado, número de empleado y extensión telefónica. Por orden alfabético.
-SELECT nomem , numem , extel
-FROM EMPLEADOS
-WHERE Numde = 121
-ORDER BY 1; 
+
+    NOMEM                               NUMEM      EXTEL 
+    ------------------------------ ---------- ----------  
+    CESAR                                 110        350  
+    FABIOLA                               370        360    
+    JULIANA                               190        350   
+    JULIO                                 150        340  
 
 3.- Obtener por orden creciente una relación de todos los números de extensiones telefónicas de los empleados, junto con el nombre de estos, para aquellos que trabajen en el departamento 110. Mostrar la consulta tal y como aparece en la imagen.
-SELECT nomem "Nombre", extel AS "Extensión Telefónica"
-FROM EMPLEADOS
-WHERE numde = 110
-ORDER BY 1; 
+
+    Nombre                         Extensión Telefónica 
+    ------------------------------ --------------------  
+    CARMEN                                          500  
+    MARCOS                                          508  
+    ROMULO                                          550  
+
 
 4.- Hallar la comisión, nombre y salario de los empleados que tienen tres hijos, clasificados por comisión, y dentro de comisión por orden alfabético.
 
-SELECT comis,nomem,salar
-FROM EMPLEADOS
-WHERE numhi = 3
-ORDER BY 1, 2; 
+
+         COMIS NOMEM                          SALAR  
+    ---------- ------------------------------ ----------    
+            80 OCTAVIO                              1910    
+           100 LAVINIA                              1700     
+               CESAR                                1800  
+               GLORIA                               1790        
+
 
 5.- Hallar la comisión, nombre y salario de los empleados que tienen tres hijos, clasificados por comisión, y dentro de comisión por orden alfabético, para aquellos empleados que tienen comisión.
-SELECT comis, nomem, salar
-FROM EMPLEADOS
-WHERE numhi = 3 AND comis IS NOT NULL
-ORDER BY 1, 2; 
+
+         COMIS NOMEM                          SALAR  
+    ---------- ------------------------------ ----------  
+            80 OCTAVIO                              1910 
+           100 LAVINIA                              1700  
+
+ 
 
 6.- Obtener salario y nombre de los empleados sin hijos y cuyo salario es mayor que 1200 y menor que 1500 €. Se obtendrán por orden decreciente de salario y por orden alfabético dentro de salario.
-SELECT salar,nomem
-FROM EMPLEADOS
-WHERE numhi = 0 AND salar > 1200 AND salar < 1500
-ORDER BY 1 DESC, 2; 
+
+         SALAR nomem              
+    ---------- ------------------------------         
+          1260 LIVIA                   
+          1260 SABINA        
+
 
 7.- Obtener los números de los departamentos donde trabajan empleados cuyo salario sea inferior a 1500 €
-SELECT DISTINCT numde
-FROM EMPLEADOS
-WHERE salar < 1500
-ORDER BY 1; 
+
+         NUMDE                                      
+    ----------                                     
+           100                                      
+           110                                      
+           111                                        
+           112                                      
+           122 
+	   
 
 8.- Obtener las distintas comisiones que hay en el departamento 110.
-SELECT DISTINCT comis
-FROM EMPLEADOS
-WHERE numde = 110; 
+
+         COMIS                                      
+    ----------  
+    
+            50 
 
 
 
@@ -401,24 +426,12 @@ FROM DEPARTAMENTOS
 WHERE tidir = 'F'
 ORDER BY 1;
 
-    NOMDE                                    
-    ------------------------------                     
-    ORGANIZACIÓN                                    
-    SECTOR INDUSTRIAL   
-
-
 PROMPT ________________________________ Ejercicio 2 ________________________________
 SELECT nomem , numem , extel
 FROM EMPLEADOS
 WHERE numde = 121
 ORDER BY 1;
 
-    NOMEM                               NUMEM      EXTEL 
-    ------------------------------ ---------- ----------  
-    CESAR                                 110        350  
-    FABIOLA                               370        360    
-    JULIANA                               190        350   
-    JULIO                                 150        340 
 
 PROMPT ________________________________ Ejercicio 3 ________________________________
 SELECT nomem "Nombre", extel AS "Extensión Telefónica"
@@ -426,25 +439,11 @@ FROM EMPLEADOS
 WHERE numde = 110
 ORDER BY 1;
 
-    Nombre                         Extensión Telefónica 
-    ------------------------------ --------------------  
-    CARMEN                                          500  
-    MARCOS                                          508  
-    ROMULO                                          550  
-
-
 PROMPT ________________________________ Ejercicio 4 ________________________________
 SELECT COMIS, NOMEM, SALAR
 FROM EMPLEADOS
 WHERE NUMHI = 3
 ORDER BY 1, 2;
-
-         COMIS NOMEM                          SALAR  
-    ---------- ------------------------------ ----------    
-            80 OCTAVIO                              1910    
-           100 LAVINIA                              1700     
-               CESAR                                1800  
-               GLORIA                               1790        
 
 PROMPT ________________________________ Ejercicio 5 ________________________________
 SELECT COMIS, NOMEM, SALAR
@@ -452,22 +451,11 @@ FROM EMPLEADOS
 WHERE NUMHI = 3 AND COMIS IS NOT NULL
 ORDER BY 1, 2;
 
-         COMIS NOMEM                          SALAR  
-    ---------- ------------------------------ ----------  
-            80 OCTAVIO                              1910 
-           100 LAVINIA                              1700  
-
-
 PROMPT ________________________________ Ejercicio 6 ________________________________
 SELECT salar,nomem
 FROM EMPLEADOS
 WHERE numhi = 0 AND salar > 1200 AND salar < 1500
 ORDER BY 1 DESC, 2;
-
-         SALAR nomem              
-    ---------- ------------------------------         
-          1260 LIVIA                   
-          1260 SABINA        
 
 PROMPT ________________________________ Ejercicio 7 ________________________________
 SELECT DISTINCT numde
@@ -475,23 +463,11 @@ FROM EMPLEADOS
 WHERE salar < 1500
 ORDER BY 1;
 
-         NUMDE                                      
-    ----------                                     
-           100                                      
-           110                                      
-           111                                        
-           112                                      
-           122 
-	   
 PROMPT ________________________________ Ejercicio 8 ________________________________
 SELECT DISTINCT comis
 FROM EMPLEADOS
 WHERE numde = 110;
-
-         COMIS                                      
-    ----------  
-    
-            50  
+ 
 	    
 ### 3. Práctica 3:  Consultas con Predicados Básicos
 1.- Obtener una relación por orden alfabético de los departamentos cuyo presupuesto es inferior a 30.000 € El nombre de los departamentos vendrá precedido de las palabras 'DEPARTAMENTO DE '. Nota: El presupuesto de los departamentos viene expresado en miles de €.
