@@ -109,38 +109,33 @@ NUMDE
 NUMBER(3)
 Número de departamento
 
-INSERT INTO CENTROS(
-	Numce NUMBER(4) NOT NULL,
-	Nomce VARCHAR2(25) NOT NULL UNIQUE,
-	Dirce VARCHAR2(25),
-	CONSTRAINT PK_CENTROS
-	PRIMARY KEY(numce)
+```sql
+CREATE TABLE CENTROS(
+  Numce NUMBER(4) NOT NULL,
+  Nomce VARCHAR2(25) NOT NULL UNIQUE,
+  Dirce VARCHAR2(25),
+  CONSTRAINT PK_CENTROS PRIMARY KEY(numce)
 ); 
 
-/*
-Fijaos que no creo la restricción de clave foránea para la relación reflexiva, para
-así evitar que sea necesario un orden concreto de inserción de datos
-*/
-
-INSERT INTO DEPARTAMENTOS(
-	numde NUMBER(3) NOT NULL,
-	numce NUMBER(4),
-	direc NUMBER(3),
-	tidir CHAR(1),
-	presu NUMBER(3,1),
-	depde NUMBER(3),
-	nomde VARCHAR2(20),
-	CONSTRAINT PK_DEPARTAMENTOS
-	PRIMARY KEY(numde),
-	CONSTRAINT FK1_DEPARTAMENTOS
-	FOREIGN KEY(numce) REFERENCES CENTROS(numce)
-	ON DELETE CASCADE
+-- Fijaos que no creo la restricción de clave foránea para la relación reflexiva, 
+-- para así evitar que sea necesario un orden concreto de inserción de datos
+CREATE TABLE DEPARTAMENTOS(
+  numde NUMBER(3) NOT NULL,
+  numce NUMBER(4),
+  direc NUMBER(3),
+  tidir CHAR(1),
+  presu NUMBER(3,1),
+  depde NUMBER(3),
+  nomde VARCHAR2(20),
+  CONSTRAINT PK_DEPARTAMENTOS PRIMARY KEY(numde),
+  CONSTRAINT FK1_DEPARTAMENTOS FOREIGN KEY(numce) 
+    REFERENCES CENTROS(numce)
+    ON DELETE CASCADE
 ); 
 
-
---NO PUEDO DEFINIR LA FORÁNEA REFLEXIVA PORQUE
---NO PUEDO HACER REFERENCIA A UNA TABLA QUE 
---NO EXISTE. LA CREO AHORA CON UN ALTER TABLE
+-- NO PUEDO DEFINIR LA FORÁNEA REFLEXIVA PORQUE
+-- NO PUEDO HACER REFERENCIA A UNA TABLA QUE 
+-- NO EXISTE. LA CREO AHORA CON UN ALTER TABLE
 
 /*Ahora introduzco la clave foránea*/
 
@@ -150,24 +145,22 @@ FOREIGN KEY(depde)
 REFERENCES DEPARTAMENTOS(numde); 
 
 
-INSERT INTO EMPLEADOS(
-	Numem NUMBER(3) NOT NULL,
-	Extel NUMBER(3),
-	Fecna DATE,
-	Fecin DATE,
-	Salar NUMBER(5),
-	Comis NUMBER(3),
-	Numhi NUMBER(1),
-	nomem VARCHAR2(10),
-	Numde NUMBER(3),
-	CONSTRAINT PK_EMPLEADOS
-	PRIMARY KEY(numem),
-	CONSTRAINT FK1_EMPLEADOS
-	FOREIGN KEY(numde)
-	REFERENCES DEPARTAMENTOS(numde)
-	ON DELETE CASCADE
+CREATE TABLE EMPLEADOS(
+  Numem NUMBER(3) NOT NULL,
+  Extel NUMBER(3),
+  Fecna DATE,
+  Fecin DATE,
+  Salar NUMBER(5),
+  Comis NUMBER(3),
+  Numhi NUMBER(1),
+  nomem VARCHAR2(10),
+  Numde NUMBER(3),
+  CONSTRAINT PK_EMPLEADOS PRIMARY KEY(numem),
+  CONSTRAINT FK1_EMPLEADOS FOREIGN KEY(numde)
+    REFERENCES DEPARTAMENTOS(numde)
+    ON DELETE CASCADE
 ); 
-
+``` 
 
 c)  Inserta los siguientes datos en la tabla DEPARTAMENTOS.
 NUMDE
@@ -590,6 +583,7 @@ ROMULO
 SANCHO
 111
 
+```sql
 --YA INSERTAMOS EMPLEADOS
 		
 INSERT INTO EMPLEADOS VALUES(110,350,'10/11/1970','15/02/1985',1800,NULL,3,'CESAR',121); 
@@ -626,9 +620,15 @@ INSERT INTO EMPLEADOS VALUES(490,880,'06/06/1964','01/01/1988',1090,100,0,'HORAC
 INSERT INTO EMPLEADOS VALUES(500,750,'08/10/1965','01/01/1987',1200,100,0,'HONORIA',111); 
 INSERT INTO EMPLEADOS VALUES(510,550,'04/05/1966','01/11/1986',1200,NULL,1,'ROMULO',110); 
 INSERT INTO EMPLEADOS VALUES(550,780,'10/01/1970','21/01/1998',600,120,0,'SANCHO',111); 
+```
 
 Nota: En lugar de la inserción de datos, puedes ahorrar tiempo descargando el script EMPLEADOS.SQL que está disponible en la plataforma Moodle. Este script contiene todas las tablas. Si utilizas el script deberás borrar las tablas previas. 
 
+```
+sqlplus SYSTEM/SYSTEM
+```
+
+```sql
 PROMPT ================================ Practica 1  ================================
 
 DROP USER EMPLEADOS CASCADE;
@@ -729,7 +729,7 @@ INSERT INTO EMPLEADOS VALUES(500,750,'08/10/1965','01/01/1987',1200,100,0,'HONOR
 INSERT INTO EMPLEADOS VALUES(510,550,'04/05/1966','01/11/1986',1200,NULL,1,'ROMULO',110);
 INSERT INTO EMPLEADOS VALUES(550,780,'10/01/1970','21/01/1998',600,120,0,'SANCHO',111);
 COMMIT
-
+```
 
 ### 2. Práctica 2: Consultas Sencillas
 1.- Hallar, por orden alfabético, los nombres de los departamentos cuyo director lo es en funciones y no en propiedad.
