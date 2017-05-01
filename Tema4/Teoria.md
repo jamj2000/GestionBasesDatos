@@ -95,7 +95,7 @@ SELECT nombre, precio, precio*1.16 FROM ARTICULOS;
 -- Ponemos un alias a la tercera columna. 
 -- Las comillas dobles en el alias hacen que se respeten mayúsculas y minúsculas,
 -- de otro modo siempre aparece en mayúsculas 
-SELECT nombre, precio, precio*1.16 AS “Precio + IVA” FROM ARTICULOS;
+SELECT nombre, precio, precio*1.16 AS "Precio + IVA" FROM ARTICULOS;
 ```
 
 La prioridad de esos operadores es: tienen más prioridad la multiplicación y división, después la suma y la resta. En caso de igualdad de prioridad, se realiza primero la operación que esté más a la izquierda. Como es lógico se puede evitar cumplir esa prioridad usando paréntesis; el interior de los paréntesis es lo que se ejecuta primero.
@@ -182,7 +182,7 @@ Ejemplo:
 
 ```sql
 -- Selección de las piezas cuyo precio sea menor que 3 o mayor que 8 
--- (los de precio 3 y precio 8 no estarán incluidos) */
+-- (los de precio 3 y precio 8 no estarán incluidos) 
 SELECT tipo, modelo, precio
 FROM PIEZAS
 WHERE precio NOT BETWEEN 3 AND 8;
@@ -660,8 +660,7 @@ WHERE E.sueldo BETWEEN C.sueldo_mínimo AND C.sueldo_máximo;
 Existe otra forma más moderna e intuitiva de trabajar con varias tablas.  Para ello se utiliza la clausula JOIN. 
 Supongamos que tenemos una base de datos de una entidad bancaria. Disponemos de una tabla con sus empleados y otra tabla con sus sucursales. En una sucursal trabajan varios empleados. Los empleados viven en una localidad y trabajan en una sucursal situada en la misma localidad o en otra localidad. El esquema E-R es el siguiente:
 
-
-Los datos de las tablas son:
+Los datos de las tablas son:  
 
 EMPLEADOS
 DNI
