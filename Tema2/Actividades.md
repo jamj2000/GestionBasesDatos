@@ -137,7 +137,7 @@ Teniendo en cuenta:
 - Una asignatura es impartida por un único profesor.
 - Un profesor podrá impartir varias asignaturas.
 
-![Modelo Entidad-Relación](images/Tema2-Cuestion08.png =200x)
+![Modelo Entidad-Relación](images/Tema2-Cuestion08.png)
 
 
 ### 9. Obtén el diagrama E/R con las cuatro entidades siguientes:
@@ -152,7 +152,7 @@ Se quiere guardar información de la localidad donde ha nacido cada uno de los e
 - Cada localidad pertenece a una única provincia.
 - Cada provincia pertenece a una única región del país.
 
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion09.png)
 
 
 ### 10. Obtén el diagrama E/R con las dos entidades siguientes:
@@ -169,9 +169,15 @@ La solución 1 no nos asegura que el Jefe de un Empleado trabaje en el mismo Dep
 
 Solución 1
 
+![Modelo Entidad-Relación](images/Tema2-Cuestion10a.png)
+
 Solución 2
 
+![Modelo Entidad-Relación](images/Tema2-Cuestion10b.png)
+
 Solución 3
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion10c.png)
 
 
 ### 11. Obtén el diagrama E/R para el siguiente supuesto.
@@ -183,6 +189,7 @@ Una empresa dedicada a la instalación de dormitorios juveniles a medida quiere 
 - De un montador nos interesa su NIF, nombre, dirección, teléfono de contacto y el número de dormitorios que ha montado de cada modelo.
 - Cada modelo de dormitorio puede ser comprado por uno o varios clientes y el mismo cliente podrá comprar uno o varios dormitorios. De un cliente nos interesa su NIF, nombre, dirección, teléfono y fecha de compra de cada modelo.
 
+![Modelo Entidad-Relación](images/Tema2-Cuestion11.png)
 
 > NOTA: Para obtener la cantidad total de dormitorios de un modelo montados por un montador no debemos poner ningún atributo. En la base de datos final sumaremos los registros que aparecen en la tabla "monta" correspondientes al montador y modelo deseados. 
 
@@ -190,10 +197,12 @@ Una empresa dedicada a la instalación de dormitorios juveniles a medida quiere 
 - Un determinado cliente puede tener en un momento dado hechas varias reservas.
 - De cada cliente se desea almacenar su DNI, nombre, dirección y teléfono.
 - Además dos clientes se diferencian por un único código.
-De cada reserva es importante registrar su número de identificación, la fecha de inicio y final de la reserva, el precio total.
+- De cada reserva es importante registrar su número de identificación, la fecha de inicio y final de la reserva, el precio total.
 - De cada coche se requiere la matrícula, el modelo, el color y la marca. Cada coche tiene un precio de alquiler por hora.
 - Además en una reserva se pueden incluir varios coches de alquiler. Queremos saber los coches que incluye cada reserva y los litros de gasolina en el depósito en el momento de realizar la reserva, pues se cobrarán aparte.
 - Cada cliente puede ser avalado por otro cliente de la empresa.
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion12.png)
 
 
 ### 13. Tenemos esta información sobre una cadena editorial:
@@ -203,6 +212,8 @@ De cada reserva es importante registrar su número de identificación, la fecha 
 - La editorial tiene periodistas (que no trabajan en las sucursales) que pueden escribir artículos para varias revistas. Almacenaremos los mismos datos que para los empleados, añadiendo su especialidad.
 - Para cada revista, almacenaremos información de cada número, que incluirá la fecha, número de páginas y el número de ejemplares vendidos.
 
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion13.png)
 
 > NOTA: Los atributos discriminantes de las entidades débiles se muestran con un círculo verde oscuro.
 
@@ -215,7 +226,13 @@ Un ejemplar se puede encontrar alquilado a algún socio (DNI, nombre, dirección
 Un socio tiene que ser avalado por otro socio que responda de él en caso de tener problemas en el alquiler.
 Los atributos discriminantes de las entidades débiles se muestran con un círculo verde oscuro.
 
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion14.png)
+
 ### 15. Diseñar un esquema E/R que recoja la organización de un sistema de información en el que se quiere tener los datos sobre municipios, viviendas y personas. Cada persona sólo puede habitar una vivienda, pero puede ser propietaria de varias. También nos interesa la relación de las personas con su cabeza de familia.
+
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion15.png)
 
 > NOTA: Suponemos que existe un único cabeza de familia por vivienda y establecemos una restricción de relación de inclusión para exigir que dicho cabeza de familia viva en dicha vivienda. Pueden existir viviendas vacías, en las que no viva nadie.
 > Hemos supuesto que una persona sólo puede vivir en una casa. 
@@ -225,6 +242,8 @@ Los atributos discriminantes de las entidades débiles se muestran con un círcu
 - Un cliente puede tener muchas cuentas.
 - Una cuenta puede ser de muchos clientes.
 - Una cuenta sólo puede estar en una sucursal.
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion16.png)
 
 > NOTA: Los atributos discriminantes de las entidades débiles se muestran con un círculo verde oscuro.
 
@@ -237,9 +256,13 @@ El cuerpo del pedido son varias líneas, en cada línea se especifican el númer
 Además, se ha determinado que se debe almacenar la información de las fábricas. Sin embargo, dado el uso de distribuidores, se usará: Número de la fábrica (único) y Teléfono de contacto.
 Y se desean ver cuántos artículos (en total) provee la fábrica. También, por información estratégica, se podría incluir información de fábricas alternativas respecto de las que ya fabrican artículos para esta empresa.
 
+![Modelo Entidad-Relación](images/Tema2-Cuestion17.png)
+
 ### 18. Se pide hacer el diagrama ER para la base de datos que represente esta información. Le contratan para hacer una BD que permita apoyar la gestión de un sistema de ventas.
 La empresa necesita llevar un control de proveedores, clientes, productos y ventas. Un proveedor tiene un código único, nombre, dirección, teléfono y página web. Un cliente también tiene un código único, nombre, dirección, pero puede tener varios teléfonos de contacto. La dirección se entiende por calle, número, comuna y ciudad.
 Un producto tiene un id único, nombre, precio actual, stock y nombre del proveedor. Además se organizan en categorías, y cada producto va sólo en una categoría. Una categoría tiene id, nombre y descripción. Por razones de contabilidad, se debe registrar la información de cada venta con un id, fecha, cliente, descuento y monto final. Además se debe guardar el precio al momento de la venta, la cantidad vendida y el monto total por el producto. 
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion18.png)
 
 > **MODELO ENTIDAD-RELACIÓN EXTENDIDO**
 
