@@ -1,6 +1,6 @@
 
 # ACTIVIDADES RESUELTAS
-# ELEMENTOS DE LAS BASES DE DATOS
+# DISEÑO DE MODELOS LÓGICOS NORMALIZADOS
 
 > IES Luis Vélez de Guevara  
 > Departamento de Informática
