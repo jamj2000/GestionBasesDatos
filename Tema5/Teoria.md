@@ -1688,7 +1688,7 @@ Oracle tiene muchas excepciones predefinidas. Son errores a los que Oracle asign
 Nombre de excepción |Número | Ocurre cuando...
 --------------------|-------|------------------
 CASE_NOT_FOUND | ORA-06592 | Ninguna opción WHEN dentro de la instrucción CASE captura el valor, y no hay instrucción ELSE
-DUP_VAL_ON_INDEX | ORA-00001 Se intentó añadir una fila que provoca que un índice único repita valores
+DUP_VAL_ON_INDEX | ORA-00001 | Se intentó añadir una fila que provoca que un índice único repita valores
 INVALID_NUMBER | ORA-01722 | Falla la conversión de carácter a número
 NO_DATA_FOUND | ORA-01403 | El SELECT de fila única no devolvió valores
 TOO_MANY_ROWS | ORA-01422 | El SELECT de fila única devuelve más de una fila
@@ -1820,4 +1820,4 @@ En el ejemplo, si la pieza no existe, entonces SQL%NOTFOUND devuelve verdadero y
 
 
 
-# Actividades resueltas [](Actividades.md)
+# [Actividades resueltas](Actividades.md)
