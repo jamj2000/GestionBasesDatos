@@ -1,12 +1,12 @@
 # ACTIVIDADES RESUELTAS
 # MODIFICACIÓN DE BASES DE DATOS.  LENGUAJE DE MANIPULACIÓN DE DATOS
 
-> IES Luis Vélez de Guevara
+> IES Luis Vélez de Guevara  
 > Departamento de Informática
 
 
 ## Práctica 1
-> INSERT / UPDATE / DELETE
+> INSERT / UPDATE / DELETE  
 Haciendo uso del esquema E01 cuyo diseño físico realizamos en el tema 3, realiza las operaciones de manipulación de datos indicadas a continuación.
 
 ```sql
@@ -260,7 +260,7 @@ DELETE ALUMNO;
 
 
 ## Práctica 2
-> INSERT / UPDATE / DELETE
+> INSERT / UPDATE / DELETE  
 Haciendo uso del esquema E07 cuyo diseño físico realizamos en el tema 3, realiza las operaciones de manipulación de datos indicadas a continuación.
 Teniendo en cuenta las siguientes restricciones que teníamos declaradas:
 - No pueden ser nulos los siguientes campos: Nombre de Socio, Título de Película. 
@@ -463,9 +463,8 @@ VALUES (010, NULL, 'TELE5', 'RUSA', '10/03/1987', 'JUAN');
 
 ### 3. Inserta valores para comprobar que la siguiente restricción funciona correctamente:
 - Sexo toma los valores H o M.
-
--- 3. Comprobación de restricciones
 ```sql
+-- 3. Comprobación de restricciones
 INSERT INTO ACTORES VALUES ('PUTIN', 'RUSA',     'H');
 INSERT INTO ACTORES VALUES ('KIM',   'AMERICANA','M');
 INSERT INTO ACTORES VALUES ('ROSA',  'RUSA',     'K'); 
@@ -476,7 +475,6 @@ INSERT INTO ACTORES VALUES ('ROSA',  'RUSA',     'K');
 
 ### 4. Inserta valores para comprobar que la siguiente restricción funciona correctamente:
 - Por defecto si no se indica nada un actor o actriz no es Protagonista (este campo toma valores S o N).
-
 ```sql
 -- 4. Comprobación de restricciones
 INSERT INTO ACTUA (ACTOR, IDPELICULA) VALUES ('ANA', 002);
@@ -489,7 +487,6 @@ SELECT * FROM ACTUA WHERE ACTOR = 'ANA' AND IDPELICULA = 002;
 
 ### 5. Inserta valores para comprobar que la siguiente restricción funciona correctamente:
 - FechaDevolución debe ser mayor que FechaAlquiler.
-
 ```sql
 -- 5. Comprobación de restricciones
 INSERT INTO ALQUILA 
@@ -599,7 +596,7 @@ ALTER TABLE ACTUA ADD  CONSTRAINT FK2_ACTUA FOREIGN KEY(IDPELICULA)
 
 
 ## Práctica 3
-> PL/SQL: Introducción
+> PL/SQL: Introducción  
 > NOTA: Las siguientes prácticas se realizarán dentro del esquema EMPLEADOS.
 
 ```
@@ -1240,18 +1237,25 @@ END;
 > PL/SQL: Triggers y Excepciones
 
 Previamente deberemos crear una tabla AUDITORIA_EMPLEADOS para registrar los eventos a auditar que ocurran sobre la tabla EMPLEADOS.
+```sql
 CREATE TABLE AUDITORIA_EMPLEADOS (descripcion VARCHAR2(200));
+```
 
 Y también crearemos una vista SEDE_DEPARTAMENTOS acerca de los departamentos y su localización.
+```sql
 CREATE VIEW SEDE_DEPARTAMENTOS AS
 SELECT C.NUMCE, C.NOMCE, C.DIRCE, 
        D.NUMDE, D.NOMDE, D.PRESU, D.DIREC, D.TIDIR, D.DEPDE 
 FROM CENTROS C JOIN DEPARTAMENTOS D ON C.NUMCE=D.NUMCE; 
+```
 
 También insertaremos en la tabla DEPARTAMENTOS uno llamado TEMP donde serán movidos los empleados cuyo departamento desaparezca.
+```sql
 INSERT INTO DEPARTAMENTOS VALUES (0, 10,  260, 'F', 10, 100, 'TEMP');
+```
 
 ### 1. Crea un trigger que, cada vez que se inserte o elimine un empleado, registre una entrada en la tabla AUDITORIA_EMPLEADOS con la fecha del suceso, número y nombre de empleado, así como el tipo de operación realizada (INSERCIÓN o ELIMINACIÓN).
+```sql
 CREATE OR REPLACE
 TRIGGER Insercion_eliminacion_empleado
 AFTER INSERT OR DELETE ON EMPLEADOS
@@ -1272,8 +1276,11 @@ BEGIN
   END IF;
 
 END Insercion_eliminacion_empleado;
+```
+
 
 ### 2. Crea un trigger que, cada vez que se modifiquen datos de un empleado, registre una entrada en la tabla AUDITORIA_EMPLEADOS con la fecha del suceso, valor antiguo y valor nuevo de cada campo, así como el tipo de operación realizada (en este caso MODIFICACIÓN).
+```sql 
 CREATE OR REPLACE
 TRIGGER Modificacion_empleado
 AFTER UPDATE ON EMPLEADOS
@@ -1325,8 +1332,10 @@ BEGIN
   INSERT INTO AUDITORIA_EMPLEADOS VALUES(cadena);
 
 END Modificacion_empleado;
+```
 
 ### 3. Crea un trigger para que registre en la tabla AUDITORIA_EMPLEADOS las subidas de salarios superiores al 5%. 
+```sql
 CREATE OR REPLACE
 TRIGGER Subida_salario
 AFTER UPDATE OF SALAR ON EMPLEADOS
@@ -1419,6 +1428,8 @@ BEGIN
   END IF;
 
 END Actualizacion_departamento;
+```
+
 
 ### 5. Realiza las siguientes operaciones para comprobar si el disparador anterior funciona correctamente.
 ```sql
