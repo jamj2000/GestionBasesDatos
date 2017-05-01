@@ -832,24 +832,23 @@ FROM EMPLEADOS
 WHERE NUMHI = 3
 ORDER BY 1, 2;
 
-     COMIS NOMEM                                SALAR  
-     ----------------------------------------------------      
-     80    OCTAVIO                              1910    
-     100   LAVINIA                              1700     
-           CESAR                                1800  
-           GLORIA                               1790        
+         COMIS NOMEM                          SALAR  
+    ---------- ------------------------------ ----------    
+            80 OCTAVIO                              1910    
+           100 LAVINIA                              1700     
+               CESAR                                1800  
+               GLORIA                               1790        
 
 PROMPT ________________________________ Ejercicio 5 ________________________________
-SELECT comis, nomem, salar
+SELECT COMIS, NOMEM, SALAR
 FROM EMPLEADOS
-WHERE numhi = 3 AND comis IS NOT NULL
+WHERE NUMHI = 3 AND COMIS IS NOT NULL
 ORDER BY 1, 2;
 
-     COMIS nomem                               SALAR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
----------- ------------------------------ ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-        80 OCTAVIO                              1910                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-       100 LAVINIA                              1700                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-
+         COMIS NOMEM                          SALAR  
+    ---------- ------------------------------ ----------  
+            80 OCTAVIO                              1910 
+           100 LAVINIA                              1700  
 
 
 PROMPT ________________________________ Ejercicio 6 ________________________________
@@ -858,12 +857,10 @@ FROM EMPLEADOS
 WHERE numhi = 0 AND salar > 1200 AND salar < 1500
 ORDER BY 1 DESC, 2;
 
-     SALAR nomem                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
----------- ------------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-      1260 LIVIA                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-      1260 SABINA                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-
-
+         SALAR nomem              
+    ---------- ------------------------------         
+          1260 LIVIA                   
+          1260 SABINA        
 
 PROMPT ________________________________ Ejercicio 7 ________________________________
 SELECT DISTINCT numde
@@ -871,28 +868,24 @@ FROM EMPLEADOS
 WHERE salar < 1500
 ORDER BY 1;
 
-     NUMDE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-       100                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-       110                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-       111                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-       112                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-       122                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-
-
-
+         NUMDE                                      
+    ----------                                     
+           100                                      
+           110                                      
+           111                                        
+           112                                      
+           122 
+	   
 PROMPT ________________________________ Ejercicio 8 ________________________________
 SELECT DISTINCT comis
 FROM EMPLEADOS
 WHERE numde = 110;
 
-     COMIS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-        50                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-
-
-
+         COMIS                                      
+    ----------  
+    
+            50  
+	    
 ### 3. Práctica 3:  Consultas con Predicados Básicos
 1.- Obtener una relación por orden alfabético de los departamentos cuyo presupuesto es inferior a 30.000 € El nombre de los departamentos vendrá precedido de las palabras 'DEPARTAMENTO DE '. Nota: El presupuesto de los departamentos viene expresado en miles de €.
 SELECT 'DEPARTAMENTO DE ' || nomde AS "NOMBRE"
