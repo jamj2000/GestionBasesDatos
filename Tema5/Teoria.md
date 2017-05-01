@@ -405,8 +405,8 @@ Tipos de Bloques
 - Paquetes: Se usan para agrupar procedimientos y funciones. Facilitan la descomposición modular y el mantenimiento.
 - Disparadores (triggers): Son bloques nominados que se almacenan en la BD. Su ejecución está condicionada a cierta condición, como por ejemplo usar una orden concreta del DML.
 - Comentarios: Pueden incluirse siempre que se desee.
-  - Monolínea: Empiezan con 2 guiones -- y terminan a final de línea.
-  - Multilínea: Empiezan con /* y terminan con */ (como en C).
+  - Monolínea: Empiezan con 2 guiones `--` y terminan a final de línea.
+  - Multilínea: Empiezan con `/*` y terminan con `*/` (como en C).
 
 Ejemplos de Bloques
 
@@ -429,6 +429,7 @@ Los otros tipos de bloques los veremos con mayor detenimiento más adelante.
 Para ejecutar un serie de instrucciones según se cumpla o no una condición tenemos dos estructuras:
 - IF
 - CASE
+
 Estas estructuras necesitan que indiquemos la condición o condiciones que deseamos evaluar. Dicha condición se evalúa en la mayoría de los lenguajes de programación como TRUE o FALSE. 
 En SQL se usa una lógica trivaluada (TRUE, FALSE y NULL), donde NULL tiene el significado de ”desconocido o no definido”. Cualquier expresión relacional con un operando nulo, devuelve NULL.
 Tablas de Verdad:
@@ -854,9 +855,8 @@ Puede ser cualquier tipo válido en una columna de tabla (vistos anteriormente) 
 El valor por defecto es NULL, excepto que se especifique un valor como Valor_Inicial (puede sustituirse := por DEFAULT). 
 Con NOT NULL se requiere la inicialización.
 - Tipos Escalares:
-  - Numéricos Reales: NUMBER(p,e) y sus subtipos totalmente equivalentes definidos por cuestiones de compatibilidad: DEC, DECIMAL, DOUBLE PRECISION, INT, INTEGER, NUMERIC, SMALLINT y REAL.
-Se almacenan en formato decimal: Para operaciones aritméticas deben traducirse a binario.
-  - Numéricos Enteros: BINARY_INTEGER, que es un entero en binario (complemento a 2) con rango ±2147483647, ideal para variables sobre las que se efectuarán operaciones (contadores...). Tiene definidos subtipos restringidos en su rango: NATURAL [0, 2147483647], NATURALN (igual que NATURAL pero NOT NULL), POSITIVE [1, 2147483647], POSITIVEN, SIGNTYPE (–1, 0 y 1).
+  - Numéricos Reales. NUMBER(p,e) y sus subtipos totalmente equivalentes definidos por cuestiones de compatibilidad: DEC, DECIMAL, DOUBLE PRECISION, INT, INTEGER, NUMERIC, SMALLINT y REAL.Se almacenan en formato decimal: Para operaciones aritméticas deben traducirse a binario.
+  - Numéricos Enteros. BINARY_INTEGER, que es un entero en binario (complemento a 2) con rango ±2147483647, ideal para variables sobre las que se efectuarán operaciones (contadores...). Tiene definidos subtipos restringidos en su rango: NATURAL [0, 2147483647], NATURALN (igual que NATURAL pero NOT NULL), POSITIVE [1, 2147483647], POSITIVEN, SIGNTYPE (–1, 0 y 1).
 PLS_INTEGER es similar a BINARY_INTEGER, pero más rápido en las operaciones aritméticas y que genera un error si se produce un desbordamiento (ORA-1426) al asignarlo a un NUMBER.
 - Carácter: 
   - VARCHAR2(max_tam), con max_tam<=32676 bytes (como columna de tabla admite 4000 → Cuidado con los errores). Si se usa un código distinto al código ASCII, el número total de caracteres puede ser menor.
@@ -883,7 +883,7 @@ PLS_INTEGER es similar a BINARY_INTEGER, pero más rápido en las operaciones ar
   - Tabla%ROWTYPE: el tipo que tenga asignado una fila de una tabla, independientemente de cómo esté definida ésta.
 
 Ejemplos:
-```sql
+```
 CODIGO         HOTEL.ID%TYPE;
 HABS        HOTEL.NHABS%TYPE;
 DEP       DEPARTAMENTOS%ROWTYPE;
@@ -1077,7 +1077,10 @@ END;
 /
 ```
 
-> NOTA: Existe otra forma de trabajar con cursores explícitos, pero resulta más complicada, por lo que se recomienda utilizar, siempre que se pueda, la forma indicada anteriormente.  La forma complicada de hacerlo sería así:
+> NOTA: Existe otra forma de trabajar con cursores explícitos, pero resulta más complicada, por lo que se recomienda utilizar, siempre que se pueda, la forma indicada anteriormente.  
+
+La forma complicada de hacerlo sería así:
+
 ```sql
 DECLARE
   CURSOR Hoteles IS         -- Hoteles es un cursor explícito
@@ -1101,6 +1104,7 @@ Ejemplo de cursor explícito con parámetros:
 
 Un cursor puede aceptar parámetros. Por ejemplo cuando deseamos que los resultados de la consulta dependan de ciertas variables. Para hacer que el cursor varíe según esos parámetros, se han de indicar los mismos en la declaración del cursor. Para ello se pone entre paréntesis su nombre y tipo tras el nombre del cursor en la declaración.
 A continuación se muestra un cursor que admite un parámetro que luego será utilizado en la consulta para mostrar los hoteles cuyo ID sea menor que el valor de dicho parámetro.
+
 ```sql
 DECLARE
   CURSOR Hoteles(num NUMBER) IS        -- Hoteles es un cursor explícito
