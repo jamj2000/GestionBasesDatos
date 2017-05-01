@@ -15,99 +15,40 @@ a) Obtener el posible diagrama E/R a partir del modelo relacional anterior.
 
 
 b) Escribir las sentencias SQL correspondientes para crear las tablas en ORACLE, teniendo en cuenta las siguientes restricciones:
+
 CENTROS
-Campo
-Nulo
-Tipo de datos
-Observaciones
-NUMCE
-NOT NULL
-NUMBER(4)
-Número de centro
-NOMCE
 
-VARCHAR2(25)
-Nombre de centro
-DIRCE
-
-VARCHAR2(25)
-Dirección del centro
+Campo | Nulo | Tipo de datos | Observaciones
+------|------|---------------|--------------
+NUMCE|NOT NULL|NUMBER(4)|Número de centro
+NOMCE| |VARCHAR2(25)|Nombre de centro
+DIRCE| |VARCHAR2(25)|Dirección del centro
 
 DEPARTAMENTOS
-Campo
-Nulo
-Tipo de datos
-Observaciones
-NUMDE
-NOT NULL
-NUMBER(3)
-Número de departamento
-NUMCE
 
-NUMBER(4)
-Número de centro
-DIREC
-
-NUMBER(3)
-Director
-TIDIR
-
-CHAR(1)
-Tipo de director (en Propiedad, en Funciones)
-PRESU
-
-NUMBER(3,1)
-Presupuesto en miles de €
-DEPDE
-
-NUMBER(3)
-Departamento del que  depende
-NOMDE
-
-VARCHAR2(20)
-Nombre de departamento
+Campo | Nulo | Tipo de datos | Observaciones
+------|------|---------------|--------------
+NUMDE|NOT NULL|NUMBER(3)|Número de departamento
+NUMCE| |NUMBER(4)|Número de centro
+DIREC| |NUMBER(3)|Director
+TIDIR| |CHAR(1)|Tipo de director (en Propiedad, en Funciones)
+PRESU| |NUMBER(3,1)|Presupuesto en miles de €
+DEPDE| |NUMBER(3)|Departamento del que  depende
+NOMDE| |VARCHAR2(20)|Nombre de departamento
 
 EMPLEADOS
-Campo
-Nulo
-Tipo de datos
-Observaciones
-NUMEM
-NOT NULL
-NUMBER(3)
-Número de empleado
-EXTEL
 
-NUMBER(3)
-Extensión telefónica
-FECNA
-
-DATE
-Fecha de nacimiento
-FECIN
-
-DATE
-Fecha de incorporación
-SALAR
-
-NUMBER(5)
-Salario
-COMIS
-
-NUMBER(3)
-Comisión
-NUMHI
-
-NUMBER(1)
-Número de hijos
-nomem
-
-VARCHAR2(10)
-Nombre de empleado
-NUMDE
-
-NUMBER(3)
-Número de departamento
+Campo | Nulo | Tipo de datos | Observaciones
+------|------|---------------|--------------
+NUMEM|NOT NULL|NUMBER(3)|Número de empleado
+EXTEL| |NUMBER(3)|Extensión telefónica
+FECNA| |DATE|Fecha de nacimiento
+FECIN| |DATE|Fecha de incorporación
+SALAR| |NUMBER(5)|Salario
+COMIS| |NUMBER(3)|Comisión
+NUMHI| |NUMBER(1)|Número de hijos
+nomem| |VARCHAR2(10)|Nombre de empleado
+NUMDE| |NUMBER(3)|Número de departamento
 
 ```sql
 CREATE TABLE CENTROS(
@@ -163,20 +104,10 @@ CREATE TABLE EMPLEADOS(
 ``` 
 
 c)  Inserta los siguientes datos en la tabla DEPARTAMENTOS.
-NUMDE
-NUMCE
-DIREC
-TIDIR
-PRESU
-DEPDE
-NOMDE
-100
-10
-260
-P
-72
-NULL
-DIRECCIÓN GENERAL
+
+NUMDE|NUMCE|DIREC|TIDIR|PRESU|DEPDE|NOMDE
+-----|-----|-----|-----|-----|-----|-----
+100|10|260|P|72|NULL|DIRECCIÓN GENERAL
 110
 20
 180
@@ -790,11 +721,10 @@ FROM DEPARTAMENTOS
 WHERE tidir = 'F'
 ORDER BY 1;
 
-NOMDE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-------------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-ORGANIZACIÓN                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-SECTOR INDUSTRIAL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-
+    NOMDE                                    
+    ------------------------------                     
+    ORGANIZACIÓN                                    
+    SECTOR INDUSTRIAL   
 
 
 PROMPT ________________________________ Ejercicio 2 ________________________________
@@ -803,14 +733,12 @@ FROM EMPLEADOS
 WHERE numde = 121
 ORDER BY 1;
 
-nomem                               NUMEM      EXTEL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
------------------------------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-CESAR                                 110        350                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-FABIOLA                               370        360                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-JULIANA                               190        350                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-JULIO                                 150        340                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-
-
+    NOMEM                               NUMEM      EXTEL 
+    ------------------------------ ---------- ----------  
+    CESAR                                 110        350  
+    FABIOLA                               370        360    
+    JULIANA                               190        350   
+    JULIO                                 150        340 
 
 PROMPT ________________________________ Ejercicio 3 ________________________________
 SELECT nomem "Nombre", extel AS "Extensión Telefónica"
@@ -818,12 +746,11 @@ FROM EMPLEADOS
 WHERE numde = 110
 ORDER BY 1;
 
-Nombre                         Extensión Telefónica                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
------------------------------- --------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-CARMEN                                          500                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-MARCOS                                          508                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-ROMULO                                          550                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-
+    Nombre                         Extensión Telefónica 
+    ------------------------------ --------------------  
+    CARMEN                                          500  
+    MARCOS                                          508  
+    ROMULO                                          550  
 
 
 PROMPT ________________________________ Ejercicio 4 ________________________________
