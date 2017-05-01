@@ -167,15 +167,15 @@ A continuación se presentan 3 soluciones. Ninguna de ellas es totalmente satisf
 La solución 1 no nos asegura que el Jefe de un Empleado trabaje en el mismo Departamento. Igual sucede con la solución 2. La solución 3 es la mejor, aunque en este caso podrían darse varios Jefes en un Departamento.
 
 
-Solución 1
+**Solución 1**
 
 ![Modelo Entidad-Relación](images/Tema2-Cuestion10a.png)
 
-Solución 2
+**Solución****
 
 ![Modelo Entidad-Relación](images/Tema2-Cuestion10b.png)
 
-Solución 3
+**Solución 3**
 
 ![Modelo Entidad-Relación](images/Tema2-Cuestion10c.png)
 
@@ -343,27 +343,27 @@ Por comodidad, suponemos que un visitante tiene, obligatoriamente, que alojarse 
 ![Modelo Entidad-Relación](images/Tema2-Cuestion21.png)
 
 > Por motivos de claridad no representaremos en el diagrama los atributos de las entidades. Sólo aparecerán en él los atributos propios de las relaciones.
-> Los atributos de cada entidad son los siguientes (clave principal subrayada):
+> Los atributos de cada entidad son los siguientes (clave principal en negrita):
 >
 ```
-ComunidadAutónoma → CodCA, Nombre, OrgResponsable.
-ParqueNatural → CodPN, Nombre, FechaDeclaración.
-Entrada → CodEntrada.
-Área → Nombre, Extensión.
-Personal → DNI, NSS, Nombre, Dirección, TfnoDomicilio, TfnoMóvil, Sueldo.
+ComunidadAutónoma → **CodCA**, Nombre, OrgResponsable.
+ParqueNatural → **CodPN**, Nombre, FechaDeclaración.
+Entrada → **CodEntrada**.
+Área → **Nombre**, Extensión.
+Personal → **DNI**, NSS, Nombre, Dirección, TfnoDomicilio, TfnoMóvil, Sueldo.
 Investigador → Titulación.
 Conservador → Tarea.
 Gestor → .
 Vigilante → .
-Vehículo → Matrícula, Tipo. 
-Proyecto → CodProy, Presupuesto, FechaInicio, FechaFin.
-Especie → CodEspecie, NombreCientífico, NombreVulgar.
+Vehículo → **Matrícula**, Tipo. 
+Proyecto → **CodProy**, Presupuesto, FechaInicio, FechaFin.
+Especie → **CodEspecie**, NombreCientífico, NombreVulgar.
 Animal → Alimentación (carnívoro, herbívoro, omnívoro), PeriodoCelo.
 Vegetal → Floración (sí,no), PeriodoFloración.
 Mineral → Tipo (cristal, roca).
-Visitante → DNI, Nombre, Domicilio, Profesión.
-Alojamiento → CodAlojamiento, Categoría, Capacidad.
-Excursión → CodExcursión, Fecha, Hora, Pie (sí/no).
+Visitante → **DNI**, Nombre, Domicilio, Profesión.
+Alojamiento → **CodAlojamiento**, Categoría, Capacidad.
+Excursión → **CodExcursión**, Fecha, Hora, Pie (sí/no).
 
 Para algunos atributos hemos puesto entre paréntesis el dominio de valores que admite.
 ```
@@ -376,99 +376,74 @@ En las soluciones aparece primero el diagrama Entidad-Relación de referencia po
 ### 22. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 8.
 El diagrama E/R es:
 
-
-
-
-
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion08.png)
 
 Su diagrama Relacional es:
 
-Hemos añadido CursoEscolar como parte de la clave principal de la tabla Recibe porque un alumno puede estar matriculado varias veces de la misma asignatura. Esto haría que la pareja (NumMat,CodAsignatura) se pudiese repetir y, por tanto, no sirviese como clave principal.
+![Modelo Entidad-Relación](images/Tema2-Cuestion22.png)
+
+> Hemos añadido CursoEscolar como parte de la clave principal de la tabla Recibe porque un alumno puede estar matriculado varias veces de la misma asignatura. Esto haría que la pareja (NumMat,CodAsignatura) se pudiese repetir y, por tanto, no sirviese como clave principal.
+
+
 ### 23. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 9.
 El diagrama E/R es:
 
-
-
-
-
-
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion09.png)
 
 Su diagrama Relacional es:
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion23.png)
+
 
 ### 24. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 10.
-Solución 1
+
+**Solución 1**
+
 El diagrama E/R es:
 
-
-
-
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion10a.png)
 
 Su diagrama Relacional es:
 
+![Modelo Entidad-Relación](images/Tema2-Cuestion24a.png)
 
 
+** Solución 2**
 
-
-Solución 2
 Su diagrama E/R es:
+
+![Modelo Entidad-Relación](images/Tema2-Cuestion10b.png)
+
 Su diagrama Relacional es:
 
+![Modelo Entidad-Relación](images/Tema2-Cuestion24b.png)
 
 
+**Solución 3**
 
-
-
-Solución 3
 El diagrama E/R es:
 
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion10c.png)
 
 Su diagrama Relacional es:
 
+![Modelo Entidad-Relación](images/Tema2-Cuestion24c.png)
 
 
+**Solución final**
 
-
-
-Solución final
 El diagrama E/R es:
 
-
-
-
-
-
-
-
-
-
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion10d.png)
 
 Su diagrama Relacional es:
 
-
+![Modelo Entidad-Relación](images/Tema2-Cuestion24d.png)
 
 
 
 ### 25. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 11.
 El diagrama E/R es:
-
-
-
-
-
-
 
 
 
