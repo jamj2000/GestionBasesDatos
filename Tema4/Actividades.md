@@ -827,17 +827,17 @@ ROMULO                                          550
 
 
 PROMPT ________________________________ Ejercicio 4 ________________________________
-SELECT comis,nomem,salar
+SELECT COMIS, NOMEM, SALAR
 FROM EMPLEADOS
-WHERE numhi = 3
+WHERE NUMHI = 3
 ORDER BY 1, 2;
 
-     COMIS | nomem                              | SALAR  
-     ----------|------------------------------|----------      
-     80  OCTAVIO                              1910    
-     100 LAVINIA                              1700                                                                          
-         CESAR                                1800  
-         GLORIA                               1790        
+     COMIS NOMEM                                SALAR  
+     ----------------------------------------------------      
+     80    OCTAVIO                              1910    
+     100   LAVINIA                              1700     
+           CESAR                                1800  
+           GLORIA                               1790        
 
 PROMPT ________________________________ Ejercicio 5 ________________________________
 SELECT comis, nomem, salar
