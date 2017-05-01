@@ -417,7 +417,7 @@ COMMIT
             50 
 
 
-
+```sql
 PROMPT ================================ Practica 2  ================================
 
 PROMPT ________________________________ Ejercicio 1 ________________________________
@@ -467,7 +467,7 @@ PROMPT ________________________________ Ejercicio 8 ____________________________
 SELECT DISTINCT comis
 FROM EMPLEADOS
 WHERE numde = 110;
- 
+``` 
 	    
 ### 3. Práctica 3:  Consultas con Predicados Básicos
 1.- Obtener una relación por orden alfabético de los departamentos cuyo presupuesto es inferior a 30.000 € El nombre de los departamentos vendrá precedido de las palabras 'DEPARTAMENTO DE '. Nota: El presupuesto de los departamentos viene expresado en miles de €.
