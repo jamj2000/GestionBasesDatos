@@ -1,108 +1,168 @@
-# ACTIVIDADES
+# ACTIVIDADES RESUELTAS
+# ELEMENTOS DE LAS BASES DE DATOS
+
+> IES Luis Vélez de Guevara  
+> Departamento de Informática
 
 
-6.1. Test
+## 6.1. Test
+
 Para cada una de las siguientes cuestiones elige razonadamente cada una de las respuestas correctas.
-6.1.1. ¿Cuáles de los siguientes puntos representan inconvenientes de los Sistemas de Ficheros?
+
+### 6.1.1. ¿Cuáles de los siguientes puntos representan inconvenientes de los Sistemas de Ficheros?
 a) Redundancia e Inconsistencia.
 b) Sistema de Gestión de Datos independiente de la máquina y del SO.
 c) Control de concurrencia.
 d) Difícil modificación de los datos.
-6.1.2. Los sistemas orientados a BD presentan las siguientes ventajas...
+
+### 6.1.2. Los sistemas orientados a BD presentan las siguientes ventajas...
 a) Integridad de los datos.
 b) Redundancia.
 c) Cada aplicación maneja sus propios datos.
 d) Independencia entre los datos y las aplicaciones que los usan.
-6.1.3. Los datos son ...
+
+### 6.1.3. Los datos son ...
 a) ... todo aquello de lo cual interesa guardar información.
 b) ... hechos conocidos que pueden registrarse y que tienen un significado implícito.
 c) ... información acerca de los metadados.
 d) ... las claves primarias y foráneas de cada entidad.
-6.1.4. Un SGBD ...
+
+### 6.1.4. Un SGBD ...
 a) ... esta formado por datos acerca de los datos presentes en la base de datos.
 b) ... es una aplicación que permite a los usuarios definir, crear y mantener una base de datos, y proporciona acceso controlado a la misma.
 c)  ... permite a los usuarios tener acceso a la BD completa impidiendo restricciones.
 d) ... permite la inserción, actualización, eliminación y consulta de datos mediante el lenguaje de manejo o manipulación de datos.
-6.2. Cuestiones
-6.2.1. Contesta los siguientes apartados
+
+## 6.2. Cuestiones
+
+### 6.2.1. Contesta los siguientes apartados
 a) Explica brevemente los antecedentes de las BD actuales.
 b) Enumera y explica brevemente los inconvenientes que presentan los antiguos sistemas de Archivos o de Ficheros.
-6.2.2. ¿Qué significa que los datos de una BD tienen un significado implícito? Por tres ejemplos, diferentes de los expuesto en el tema, que ilustren tu explicación.
-6.2.3. Definir que es un SGBD
-6.2.4. Indica las principales principales ventajas de las BD frente a los antiguos sistemas de ficheros.
-6.2.5. Nombre los distintos tipos de bases de datos que existen según el modelo que siguen
-6.2.6. ¿Qué son las vistas? ¿Para qué se utilizan?. Busca información en Internet para completar tu respuesta. ¿En qué se diferencia de una consulta?
-6.2.7. Describe el significado de las siguientes siglas: DDL, DML y DCL. Explica la utilidad de cada una.
-6.2.8. ¿Qué es un script o guión?
-6.2.9. Define los siguientes conceptos:
-• Dato
-• Tipo de Dato
-• Campo
-• Registro
-• Tabla
-• Relación
-• Consulta
-• Procedimiento
-6.2.10. ¿Qué es el diccionario de datos?
-6.2.11. Qué quiere decir que una base de datos permita la concurrencia?
-6.2.12. Utilizando el archivo “La biblia de Access” disponible en la moodle, contesta a las siguientes preguntas:
+
+### 6.2.2. ¿Qué significa que los datos de una BD tienen un significado implícito? Por tres ejemplos, diferentes de los expuesto en el tema, que ilustren tu explicación.
+
+### 6.2.3. Definir que es un SGBD
+
+### 6.2.4. Indica las principales principales ventajas de las BD frente a los antiguos sistemas de ficheros.
+
+### 6.2.5. Nombre los distintos tipos de bases de datos que existen según el modelo que siguen
+
+### 6.2.6. ¿Qué son las vistas? ¿Para qué se utilizan?. Busca información en Internet para completar tu respuesta. ¿En qué se diferencia de una consulta?
+
+### 6.2.7. Describe el significado de las siguientes siglas: DDL, DML y DCL. Explica la utilidad de cada una.
+
+### 6.2.8. ¿Qué es un script o guión?
+
+### 6.2.9. Define los siguientes conceptos:
+- Dato
+- Tipo de Dato
+- Campo
+- Registro
+- Tabla
+- Relación
+- Consulta
+- Procedimiento
+
+### 6.2.10. ¿Qué es el diccionario de datos?
+
+### 6.2.11. Qué quiere decir que una base de datos permita la concurrencia?
+
+### 6.2.12. Utilizando el archivo “La biblia de Access” disponible en la moodle, contesta a las siguientes preguntas:
 1. ¿Cuál es la extensión de un fichero que contiene la base de datos de ACCESS?
 2. Describe dos formas de crear un formulario en ACCESS.
 3. Indica los 10 tipos de datos básicos que existen en ACCESS.
 4. Describe dos formas de crear una consulta en ACCESS.
-6.3. Prácticas
-6.3.1. PRÁCTICA 1
+
+
+## 6.3. Prácticas
+
+### 6.3.1. PRÁCTICA 1
+
 OBJETIVOS: Comparar un Sistema de Ficheros con un Sistema basado en BD.
+
 ENUNCIADO: Se plantea un problema real y se muestra la solución dada al mismo utilizando un sistema de ficheros. Se analizará dicha solución y se detectarán en ella ejemplos de cada uno de los inconvenientes visto en teoría para los Sistemas de Ficheros. Es decir, buscaremos ejemplos en la solución propuesta que ilustren los siguientes inconvenientes:
-• Coste de almacenamiento elevado.
-• Datos redundantes.
-• Probabilidad alta de inconsistencia en los datos.
-• Difícil modificación en los datos.
-• Tiempos de procesamiento elevados.
+- Coste de almacenamiento elevado.
+- Datos redundantes.
+- Probabilidad alta de inconsistencia en los datos.
+- Difícil modificación en los datos.
+- Tiempos de procesamiento elevados.
+
 PROBLEMA REAL
+
 Una empresa se encarga de dar publicidad a los inmuebles que ofrece en alquiler, tanto en prensa local como nacional, entrevista a los posibles inquilinos, organiza las visitas a los inmuebles y negocia los contratos de alquiler. Una vez firmado el alquiler, la empresa asume la responsabilidad del inmueble, realizando inspecciones periódicas para comprobar su correcto mantenimiento. A continuación se describen los datos que se manejan en las oficinas de la empresa para llevar a cabo el trabajo diario.
+
 OFICINAS
+
 La empresa tiene varias oficinas en todo el país. Cada oficina tiene un código de identificación que es único, tiene una dirección (calle, número y ciudad), un número de teléfono y un número de fax. Cada oficina tiene su propia plantilla.
+
 PLANTILLA
+
 Cada oficina tiene un director que se encarga de supervisar todas sus gestiones. La empresa  sigue muy de cerca el trabajo de los directores y tiene registrada la fecha en que cada director empezó en el cargo en su oficina. Cada director tiene un pago anual por gastos de vehículo y una bonificación mensual que depende de los contratos de alquiler que haya realizado su oficina.
 En cada oficina hay varios supervisores. Cada uno es responsable del trabajo diario de un grupo de entre cinco y diez empleados que realizan las gestiones de los alquileres. El trabajo administrativo de cada grupo lo lleva un administrativo.
 Cada miembro de la plantilla tiene un código único que lo identifica en la empresa. De cada uno de ellos se quiere conocer el nombre, la dirección, el número de teléfono, la fecha de nacimiento, el número del DNI, su puesto en la empresa, el salario anual y la fecha en que entró en la empresa. De los administrativos se desea conocer también la velocidad con que escriben a máquina (en pulsaciones por minuto).
 Además, de cada empleado se debe guardar información sobre uno de sus parientes más próximos: nombre, relación con el empleado, dirección y número de teléfono.
+
 INMUEBLES
+
 Cada oficina de la empresa tiene una serie de inmuebles para alquilar. Estos inmuebles se identifican por un código que es único dentro de la empresa. Los datos que se guardan de cada inmueble son los siguientes: dirección completa (calle, número y ciudad), tipo de inmueble, número de habitaciones y precio del alquiler en euros (este precio es mensual). El precio del alquiler se revisa de forma anual.
 Cada inmueble se asigna a un empleado que es el responsable de su gestión. Cada miembro de la plantilla puede tener asignados hasta veinte inmuebles para alquilar.
+
 PROPIETARIOS
+
 Los propietarios de los inmuebles pueden ser particulares o empresas. A cada propietario se le asigna un código que es único en la empresa. De los particulares se guarda el nombre, la dirección y el número de teléfono. De las empresas se guarda el nombre comercial, tipo de empresa, la dirección, el número de teléfono y el nombre de la persona de contacto.
+
 INQUILINOS (CLIENTES)
+
 Cuando un cliente contacta con la empresa por primera vez, se toman sus datos: nombre, dirección, número de teléfono, tipo de inmueble que prefiere e importe máximo que está dispuesto a pagar al mes por el alquiler. Ya que es un posible inquilino, se le asigna un código que es único en toda la empresa. De la entrevista inicial que se realiza con cada cliente se guarda la fecha, el empleado que la realizó y unos comentarios generales sobre el posible inquilino.
+
 VISITAS A LOS INMUEBLES
+
 En la mayoría de los casos, los posibles inquilinos desean ver varios inmuebles antes de alquilar uno. De cada visita que se realiza se guarda la fecha y los comentarios realizados por el cliente respecto al inmueble.
+
 ANUNCIOS
+
 Cuando algún inmueble es difícil de alquilar, la empresa lo anuncia en la prensa local y nacional. De cada anuncio se guarda la fecha de publicación y el coste económico del anuncio. 
 De los periódicos se guarda el nombre, la dirección, el número de teléfono, el número de fax y el nombre de la persona de contacto.
+
 CONTRATOS DE ALQUILER
+
 La empresa se encarga de redactar los términos de cada contrato de alquiler. Cada contrato tiene un número, un importe mensual, un método de pago, el importe del depósito, si se ha realizado el depósito, las fechas de inicio y finalización del contrato, la duración del contrato en meses y el miembro de la plantilla que lo formalizó. La duración mínima de un contrato es de tres meses y la duración máxima es de un año. Cada cliente puede tener alquilados uno o varios inmuebles al mismo tiempo.
+
 INSPECCIONES
+
 Como parte del servicio que presta la empresa, ésta se encarga de realizar inspecciones periódicas a los inmuebles para asegurarse de que se mantienen en buen estado. Cada inmueble se inspecciona al menos una vez cada seis meses. Se inspeccionan tanto los inmuebles alquilados, como los que están disponibles para alquilar. De cada inspección se anota la fecha y los comentarios sobre su estado que quiera incluir el empleado que la ha llevado a cabo.
+
 ACTIVIDADES DE CADA OFICINA
+
 En cada oficina se llevan a cabo las siguientes actividades para garantizar que cada empleado tenga acceso a la información necesaria para desempeñar su tarea de modo efectivo y eficiente.
 Cada actividad está relacionada con una función específica de la empresa. Cada una de estas funciones corresponde a uno o varios puestos de los que ocupan los empleados, por lo que éstos se indican entre paréntesis.
-SOLUCIÓN PROPUESTA SEGÚN EL ANTIGUO SISTEMA DE FICHEROS
+
+**SOLUCIÓN PROPUESTA SEGÚN EL ANTIGUO SISTEMA DE FICHEROS**
+
 DEPARTAMENTO DE VENTAS
+
 En esta inmobiliaria, el departamento de ventas se encarga de alquilar inmuebles. Por ejemplo, cuando un propietario pasa por el departamento de ventas para ofrecer en alquiler su piso, se rellena un formulario en donde se recogen los datos del piso, como la dirección y el número de habitaciones, y los datos del propietario. El departamento de ventas también se encarga de atender a los clientes que desean alquilar un inmueble. Cuando un cliente (posible inquilino) pasa por este departamento se rellena un formulario con sus datos y sus preferencias: si quiere un piso o una casa, el importe mensual que está dispuesto a pagar por el alquiler, etc. Para gestionar toda esta información, el departamento de ventas posee un sistema de información. El sistema del departamento de ventas tiene tres ficheros: fichero de inmuebles, fichero de propietarios y fichero de inquilinos.
 
 DEPARTAMENTO DE CONTRATOS
+
 El departamento de contratos se ocupa de gestionar los contratos de alquiler de los inmuebles. Cuando un cliente desea formalizar un contrato, un empleado de la empresa rellena un formulario con los datos del inquilino y los datos del inmueble. Este formulario se pasa al departamento de contratos, que asigna un número al contrato y completa la información sobre el pago y el período del contrato. Para gestionar esta información, el departamento de contratos posee un sistema de información con tres ficheros: el fichero de los contratos, el fichero de los inmuebles alquilados y el fichero de los inquilinos que tienen en vigor un contrato de alquiler.
 
 IMPORTANTE
+
 Al tratarse de una solución basada en Sistemas de ficheros, cada departamento accede a sus propios ficheros mediante una serie de programas de aplicación escritos especialmente para ellos. Estos programas son totalmente independientes entre un departamento y otro, y se utilizan para introducir datos, mantener los ficheros y generar los informes que cada departamento necesita. Es importante destacar que la estructura física de los ficheros de datos y de sus registros está definida dentro de los programas de aplicación.
 La situación es muy similar en el resto de departamentos:
+
 DEPARTAMENTO DE NÓMINAS
+
 En el departamento de nóminas tiene un fichero con los datos de los salarios de los empleados. Los registros de este fichero tienen los siguientes campos: número de empleado, nombre, apellido, dirección, fecha de nacimiento, salario, DNI y número de la oficina en la que trabaja.
+
 DEPARTAMENTO DE PERSONAL
+
 El departamento de personal tiene un fichero con los datos de los empleados. Sus registros tienen los siguientes campos: número de empleado, nombre, apellidos, dirección, teléfono, puesto, fecha de nacimiento, salario, DNI y número de la oficina en la que trabaja.
+
 CUESTIONES
 a) Completa una tabla buscando ejemplos en el enunciado de cada uno de los inconvenientes estudiados en los sistemas de ficheros. Deberás completar la respuesta con una breve explicación que ilustre el porqué dicho ejemplo presenta el inconveniente en cuestión.
+
 INCONVENIENTE
 EJEMPLO
 EXPLICACIÓN
@@ -132,11 +192,15 @@ b) Supongamos ahora que quisiéramos resolver el problema real usando el enfoque
 • Metadatos
 Nota 2: Los tres últimos elementos pueden ser más difíciles de encontrar. Si es así, no os preocupéis porque estamos empezando.
 c) Utiliza los ejemplos sobre datos detectados en el enunciado para explicar el concepto de “significado implícito” de los mismos.
-6.3.2. PRÁCTICA 2
+
+### 6.3.2. PRÁCTICA 2
+
 OBJETIVO: Adentrarse en el diseño e implementación de BD a través de un ejemplo guiado. La realización autónoma de este tipo de prácticas será el objetivo esencial de este módulo.
+
 ENUNCIADO: Se plantea el enunciado de una base de datos y los esquemas conceptuales y lógicos que resultan y que ¡pronto sabrás realizar por ti mismo!. A partir de ellos, se explicará paso a paso como crear las tablas y las relaciones entre las mismas. Cómo introducir los datos y cómo realizar algunas consultas sencillas sobre ellos. Cuando finalicemos este módulo sabrás hacer todo esto solo y además en lenguaje SQL!!
 
 PROBLEMA
+
 Se quiere realizar una BD para una empresa dedicada a la comercialización de cocinas.
 Primera parte
 a) Detecta en el enunciado anterior todas las ENTIDADES y DATOS. Indica a qué tipo de Base de Datos de entre los vistos en el tema, corresponde la solución planteada.
