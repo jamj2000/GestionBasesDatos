@@ -190,9 +190,10 @@ En este caso se trata de una subconsulta creada con el operador IN, se eliminar�
 
 ### 2.4. Ejecución de comandos DML sobre vistas.
 Las instrucciones DML ejecutadas sobre las vistas permiten añadir o modificar los datos de las tablas relacionados con las filas de la vista. Ahora bien, no es posible ejecutar instrucciones DML sobre vistas que:
-• Utilicen funciones de grupo (SUM, AVG,...)
-• Usen GROUP BY o DISTINCT
-• Posean columnas con cálculos (P. ej: PRECIO * 1.16)
+- Utilicen funciones de grupo (SUM, AVG,...)
+- Usen GROUP BY o DISTINCT
+- Posean columnas con cálculos (P. ej: PRECIO * 1.16)
+
 Además no se pueden añadir datos a una vista si en las tablas referencias en la consulta SELECT hay campos NOT NULL que no aparecen en la consulta (es lógico ya que al añadir el dato se tendría que añadir el registro colocando el valor NULL en el campo).
 Si tenemos la siguiente vista:
 ```sql
@@ -356,8 +357,9 @@ END;
 
 La barra / se utiliza para ejecutar el código.
 > NOTA IMPORTANTE: Si usas SQL*Plus deberás ejecutar al inicio de sesión la siguiente orden para que se habilite la salida:
->
-> `SET SERVEROUTPUT ON`
+>```sql
+> SET SERVEROUTPUT ON
+>```
 
 La estructura general es:
 ```
@@ -422,7 +424,7 @@ END;
 
 Ejemplo de Bloque Nominado
 
-La única diferencia con el ejemplo anterior es que debemos poner una etiqueta al bloque anónimo para referirnos a él. Dicha etiqueta se pondrá antes de la cláusula DECLARE y entre ángulos dobles: \<\<nombre_bloque\>\>.
+La única diferencia con el ejemplo anterior es que debemos poner una etiqueta al bloque anónimo para referirnos a él. Dicha etiqueta se pondrá antes de la cláusula DECLARE y entre ángulos dobles: `<<nombre_bloque>>`.
 Es buena costumbre, aunque es opcional, poner el nombre también después de la palabra END.
 ```sql
 <<fecha>>
