@@ -14,7 +14,7 @@
 
 
 Contenido
-
+```
 1.   INTRODUCCIÓN	3
 2.   LENGUAJE DE MANIPULACIÓN DE DATOS: DML	3
 2.1.   Inserción de datos	3
@@ -47,7 +47,7 @@ Contenido
 5.5.   Práctica 5	58
 5.6.   Práctica 6	59
 5.7.   Práctica 7	60
-
+```
 
 
 ## 1. INTRODUCCIÓN
@@ -224,19 +224,24 @@ En términos teóricos, una transacción es un conjunto de tareas relacionadas q
 - permanencia (Durability). 
 
 Estas propiedades garantizan un comportamiento predecible, reforzando la función de las transacciones como proposiciones de todo o nada.
-- *Atomicidad*: Una transacción es una unidad de trabajo el cual se realiza en su totalidad o no se realiza en ningún caso. Las operaciones asociadas a una transacción comparten normalmente un objetivo común y son interdependientes. Si el sistema ejecutase únicamente una parte de las operaciones, podría poner en peligro el objetivo final de la transacción. 
-- *Coherencia*: Una transacción es una unidad de integridad porque mantiene la coherencia de los datos, transformando un estado coherente de datos en otro estado de datos igualmente coherente.
-- *Aislamiento*: Una transacción es una unidad de aislamiento, permitiendo que transacciones concurrentes se comporten como si cada una fuera la única transacción que se ejecuta en el sistema. El aislamiento requiere que parezca que cada transacción sea la única que manipula el almacén de datos, aunque se puedan estar ejecutando otras transacciones al mismo tiempo. Una transacción nunca debe ver las fases intermedias de otra transacción.
-- *Permanencia*: Una transacción también es una unidad de recuperación. Si una transacción se realiza satisfactoriamente, el sistema garantiza que sus actualizaciones se mantienen aunque el equipo falle inmediatamente después de la confirmación. El registro especializado permite que el procedimiento de reinicio del sistema complete las operaciones no finalizadas, garantizando la permanencia de la transacción.
+- **Atomicidad**: Una transacción es una unidad de trabajo el cual se realiza en su totalidad o no se realiza en ningún caso. Las operaciones asociadas a una transacción comparten normalmente un objetivo común y son interdependientes. Si el sistema ejecutase únicamente una parte de las operaciones, podría poner en peligro el objetivo final de la transacción. 
+- **Coherencia**: Una transacción es una unidad de integridad porque mantiene la coherencia de los datos, transformando un estado coherente de datos en otro estado de datos igualmente coherente.
+- **Aislamiento**: Una transacción es una unidad de aislamiento, permitiendo que transacciones concurrentes se comporten como si cada una fuera la única transacción que se ejecuta en el sistema. El aislamiento requiere que parezca que cada transacción sea la única que manipula el almacén de datos, aunque se puedan estar ejecutando otras transacciones al mismo tiempo. Una transacción nunca debe ver las fases intermedias de otra transacción.
+- **Permanencia**: Una transacción también es una unidad de recuperación. Si una transacción se realiza satisfactoriamente, el sistema garantiza que sus actualizaciones se mantienen aunque el equipo falle inmediatamente después de la confirmación. El registro especializado permite que el procedimiento de reinicio del sistema complete las operaciones no finalizadas, garantizando la permanencia de la transacción.
 
 En términos más prácticos, una transacción está formada por una serie de instrucciones DML. Una transacción comienza con la primera instrucción DML que se ejecute y finaliza con una operación COMMIT (si la transacción se confirma) o una operación ROLLBACK (si la operación se cancela).
 Hay que tener en cuenta que cualquier instrucción DDL o DCL da lugar a un COMMIT implícito, es decir todas las instrucciones DML ejecutadas hasta ese instante pasan a ser definitivas.
 
 Para poder hacer uso de transacciones en SQL*Plus debemos tener desactivado el modo AUTOCOMMIT.  Podemos ver su estado con la orden:
+
+```
 SHOW AUTOCOMMIT
+```
 
 Para desactivar dicho modo, usamos la orden:
+```
 SET AUTOCOMMIT OFF
+```
 
 ### 3.1. COMMIT
 La instrucción COMMIT hace que los cambios realizados por la transacción sean definitivos, irrevocables. Sólo se debe utilizar si estamos de acuerdo con los cambios, conviene asegurarse mucho antes de realizar el COMMIT ya que las instrucciones ejecutadas pueden afectar a miles de registros.
@@ -349,7 +354,9 @@ END;
 
 La barra / se utiliza para ejecutar el código.
 > NOTA IMPORTANTE: Si usas SQL*Plus deberás ejecutar al inicio de sesión la siguiente orden para que se habilite la salida:
-> `SET SERVEROUTPUT ON`
+
+`SET SERVEROUTPUT ON`
+
 La estructura general es:
 ```
 [ DECLARE 
@@ -404,7 +411,7 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE ('Fecha:  ' || fecha);
 END;
 /
-```sql
+```
 
 Ejemplo de Bloque Nominado
 La única diferencia con el ejemplo anterior es que debemos poner una etiqueta al bloque anónimo para referirnos a él. Dicha etiqueta se pondrá antes de la cláusula DECLARE y entre ángulos dobles: <<nombre_bloque>>.
@@ -434,7 +441,7 @@ Tablas de Verdad:
 
 Estructura IF-THEN-ELSE
 Formato:
-```
+```sql
 IF  Expresión_Booleana1 THEN
   Secuencia_de_Órdenes1;
 [ ELSIF Expresión_Booleana2 THEN
@@ -481,8 +488,7 @@ END IF;
 El código completo del ejemplo anterior es:
 ```
 SET SERVEROUTPUT ON 
-```
-```sql
+
 DECLARE
    A NUMBER := NULL;
    B NUMBER := 2;
