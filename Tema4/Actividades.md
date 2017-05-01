@@ -16,7 +16,7 @@ a) Obtener el posible diagrama E/R a partir del modelo relacional anterior.
 
 b) Escribir las sentencias SQL correspondientes para crear las tablas en ORACLE, teniendo en cuenta las siguientes restricciones:
 
-CENTROS
+**CENTROS**
 
 Campo | Nulo | Tipo de datos | Observaciones
 ------|------|---------------|--------------
@@ -24,7 +24,7 @@ NUMCE|NOT NULL|NUMBER(4)|Número de centro
 NOMCE| |VARCHAR2(25)|Nombre de centro
 DIRCE| |VARCHAR2(25)|Dirección del centro
 
-DEPARTAMENTOS
+**DEPARTAMENTOS**
 
 Campo | Nulo | Tipo de datos | Observaciones
 ------|------|---------------|--------------
@@ -36,7 +36,7 @@ PRESU| |NUMBER(3,1)|Presupuesto en miles de €
 DEPDE| |NUMBER(3)|Departamento del que  depende
 NOMDE| |VARCHAR2(20)|Nombre de departamento
 
-EMPLEADOS
+**EMPLEADOS**
 
 Campo | Nulo | Tipo de datos | Observaciones
 ------|------|---------------|--------------
@@ -156,6 +156,7 @@ VALUES(130, 10,310,'P',12,100, 'FINANZAS');
 ```
 
 f) Inserta los siguientes datos en la tabla EMPLEADOS. 
+
 NUMEM| EXTEL| FECNA| FECIN| SALAR| COMIS| NUMHI| NOMEM| NUMDE
 -----|------|------|------|------|------|------|------|------
 110| 350| 10/11/1970| 15/02/1985| 1800| NULL| 3| CESAR| 121
