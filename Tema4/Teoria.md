@@ -108,7 +108,7 @@ El operador || es el de la concatenación. Sirve para unir textos.
 Ejemplo:
 
 ```sql
-SELECT tipo, modelo, tipo || '-' || modelo “Clave Pieza” FROM PIEZAS;
+SELECT tipo, modelo, tipo || '-' || modelo "Clave Pieza" FROM PIEZAS;
 ```
 
 El resultado de esa consulta tendría esta estructura:
