@@ -1394,15 +1394,20 @@ DELETE
 ```
 
 2) Cuando se lanza el evento en relación a dicho evento:
+
 ```
-BEFORE. El código del trigger se ejecuta antes de ejecutar la instrucción DML que causó el lanzamiento del trigger.
-AFTER. El código del trigger se ejecuta después de haber ejecutado la instrucción DML que causó el lanzamiento del trigger.
-INSTEAD OF. El trigger sustituye a la operación DML . Se utiliza para vistas que no admiten instrucciones DML.
+BEFORE
+AFTER
+INSTEAD OF
 ```
 
+- BEFORE: El código del trigger se ejecuta antes de ejecutar la instrucción DML que causó el lanzamiento del trigger.
+- AFTER: El código del trigger se ejecuta después de haber ejecutado la instrucción DML que causó el lanzamiento del trigger.
+- INSTEAD OF: El trigger sustituye a la operación DML . Se utiliza para vistas que no admiten instrucciones DML.
+
 3)  Las veces que el trigger se ejecuta o tipo de trigger:
-de Instrucción. El cuerpo del trigger se ejecuta una sola vez por cada evento que lance el trigger. Esta es la opción por defecto. El código se ejecuta aunque la instrucción DML no genere resultados.
-de Fila. El código se ejecuta una vez por cada fila afectada por el evento. Por ejemplo si hay una cláusula UPDATE que desencadena un trigger y dicho UPDATE actualiza 10 filas; si el trigger es de fila se ejecuta una vez por cada fila, si es de instrucción se ejecuta sólo una vez.
+- de Instrucción. El cuerpo del trigger se ejecuta una sola vez por cada evento que lance el trigger. Esta es la opción por defecto. El código se ejecuta aunque la instrucción DML no genere resultados.
+- de Fila. El código se ejecuta una vez por cada fila afectada por el evento. Por ejemplo si hay una cláusula UPDATE que desencadena un trigger y dicho UPDATE actualiza 10 filas; si el trigger es de fila se ejecuta una vez por cada fila, si es de instrucción se ejecuta sólo una vez.
 
 4) El cuerpo del trigger, es decir el código que ejecuta dicho trigger
 Ejemplo:
