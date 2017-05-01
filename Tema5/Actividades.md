@@ -7,6 +7,7 @@
 
 ## Práctica 1
 > INSERT / UPDATE / DELETE  
+
 Haciendo uso del esquema E01 cuyo diseño físico realizamos en el tema 3, realiza las operaciones de manipulación de datos indicadas a continuación.
 
 ```sql
@@ -598,7 +599,8 @@ ALTER TABLE ACTUA ADD  CONSTRAINT FK2_ACTUA FOREIGN KEY(IDPELICULA)
 
 ## Práctica 3
 > PL/SQL: Introducción  
-> NOTA: Las siguientes prácticas se realizarán dentro del esquema EMPLEADOS.
+
+Las siguientes prácticas se realizarán dentro del esquema EMPLEADOS.
 
 ```
 -- SQLPLUS EMPLEADOS/EMPLEADOS
