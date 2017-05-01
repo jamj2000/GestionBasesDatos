@@ -1351,8 +1351,11 @@ BEGIN
        || :old.SALAR || ' --> ' || :new.SALAR );
   END IF;
 END Subida_salario;
+```
+
 
 ### 4. Deseamos operar sobre los datos de los departamentos y los centros donde se hallan. Para ello haremos uso de la vista SEDE_DEPARTAMENTOS creada anteriormente. Al tratarse de una vista que involucra más de una tabla, necesitaremos crear un trigger de sustitución para gestionar las operaciones de actualización de la información. Crea el trigger necesario para realizar inserciones, eliminaciones y modificaciones en la vista anterior.  
+```sql
 CREATE OR REPLACE 
 TRIGGER Actualizacion_departamento
 INSTEAD OF DELETE OR INSERT OR UPDATE ON SEDE_DEPARTAMENTOS
