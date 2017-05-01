@@ -399,9 +399,9 @@ END;
 
 Tipos de Bloques
 - Anónimos (anonymous blocks): Se construyen normalmente de manera dinámica para un objetivo muy concreto y se ejecutan, en general, una única vez. Por eso no llevan nombre.
-- Nominados (named blocks): Son similares a los bloques anónimos pero con una etiqueta que da nombre al bloque.
-- Subprogramas o procedimientos: Se construyen para efectuar algún tipo de operación más o menos frecuente y se almacenan para ejecutarlos cuantas veces se desee. Se ejecutan con una llamada al procedimiento.
-- Funciones: Son similares a los procedimientos. Al igual que estos realizan algún tipo de operación, pero además las funciones devuelven un valor que puede ser usado en cualquier sentencia PL/SQL e incluso en sentencias SQL.
+- Nominados (named blocks): Son bloques a los que se les pone un nombre. También se conocen como subprogramas. Los subprogramas pueden ser procedimientos o funciones.
+  - Procedimientos: Se construyen para efectuar algún tipo de operación más o menos frecuente y se almacenan para ejecutarlos cuantas veces se desee. Se ejecutan con una llamada al procedimiento.
+  - Funciones: Son similares a los procedimientos. Al igual que estos realizan algún tipo de operación, pero además las funciones devuelven un valor que puede ser usado en cualquier sentencia PL/SQL e incluso en sentencias SQL.
 - Paquetes: Se usan para agrupar procedimientos y funciones. Facilitan la descomposición modular y el mantenimiento.
 - Disparadores (triggers): Son bloques nominados que se almacenan en la BD. Su ejecución está condicionada a cierta condición, como por ejemplo usar una orden concreta del DML.
 - Comentarios: Pueden incluirse siempre que se desee.
@@ -421,24 +421,9 @@ BEGIN
 END;
 /
 ```
-
-Ejemplo de Bloque Nominado
-
-La única diferencia con el ejemplo anterior es que debemos poner una etiqueta al bloque anónimo para referirnos a él. Dicha etiqueta se pondrá antes de la cláusula DECLARE y entre ángulos dobles: `<<nombre_bloque>>`.
-Es buena costumbre, aunque es opcional, poner el nombre también después de la palabra END.
-```sql
-<<fecha>>
-DECLARE 
-  fecha  DATE;
-BEGIN
-  DBMS_OUTPUT.PUT_LINE ('Salida de información');
-  SELECT SYSDATE INTO fecha FROM DUAL;
-  DBMS_OUTPUT.PUT_LINE ('Fecha:  ' || fecha);
-END fecha;
-/
-```
-
 Los otros tipos de bloques los veremos con mayor detenimiento más adelante.
+
+
 
 ### 4.3. Ejecución selectiva: Condicionales
 Para ejecutar un serie de instrucciones según se cumpla o no una condición tenemos dos estructuras:
@@ -873,18 +858,25 @@ Con NOT NULL se requiere la inicialización.
 Se almacenan en formato decimal: Para operaciones aritméticas deben traducirse a binario.
   - Numéricos Enteros: BINARY_INTEGER, que es un entero en binario (complemento a 2) con rango ±2147483647, ideal para variables sobre las que se efectuarán operaciones (contadores...). Tiene definidos subtipos restringidos en su rango: NATURAL [0, 2147483647], NATURALN (igual que NATURAL pero NOT NULL), POSITIVE [1, 2147483647], POSITIVEN, SIGNTYPE (–1, 0 y 1).
 PLS_INTEGER es similar a BINARY_INTEGER, pero más rápido en las operaciones aritméticas y que genera un error si se produce un desbordamiento (ORA-1426) al asignarlo a un NUMBER.
-- Carácter: VARCHAR2(max_tam), con max_tam<=32676 bytes (como columna de tabla admite 4000 → Cuidado con los errores). Si se usa un código distinto al código ASCII, el número total de caracteres puede ser menor.
-  - CHAR (tam_fijo) con 1 por defecto y 32767 como máximo (como columna de tabla admite 255), se rellena siempre con blancos. LONG es una cadena de longitud variable con un máximo de 32760 (como columna de tabla admite 2GB). NCHAR y  NVARCHAR2 permiten almacenar cadenas en un conjunto de caracteres nacional distinto al propio de PL/SQL.
-- Binarios: RAW(max_tam), con max_tam<=32676 bytes. LONG RAW admite un máximo de 32760 bytes. ROWID es un tipo para almacenar identificadores de fila (pseudocolumna ROWID).
-- Fecha: DATE, como en SQL de Oracle almacena siglo, año, mes, día, hora, min. y segs. (7 bytes).
-- Lógico: BOOLEAN, con los siguientes valores posibles: TRUE, FALSE y NULL.
+- Carácter: 
+  - VARCHAR2(max_tam), con max_tam<=32676 bytes (como columna de tabla admite 4000 → Cuidado con los errores). Si se usa un código distinto al código ASCII, el número total de caracteres puede ser menor.
+  - CHAR (tam_fijo) con 1 por defecto y 32767 como máximo (como columna de tabla admite 255), se rellena siempre con blancos. LONG es una cadena de longitud variable con un máximo de 32760 (como columna de tabla admite 2GB). 
+  - NCHAR y  NVARCHAR2 permiten almacenar cadenas en un conjunto de caracteres nacional distinto al propio de PL/SQL.
+- Binarios: 
+  - RAW(max_tam), con max_tam<=32676 bytes. 
+  - LONG RAW admite un máximo de 32760 bytes. 
+  - ROWID es un tipo para almacenar identificadores de fila (pseudocolumna ROWID).
+- Fecha: 
+  - DATE, como en SQL de Oracle almacena siglo, año, mes, día, hora, min. y segs. (7 bytes).
+- Lógico: 
+  - BOOLEAN, con los siguientes valores posibles: TRUE, FALSE y NULL.
 - Tipos Referencias (punteros):
   - REF CURSOR y REF TipoObjeto.
 - Tipos LOB (Large OBject):
   - BFILE, LOB, CLOB y NLOB (se usan con el paquete DBMS_LOB) .
 - Tipos Compuestos:
   - RECORD, TABLE y VARRAY.
-El tipo RECORD o REGISTRO lo veremos en detalle en el siguiente apartado.
+  El tipo RECORD o REGISTRO lo veremos en detalle en el siguiente apartado.
 
 - Notaciones especiales:
   - Tabla.Columna%TYPE: el tipo que tenga asignado una columna de una tabla, independientemente de cómo esté definida ésta.
@@ -892,9 +884,9 @@ El tipo RECORD o REGISTRO lo veremos en detalle en el siguiente apartado.
 
 Ejemplos:
 ```sql
-CODIGO        HOTEL.ID#%TYPE;
+CODIGO         HOTEL.ID%TYPE;
 HABS        HOTEL.NHABS%TYPE;
-DEP      DEPARTAMENTOS#%ROWTYPE;
+DEP       DEPARTAMENTOS%ROWTYPE;
 HOTEL             HOTEL%ROWTYPE; 
 ```
 
