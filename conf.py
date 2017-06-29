@@ -229,7 +229,8 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'GestindeBasesdeDatos.tex', 'Gestión de Bases de Datos',
-     'IES Luis Vélez de Guevara - Departamento de Informática', 'manual'),
+     'IES Luis Vélez de Guevara
+      Departamento de Informática', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
