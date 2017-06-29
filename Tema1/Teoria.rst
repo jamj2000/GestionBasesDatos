@@ -1,76 +1,55 @@
-# ELEMENTOS DE LAS BASES DE DATOS
+.. section-numbering::
 
+INTRODUCCIÓN
+===============
 
-
-> IES Luis Vélez de Guevara  
-> Departamento de Informática
-
-
-
-
-
-
-
-
-Contenido
-
-```
-1.  INTRODUCCIÓN	3
-2.  DEFINICIÓN DE BASE DE DATOS	3
-2.1.  Definición de Base de Datos	3
-3.  EVOLUCIÓN HISTÓRICA Y TIPOS DE BD	4
-3.1.  Introducción	4
-3.2.  Evolución y tipos de base de datos	5
-3.3.  Sistemas de ficheros tradicionales	8
-3.4.  Sistemas de base de datos relacional	9
-3.5.  Ejemplo de archivos tradicionales	11
-4.  CONCEPTOS BÁSICOS DE UNA BD	11
-4.1.  Datos	11
-4.2.  Entidades	12
-4.3.  Claves primarias y claves foráneas. Relaciones	12
-4.4.  Restricciones de integridad referencial	13
-4.5.  Metadatos	14
-4.6.  Otros conceptos sobre Bases de Datos	14
-5.  SISTEMAS DE GESTIÓN DE BASES DE DATOS: TIPOS	16
-5.1.  Sistema Gestor de Bases de Datos	16
-5.2.  Tipos de SGBD	17
-6.  ACTIVIDADES	18
-6.1.  Test	18
-6.2.  Cuestiones	19
-6.3.  Prácticas	20
-```
-
-## 1. INTRODUCCIÓN
 En el entorno del mercado actual, la competitividad y la rapidez de maniobra de una empresa son imprescindibles para su éxito. Para conseguirlo existe cada vez una mayor demanda de datos y, por tanto, más necesidad de gestionarlos. Esta demanda siempre ha estado patente en empresas y sociedades, pero en estos años se ha disparado debido al acceso multitudinario a las redes integradas en Internet y a la aparición de los dispositivos móviles que también requieren esa información.
+
 En informática se conoce como dato a cualquier elemento informativo que tenga relevancia para un usuario. Desde su nacimiento, la informática se ha encargado de proporcionar herramientas que faciliten la manipulación de los datos.
 Antes de la aparición de las aplicaciones informáticas, las empresas tenían como únicas herramientas de gestión de datos los ficheros con cajones, carpetas y fichas de cartón. En este proceso manual, el tiempo requerido para manipular estos datos era enorme. Pero la propia informática ha adaptado sus herramientas para que los elementos que el usuario utiliza en cuanto a manejo de datos se parezcan a los manuales. Por eso se sigue hablado de ficheros, formularios, carpetas, directorios,....
+
 La clientela fundamental del profesional informático es la empresa. La empresa se puede entender como un sistema de información formado por diversos objetos: el capital, los recursos humanos, los inmuebles, los servicios que presta, etc.
+
 Los sistemas de información actuales se basan en bases de datos (BD) y sistemas de bases de datos (SGBD) que se han convertido en elementos imprescindibles de la vida cotidiana de la sociedad moderna.
 
-## 2. DEFINICIÓN DE BASE DE DATOS
 
-### 2.1. Definición de Base de Datos
+DEFINICIÓN DE BASE DE DATOS
+==============================
+
+Definición de Base de Datos
+--------------------------------
+
 Cada día, la mayoría de nosotros nos encontramos con actividades que requieren algún tipo de interacción con una base de datos (ingreso en un banco, reserva de una entrada para el teatro, solicitud de una suscripción a una revista, compra de productos, ...). Estas interacciones son ejemplos de lo que se llama aplicaciones tradicionales de bases de datos (básicamente información numérica o de texto), aunque los avances tecnológicos han permitido que también existan: bases de datos multimedia, sistemas de información geográfica (GIS), almacenes de datos, sistemas de proceso analítico on-line, ...
 Una base de datos se entenderá como una colección de datos relacionados entre sí y que tienen un significado implícito.
+
 Por datos queremos decir hechos conocidos que pueden registrarse y que tienen un significado implícito.
 Ejemplo: Una agenda con los nombres y teléfonos de un conjunto de personas conocidas es una base de datos, puesto que es una colección de datos relacionados con un significado implícito.
+
 La definición presentada anteriormente hace referencia a dos elementos para que un conjunto de datos constituya una Base de Datos:
 1. Relaciones entre datos, tema que se tratará en las secciones siguientes.
 2. Significado implícito de los datos que se atribuye dependiendo del contexto en que se utilizan los mismos. Por ejemplo, el dato fecha en una base de datos de VENTAS puede referirse a la fecha de emisión de las facturas, mientras que si la base de datos es de MÚSICA quizás corresponda a la fecha en que se grabó un tema musical. Es decir, el significado de un dato, depende de la BD que lo contenga.
+
 Para manipular y gestionar las bases de datos surgieron herramientas software denominadas: sistemas gestores de bases de datos (SGBD en lo sucesivo) sobre los que se profundizará en las siguientes secciones.
 
-## 3. EVOLUCIÓN HISTÓRICA Y TIPOS DE BD
 
-### 3.1. Introducción
+
+EVOLUCIÓN HISTÓRICA Y TIPOS DE BD
+====================================
+
+Introducción
+-----------------
 
 Los predecesores de los sistemas gestores de bases de datos fueron los sistemas gestores de ficheros o sistemas de archivos tradicionales.
+
 1. Archivos tradicionales. Consiste en almacenar los datos en archivos individuales, exclusivos para cada aplicación particular. En este sistema los datos pueden ser redundantes (repetidos innecesariamente) y la actualización de los archivos es más lenta que en una base de datos.
 2. Base de datos. Es un almacenamiento de datos formalmente definido, controlado centralmente para intentar servir a múltiples y diferentes aplicaciones. La base de datos es una fuente de datos que son compartidos por numerosos usuarios para diversas aplicaciones.
 
 Así, en un Sistema de archivos tradicional la información está dispersa en varios ficheros de datos y existe un cierto número de programas que los recuperan y agrupan.
 Aunque los sistemas de ficheros o archivos supusieron un gran avance sobre los sistemas manuales, tienen inconvenientes bastante importantes que se solventaron, en gran medida, con la aparición de los sistemas de bases de datos.
 
-### 3.2. Evolución y tipos de base de datos
+
+Evolución y tipos de base de datos
+---------------------------------------
 
 Coincidiendo con la evolución histórica de las bases de datos éstas han utilizado distintos modelos:
 
@@ -103,8 +82,9 @@ Bases de Datos con estructura orientada a objetos
 La estructura orientada a objetos está diseñada siguiendo el paradigma de los lenguajes orientados a objetos. De este modo soporta los tipos de datos gráficos, imágenes, voz y texto de manera natural. Esta estructura tiene gran difusión en aplicaciones web para aplicaciones multimedia.
 
 
+Sistemas de ficheros tradicionales
+---------------------------------------
 
-### 3.3. Sistemas de ficheros tradicionales
 En estos sistemas, cada programa almacenaba y utilizaba sus propios datos de forma un tanto caótica. 
 La única ventaja que conlleva esto es que los procesos son independientes, por lo que la modificación de uno no afecta al resto.
 Pero tiene grandes inconvenientes:
@@ -115,7 +95,10 @@ Probabilidad alta de inconsistencia en los datos. Ya que un proceso cambia sus d
 Difícil modificación en los datos. Debido a la probabilidad de inconsistencia, cada modificación se debe repetir en todas las copias del dato (algo que normalmente es imposible).
 En la siguiente figura se muestra un sistema de información basado en ficheros. En ella se ve que la información aparece inconexa y redundante.
 
-### 3.4. Sistemas de base de datos relacional
+
+Sistemas de base de datos relacional
+----------------------------------------- 
+
 En e ste tipo de sistemas los datos se centralizan en una base de datos común a todas las aplicaciones. Estos serán los sistemas que estudiaremos en este curso.
 Sus ventajas son las siguientes:
 - Menor redundancia. No hace falta tanta repetición de datos. Aunque, sólo los buenos diseños de datos tienen poca redundancia.
@@ -135,49 +118,64 @@ En la siguiente figura se muestra un sistema de información basado en bases de 
 
 
 
-### 3.5. Ejemplo de archivos tradicionales
+Ejemplo de archivos tradicionales
+--------------------------------------
+
 Se cuenta con dos archivos Clientes y Facturas. El primer archivo tiene los datos básicos de los clientes, mientras que en el segundo se almacenan las ventas realizadas.
 Al emitir cada factura se ingresan nuevamente los datos num, nombre, domicilio.
 
 CLIENTES
 
-Num | Nombre | Dirección | Teléfono | FechaNacimiento | e-mail
-----|--------|-----------|----------|-----------------|-------
-1225|Juan García | Guaná 1202 | 985674863 | 13/08/1972 | jgarcia@adinet.com
-1226|Fernando Martínez | Rincón 876 | 984568643 | 23/02/1987 | fmar@gmail.com
-… | … | … | … | … | …
+==== ================== ============ ========== =============== ====================
+Num  Nombre             Dirección    Teléfono   FechaNacimiento e-mail
+==== ================== ============ ========== =============== ====================
+1225 Juan García        Guaná 1202   985674863  13/08/1972      jgarcia@adinet.com
+1226 Fernando Martínez  Rincón 876   984568643  23/02/1987      fmar@gmail.com
+ …   …                  …            …          …               … 
+==== ================== ============ ========== =============== ====================
 
+.. csv-table:: FACTURAS
+   :header: "Num", "Nombre", "Dirección", "Producto", "Precio"
+   :widths: 10, 30, 30, 20, 10
 
-FACTURAS
-
-Num | Nombre | Dirección | Producto | Precio 
-----|--------|-----------|----------|-------
-1225| Joaquín García | Guaná 1202 | Azulejos | 1250 
-1226 | Fernando Martínez | Rincón 876 | Pintura | 900
-… | … | … | … | …
+   1225, "Joaquín García", "Guaná 1202", "Azulejos", 1250 
+   1226, "Fernando Martínez", "Rincón 876", "Pintura", 900
+   "…", "…", "…", "…", "…" 
 
 
 Desventajas:
+
 - Se presentan redundancias de datos (datos repetidos innecesariamente: nombre, dirección). Se duplican esfuerzos.
 - Se pueden producir contradicciones entre los datos, si por ejemplo se ingresan nombres diferentes para un mismo cliente (Juan por Joaquín).
 
 
-## 4. CONCEPTOS BÁSICOS DE UNA BD
+CONCEPTOS BÁSICOS DE UNA BD
+==============================
+
 Resulta fundamental para un Técnico Superior en Informática que conozca los siguientes conceptos básicos:
 
-### 4.1. Datos
-“Datos son hechos conocidos que pueden registrarse y que tienen un significado implícito”.
-Ramez Elmasri y Shamkant B. Navathe
+Datos
+----------
+
+| “Datos son hechos conocidos que pueden registrarse y que tienen un significado implícito”.
+|                                                         Ramez Elmasri y Shamkant B. Navathe
 
 
 Ejemplo:
 
 
 Pueden constituir datos los nombres, números telefónicos y direcciones de personas que conocemos.
-### 4.2. Entidades
+
+
+Entidades
+--------------
+
 Una entidad es todo aquello de lo cual interesa guardar datos, por ejemplo:
 
-### 4.3. Claves primarias y claves foráneas. Relaciones
+
+Claves primarias y claves foráneas. Relaciones
+---------------------------------------------------
+
 Cada entidad tiene una clave primaria o campo clave o llave que identifica unívocamente al conjunto de datos.
 Cuando en una entidad figura la clave primaria de otra entidad, ésta se denomina clave foránea o clave ajena.
 Las entidades se relacionan entre sí a través de las claves foráneas.
@@ -190,12 +188,18 @@ CLAVES FORÁNEAS
 
 Son claves foráneas en FACTURAS, Código Cliente y Código Producto. CLIENTES se relaciona con FACTURAS a través del Código Cliente que figura en ambas tablas y con PRODUCTOS mediante el Código Producto.
 
-### 4.4. Restricciones de integridad referencial
+
+Restricciones de integridad referencial
+--------------------------------------------
+
 Código de Clientes en Facturas debe cumplir que exista en Clientes y que sea clave primaria
 Código de Producto Facturas debe cumplir que exista en Productos y que sea clave primaria
 Retomando la Definición de Base de Datos, la cual señala que ésta “...es un conjunto de datos relacionados entre sí y que tienen un significado implícito”, se observa en la imagen que los datos de las tablas se relacionan a través de las claves y que éstos tienen el significado implícito que se les atribuye en dicho contexto. Así, por ejemplo, el significado del dato Nombre se refiere al del CLIENTE, el de Fecha emisión a la de la FACTURAS y el de Descripción a la del PRODUCTO.
 
-### 4.5. Metadatos
+
+Metadatos
+--------------
+
 Metadatos son datos acerca de los datos presentes en la base de datos.
 
 Por ejemplo:
@@ -206,7 +210,10 @@ Por ejemplo:
 
 Ejemplo de Metadatos:
 
-### 4.6. Otros conceptos sobre Bases de Datos
+
+Otros conceptos sobre Bases de Datos
+-----------------------------------------
+
 Además de los conceptos básicos anteriores, a modo de aclarar algunos de los componentes que se pueden encontrar en una base de datos, y que se verán en las próximas unidades, se definen los siguientes conceptos:
 - Tabla: Es un conjunto de filas y columnas bajo un mismo nombre que representa el conjunto de valores almacenados para una serie de datos. Por ejemplo,la  información de todos los clientes de una BD se almacenarán en una tabla llamada CLIENTES.
 - Campo: Cada una de las columnas de una tabla. Identifica una familia de datos. Por ejemplo, el campo fechaNacimiento representa las fechas de nacimiento de todos los clientes que contiene una tabla CLIENTES.
@@ -220,9 +227,16 @@ Además de los conceptos básicos anteriores, a modo de aclarar algunos de los c
 - Guiones o scripts: Son un conjunto de instrucciones, que ejecutadas de forma ordenada, realizan operaciones avanzadas o mantenimiento de los datos almacenados en la BD.
 - Procedimientos: Son un tipo especial de script que están almacenados en la BD y forman parte de su esquema.
 
-## 5. SISTEMAS DE GESTIÓN DE BASES DE DATOS: TIPOS
-### 5.1. Sistema Gestor de Bases de Datos
+
+
+SISTEMAS DE GESTIÓN DE BASES DE DATOS: TIPOS
+===============================================
+
+Sistema Gestor de Bases de Datos
+-------------------------------------
+
 Un sistema gestor de bases de datos (SGBD) es una aplicación que permite a los usuarios definir, crear y mantener una base de datos, y proporciona acceso controlado a la misma.
+
 En general, un SGBD proporciona los siguientes servicios:
 - Permite la definición de la base de datos mediante el lenguaje de definición de datos (DDL – Data Description Language). Este lenguaje permite especificar la estructura y el tipo de los datos, así como las restricciones sobre los datos. Todo esto se almacenará en la base de datos.
 - Permite la inserción, actualización, eliminación y consulta de datos mediante el lenguaje de manejo o manipulación de datos (DML - Data Manipulation Language).
@@ -235,7 +249,21 @@ En general, un SGBD proporciona los siguientes servicios:
 - La principal herramienta de un SGBD es la interfaz de programación con el usuario. Esta interfaz consiste en un lenguaje muy sencillo mediante el cual el usuario interactua con el servidor. Este lenguaje comúnmente se denomina SQL, Structure Query Language, está estandarizado por la ISO 1, es decir, todas las BD que soporten SQL deben tener la misma sintaxis a la hora de aplicar el lenguaje.
 
 
-### 5.2. Tipos de SGBD
+Tipos de SGBD
+------------------
+
 Los SGBD se pueden clasificar según las BD que gestionan (jerárquicas, relacionales, orientadas a objetos,...), pero como actualmente la mayoría de los SGBD integran múltiples filosofías, los clasificaremos según su capacidad y potencia del propio gestor, resultado los siguientes SGBD:
-SGBD ofimáticos: manipulas BD pequeñas orientadas a almacenar datos domésticos o de pequeñas empresas.
-SGBD corporativos: tienen la capacidad de gestionar BD enormes, de medianas o grandes empresas con una carga de datos y transacciones que requieren de un servidor de gran capacidad. Un ejemplo típico de BD corporativas es ORACLE, actualmente junto de DB2 el servidor de BD más potente del mercado (también el más caro). Nosotros para nuestro aprendizaje utilizamos una versión gratuita con fines educativos, que aunque bastante limitada, nos sirve para introducirnos en la filosofía de ORACLE.
+- SGBD ofimáticos: manipulas BD pequeñas orientadas a almacenar datos domésticos o de pequeñas empresas.
+- SGBD corporativos: tienen la capacidad de gestionar BD enormes, de medianas o grandes empresas con una carga de datos y transacciones que requieren de un servidor de gran capacidad. Un ejemplo típico de BD corporativas es ORACLE, actualmente junto de DB2 el servidor de BD más potente del mercado (también el más caro). Nosotros para nuestro aprendizaje utilizamos una versión gratuita con fines educativos, que aunque bastante limitada, nos sirve para introducirnos en la filosofía de ORACLE.
+
+
+
+.. literalinclude:: ../Tema3/E03.SQL
+    :linenos:
+    :language: sql
+
+
+.. literalinclude:: codigo.js
+    :linenos:
+    :language: javascript
+

@@ -1,86 +1,136 @@
-# ACTIVIDADES RESUELTAS
-# ELEMENTOS DE LAS BASES DE DATOS
+.. section-numbering::
 
-> IES Luis Vélez de Guevara  
-> Departamento de Informática
+..
+   start: 6
+   prefix: "6." 
+   depth: 3
 
 
-## 6.1. Test
+.. image:: ../Tema2/images/Tema2-Cuestion08.png
+
+
+ACTIVIDADES RESUELTAS
+=====================
+
+Test
+----
 
 Para cada una de las siguientes cuestiones elige razonadamente cada una de las respuestas correctas.
 
-### 6.1.1. ¿Cuáles de los siguientes puntos representan inconvenientes de los Sistemas de Ficheros?
+¿Cuáles de los siguientes puntos representan inconvenientes de los Sistemas de Ficheros?
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 a. Redundancia e Inconsistencia.
 b. Sistema de Gestión de Datos independiente de la máquina y del SO.
 c. Control de concurrencia.
 d. Difícil modificación de los datos.
 
-### 6.1.2. Los sistemas orientados a BD presentan las siguientes ventajas...
+
+Los sistemas orientados a BD presentan las siguientes ventajas...
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 a. Integridad de los datos.
 b. Redundancia.
 c. Cada aplicación maneja sus propios datos.
 d. Independencia entre los datos y las aplicaciones que los usan.
 
-### 6.1.3. Los datos son ...
+
+Los datos son ...
++++++++++++++++++
+
 a. ... todo aquello de lo cual interesa guardar información.
 b. ... hechos conocidos que pueden registrarse y que tienen un significado implícito.
 c. ... información acerca de los metadados.
 d. ... las claves primarias y foráneas de cada entidad.
 
-### 6.1.4. Un SGBD ...
+
+Un SGBD ...
++++++++++++++++++
+
 a. ... esta formado por datos acerca de los datos presentes en la base de datos.
 b. ... es una aplicación que permite a los usuarios definir, crear y mantener una base de datos, y proporciona acceso controlado a la misma.
 c.  ... permite a los usuarios tener acceso a la BD completa impidiendo restricciones.
 d. ... permite la inserción, actualización, eliminación y consulta de datos mediante el lenguaje de manejo o manipulación de datos.
 
-## 6.2. Cuestiones
 
-### 6.2.1. Contesta los siguientes apartados
+Cuestiones
+---------------
+
+Contesta los siguientes apartados
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 a. Explica brevemente los antecedentes de las BD actuales.
 b. Enumera y explica brevemente los inconvenientes que presentan los antiguos sistemas de Archivos o de Ficheros.
 
-### 6.2.2. ¿Qué significa que los datos de una BD tienen un significado implícito? Por tres ejemplos, diferentes de los expuesto en el tema, que ilustren tu explicación.
 
-### 6.2.3. Definir que es un SGBD
-
-### 6.2.4. Indica las principales principales ventajas de las BD frente a los antiguos sistemas de ficheros.
-
-### 6.2.5. Nombre los distintos tipos de bases de datos que existen según el modelo que siguen
-
-### 6.2.6. ¿Qué son las vistas? ¿Para qué se utilizan?. Busca información en Internet para completar tu respuesta. ¿En qué se diferencia de una consulta?
-
-### 6.2.7. Describe el significado de las siguientes siglas: DDL, DML y DCL. Explica la utilidad de cada una.
-
-### 6.2.8. ¿Qué es un script o guión?
-
-### 6.2.9. Define los siguientes conceptos:
-1. Dato
-2. Tipo de Dato
-3. Campo
-4. Registro
-5. Tabla
-6. Relación
-7. Consulta
-8. Procedimiento
-
-### 6.2.10. ¿Qué es el diccionario de datos?
-
-### 6.2.11. Qué quiere decir que una base de datos permita la concurrencia?
-
-### 6.2.12. Utilizando el archivo “La biblia de Access” disponible en la moodle, contesta a las siguientes preguntas:
-1. ¿Cuál es la extensión de un fichero que contiene la base de datos de ACCESS?
-2. Describe dos formas de crear un formulario en ACCESS.
-3. Indica los 10 tipos de datos básicos que existen en ACCESS.
-4. Describe dos formas de crear una consulta en ACCESS.
+¿Qué significa que los datos de una BD tienen un significado implícito? Por tres ejemplos, diferentes de los expuesto en el tema, que ilustren tu explicación.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-## 6.3. Prácticas
+Definir que es un SGBD
+++++++++++++++++++++++++++++++
 
-### 6.3.1. PRÁCTICA 1
+
+Indica las principales principales ventajas de las BD frente a los antiguos sistemas de ficheros.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Nombre los distintos tipos de bases de datos que existen según el modelo que siguen
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+¿Qué son las vistas? ¿Para qué se utilizan?. Busca información en Internet para completar tu respuesta. ¿En qué se diferencia de una consulta?
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Describe el significado de las siguientes siglas: DDL, DML y DCL. Explica la utilidad de cada una.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+¿Qué es un script o guión?
++++++++++++++++++++++++++++
+
+
+Define los siguientes conceptos:
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+a. Dato
+#. Tipo de Dato
+#. Campo
+#. Registro
+#. Tabla
+#. Relación
+#. Consulta
+#. Procedimiento
+
+
+¿Qué es el diccionario de datos?
++++++++++++++++++++++++++++++++++
+
+
+¿Qué quiere decir que una base de datos permita la concurrencia?
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Utilizando el archivo “La biblia de Access” disponible en la moodle, contesta a las siguientes preguntas:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+a. ¿Cuál es la extensión de un fichero que contiene la base de datos de ACCESS?
+#. Describe dos formas de crear un formulario en ACCESS.
+#. Indica los 10 tipos de datos básicos que existen en ACCESS.
+#. Describe dos formas de crear una consulta en ACCESS.
+
+
+Prácticas
+--------------
+
+PRÁCTICA 1
++++++++++++++
+
 
 OBJETIVOS: Comparar un Sistema de Ficheros con un Sistema basado en BD.
 
 ENUNCIADO: Se plantea un problema real y se muestra la solución dada al mismo utilizando un sistema de ficheros. Se analizará dicha solución y se detectarán en ella ejemplos de cada uno de los inconvenientes visto en teoría para los Sistemas de Ficheros. Es decir, buscaremos ejemplos en la solución propuesta que ilustren los siguientes inconvenientes:
+
 - Coste de almacenamiento elevado.
 - Datos redundantes.
 - Probabilidad alta de inconsistencia en los datos.
@@ -137,7 +187,8 @@ ACTIVIDADES DE CADA OFICINA
 En cada oficina se llevan a cabo las siguientes actividades para garantizar que cada empleado tenga acceso a la información necesaria para desempeñar su tarea de modo efectivo y eficiente.
 Cada actividad está relacionada con una función específica de la empresa. Cada una de estas funciones corresponde a uno o varios puestos de los que ocupan los empleados, por lo que éstos se indican entre paréntesis.
 
-**SOLUCIÓN PROPUESTA SEGÚN EL ANTIGUO SISTEMA DE FICHEROS**
+SOLUCIÓN PROPUESTA SEGÚN EL ANTIGUO SISTEMA DE FICHEROS
+********************************************************
 
 DEPARTAMENTO DE VENTAS
 
@@ -147,22 +198,31 @@ DEPARTAMENTO DE CONTRATOS
 
 El departamento de contratos se ocupa de gestionar los contratos de alquiler de los inmuebles. Cuando un cliente desea formalizar un contrato, un empleado de la empresa rellena un formulario con los datos del inquilino y los datos del inmueble. Este formulario se pasa al departamento de contratos, que asigna un número al contrato y completa la información sobre el pago y el período del contrato. Para gestionar esta información, el departamento de contratos posee un sistema de información con tres ficheros: el fichero de los contratos, el fichero de los inmuebles alquilados y el fichero de los inquilinos que tienen en vigor un contrato de alquiler.
 
-IMPORTANTE
 
-Al tratarse de una solución basada en Sistemas de ficheros, cada departamento accede a sus propios ficheros mediante una serie de programas de aplicación escritos especialmente para ellos. Estos programas son totalmente independientes entre un departamento y otro, y se utilizan para introducir datos, mantener los ficheros y generar los informes que cada departamento necesita. Es importante destacar que la estructura física de los ficheros de datos y de sus registros está definida dentro de los programas de aplicación.
+IMPORTANTE: Al tratarse de una solución basada en Sistemas de ficheros, cada departamento accede a sus propios ficheros mediante una serie de programas de aplicación escritos especialmente para ellos. Estos programas son totalmente independientes entre un departamento y otro, y se utilizan para introducir datos, mantener los ficheros y generar los informes que cada departamento necesita. Es importante destacar que la estructura física de los ficheros de datos y de sus registros está definida dentro de los programas de aplicación.
 La situación es muy similar en el resto de departamentos:
+
 
 DEPARTAMENTO DE NÓMINAS
 
 En el departamento de nóminas tiene un fichero con los datos de los salarios de los empleados. Los registros de este fichero tienen los siguientes campos: número de empleado, nombre, apellido, dirección, fecha de nacimiento, salario, DNI y número de la oficina en la que trabaja.
+
 
 DEPARTAMENTO DE PERSONAL
 
 El departamento de personal tiene un fichero con los datos de los empleados. Sus registros tienen los siguientes campos: número de empleado, nombre, apellidos, dirección, teléfono, puesto, fecha de nacimiento, salario, DNI y número de la oficina en la que trabaja.
 
 CUESTIONES
+
 a) Completa una tabla buscando ejemplos en el enunciado de cada uno de los inconvenientes estudiados en los sistemas de ficheros. Deberás completar la respuesta con una breve explicación que ilustre el porqué dicho ejemplo presenta el inconveniente en cuestión.
 
+
+.. csv-table:: INCONVENIENTES
+   :header: "Num", "Nombre", "Dirección", "Producto", "Precio"
+   :widths: 10, 30, 30, 20, 10
+
+   1225, "Joaquín García", "Guaná 1202", "Azulejos", 1250 
+   1226, "Fernando Martínez", "Rincón 876", "Pintura", 900
 INCONVENIENTE
 EJEMPLO
 EXPLICACIÓN
@@ -183,83 +243,124 @@ Tiempo de procesamiento elevado
 
 
 Nota 1: La tabla la deberás entregar en formato apaisado para que puedas dar las explicaciones sin límite de espacio.
+
 b) Supongamos ahora que quisiéramos resolver el problema real usando el enfoque actual de BD. Detecta en el enunciado ejemplos de los siguientes elementos fundamentales de una BD:
+
 - Datos
 - Entidades
 - Claves principales
 - Claves foráneas
 - Integridad referencial
 - Metadatos
+
 Nota 2: Los tres últimos elementos pueden ser más difíciles de encontrar. Si es así, no os preocupéis porque estamos empezando.
+
 c) Utiliza los ejemplos sobre datos detectados en el enunciado para explicar el concepto de “significado implícito” de los mismos.
 
-### 6.3.2. PRÁCTICA 2
+
+
+PRÁCTICA 2
++++++++++++
 
 OBJETIVO: Adentrarse en el diseño e implementación de BD a través de un ejemplo guiado. La realización autónoma de este tipo de prácticas será el objetivo esencial de este módulo.
 
 ENUNCIADO: Se plantea el enunciado de una base de datos y los esquemas conceptuales y lógicos que resultan y que ¡pronto sabrás realizar por ti mismo!. A partir de ellos, se explicará paso a paso como crear las tablas y las relaciones entre las mismas. Cómo introducir los datos y cómo realizar algunas consultas sencillas sobre ellos. Cuando finalicemos este módulo sabrás hacer todo esto solo y además en lenguaje SQL!!
 
 PROBLEMA
-
 Se quiere realizar una BD para una empresa dedicada a la comercialización de cocinas.
+
+
 Primera parte
+*************
+
 a) Detecta en el enunciado anterior todas las ENTIDADES y DATOS. Indica a qué tipo de Base de Datos de entre los vistos en el tema, corresponde la solución planteada.
+
 Al igual que antes de construir un edificio, se deben pasar por una serie de fases previas:
+
 - recogerse con detalle las características que debe reunir,
 - realizar los planos necesarios y una especificación de calidades,… antes de realizar una base de datos realizaremos también un diseño previo.
+
 El Diseño de base de datos, se verá con detalle a partir de la próxima unidad. No obstante, y a modo de introducción, nos aceremos al mismo en el siguiente ejemplo guiado. Para entenderlo, hacemos una breve introducción de las distintas fases por las que pasa el análisis y el diseño de una BD:
-Fase de análisis: Especificación de Requisitos Software o E.R.S. Los informáticos se reúnen con los futuros usuarios del sistema para recopilar la información que necesitan para saber que desean dichos usuarios.
+
+**Fase de análisis: Especificación de Requisitos Software o E.R.S.**
+
+Los informáticos se reúnen con los futuros usuarios del sistema para recopilar la información que necesitan para saber que desean dichos usuarios.
 Supongamos que después de unas entrevistas previas, obtenemos que la empresa lo que desea es lo siguiente:
+
 Especificación de requisitos
+
 La empresa desea realizar un control de sus ventas y montajes, para lo cual se tiene en cuenta:
+
 - De cada modelo de cocina nos interesa el número de referencia del modelo.
 - De un montador nos interesa su NIF, nombre, dirección, teléfono de contacto y el número de cocinas que ha montado de cada modelo.
 - Cada modelo cocina lo debe montar al menos un montador, y el mismo montador puede montar varios modelos, porque no se especializan en ninguno en concreto.
 - De un cliente nos interesa su NIF, nombre, dirección y teléfono. Cada modelo de cocina pueden comprarlo uno o varios clientes, y el mismo cliente puede comprar varias modelos de cocinas.
-Fase 1 del Diseño: Diseño Conceptual: A partir de la E.R.S., se diseñará un modelo que tienen un gran poder expresivo para poder comunicarse con el usuario que no experto en informática. El modelo que utilizaremos en este módulo y que explicaremos en la siguiente unidad es el modelo Entidad/relación.
+
+
+**Fase 1 del Diseño: Diseño Conceptual.** 
+
+A partir de la E.R.S., se diseñará un modelo que tienen un gran poder expresivo para poder comunicarse con el usuario que no experto en informática. El modelo que utilizaremos en este módulo y que explicaremos en la siguiente unidad es el modelo Entidad/relación.
+
 Diseño Conceptual
+
 A partir de la E.R.S, que supone una descripción del mundo real sobre el que queremos diseñar nuestra base de datos, el primer paso será diseñar el esquema conceptual que lo describe.
+
 Es algo parecido al paso previo que realizan los arquitectos al crear el plano de un edificio antes de construirlo. Tiene sus propios símbolos que deben conocer todos los arquitectos para entender el plano. Al igual que ellos, vosotros tendréis que aprender a conocer los símbolos que utilizaréis e interpretaréis para poder diseñar una BD.
 Estos símbolos se aprenderán en el Tema siguiente, pero en este y a modo de introducción, se presenta como quedaría la interpretación del mundo real de nuestro problema mediante el esquema conceptual llamado entidad/relación.
 
 
 
 Segunda parte
+*************
+
 b) ¿Cómo crees que hemos representado las entidades en el esquema anterior?
 c) ¿Cómo crees que hemos representado los datos en el esquema anterior?
-Fase 2 del diseño: Diseño Lógico: A partir del modelo entidad/relación se creará un modelo que suele ser más difícil de entender para el usuario final y que generalmente tiene una traducción directa al modelo físico en que entiende el SGBD. El modelo lógico elegido dependerá de la BD, pues no es lo mismo modelizar una BD orientada a objetos que una BD relacional. El modelo que utilizaremos en este módulo es el modelo relacional.
-Diseño Lógico
-A partir del esquema conceptual, aprenderemos a obtener el esquema lógico, el cual va a depender del SGBD que utilicemos. En nuestro caso nos basaremos en el modelo relacional que es el más extendido. De nuevo, y a modo de ejemplos de ¡lo que seréis capaces de hacer en breve! os presento como quedaría el esquema relacional del ejemplo anterior.
 
+**Fase 2 del diseño: Diseño Lógico.** 
+
+A partir del modelo entidad/relación se creará un modelo que suele ser más difícil de entender para el usuario final y que generalmente tiene una traducción directa al modelo físico en que entiende el SGBD. El modelo lógico elegido dependerá de la BD, pues no es lo mismo modelizar una BD orientada a objetos que una BD relacional. El modelo que utilizaremos en este módulo es el modelo relacional.
+
+Diseño Lógico
+
+A partir del esquema conceptual, aprenderemos a obtener el esquema lógico, el cual va a depender del SGBD que utilicemos. En nuestro caso nos basaremos en el modelo relacional que es el más extendido. De nuevo, y a modo de ejemplos de ¡lo que seréis capaces de hacer en breve! os presento como quedaría el esquema relacional del ejemplo anterior.
 
 Cada una de las “cajas” representadas en el esquema anterior recibirá el nombre de relación (por eso Modelo Relacional). Una relación no es otra cosa que una tabla y en ella se transformará en el diseño físico (Creación de la Bd en un SGBD)
 
 
 Tercera parte
-d) ¿Detectas algún ejemplo en el modelo que ilustre el concepto de “significado implícito” de los datos de una BD?
-Fase 3 del diseño: Diseño físico: Es el resultado de aplicar el modelo lógico a un SGBD concreto. Generalmente está expresado en un lenguaje de programación de BBDD tipo SQL. Aunque en este primer ejemplo introductorio utilizaremos como SGBD Access, que se basa en herramientas gráficas para implementar la BD.
+*************
+
+- ¿Detectas algún ejemplo en el modelo que ilustre el concepto de “significado implícito” de los datos de una BD?
+
+**Fase 3 del diseño: Diseño físico. ** 
+
+Es el resultado de aplicar el modelo lógico a un SGBD concreto. Generalmente está expresado en un lenguaje de programación de BBDD tipo SQL. Aunque en este primer ejemplo introductorio utilizaremos como SGBD Access, que se basa en herramientas gráficas para implementar la BD.
+
 Diseño Físico
+
 A partir del esquema lógico, aprenderemos a crear físicamente nuestra BD en el SGBD. Para interpretar el esquema sólo es necesario saber que:
+
 - Cada relación o caja será una tabla en nuestro SGBD.
 - Los campos precedidos de “PK” serán las claves principales en nuestras tablas.
 - Los campos precedidos de “FK” serán las claves foráneas en nuestras tablas.
-Nota 1: Para resolver la última parte de esta práctica utilizaremos como SGBD
-Microsoft ACCESS. Aunque es una aplicación muy extendida no es una herramienta verdaderamente potente para un Técnico informático. Es por eso que sólo la usaremos en las secciones introductorias y cuando nos adentremos en el módulo, pasaremos al uso de ORACLE. En concreto vamos a usar el manual de ACCESS 2007 y podréis consultarlo en todo momento ya que estará a vuestra disposición en la MOODLE. 
+
+Nota 1: Para resolver la última parte de esta práctica utilizaremos como SGBD Microsoft ACCESS. Aunque es una aplicación muy extendida no es una herramienta verdaderamente potente para un Técnico informático. Es por eso que sólo la usaremos en las secciones introductorias y cuando nos adentremos en el módulo, pasaremos al uso de ORACLE. En concreto vamos a usar el manual de ACCESS 2007 y podréis consultarlo en todo momento ya que estará a vuestra disposición en la MOODLE. 
+
+
 Cuarta parte
+************
+
 Paso a Tablas usando Access
-1o.- Entraremos en ACCESS y crearemos una nueva base de datos en blanco a la que pondremos por nombre Práctica 2. A continuación iremos a Crear –> Diseño de tabla y procederemos a crear una a una las siguientes tablas: 
+
+1. Entraremos en ACCESS y crearemos una nueva base de datos en blanco a la que pondremos por nombre Práctica 2. A continuación iremos a Crear –> Diseño de tabla y procederemos a crear una a una las siguientes tablas: 
 
 Utiliza las capturas de pantalla y el manual de ACCESS para crear las máscaras de entrada correspondientes. Se crearán máscaras para el NIF y el tlfno, del tipo 59567840-T y 676 987 659, tanto en las tablas MONTADORES como CLIENTES.
 
 
-
-
-
-
-
 e) A partir de las imágenes anteriores ¿qué identificarías como metadatos?
 d) Crea las tablas anteriores en ACCESS.
-2o.- A continuación estableceremos las relaciones entre las tablas según el siguiente esquema antes de poder introducir los datos.
+
+2. A continuación estableceremos las relaciones entre las tablas según el siguiente esquema antes de poder introducir los datos.
 
 
 e) Crea las relaciones en ACCESS: Herramientas de Bases de Datos-> Relaciones→ Agregar las tablas. Para estableces las relaciones deberás pinchar con el ratón sobre la clave principal y, sin soltar, ponerte sobre la clave foránea. Una vez sobre ella soltarás y marcarás las casilla “Exigir integridad referencial”
@@ -284,7 +385,9 @@ i) Muestra el NIF de los clientes que han adquirido la cocina de modelo 2 y la c
 
 j) Muestra los nombres de los clientes que han adquirido una cocina del modelo 2 o del modelo 6
 
-### 6.3.3. PRÁCTICA 3
+
+PRÁCTICA 3
++++++++++++
 
 OBJETIVO: Adentrarse en el diseño e implementación de BD a través de un ejemplo no guiado.
 
@@ -323,7 +426,8 @@ El Saldo y el Sueldo serán campos numéricos. El sueldo siempre será un númer
 Los campos "Nombre" y "dirección" deben tener el tamaño adecuado para incluir los datos. Ponemos tamaño 50.
 
 
-### 6.3.4. PRÁCTICA 4
+PRÁCTICA 4
++++++++++++
 
 OBJETIVO: Se trata de una práctica de ampliación. Con ella se pretende que el alumno utilice el manual “Biblia de ACCESS 2007”. Para ello se proponen una serie de prácticas enumeradas del 1 al 12 para cuya realización se deberá buscar la información del manual. Es deseable que el alumno adquiera autonomía en el manejo de documentación y por eso habrá que intentar consultar al profesor sólo cuando sea estrictamente necesario. Todo lo que se requiere para solucionar la práctica está en el manual que podéis consultar en la plataforma Moodle del curso GBD.
 
