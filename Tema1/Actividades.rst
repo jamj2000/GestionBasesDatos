@@ -1,13 +1,3 @@
-.. section-numbering::
-
-..
-   start: 6
-   prefix: "6." 
-   depth: 3
-
-
-
-
 ACTIVIDADES PROPUESTAS
 ======================
 
@@ -268,7 +258,8 @@ PRÁCTICA 2
 
 .
      
-   a) Detecta en el enunciado anterior todas las ENTIDADES y DATOS. Indica a qué tipo de Base de Datos de entre los vistos en el tema, corresponde la solución planteada.
+:Ejercicio:     
+        a. Detecta en el enunciado anterior todas las ENTIDADES y DATOS. Indica a qué tipo de Base de    Datos de entre los vistos en el tema, corresponde la solución planteada.
 
 Al igual que antes de construir un edificio, se deben pasar por una serie de fases previas:
 
@@ -369,11 +360,12 @@ Vamos a ver ahora como se realizan algunas consultas sencillas. Iremos a las opc
 Y de ella elegir los campos: Nombres y Teléfonos.
 Una vez realizada tal selección se grabará la consulta con el nombre de Consulta1 Y para mostrarla elegiremos la pestaña “Consultas” de la lista desplegable de “Tablas”. Pinchado sobre “Consulta 1” se deberá abrir el resultado de la misma.
 
-
-
   i) Muestra los nombres y direcciones de los clientes y graba dicha consulta con el nombre de “Consulta2”.
+
   j) Muestra todas las cocinas montadas por el montador de NIF 87654329-F.
+
   k) Muestra el NIF de los clientes que han adquirido la cocina de modelo 2 y la cocina de modelo 6.
+
   l) Muestra los nombres de los clientes que han adquirido una cocina del modelo 2 o del modelo 6
 
 
@@ -432,7 +424,7 @@ PRÁCTICA 4
 
   ENUNCIADO: Ejercicio de Microsoft ACCESS.
 
-I. Creación de una Base de Datos y diseño de varias tablas.
+I. **Creación de una Base de Datos y diseño de varias tablas.**
  
   1. Crear una nueva Base de Datos. Llamarla CURSACC01.MDB
 
@@ -452,7 +444,7 @@ I. Creación de una Base de Datos y diseño de varias tablas.
 
   9. Asignar como Clave principal el campo ZONA.
 
-II. Adquirir práctica en el uso de las hojas de datos.
+II. **Adquirir práctica en el uso de las hojas de datos.**
  
   1. Abra la tabla ARTICULOS, y cumplimente 6 ó 7 registros.
   Para los precios indique diversas cantidades entre 100 y 500 -esto será útil para algunos de los ejercicios posteriores-.
@@ -497,7 +489,7 @@ II. Adquirir práctica en el uso de las hojas de datos.
 
   9. Cree un nuevo registro con la particularidad que el contenido del campo CODCLIENTE ya exista en otro de sus registros. Observe la reacción del sistema (bloqueo frente la violación de la clave principal.)
 
-III. Establecer relaciones entre tablas y experimentar con la integridad referencial.
+III. **Establecer relaciones entre tablas y experimentar con la integridad referencial.**
 
   1) Abrir la ventana de Relaciones.
 
@@ -532,7 +524,7 @@ III. Establecer relaciones entre tablas y experimentar con la integridad referen
 
   15) Cerrar la tabla PEDIDOS.
 
-IV. Adquirir práctica en el diseño de consultas de selección
+IV. **Adquirir práctica en el diseño de consultas de selección**
  
   1) Diseñar una consulta que sea capaz de devolver todos los clientes que pertenezcan a la ZONA DE VENTAS número 1.
   
@@ -570,7 +562,7 @@ IV. Adquirir práctica en el diseño de consultas de selección
  
   16) Ejecutar otra vez la consulta y observar el mensaje que nos presenta Access.
 
-V. Adquirir práctica en el diseño de Formularios combinados con consultas
+V. **Adquirir práctica en el diseño de Formularios combinados con consultas**
 
   1) Crea una nueva consulta de selección en la que aparezcan los campos: NOMBRECLI, ARTICULO.DESCRIPCION, UNIDADES, PVP, DESCUENTO.
   
@@ -594,9 +586,9 @@ V. Adquirir práctica en el diseño de Formularios combinados con consultas
   
   .. hint::
   
-    usar en el criterio el operador “Como” para que se puedan utilizar comodines al introducir el nombre. 
+    Usar en el criterio el operador “Como” para que se puedan utilizar comodines al introducir el nombre. 
 
-VI. Adquirir práctica en el diseño de Formularios
+VI. **Adquirir práctica en el diseño de Formularios**
   
   1) Crea una consulta de selección que nos presente de la tabla Artículos todos sus campos de aquellos que el articulo sea el 00001.
 
@@ -612,7 +604,7 @@ VI. Adquirir práctica en el diseño de Formularios
 
   7) Comprueba que los registros que has añadido se encuentran en la tabla.
 
-VII. Adquirir práctica en el diseño de consultas
+VII. **Adquirir práctica en el diseño de consultas**
 
   1) Abre la base de datos, en la cual están contenidas las tablas de CLIENTES, ARTÍCULOS y PEDIDOS.
 

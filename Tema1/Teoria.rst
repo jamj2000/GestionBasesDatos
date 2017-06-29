@@ -1,5 +1,3 @@
-.. section-numbering::
-
 INTRODUCCIÓN
 ===============
 

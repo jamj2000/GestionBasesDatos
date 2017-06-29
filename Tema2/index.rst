@@ -1,4 +1,4 @@
-Tema 2: DISEÑO DE MODELOS LÓGICOS NORMALIZADOS 
+DISEÑO DE MODELOS LÓGICOS NORMALIZADOS 
 ==============================================
 
 

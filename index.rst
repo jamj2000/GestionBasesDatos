@@ -4,10 +4,13 @@
 Gestión de Bases de Datos
 =========================
 
+
 .. toctree::
    :maxdepth: 1
    :caption: Contenidos
    :name: contenido 
+   :numbered:
+
 
    Tema1/index
    Tema2/index

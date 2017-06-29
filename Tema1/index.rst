@@ -1,5 +1,5 @@
-Tema 1: ELEMENTOS DE LAS BASES DE DATOS 
-=======================================
+ELEMENTOS DE LAS BASES DE DATOS 
+================================
 
 
 .. toctree::

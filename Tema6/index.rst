@@ -1,4 +1,4 @@
-Tema 6: SEGURIDAD DE LOS DATOS
+SEGURIDAD DE LOS DATOS
 ==============================
 
 LENGUAJE DE CONTROL DE DATOS
