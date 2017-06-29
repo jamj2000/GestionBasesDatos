@@ -8,4 +8,4 @@ Tema 1: ELEMENTOS DE LAS BASES DE DATOS
 	Teoria
 	Actividades
 
-* :ref:`genindex`
+
