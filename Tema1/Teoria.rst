@@ -11,6 +11,7 @@ La clientela fundamental del profesional informático es la empresa. La empresa 
 Los sistemas de información actuales se basan en bases de datos (BD) y **sistemas de bases de datos (SGBD)** que se han convertido en elementos imprescindibles de la vida cotidiana de la sociedad moderna.
 
 
+
 DEFINICIÓN DE BASE DE DATOS
 ==============================
 
@@ -68,10 +69,15 @@ Bases de Datos con estructura jerárquica
 La estructura jerárquica fue usada en las primeras BD. Las relaciones entre registros forman una estructura en árbol.
 Actualmente las bases de datos jerárquicas más utilizadas son IMS de IBM y el Registro de Windows de Microsoft.
 
+.. image:: images/tema1-001.png
+
+
 Bases de Datos con estructura en red
 ++++++++++++++++++++++++++++++++++++
 
 Esta estructura contiene relaciones más complejas que las jerárquicas. Admite relaciones de cada registro con varios que se pueden seguir por distintos caminos.
+
+.. image:: images/tema1-002.png
 
 El inventor de este modelo fue Charles Bachman, y el estándar fue publicado en 1969 por CODASYL.
 
@@ -80,6 +86,8 @@ Bases de Datos con estructura relacional
 
 La estructura relacional es la más extendida hoy en día. Almacena los datos en **filas o registros** (tuplas) y **columnas o campos** (atributos). Estas tablas pueden estar conectadas entre sí por claves comunes.
 
+.. image:: images/tema1-003.png
+
 **En este libro nos centramos en el estudio de bases de datos relacionales.**
 
 Bases de Datos con estructura multidimensional
@@ -87,11 +95,15 @@ Bases de Datos con estructura multidimensional
 
 La estructura multidimensional tiene parecidos a la del modelo relacional, pero en vez de las dos dimensiones filas-columnas, tiene N dimensiones. Esta estructura ofrece el aspecto de una hoja de cálculo.
 
+.. image:: images/tema1-004.png
+
 
 Bases de Datos con estructura orientada a objetos
 +++++++++++++++++++++++++++++++++++++++++++++++++
 
 La estructura orientada a objetos está diseñada siguiendo el paradigma de los lenguajes orientados a objetos. De este modo soporta los tipos de datos gráficos, imágenes, voz y texto de manera natural. Esta estructura tiene gran difusión en aplicaciones web para aplicaciones multimedia.
+
+.. image:: images/tema1-005.png
 
 
 Sistemas de ficheros tradicionales
@@ -109,6 +121,8 @@ Pero tiene grandes inconvenientes:
 - **Difícil modificación en los datos**. Debido a la probabilidad de inconsistencia, cada modificación se debe repetir en todas las copias del dato (algo que normalmente es imposible).
 
 En la siguiente figura se muestra un sistema de información basado en ficheros. En ella se ve que la información aparece inconexa y redundante.
+
+.. image:: images/tema1-006.png
 
 
 Sistemas de base de datos relacional
@@ -134,6 +148,7 @@ Como contrapartida encontramos los siguientes **inconvenientes**:
 
 En la siguiente figura se muestra un sistema de información basado en bases de datos. La información está relacionada y no es redundante.
 
+.. image:: images/tema1-007.png
 
 
 Ejemplo de archivos tradicionales
@@ -184,11 +199,15 @@ Datos
 
   Pueden constituir datos los nombres, números telefónicos y direcciones de personas que conocemos.
 
+.. image:: images/tema1-008.png
+
 
 Entidades
 --------------
 
 Una entidad es todo aquello de lo cual interesa guardar datos, por ejemplo:
+
+.. image:: images/tema1-009.png
 
 
 Claves primarias y claves foráneas. Relaciones
@@ -197,6 +216,9 @@ Claves primarias y claves foráneas. Relaciones
 Cada entidad tiene una **clave primaria** o **campo clave** o **llave** que identifica unívocamente al conjunto de datos.
 Cuando en una entidad figura la clave primaria de otra entidad, ésta se denomina **clave foránea** o **clave ajena**.
 Las entidades se **relacionan** entre sí a través de las claves foráneas.
+
+.. image:: images/tema1-010.png
+
 
 **CLAVES PRIMARIAS**
 
@@ -232,6 +254,8 @@ Por ejemplo:
 
 Ejemplo de Metadatos:
 
+.. image:: images/tema1-011.png
+
 
 Otros conceptos sobre Bases de Datos
 -----------------------------------------
@@ -241,6 +265,9 @@ Además de los conceptos básicos anteriores, a modo de aclarar algunos de los c
 - **Tabla**: Es un conjunto de filas y columnas bajo un mismo nombre que representa el conjunto de valores almacenados para una serie de datos. Por ejemplo,la  información de todos los clientes de una BD se almacenarán en una tabla llamada CLIENTES.
 - **Campo**: Cada una de las **columnas** de una tabla. Identifica una familia de datos. Por ejemplo, el campo fechaNacimiento representa las fechas de nacimiento de todos los clientes que contiene una tabla CLIENTES.
 - **Registro**: Corresponde a cada una de las **filas** de la tabla. También se llaman tuplas. Por ejemplo en la siguiente tabla CLIENTES, observamos dos registros, que corresponden a la información sobre los clientes Juan García y Fernándo Martínez:
+
+.. image:: images/tema1-012.png
+
 - **Tipo de Dato**: El tipo de dato indica la naturaleza del campo. Así, se puede tener datos numéricos, que son aquellos con los que se pueden realizar cálculos aritméticos (sumas, restas, multiplicaciones...), los datos alfanuméricos, que son los que contienen caracteres alfabéticos y números...
 - **Consulta**: Es una instrucción para hacer peticiones a una BD.
 - **Índice**: Es una estructura que almacena los campos clave de una tabla, organizándolos para hacer más fácil encontrar y ordenar los registros.
@@ -279,22 +306,22 @@ Tipos de SGBD
 
 Los SGBD se pueden clasificar según las BD que gestionan (jerárquicas, relacionales, orientadas a objetos,...), pero como actualmente la mayoría de los SGBD integran múltiples filosofías, los clasificaremos según su capacidad y potencia del propio gestor, resultado los siguientes SGBD:
 
-- **SGBD ofimáticos**: manipulas BD pequeñas orientadas a almacenar datos domésticos o de pequeñas empresas.
+- **SGBD ofimáticos**: manipulas BD pequeñas orientadas a almacenar datos domésticos o de pequeñas empresas. Ejemplos típicos son Microsoft ACCESS y LibreOffice Base.
 - **SGBD corporativos**: tienen la capacidad de gestionar BD enormes, de medianas o grandes empresas con una carga de datos y transacciones que requieren de un servidor de gran capacidad. Un ejemplo típico de BD corporativas es ORACLE, actualmente junto de DB2 el servidor de BD más potente del mercado (también el más caro). Nosotros para nuestro aprendizaje utilizamos una versión gratuita con fines educativos, que aunque bastante limitada, nos sirve para introducirnos en la filosofía de ORACLE.
 
 
-.. danger::
-  PRUEBAS
+
+  .. danger::
+    PRUEBAS
 
 
-.. literalinclude:: ../Tema3/E03.SQL
+  .. literalinclude:: ../Tema3/E03.SQL
     :linenos:
     :language: sql
 
 
-.. literalinclude:: codigo.js
+  .. literalinclude:: codigo.js
     :linenos:
     :language: javascript
 
 
-.. image:: ../Tema2/images/Tema2-Cuestion08.png

@@ -186,10 +186,13 @@ SOLUCIÓN PROPUESTA SEGÚN EL ANTIGUO SISTEMA DE FICHEROS
 
 En esta inmobiliaria, el departamento de ventas se encarga de alquilar inmuebles. Por ejemplo, cuando un propietario pasa por el departamento de ventas para ofrecer en alquiler su piso, se rellena un formulario en donde se recogen los datos del piso, como la dirección y el número de habitaciones, y los datos del propietario. El departamento de ventas también se encarga de atender a los clientes que desean alquilar un inmueble. Cuando un cliente (posible inquilino) pasa por este departamento se rellena un formulario con sus datos y sus preferencias: si quiere un piso o una casa, el importe mensual que está dispuesto a pagar por el alquiler, etc. Para gestionar toda esta información, el departamento de ventas posee un sistema de información. El sistema del departamento de ventas tiene tres ficheros: fichero de inmuebles, fichero de propietarios y fichero de inquilinos.
 
+.. image:: images/tema1-014.png
+
 **DEPARTAMENTO DE CONTRATOS**
 
 El departamento de contratos se ocupa de gestionar los contratos de alquiler de los inmuebles. Cuando un cliente desea formalizar un contrato, un empleado de la empresa rellena un formulario con los datos del inquilino y los datos del inmueble. Este formulario se pasa al departamento de contratos, que asigna un número al contrato y completa la información sobre el pago y el período del contrato. Para gestionar esta información, el departamento de contratos posee un sistema de información con tres ficheros: el fichero de los contratos, el fichero de los inmuebles alquilados y el fichero de los inquilinos que tienen en vigor un contrato de alquiler.
 
+.. image:: images/tema1-015.png
 
 .. important::
 
@@ -292,9 +295,10 @@ La empresa desea realizar un control de sus ventas y montajes, para lo cual se t
 
 A partir de la E.R.S, que supone una descripción del mundo real sobre el que queremos diseñar nuestra base de datos, el primer paso será diseñar el esquema conceptual que lo describe.
 
+.. image:: images/tema1-016.png
+
 Es algo parecido al paso previo que realizan los arquitectos al crear el plano de un edificio antes de construirlo. Tiene sus propios símbolos que deben conocer todos los arquitectos para entender el plano. Al igual que ellos, vosotros tendréis que aprender a conocer los símbolos que utilizaréis e interpretaréis para poder diseñar una BD.
 Estos símbolos se aprenderán en el Tema siguiente, pero en este y a modo de introducción, se presenta como quedaría la interpretación del mundo real de nuestro problema mediante el esquema conceptual llamado entidad/relación.
-
 
   b) ¿Cómo crees que hemos representado las entidades en el esquema anterior?
   c) ¿Cómo crees que hemos representado los datos en el esquema anterior?
@@ -307,11 +311,12 @@ Estos símbolos se aprenderán en el Tema siguiente, pero en este y a modo de in
 
 A partir del esquema conceptual, aprenderemos a obtener el esquema lógico, el cual va a depender del SGBD que utilicemos. En nuestro caso nos basaremos en el modelo relacional que es el más extendido. De nuevo, y a modo de ejemplos de ¡lo que seréis capaces de hacer en breve! os presento como quedaría el esquema relacional del ejemplo anterior.
 
+.. image:: images/tema1-017.png
+
 Cada una de las “cajas” representadas en el esquema anterior recibirá el nombre de relación (por eso Modelo Relacional). Una relación no es otra cosa que una tabla y en ella se transformará en el diseño físico (Creación de la Bd en un SGBD)
 
 
-  
-  d) ¿Detectas algún ejemplo en el modelo que ilustre el concepto de “significado implícito” de los datos de una BD?
+  d) ¿Detectas algún ejemplo en el modelo que ilustre el concepto de "significado implícito" de los datos de una BD?
 
 .. admonition:: Fase 3 del diseño: Diseño físico. 
 
@@ -334,8 +339,19 @@ A partir del esquema lógico, aprenderemos a crear físicamente nuestra BD en el
 
 1. Entraremos en ACCESS y crearemos una nueva base de datos en blanco a la que pondremos por nombre Práctica 2. A continuación iremos a Crear –> Diseño de tabla y procederemos a crear una a una las siguientes tablas: 
 
+.. image:: images/tema1-018.png
+
 Utiliza las capturas de pantalla y el manual de ACCESS para crear las máscaras de entrada correspondientes. Se crearán máscaras para el NIF y el tlfno, del tipo 59567840-T y 676 987 659, tanto en las tablas MONTADORES como CLIENTES.
 
+  .. image:: images/tema1-019.png
+
+  .. image:: images/tema1-020.png
+  
+  .. image:: images/tema1-021.png
+  
+  .. image:: images/tema1-022.png
+  
+  .. image:: images/tema1-023.png
 
   
   e) A partir de las imágenes anteriores ¿qué identificarías como metadatos?
@@ -343,30 +359,50 @@ Utiliza las capturas de pantalla y el manual de ACCESS para crear las máscaras 
 
 2. A continuación estableceremos las relaciones entre las tablas según el siguiente esquema antes de poder introducir los datos.
 
+  .. image:: images/tema1-024.png
 
 
   g) Crea las relaciones en ACCESS: Herramientas de Bases de Datos-> Relaciones→ Agregar las tablas. Para estableces las relaciones deberás pinchar con el ratón sobre la clave principal y, sin soltar, ponerte sobre la clave foránea. Una vez sobre ella soltarás y marcarás las casilla “Exigir integridad referencial”
 
+  .. image:: images/tema1-025.png
 
 3. Ya estamos listos para introducir datos. Para hacerlo pincharemos sobre las tablas y accederemos a ellas en “Vista hoja de datos”. Se introducirán los datos siguientes:
+
+  .. image:: images/tema1-026.png
+
 
 4. El verdadero sentido de tener nuestros datos almacenados en una BD es poder consultarlos en caso de necesidad. A continuación vamos a ver ejemplos guiados de consultas de datos.
 Vamos a ver ahora como se realizan algunas consultas sencillas. Iremos a las opciones Crear-> Diseño de consultas
 
-
-
   h) Muestra los nombres y teléfonos de todos los montadores. Sólo habrá que mostrar la tabla MONTADORES
 
+  .. image:: images/tema1-027.png
+
+
 Y de ella elegir los campos: Nombres y Teléfonos.
+
+  .. image:: images/tema1-028.png
+
+
 Una vez realizada tal selección se grabará la consulta con el nombre de Consulta1 Y para mostrarla elegiremos la pestaña “Consultas” de la lista desplegable de “Tablas”. Pinchado sobre “Consulta 1” se deberá abrir el resultado de la misma.
+
+  .. image:: images/tema1-030.png
 
   i) Muestra los nombres y direcciones de los clientes y graba dicha consulta con el nombre de “Consulta2”.
 
+  .. image:: images/tema1-031.png
+
   j) Muestra todas las cocinas montadas por el montador de NIF 87654329-F.
+
+  .. image:: images/tema1-032.png
 
   k) Muestra el NIF de los clientes que han adquirido la cocina de modelo 2 y la cocina de modelo 6.
 
+  .. image:: images/tema1-033.png 
+
   l) Muestra los nombres de los clientes que han adquirido una cocina del modelo 2 o del modelo 6
+
+  .. image:: images/tema1-034.png
 
 
 PRÁCTICA 3
@@ -392,7 +428,11 @@ a. Identifica las entidades y los datos que detectas en el enunciado anterior.
 
 b. Observa el siguiente modelo Entidad/Relación que se obtendría a partir del enunciado anterior. Detecta en él cuáles serían las entidades y los datos.
 
+  .. image:: images/tema1-035.png
+
 c. Observa el siguiente modelo Relacional que se obtendrá a partir del modelo Entidad/Relación anterior. Indica en él:
+
+  .. image:: images/tema1-036.png
 
   - Cuáles son las tablas que deberás crear en ACCESS.
   - Cuáles son las claves principales.
@@ -430,17 +470,25 @@ I. **Creación de una Base de Datos y diseño de varias tablas.**
 
   2. Crear una tabla nueva para registrar la información de fichas de Clientes. Llamarla CLIENTES. Estará compuesta por los siguientes campos:
 
+  .. image:: images/tema1-037.png
+
   3. Asignar como Clave Principal el campo CODCLIENTE.
 
   4. Crear una tabla nueva para registrar la información de fichas de Artículos. Llamarla ARTICULOS. Compuesta por los siguientes campos:
+
+  .. image:: images/tema1-038.png
 
   5. Asignar como Clave Principal el campo CODARTIC.
 
   6. Crear una Tabla nueva para registrar la información de Pedidos. Llamarla PEDIDOS. Compuesta por los siguientes campos:
 
+  .. image:: images/tema1-039.png
+
   7. Asignar como Clave principal el campo NUMPEDIDO.
 
   8. Crear una Tabla nueva para registrar la información de las zonas de Ventas. Llamarla ZONAS. Compuesta por los siguientes campos:
+
+  .. image:: images/tema1-040.png
 
   9. Asignar como Clave principal el campo ZONA.
 

@@ -55,7 +55,7 @@ author = 'José Antonio Muñoz Jiménez'
 # built documents.
 #
 # The short X.Y version.
-version = '1'
+version = '1.0'
 # The full version, including alpha/beta/rc tags.
 release = '1'
 
@@ -126,7 +126,7 @@ html_theme = 'bizstyle'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#html_title = None
+html_title = project
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -215,7 +215,7 @@ latex_elements = {
 #'papersize': 'letterpaper',
 
 # The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
+'pointsize': '11pt',
 
 # Additional stuff for the LaTeX preamble.
 #'preamble': '',
@@ -250,7 +250,7 @@ latex_documents = [
 #latex_appendices = []
 
 # If false, no module index is generated.
-#latex_domain_indices = True
+latex_domain_indices = True
 
 
 # -- Options for manual page output ---------------------------------------
@@ -309,7 +309,7 @@ epub_copyright = copyright
 
 # The language of the text. It defaults to the language option
 # or 'en' if the language is not set.
-#epub_language = ''
+epub_language = 'es'
 
 # The scheme of the identifier. Typical schemes are ISBN or URL.
 #epub_scheme = ''
