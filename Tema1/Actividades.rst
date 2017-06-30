@@ -426,11 +426,11 @@ Cada sucursal tiene un único director de sucursal.
 
 a. Identifica las entidades y los datos que detectas en el enunciado anterior. 
 
-b. Observa el siguiente modelo Entidad/Relación que se obtendría a partir del enunciado anterior. Detecta en él cuáles serían las entidades y los datos.
+b. Observa el siguiente **modelo Entidad/Relación** que se obtendría a partir del enunciado anterior. Detecta en él cuáles serían las entidades y los datos.
 
   .. image:: images/tema1-035.png
 
-c. Observa el siguiente modelo Relacional que se obtendrá a partir del modelo Entidad/Relación anterior. Indica en él:
+c. Observa el siguiente **modelo Relacional** que se obtendrá a partir del modelo Entidad/Relación anterior. Indica en él:
 
   .. image:: images/tema1-036.png
 
