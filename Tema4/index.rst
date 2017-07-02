@@ -10,4 +10,4 @@ LENGUAJE DE MANIPULACIÓN DE DATOS
 	Teoria
 	Actividades
 
-* :ref:`genindex`
+

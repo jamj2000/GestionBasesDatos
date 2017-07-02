@@ -1,12 +1,11 @@
+*******************************
 ELEMENTOS DE LAS BASES DE DATOS 
-================================
-
+*******************************
 
 .. toctree::
-	:maxdepth: 2
-	:numbered:
+   :maxdepth: 2
 
-	Teoria
-	Actividades
+   Teoria
+   Actividades
 
 

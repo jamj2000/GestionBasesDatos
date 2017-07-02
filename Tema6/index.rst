@@ -9,4 +9,3 @@ LENGUAJE DE CONTROL DE DATOS
 	Teoria
 	Actividades
 
-* :ref:`genindex`

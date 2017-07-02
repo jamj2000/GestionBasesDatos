@@ -8,4 +8,3 @@ DISEÑO DE MODELOS LÓGICOS NORMALIZADOS
 	Teoria
 	Actividades
 
-* :ref:`genindex`

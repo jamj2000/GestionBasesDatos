@@ -9,4 +9,3 @@ LENGUAJE DE DEFINICIÓN DE DATOS
 	Teoria
 	Actividades
 
-* :ref:`genindex`
