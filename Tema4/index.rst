@@ -1,8 +1,5 @@
-CONSULTA DE BASES DE DATOS
-==================================
-
-LENGUAJE DE MANIPULACIÓN DE DATOS
- 
+CONSULTA DE BASES DE DATOS. LENGUAJE DE MANIPULACIÓN DE DATOS
+=============================================================
 
 .. toctree::
 	:maxdepth: 2

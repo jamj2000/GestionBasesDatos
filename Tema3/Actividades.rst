@@ -2,6 +2,10 @@ ACTIVIDADES RESUELTAS
 =====================
 
 
+.. admonition:: IMPORTANTE
+
+   Todos los scripts que aparecen a continuación deben ejecutarse en SQL*Plus.
+
 Cuestiones (I)
 --------------
 
@@ -557,9 +561,6 @@ Cuestiones  (III)
 -------------------
 
 
-.. admonition:: IMPORTANTE
-
-   Todos los scripts que aparecen a continuación deben ejecutarse en SQL*Plus.
 
 
 **REPASO Y REFUERZO**
