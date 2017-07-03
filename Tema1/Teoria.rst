@@ -315,11 +315,6 @@ Los SGBD se pueden clasificar según las BD que gestionan (jerárquicas, relacio
     PRUEBAS
 
 
-  .. literalinclude:: ../Tema3/E03.SQL
-    :linenos:
-    :language: sql
-
-
   .. literalinclude:: codigo.js
     :linenos:
     :language: javascript

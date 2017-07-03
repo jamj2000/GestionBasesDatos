@@ -211,8 +211,8 @@ Se quiere guardar información de la localidad donde ha nacido cada uno de los e
 10. Obtén el diagrama E/R con las dos entidades siguientes:
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-**EMPLEADO** (Id_E, DNI_E, Nombre, Teléfono, Salario)
-**DEPARTAMENTO** (Código_D, Nombre, Localización)
+- **EMPLEADO** (Id_E, DNI_E, Nombre, Teléfono, Salario)
+- **DEPARTAMENTO** (Código_D, Nombre, Localización)
 
 Teniendo en cuenta:
 
