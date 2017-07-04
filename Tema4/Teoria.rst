@@ -11,11 +11,11 @@ A lo largo de esta unidad nos centraremos en la cláusula SELECT. Sin duda es el
 CONSULTAS
 =================
 
-Para realizar consultas a una base de datos relacional hacemos uso de la sentencia SELECT. La sintaxis básica del comando 
+Para realizar consultas a una base de datos relacional hacemos uso de la sentencia SELECT. La sintaxis básica del comando SELECT es la siguiente:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
-  SELECT es la siguiente:
+
   SELECT * | {[ DISTINCT ] columna | expresión [[AS] alias ], ...}
   FROM nombre_tabla;
 
@@ -31,7 +31,7 @@ Donde:
 Ejemplos:
 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   -- Selección de todos los registros de la tabla CLIENTES
   SELECT * FROM CLIENTES;
@@ -52,7 +52,7 @@ Los operadores + (suma), - (resta), * (multiplicación) y / (división), se pued
 Ejemplo:
 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   -- Consulta con 3 columnas 
   SELECT nombre, precio, precio*1.16 FROM ARTICULOS;
@@ -76,7 +76,7 @@ El operador **||** es el de la concatenación. Sirve para unir textos.
 Ejemplo:
 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT tipo, modelo, tipo || '-' || modelo "Clave Pieza" FROM PIEZAS;
 
@@ -99,7 +99,7 @@ Se puede realizar consultas que restrinjan los datos de salida de las tablas. Pa
 Ejemplo:
 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   -- Tipo y modelo de las piezas cuyo precio es mayor que 3
   SELECT tipo, modelo
@@ -128,7 +128,7 @@ Son:
 
 Ejemplos:
 
-.. code-block:: sql
+.. code-block:: plpgsql
   
   -- Personas entre 25 y 50 años
   SELECT nombre, apellidos
@@ -148,7 +148,7 @@ El operador BETWEEN nos permite obtener datos que se encuentren entre dos valore
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   -- Selección de las piezas cuyo precio está entre 3 y 8 
   -- (ambos valores incluidos) 
@@ -161,7 +161,7 @@ El operador NOT BETWEEN nos permite obtener los los valores que son menores (est
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
   
   -- Selección de las piezas cuyo precio sea menor que 3 o mayor que 8 
   -- (los de precio 3 y precio 8 no estarán incluidos) 
@@ -177,7 +177,7 @@ El operador IN nos permite obtener registros cuyos valores estén en una lista:
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   -- Selección de las piezas cuyo precio sea igual a 3, 5 u 8
   SELECT tipo, modelo, precio
@@ -201,7 +201,7 @@ El operador LIKE se usa sobre todo con textos, permite obtener registros cuyo va
 
 Ejemplos:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   -- Selección el nombre de las personas que empiezan por A 
   SELECT nombre
@@ -219,7 +219,7 @@ Si queremos que en la cadena de caracteres se busquen los caracteres “%” o �
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
   
   -- Seleccionamos el tipo, el modelo y el precio de las piezas 
   -- cuyo porcentaje de descuento sea 3% 
@@ -236,7 +236,7 @@ La cláusula IS NOT NULL devuelve “verdadero” si una expresión NO contiene 
 
 Ejemplos:
 
-.. code-block:: sql
+.. code-block:: plpgsql
   
   -- Devuelve el nombre y los apellidos de las personas que NO tienen teléfono
   SELECT nombre, apellido1, apellido2
@@ -262,7 +262,7 @@ SUBCONSULTAS
 
 Se trata de una técnica que permite utilizar el resultado de una tabla SELECT en otra consulta SELECT. Permite solucionar problemas en los que el mismo dato aparece dos veces. La sintaxis es:
 
-.. code-block:: sql
+.. code-block:: plpgsql
   
   SELECT lista_expresiones
   FROM tablas
@@ -275,7 +275,7 @@ Se puede colocar el SELECT dentro de las cláusulas WHERE, HAVING o FROM. El ope
 
 Ejemplo: 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   -- Obtiene los empleados cuyas pagas sean inferiores a lo que gana Martina.
   SELECT nombre_empleado, paga
@@ -290,7 +290,7 @@ Lógicamente el resultado de la subconsulta debe incluir el campo que estamos an
 
 Se pueden realizar esas subconsultas las veces que haga falta:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT nombre_empleado, paga
   FROM EMPLEADOS
@@ -311,7 +311,7 @@ La subconsulta necesaria para ese resultado mostraría los sueldos del departame
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   -- Obtiene el empleado que más cobra.
   SELECT nombre, sueldo
@@ -322,7 +322,7 @@ Ejemplo:
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
   
   -- Obtiene los nombres de los empleados cuyos DNI están en la tabla de directivos.
   -- Es decir, obtendrá el nombre de los empleados que son directivos.
@@ -341,7 +341,7 @@ Se puede colocar las palabras ASC O DESC (por defecto se toma ASC). Esas palabra
 
 Sintaxis completa de SELECT:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT * | {[DISTINCT] columna | expresión [[AS] alias], ... }
   FROM nombre_tabla
@@ -351,7 +351,7 @@ Sintaxis completa de SELECT:
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
   
   -- Devuelve el nombre y los apellidos 
   -- de las personas que tienen teléfono, ordenados por 
@@ -389,7 +389,7 @@ En este apartado, solo veremos las primeras. Más adelante se estudiarán las qu
 
   Por ejemplo la consulta:
 
-  .. code-block:: sql
+  .. code-block:: plpgsql
 
     SELECT SQRT(5) FROM DUAL;
 
@@ -441,7 +441,7 @@ Oracle es capaz de convertir datos automáticamente a fin de que la expresión f
 
 Ejemplos:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   -- El resultado es 8 
   SELECT 5+'3'
@@ -464,7 +464,7 @@ Obtiene un texto a partir de un número o una fecha. En especial se utiliza con 
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   -- Si esta consulta se ejecuta el 20 de Febrero de 2014 a las 14:15 horas, 
   -- devuelve:  20/FEBRERO/2014, JUEVES 14:15:03 
@@ -493,18 +493,18 @@ Función DECODE
 
 Se evalúa una expresión y se colocan a continuación pares valor,resultado de forma que si se la expresión equivale al valor, se obtiene el resultado indicado. Se puede indicar un último parámetro con el resultado a efectuar en caso de no encontrar ninguno de los valores indicados. Sintaxis:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   DECODE (
      expresión, valor1, resultado1 
-             [, valor2, resultado2]... 
+             [, valor2, resultado2] ... 
              [, valorPorDefecto]        
   );
 
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT
     DECODE (cotización, 1, salario*0.85,
@@ -522,7 +522,7 @@ Expresión CASE
 
 Es una instrucción incorporada a la versión 9 de Oracle que permite establecer condiciones de salida (al estilo if-then-else de muchos lenguajes).
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   CASE expresión 
     WHEN valor1 THEN resultado1
@@ -540,7 +540,7 @@ El funcionamiento es el siguiente:
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT
     CASE cotización 
@@ -558,14 +558,14 @@ AGRUPACIONES
 
 Es muy común utilizar consultas en las que se desee agrupar los datos a fin de realizar cálculos en vertical, es decir calculados a partir de datos de distintos registros. Para ello se utiliza la cláusula GROUP BY que permite indicar en base a qué registros se realiza la agrupación. Con GROUP BY la instrucción SELECT queda de esta forma:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT lista_expresiones
   FROM lista_tablas
-  [WHERE condiciones]
-  [GROUP BY grupos]
-  [HAVING condiciones_de_grupos]
-  [ORDER BY columnas];
+  [ WHERE condiciones ]
+  [ GROUP BY grupos ]
+  [ HAVING condiciones_de_grupos ]
+  [ ORDER BY columnas ];
 
 
 En el apartado GROUP BY, se indican las columnas por las que se agrupa. La función de este apartado es crear un único registro por cada valor distinto en las columnas del grupo.
@@ -575,7 +575,7 @@ Vamos a ver un ejemplo de como funciona GROUP BY. Supongamos que tenemos la sigu
 
 Si por ejemplo agrupamos en base a las columnas tipo y modelo, la sintaxis sería la siguiente:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT tipo, modelo
   FROM EXISTENCIAS
@@ -591,7 +591,7 @@ Es decir es un resumen de los datos anteriores. Pero observamos que los datos n_
 
 Así si los hubiésemos seleccionado también en la consulta habríamos ejecutado una consulta ERRÓNEA. Es decir al ejecutar:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT tipo, modelo, cantidad
   FROM EXISTENCIAS
@@ -617,7 +617,7 @@ Lo interesante de la creación de grupos es la posibilidad de cálculo que ofrec
 
 Las funciones anteriores se aplicarán sobre todos los elementos del grupo. Así, por ejemplo, podemos calcular la suma de las cantidades para cada tipo y modelo de la tabla EXISTENCIAS. (Es como si lo hiciéramos manualmente con las antiguas fichas sobre papel: primero las separaríamos en grupos poniendo juntas las que tienen el mismo tipo y modelo y luego para cada grupo sumaríamos las cantidades). La sintaxis SQL de dicha consulta quedaría:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT tipo, modelo, SUM(cantidad)
   FROM EXISTENCIAS
@@ -634,11 +634,11 @@ Condiciones HAVING
 
 A veces se desea restringir el resultado de una función agrupada y no aplicarla a todos los grupos. Por ejemplo, imaginemos que queremos realizar la consulta anterior, es decir queremos calcular la suma de las cantidades para cada tipo y modelo de la tabla EXISTENCIAS, pero queremos que se muestren solo los registros en los que la suma de las cantidades calculadas sean mayor que 500. si planteáramos la consulta del modo siguiente:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT tipo, modelo, SUM(cantidad)
   FROM EXISTENCIAS
-  WHERE SUM(cantidad) >500
+  WHERE SUM(cantidad) > 500
   GROUP BY tipo, modelo;
 
 
@@ -652,23 +652,23 @@ Habríamos ejecutado una consulta ERRÓNEA.
 La razón es que Oracle calcula primero el WHERE y luego los grupos; por lo que esa condición no la puede realizar al no estar establecidos los grupos. Es decir, no puede saber que grupos tienen una suma de cantidades mayor que 500 cuando todavía no ha aplicado los grupos.
 Por ello se utiliza la cláusula HAVING, cuya ejecución se efectúa una vez realizados los grupos. Se usaría de esta forma:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT tipo, modelo, SUM(cantidad)
   FROM EXISTENCIAS
   GROUP BY tipo, modelo
-  HAVING SUM(cantidad) >500;
+  HAVING SUM(cantidad) > 500;
 
 
 Ahora bien, esto no implica que con la cláusula GROUP BY no podamos emplear un WHERE. Esta expresión puede usarse para imponer condiciones sobre las filas de la tabla antes de agrupar. Por ejemplo, la siguiente expresión es correcta:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT tipo, modelo, SUM(cantidad)
   FROM EXISTENCIAS
   WHERE tipo='AR'
   GROUP BY tipo, modelo
-  HAVING SUM(cantidad) >500;
+  HAVING SUM(cantidad) > 500;
 
 
 De la tabla EXISTENCIAS tomará solo aquellas filas cuyo tipo sea AR, luego agrupará según tipo y modelo y dejará sólo aquellos grupos en los que SUM(cantidad)>500 y por último mostrará tipo, modelo y la suma de las cantidades para aquellos grupos que cumplan dicha condición.
@@ -697,7 +697,7 @@ Producto cruzado o cartesiano de tablas
 
 En el ejemplo anterior si quiere obtener una lista de los datos de las tareas y los empleados, se podría hacer de esta forma:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT cod_tarea, descripción_tarea, dni_empleado, nombre_empleado
   FROM TAREAS, EMPLEADOS;
@@ -712,42 +712,42 @@ Asociando tablas
 
 La forma de realizar correctamente la consulta anterior (asociado las tareas con los empleados que la realizaron) sería:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT cod_tarea, descripción_tarea, dni_empleado, nombre_empleado
   FROM TAREAS, EMPLEADOS
-  WHERE TAREAS.dni_empleado=EMPLEADOS.dni_empleado;
+  WHERE TAREAS.dni_empleado = EMPLEADOS.dni_empleado;
 
 
 Nótese que se utiliza la notación tabla.columna para evitar la ambigüedad, ya que el mismo nombre de campo se puede repetir en ambas tablas. Para evitar repetir continuamente el nombre de la tabla, se puede utilizar un alias de tabla:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT T.cod_tarea, T.descripción_tarea, E.dni_empleado, E.nombre_empleado
   FROM TAREAS T, EMPLEADOS E
-  WHERE T.dni_empleado=E.dni_empleado;
+  WHERE T.dni_empleado = E.dni_empleado;
 
 
 A la sintaxis WHERE se le pueden añadir condiciones sin más que encadenarlas con el operador AND.
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT T.cod_tarea, T.descripción_tarea
   FROM TAREAS T, EMPLEADOS E
-  WHERE T.dni_empleado=E.dni_empleado AND E.nombre_empleado='Javier';
+  WHERE T.dni_empleado = E.dni_empleado AND E.nombre_empleado = 'Javier';
 
 
 Finalmente indicar que se pueden enlazar más de dos tablas a través de sus claves principales y foráneas. Por cada relación necesaria entre tablas, aparecerá una condición (igualando la clave principal y la foránea correspondiente) en el WHERE.
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT T.cod_tarea, T.descripción_tarea, E.nombre_empleado, U.nombre_utensilio
   FROM TAREAS T, EMPLEADOS E, UTENSILIOS U
-  WHERE T.dni_empleado=E.dni_empleado AND T.cod_tarea=U.cod_tarea;
+  WHERE T.dni_empleado = E.dni_empleado AND T.cod_tarea = U.cod_tarea;
 
 
 Relaciones sin igualdad
@@ -762,7 +762,7 @@ En el ejemplo anterior podríamos averiguar la categoría a la que pertenece cad
 
 La forma sería:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT E.empleado, E.sueldo, C.categoria
   FROM EMPLEADOS E, CATEGORÍAS C
@@ -830,21 +830,21 @@ En lugar de INNER JOIN es más frecuente encontrarlo escrito como JOIN simplemen
 
 Su sintaxis es:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT TABLA1.columna1, TABLA1.columna2, ...
          TABLA2.columna1, TABLA2.columna2, ...
   FROM TABLA1 JOIN TABLA2 
-  ON TABLA1.columnaX=TABLA2.columnaY;
+  ON TABLA1.columnaX = TABLA2.columnaY;
 
 
 Por ejemplo, para ver los empleados con sucursal asignada:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT E.*, S.LOCALIDAD 
   FROM EMPLEADOS E JOIN SUCURSALES S 
-  ON E.COD_SUCURSAL=S.COD_SUCURSAL;
+  ON E.COD_SUCURSAL = S.COD_SUCURSAL;
 
 
 .. csv-table::
@@ -868,19 +868,19 @@ En algún momento podemos necesitar unir una tabla consigo mísma. Este tipo de 
 
 Sintaxis:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT ALIAS1.columna1, ALIAS1.columna2, ..., ALIAS2.columna1, ...
   FROM TABLA ALIAS1 JOIN TABLA ALIAS2 
-  ON ALIAS1.columnaX=ALIAS2.columnaY;
+  ON ALIAS1.columnaX = ALIAS2.columnaY;
 
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT E1.NOMBRE, E2.NOMBRE, E1.LOCALIDAD
-  FROM EMPLEADOS E1 JOIN EMPLEADOS E2 ON E1.LOCALIDAD=E2.LOCALIDAD;
+  FROM EMPLEADOS E1 JOIN EMPLEADOS E2 ON E1.LOCALIDAD = E2.LOCALIDAD;
 
 
 .. csv-table::
@@ -901,7 +901,7 @@ NATURAL JOIN
 
 NATURAL JOIN establece una relación de igualdad entre las tablas a través de los campos que tengan el mismo nombre en ambas tablas. Su sintaxis es:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT TABLA1.columna1, TABLA1.columna2, ...
          TABLA2.columna1, TABLA2.columna2, ...
@@ -910,7 +910,7 @@ NATURAL JOIN establece una relación de igualdad entre las tablas a través de l
 
 En este caso no existe clausula ON puesto que se realiza la combinación teniendo  en cuenta las columnas del mismo nombre. Por ejemplo: 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT *
   FROM EMPLEADOS E NATURAL JOIN SUCURSALES S;
@@ -937,21 +937,21 @@ LEFT JOIN
 También conocido como LEFT OUTER JOIN, nos permite obtener todas las filas de la primera tabla asociadas a filas de la segunda tabla. Si no existe correspondencia en la segunda tabla, dichos valores aparecen como NULL.
 Su  sintaxis es:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT TABLA1.columna1, TABLA1.columna2, ...
          TABLA2.columna1, TABLA2.columna2, ...
   FROM TABLA1 LEFT JOIN TABLA2 
-  ON TABLA1.columnaX=TABLA2.columnaY;
+  ON TABLA1.columnaX = TABLA2.columnaY;
 
 
 Por ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT E.*, S.LOCALIDAD
   FROM EMPLEADOS E LEFT JOIN SUCURSALES S
-  ON E.COD_SUCURSAL=S.COD_SUCURSAL;
+  ON E.COD_SUCURSAL = S.COD_SUCURSAL;
 
 
 .. csv-table::
@@ -971,21 +971,21 @@ RIGHT JOIN
 También conocido como RIGHT OUTER JOIN, nos permite obtener todas las filas de la segunda tabla asociadas a filas de la primera tabla. Si no existe correspondencia en la primera tabla, dichos valores aparecen como NULL.
 Su  sintaxis es:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT TABLA1.columna1, TABLA1.columna2, ...
          TABLA2.columna1, TABLA2.columna2, ...
   FROM TABLA1 RIGHT JOIN TABLA2 
-  ON TABLA1.columnaX=TABLA2.columnaY;
+  ON TABLA1.columnaX = TABLA2.columnaY;
 
 
 Por ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT E.DNI, E.NOMBRE, S.*
   FROM EMPLEADOS E RIGHT JOIN SUCURSALES S
-  ON E.COD_SUCURSAL=S.COD_SUCURSAL;
+  ON E.COD_SUCURSAL = S.COD_SUCURSAL;
 
 
 .. csv-table::
@@ -1006,21 +1006,21 @@ También conocido como FULL OUTER JOIN, nos permite obtener todas las filas de l
 
 Su  sintaxis es:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT TABLA1.columna1, TABLA1.columna2, ...
          TABLA2.columna1, TABLA2.columna2, ...
   FROM TABLA1 FULL JOIN TABLA2 
-  ON TABLA1.columnaX=TABLA2.columnaY;
+  ON TABLA1.columnaX = TABLA2.columnaY;
 
 
 Por ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT E.DNI, E.NOMBRE, S.COD_SUCURSAL, S.LOCALIDAD
   FROM EMPLEADOS E FULL JOIN SUCURSALES S 
-  ON E.COD_SUCURSAL=S.COD_SUCURSAL;
+  ON E.COD_SUCURSAL = S.COD_SUCURSAL;
 
 
 .. csv-table::
@@ -1041,7 +1041,7 @@ CROSS JOIN
 
 El CROSS JOIN o combinación cruzada produce el mismo resultado del producto cartesiano, es decir nos da todas las combinaciones posibles. Su sintaxis es:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT TABLA1.columna1, TABLA1.columna2, ...
          TABLA2.columna1, TABLA2.columna2, ...
@@ -1050,7 +1050,7 @@ El CROSS JOIN o combinación cruzada produce el mismo resultado del producto car
 
 Por ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   SELECT E.DNI, E.NOMBRE, E.LOCALIDAD, S.COD_SUCURSAL, S.LOCALIDAD
   FROM EMPLEADOS E CROSS JOIN SUCURSALES S;
@@ -1086,7 +1086,7 @@ La palabra UNION permite añadir el resultado de un SELECT a otro SELECT. Para e
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   --  Tipos y modelos de piezas que se encuentren el almacén 1, en el 2 o en ambos.
 
@@ -1112,7 +1112,7 @@ Intersecciones
 De la misma forma, la palabra INTERSECT permite unir dos consultas SELECT de modo que el resultado serán las filas que estén presentes en ambas consultas.
 Ejemplo: tipos y modelos de piezas que se encuentren en los almacenes 1 y 2 (en ambos).
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   -- Tipos y modelos de piezas que se encuentren en los almacenes 1 y 2 (en ambos).
 
@@ -1135,7 +1135,7 @@ Diferencia
 Con MINUS también se combinan dos consultas SELECT de forma que aparecerán los registros del primer SELECT que no estén presentes en el segundo.
 Ejemplo: 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   -- Tipos y modelos de piezas que se encuentren el almacén 1 y no en el 2.
 
@@ -1153,7 +1153,7 @@ Ejemplo:
 
 Se podrían hacer varias combinaciones anidadas (una unión a cuyo resultado se restará de otro SELECT por ejemplo), en ese caso es conveniente utilizar paréntesis para indicar qué combinación se hace primero:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   (
   SELECT ...
@@ -1178,7 +1178,7 @@ CONSULTA DE VISTAS
 A efectos de uso, la consulta de una vista es idéntica a la consulta de una tabla.
 Supongamos que tenemos la siguiente vista:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
   CREATE VIEW RESUMEN 
     -- a continuación indicamos los alias
@@ -1189,13 +1189,13 @@ Supongamos que tenemos la siguiente vista:
     SELECT L.IdLocalidad, L.Nombre, L.Poblacion,
            P.IdProvincia, P.Nombre, P.Superficie, 
            C.IdComunidad, C.Nombre
-    FROM LOCALIDADES L JOIN PROVINCIAS P ON L.IdProvincia=P.IdProvincia
-         JOIN COMUNIDADES C ON P.IdComunidad=C.IdComunidad;
+    FROM LOCALIDADES L JOIN PROVINCIAS P ON L.IdProvincia = P.IdProvincia
+                       JOIN COMUNIDADES C ON P.IdComunidad = C.IdComunidad;
 
 
 Podemos consultar ahora sobre la vista como si de una tabla se tratase
 
-.. code-block:: sql 
+.. code-block:: plpgsql 
 
   SELECT DISTINCT (provincia, comunidad) FROM resumen;
 

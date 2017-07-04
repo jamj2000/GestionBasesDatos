@@ -69,7 +69,7 @@ Los comentarios en el código SQL pueden ser de 2 tipos:
 
 Ejemplos:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	/*
 	  Esto es un comentario
@@ -204,7 +204,7 @@ Con ellos podemos realizar comparaciones de igualdad, desigualdad, ...
 
 Ejemplos:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	horas >= 10.5
 	nombre = 'PEPE'
@@ -217,7 +217,7 @@ Comprueba la pertenencia a la lista de valores. Generalmente, los valores de la 
 
 Ejemplo: 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	nombre NOT IN ('PEPE', 'LOLA')
 
@@ -228,7 +228,7 @@ Comprueba que se cumple la operación *oper* con algún elemento de la lista de 
 
 Ejemplo: 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	nombre = ANY ('PEPE', 'LOLA')
 
@@ -240,7 +240,7 @@ Comprueba que se cumple la operación oper con todos los elementos de la lista d
 
 Ejemplo: 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	nombre <> ALL ('PEPE', 'LOLA')
 
@@ -251,7 +251,7 @@ Comprueba la pertenencia al rango *x* - *y*.
 
 Ejemplo: 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	horas BETWEEN 10 AND 20    -- que equivale a horas >= 10 AND horas <= 20
 
@@ -262,7 +262,7 @@ Comprueba si la lista de valores contiene algún elemento.
 
 Ejemplos:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	EXISTS ('ALGO')      -- devuelve verdadero.
 	NOT EXISTS ('ALGO')  -- devuelve falso.
@@ -280,7 +280,7 @@ Los símbolos comodín que pueden usarse son dos:
 
 Ejemplos:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	nombre LIKE 'Pedro%'
 	codigo NOT LIKE 'cod1_'
@@ -294,7 +294,7 @@ Cuando el valor de un atributo, o es desconocido, o no es aplicable esa informac
 
 Ejemplo: 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	teléfono IS NULL
 
@@ -310,7 +310,7 @@ Los operadores lógicos junto con el uso de paréntesis permiten combinar condic
 
 Ejemplos:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	nombre = 'PEPE' OR horas BETWEEN 10 AND 20
 	horas > 10 AND telefono IS NULL
@@ -332,13 +332,13 @@ Lógicamente sólo es posible crear una base de datos si se tienen privilegios D
 
 El comando SQL de creación de una base de datos es **CREATE DATABASE**. Este comando crea una base de datos con el nombre que se indique. Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CREATE DATABASE prueba;
 
 Pero normalmente se indican más parámetros. Ejemplo (parámetros de Oracle):
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CREATE DATABASE prueba
 	LOGFILE prueba.log
@@ -358,7 +358,7 @@ Eliminación de una Base de datos
 
 La sentencia que se utiliza para ello es **DROP DATABASE**. 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	DROP DATABASE prueba;
 
@@ -367,7 +367,7 @@ Modificación de una Base de datos
 
 Se utiliza la sentencia **ALTER DATABASE** que posee innumerables cláusulas. 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER DATABASE prueba ...;
 
@@ -383,14 +383,14 @@ En Oracle para crear un esquema o usuario se utiliza la sentencia **CREATE USER*
 La forma más sencilla de uso es:
 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CREATE USER nombre IDENTIFIED BY contraseña;
 
 Aunque, con frecuencia, se añaden diversas cláusulas. Una sentencia más detallada es:
 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CREATE USER nombre 
 	IDENTIFIED BY clave 
@@ -405,7 +405,7 @@ Eliminación de un Esquema
 
 Se realiza mediante la sentencia **DROP USER**:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 	
 	DROP USER usuario [CASCADE];
 
@@ -416,7 +416,7 @@ Modificación de un Esquema
 
 Cada parámetro indicado en la creación del esquema puede modificarse mediante la instrucción **ALTER USER**, que se utiliza igual que CREATE USER. Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 	
 	ALTER USER nombre IDENTIFIED BY "nuevaclave";
 	ALTER USER nombre QUOTA UNLIMITED ON users;
@@ -442,7 +442,7 @@ El nombre de las tablas debe cumplir las siguientes reglas:
 
 Para la creación de tablas con SQL se utiliza el comando **CREATE TABLE**. Este comando tiene una sintaxis más compleja de la que aquí se expone, pero vamos a comenzar por la sintaxis básica. Sintaxis básica de creación de tablas:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CREATE TABLE nombre_tabla (
 	  columna1  tipo_dato  [ restricciones de columna1 ],
@@ -468,10 +468,10 @@ Y las restricciones de tabla tienen la siguiente sintaxis:
 .. code-block:: plpgsql
 
 	CONSTRAINT nombre_restricción {
-	  PRIMARY KEY (columna1 [,columna2] … ) 
-	| UNIQUE (columna1 [,columna2] … )
-	| FOREIGN KEY (columna1 [,columna2] … ) 
-	    REFERENCES nombre_tabla (columna1 [,columna2] … ) 
+	  PRIMARY KEY (columna1 [,columna2] ... ) 
+	| UNIQUE (columna1 [,columna2] ... )
+	| FOREIGN KEY (columna1 [,columna2] ... ) 
+	    REFERENCES nombre_tabla (columna1 [,columna2] ... ) 
 	    [ON DELETE {CASCADE | SET NULL}]
 	| CHECK (condición)
 	}
@@ -506,7 +506,7 @@ La utilización de la cláusula **CONSTRAINT nombre_restricción** establece un 
 
 Ejemplos:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CREATE TABLE usuarios (
 	  id  		NUMBER  		PRIMARY KEY,
@@ -531,7 +531,7 @@ Otra forma más adecuada es dando nombre a las restricciones:
 
 La **vista USER_TABLES** contiene una lista de las tablas del usuario actual (o del esquema actual). Así para sacar la lista de tablas del usuario actual, se haría:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	SELECT * FROM USER_TABLES;
 
@@ -547,7 +547,7 @@ Finalmente la vista DBA_TABLES es una tabla que contiene absolutamente todas las
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	DESCRIBE COCHES;
 
@@ -557,13 +557,13 @@ Y aparecerán los campos de la tabla COCHES
 
 Para la Restricción de Clave principal (solo una en cada tabla):
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CONSTRAINT tabla_campo_pk PRIMARY KEY ...
 
 Para Restricciones de Clave foránea (puede haber varias en cada tabla):
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CONSTRAINT tabla_campo_fk1 FOREING KEY ...
 	CONSTRAINT tabla_campo_fk2 FOREING KEY ...
@@ -572,7 +572,7 @@ Para Restricciones de Clave foránea (puede haber varias en cada tabla):
 
 Para Restricciones de tipo CHECK (puede haber varias en cada tabla)
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CONSTRAINT tabla_campo_ck1 CHECK ...
 	CONSTRAINT tabla_campo_ck2 CHECK ...
@@ -580,7 +580,7 @@ Para Restricciones de tipo CHECK (puede haber varias en cada tabla)
 
 Para Restricciones de tipo UNIQUE (puede haber varias en cada tabla)
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CONSTRAINT tabla_campo_uq1 UNIQUE ...
 	CONSTRAINT tabla_campo_uq2 UNIQUE ...
@@ -588,8 +588,8 @@ Para Restricciones de tipo UNIQUE (puede haber varias en cada tabla)
 
 Ejemplo:
 
-.. code-block:: sql
-	
+.. code-block:: plpgsql
+
 	CREATE TABLE COCHES (
 	  matricula		VARCHAR2(8),
 	  marca			VARCHAR2(15) NOT NULL,
@@ -602,7 +602,7 @@ Ejemplo:
 	  CONSTRAINT coches_codprop_fk2 FOREIGN KEY (codProp) 
 	      REFERENCES PROPIETARIO(codProp),
 	  CONSTRAINT coches_color_ck1 
-	      CHECK (color IN ('ROJO','AZUL',BLANCO','GRIS','VERDE','NEGRO'))
+	      CHECK (color IN ('ROJO','AZUL','BLANCO','GRIS','VERDE','NEGRO'))
 	);
 
 Se puede utilizar la vista USER_CONSTRAINTS del diccionario de datos para identificar las restricciones colocadas por el usuario. La vista ALL_CONSTRAINTS permite mostrar las restricciones de todos los usuarios, pero sólo está permitida a los administradores). Además, la vista USER_CONS_COLUMNS, nos muestra información sobre las columnas que participan en una restricción.  
@@ -612,7 +612,7 @@ Eliminación de Tablas
 
 La sentencia en SQL para eliminar tablas es **DROP TABLE**. Su sintaxis es:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	DROP TABLE nombre_tabla
 	[ CASCADE CONSTRAINTS ];
@@ -627,13 +627,13 @@ Si la clave principal de la tabla es una clave foránea en otra tabla y no utili
 
 Ejemplos:	
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	DROP TABLE COCHES;
 
 Se eliminará la tabla COCHES, siempre que su clave principal no sea clave foránea de ninguna tabla de la BD.
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	DROP TABLE COCHES CASCADE CONSTRAINTS;
 
@@ -647,13 +647,13 @@ Modificación de Tablas
 
 La orden RENAME permite el cambio de nombre de cualquier objeto. Sintaxis:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	RENAME nombre  TO nombre_nuevo;
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	RENAME COCHES TO AUTOMOVILES;
 
@@ -667,7 +667,7 @@ Cambia el nombre de la tabla COCHES y a partir de ese momento se llamará AUTOMO
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 	
 	TRUNCATE TABLE AUTOMOVILES;
 
@@ -681,7 +681,7 @@ La cláusula **ALTER TABLE** permite hacer cambios en la estructura de una tabla
 
 **Añadir Columnas**
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER TABLE nombre ADD ( 
 	  columna1  tipo  [ restricciones ][,
@@ -695,13 +695,13 @@ Ejemplos:
 
 Añadimos la columna “fechaMatric” a la tabla VEHÍCULOS:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 	
 	ALTER TABLE VEHICULOS ADD ( fechaMatric DATE );
 
 Añadimos las columnas “fechaMatric” y “tipoFaros” a la tabla VEHÍCULOS:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER TABLE VEHICULOS ADD (
 	  fechaMatric		DATE,
@@ -710,7 +710,7 @@ Añadimos las columnas “fechaMatric” y “tipoFaros” a la tabla VEHÍCULOS
 
 **Borrar Columnas**
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER TABLE nombre_tabla DROP (nombre_columna, nombre_columna2, ...);
 
@@ -718,7 +718,7 @@ Elimina la columna indicada de manera irreversible e incluyendo los datos que co
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER TABLE VEHICULOS DROP (tipoFaros);
 
@@ -729,7 +729,7 @@ Borra la columna “tipoFaros” de la tabla VEHICULOS y los datos que contuvier
 
 Permite cambiar el tipo de datos y propiedades de una determinada columna. Sintaxis:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER TABLE nombre_tabla MODIFY (
 	  columna1  tipo_dato  [ restricciones de columna1 ][,
@@ -739,7 +739,7 @@ Permite cambiar el tipo de datos y propiedades de una determinada columna. Sinta
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER TABLE AUTOMOVILES
 	MODIFY (color VARCHAR2(20) NOT NULL, codTaller VARCHAR2(15));
@@ -758,7 +758,7 @@ Los cambios que se permiten son:
 
 Se le pueden poner comentarios a las tablas y las columnas. Un comentario es un texto descriptivo utilizado para documentar la tabla. Sintaxis:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	COMMENT ON {TABLE nombre_tabla | COLUMN nombre_tabla.columna } 
 	IS 'Comentario';
@@ -778,19 +778,18 @@ Sabemos que una restricción es una condición de obligado cumplimiento para una
 Hemos visto que se pueden añadir al crear la tabla, o bien, podemos hacerlo mediante modificación posterior de la tabla. También se puede modificar una restricción creada. Su sintaxis general es:
 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
-	ALTER TABLE nombre_tabla { ADD | MODIFY} ( 
-	  CONSTRAINT nombre_restricción1   tipo_restricción  (columnas) [,
-	  CONSTRAINT nombre_restricción2   tipo_restricción  (columnas) 
-	  ... ]
+	ALTER TABLE nombre_tabla { ADD | MODIFY } ( 
+	  CONSTRAINT nombre_restricción1   tipo_restricción  (columnas) 
+	  [, CONSTRAINT nombre_restricción2   tipo_restricción  (columnas) ] ... 
 	);
 
 **Borrar Restricciones**
 
 Su sintaxis es la siguiente:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER TABLE nombre_tabla
 	DROP { 
@@ -802,7 +801,7 @@ Su sintaxis es la siguiente:
 La opción PRIMARY KEY elimina una clave principal (también quitará el índice UNIQUE sobre las campos que formaban la clave. UNIQUE elimina índices únicos. La opción CONSTRAINT elimina la restricción indicada.
 La opción CASCADE hace que se eliminen en cascada las restricciones de integridad que dependen de la restricción eliminada. Por ejemplo en:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CREATE TABLE CURSOS (
 	  codCurso	CHAR(7) CONSTRAINT cursos_pk PRIMARY KEY,
@@ -817,7 +816,7 @@ La opción CASCADE hace que se eliminen en cascada las restricciones de integrid
 
 Tras esa definición la siguiente instrucción produce error:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER TABLE CURSOS DROP PRIMARY KEY;
 
@@ -828,9 +827,9 @@ Tras esa definición la siguiente instrucción produce error:
 
 Para ello habría que utilizar esta instrucción:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER TABLE CURSOS DROP PRIMARY KEY CASCADE;
 
@@ -838,7 +837,7 @@ Esa instrucción elimina la clave secundaria antes de eliminar la principal.
 
 También produciría error esta instrucción:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER TABLE CURSOS DROP (fechaIni);
 
@@ -849,7 +848,7 @@ También produciría error esta instrucción:
 
 El error se debe a que no es posible borrar una columna que forma parte de la definición de una restricción. La solución es utilizar **CASCADE CONSTRAINTS** para eliminar las restricciones en las que la columna a borrar estaba implicada:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 	
 	ALTER TABLE CURSOS DROP COLUMN (fechaIni) CASCADE CONSTRAINTS;
 
@@ -860,7 +859,7 @@ Esta instrucción elimina la restricción de tipo CHECK en la que aparecía la f
 A veces conviene temporalmente desactivar una restricción para saltarse las reglas que impone. La sintaxis es:
 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER TABLE nombre_tabla DISABLE CONSTRAINT restricción [ CASCADE ];
 
@@ -872,7 +871,7 @@ La opción **CASCADE** hace que se desactiven también las restricciones dependi
 Anula la desactivación. Formato:
 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER TABLE nombre_tabla ENABLE CONSTRAINT restricción [ CASCADE ];
 
@@ -884,7 +883,7 @@ Si hubo desactivado en cascada, habrá que activar cada restricción individualm
 Para hacerlo se utiliza este comando:
 
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER TABLE nombre_tabla 
 	RENAME CONSTRAINT nombre_restricción TO nombre_restricción_nuevo;
@@ -911,7 +910,7 @@ Creación de Vistas
 
 Sintaxis:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CREATE [ OR REPLACE ] VIEW nombre_vista [ (alias1 [, alias2] ...) ]
 	AS SELECT ...
@@ -928,7 +927,7 @@ Eliminación de Vistas
 
 Se utiliza el comando **DROP VIEW**:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 	
 	DROP VIEW nombre_vista;
 
@@ -961,14 +960,14 @@ Aparte de los índices obligatorios comentados anteriormente, se pueden crear í
 
 Sintaxis:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 	
 	CREATE INDEX nombre
 	ON tabla (columna1 [,columna2] ...)
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CREATE INDEX nombre_completo
 	ON clientes (apellido1, apellido2, nombre);
@@ -992,7 +991,7 @@ No se aconseja en campos que:
 
 Los índices se pueden crear utilizando expresiones complejas:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CREATE INDEX nombre_complejo
 	ON clientes (UPPER(nombre));
@@ -1006,7 +1005,7 @@ Eliminación de Índices
 
 La instrucción DROP INDEX seguida del nombre del índice permite eliminar el índice en cuestión.
 
-.. code-block:: sql
+.. code-block:: plpgsql
 	
 	DROP INDEX nombre_indice;
 
@@ -1023,14 +1022,14 @@ Creación de Secuencias
 
 Sintaxis:
 
-.. code-block:: sql	
+.. code-block:: plpgsql	
 
 	CREATE SEQUENCE secuencia
-	[INCREMENT BY n]
-	[START WITH n]
-	[{MAXVALUE n|NOMAXVALUE}]
-	[{MINVALUE n|NOMINVALUE}]
-	[{CYCLE|NOCYCLE}];
+	[ INCREMENT BY n ]
+	[ START WITH n ]
+	[ { MAXVALUE n | NOMAXVALUE } ]
+	[ { MINVALUE n | NOMINVALUE } ]
+	[ { CYCLE | NOCYCLE } ];
 
 Donde:
 
@@ -1043,7 +1042,7 @@ Donde:
 
 Ejemplo:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 	
 	CREATE SEQUENCE numeroPlanta
 	INCREMENT 100
@@ -1059,7 +1058,7 @@ Los métodos **NEXTVAL** y **CURRVAL** se utilizan para obtener el siguiente nú
 
 En SQL estándar:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 	
 	SELECT nextval('numeroPlanta');
 
@@ -1075,7 +1074,7 @@ Ambas funciones pueden ser utilizadas en:
 
 Su uso más habitual es como apoyo al comando INSERT (en Oracle):
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	INSERT INTO plantas(num, uso)
 	VALUES( numeroPlanta.NEXTVAL, 'Suites' );
@@ -1085,7 +1084,7 @@ Eliminación de Secuencias
 
 Lo hace el comando DROP SEQUENCE seguido del nombre de la secuencia a borrar.
 
-.. code-block:: sql
+.. code-block:: plpgsql
 	
 	DROP SEQUENCE nombre_secuencia;
 
@@ -1094,14 +1093,14 @@ Modificación de Secuencias
 
 Se pueden modificar las secuencias, pero la modificación sólo puede afectar a los futuros valores de la secuencia, no a los ya utilizados. Sintaxis:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER SEQUENCE secuencia
-	[INCREMENT BY n]
-	[START WITH n]
-	[{MAXVALUE n|NOMAXVALUE}]
-	[{MINVALUE n|NOMINVALUE}]
-	[{CYCLE|NOCYCLE}]
+	[ INCREMENT BY n ]
+	[ START WITH n ]
+	[ { MAXVALUE n | NOMAXVALUE } ]
+	[ { MINVALUE n | NOMINVALUE } ]
+	[ { CYCLE | NOCYCLE } ]
 
 
 Creación, Modificación y Eliminación de sinónimos
@@ -1115,7 +1114,7 @@ Creación de Sinónimos
 
 Sintaxis:
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	CREATE [PUBLIC] SYNONYM nombre FOR objeto;
 
@@ -1125,7 +1124,7 @@ La vista USER_SYNONYMS permite observar la lista de sinónimos del usuario, la v
 Eliminación de Sinónimos
 +++++++++++++++++++++++++
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	DROP SYNONYM nombre;
 
@@ -1134,6 +1133,6 @@ Modificación de Sinónimos
 
 Existe una sentencia para la modificación de sinónimos, aunque su uso es escaso. Se trata de la sentencia ALTER SYNONYM.
 
-.. code-block:: sql
+.. code-block:: plpgsql
 
 	ALTER [PUBLIC] SYNONYM nombre [{COMPILE|EDITIONABLE|NONEDITIONABLE}];
