@@ -492,12 +492,14 @@ Función DECODE
 ----------------
 
 Se evalúa una expresión y se colocan a continuación pares valor,resultado de forma que si se la expresión equivale al valor, se obtiene el resultado indicado. Se puede indicar un último parámetro con el resultado a efectuar en caso de no encontrar ninguno de los valores indicados. Sintaxis:
+
 .. code-block:: sql
 
   DECODE (
      expresión, valor1, resultado1 
              [, valor2, resultado2]... 
-             [, valorPorDefecto]        );
+             [, valorPorDefecto]        
+  );
 
 
 Ejemplo:
