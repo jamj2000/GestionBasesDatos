@@ -7,7 +7,7 @@ Gestión de Bases de Datos
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contenidos
+   :caption: CONTENIDOS
    :name: contenido 
    :numbered:
 

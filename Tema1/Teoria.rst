@@ -309,14 +309,3 @@ Los SGBD se pueden clasificar según las BD que gestionan (jerárquicas, relacio
 - **SGBD ofimáticos**: manipulas BD pequeñas orientadas a almacenar datos domésticos o de pequeñas empresas. Ejemplos típicos son Microsoft ACCESS y LibreOffice Base.
 - **SGBD corporativos**: tienen la capacidad de gestionar BD enormes, de medianas o grandes empresas con una carga de datos y transacciones que requieren de un servidor de gran capacidad. Un ejemplo típico de BD corporativas es ORACLE, actualmente junto de DB2 el servidor de BD más potente del mercado (también el más caro). Nosotros para nuestro aprendizaje utilizamos una versión gratuita con fines educativos, que aunque bastante limitada, nos sirve para introducirnos en la filosofía de ORACLE.
 
-
-
-  .. danger::
-    PRUEBAS
-
-
-  .. literalinclude:: codigo.js
-    :linenos:
-    :language: javascript
-
-

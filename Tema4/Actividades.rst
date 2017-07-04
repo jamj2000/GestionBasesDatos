@@ -43,6 +43,8 @@ Práctica 1: Creación de BD e inserción de Datos.
    NOMDE, ,VARCHAR2(20),Nombre de departamento
 
 
+
+
 .. csv-table:: EMPLEADOS
    :header: Campo , Nulo , Tipo de datos , Observaciones
 
@@ -55,6 +57,8 @@ Práctica 1: Creación de BD e inserción de Datos.
    NUMHI, ,NUMBER(1),Número de hijos
    NOMEM, ,VARCHAR2(10),Nombre de empleado
    NUMDE, ,NUMBER(3),Número de departamento
+
+
 
 .. code-block:: sql
 
