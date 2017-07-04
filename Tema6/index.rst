@@ -1,7 +1,5 @@
-SEGURIDAD DE LOS DATOS
-==============================
-
-LENGUAJE DE CONTROL DE DATOS
+SEGURIDAD DE LOS DATOS. LENGUAJE DE CONTROL DE DATOS
+====================================================
 
 .. toctree::
 	:maxdepth: 2
