@@ -2,3 +2,4 @@ _build/
 _templates/
 _static/
 *.swp
+.directory
