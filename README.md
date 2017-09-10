@@ -6,7 +6,7 @@
 >IES Luis Vélez de Guevara. 
 >Écija (Spain)
 >
->**Este contenido está basado en apuntes de Elena Fernández Chirino.**  
+>Este contenido está basado en apuntes de **Elena Fernández Chirino.**  
 
 
 
