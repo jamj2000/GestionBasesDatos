@@ -3,7 +3,7 @@
 >1º Administración de Sistemas Informáticos.
 >Curso 2016-17
 >
->IES Luis Vélez de Guevara
+>IES Luis Vélez de Guevara. 
 >Écija (Spain)
 >
 >**Este contenido está basado en apuntes de Elena Fernández Chirino.**  
