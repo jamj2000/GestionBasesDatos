@@ -19,7 +19,7 @@ Gestión de Bases de Datos
    Tema5/index
    Tema6/index
 
-.. note:: **Este contenido está basado en apuntes de Elena Fernández Chirino.** 
+.. note:: Este contenido está basado en apuntes de **Elena Fernández Chirino.** 
 
 * :ref:`genindex`
 
