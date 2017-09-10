@@ -5,6 +5,10 @@
 >
 >IES Luis Vélez de Guevara
 >Écija (Spain)
+>
+>**Este contenido está basado en apuntes de Elena Fernández Chirino.**  
+
+
 
 Toda la documentación, teoría y actividades, es accesible en [este sitio web](http://gestionbasesdatos.readthedocs.io).
 
