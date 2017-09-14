@@ -1,6 +1,6 @@
 # Apuntes del módulo de Gestión de Bases de Datos.
 
-[![Documentation Status](https://readthedocs.org/projects/GestionBasesDatos/badge/?version=latest)](http://GestionBasesDatos.readthedocs.io/es/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/gestionbasesdatos/badge/?version=latest)](http://gestionbasesdatos.readthedocs.io/es/latest/?badge=latest)
 
 >1º Administración de Sistemas Informáticos.
 >Curso 2016-17
