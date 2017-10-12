@@ -20,6 +20,5 @@ Gestión de Bases de Datos
    Tema6/index
 
 
-
 * :ref:`genindex`
 
