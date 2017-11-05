@@ -523,16 +523,6 @@ Su diagrama Relacional es:
 .. image:: images/Tema2-Cuestion24c.png
 
 
-**Solución final**
-
-El diagrama E/R es:
-
-.. image:: images/Tema2-Cuestion10d.png
-
-Su diagrama Relacional es:
-
-.. image:: images/Tema2-Cuestion24d.png
-
 
 25. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 11.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
