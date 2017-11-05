@@ -219,9 +219,8 @@ Teniendo en cuenta:
 - Un empleado pertenece a un único departamento y en un departamento puede haber varios empleados. Pero sólo uno será el jefe del departamento.
 - Un empleado podrá ser jefe o no. Si no es jefe, su jefe será el del departamento al que pertenece.
 
-A continuación se presentan 3 soluciones. Ninguna de ellas es totalmente satisfactoria, puesto que para ello deberíamos crear una entidad separada para JEFE.
-La solución 1 no nos asegura que el Jefe de un Empleado trabaje en el mismo Departamento. Igual sucede con la solución 2. La solución 3 es la mejor, aunque en este caso podrían darse varios Jefes en un Departamento.
-
+A continuación se presentan 3 soluciones. Las dos primeras no son satisfactorias.  
+La solución 1 no nos asegura que el Jefe de un Empleado trabaje en el mismo Departamento. La solución 2 nos asegura que el jefe de un departamento trabaja en dicho departamento, pero puede dar lugar a que existan varios jefes por departamento. La solución es la correcta, para ello utilizamos una restricción de inclusión.
 
 **Solución 1**
 
