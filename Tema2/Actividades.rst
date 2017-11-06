@@ -692,6 +692,8 @@ PRÁCTICA 1
 
    ENUNCIADO: Instala el programa Dia y la hoja de símbolos EER.zip para los símbolos utilizados en diagramas Entidad-Relación extendidos. Con la ayuda del profesor, examina la forma de uso de dicho programa.
 
+
+
 Para ello deberás seguir los siguientes pasos:
 
 1. Descarga de la plataforma Moodle el programa Dia.
@@ -701,6 +703,11 @@ Para ello deberás seguir los siguientes pasos:
 .. image:: images/tema2-072.png
 
 4. Descarga de la plataforma Moodle el archivo EER.zip que contiene los símbolos necesarios para diagramas E/R extendidos (Extended Entity-Relationship).
+
+También puede descargarse desde el siguiente enlace:
+
+https://github.com/jamj2000/GestionBasesDatos/blob/master/Tema2/EER.zip
+
 5. Copia este archivo a la subcarpeta .dia y descomprímelo ahí.
 
 .. image:: images/tema2-073.png
