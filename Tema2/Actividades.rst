@@ -188,7 +188,7 @@ Teniendo en cuenta:
 - Una asignatura es impartida por un único profesor.
 - Un profesor podrá impartir varias asignaturas.
 
-.. image:: images/Tema2-Cuestion08.png
+.. image:: Diagramas/Tema2-Cuestion08.png
 
 
 9. Obtén el diagrama E/R con las cuatro entidades siguientes:
@@ -205,7 +205,7 @@ Se quiere guardar información de la localidad donde ha nacido cada uno de los e
 - Cada localidad pertenece a una única provincia.
 - Cada provincia pertenece a una única región del país.
 
-.. image:: images/Tema2-Cuestion09.png
+.. image:: Diagramas/Tema2-Cuestion09.png
 
 
 10. Obtén el diagrama E/R con las dos entidades siguientes:
@@ -224,15 +224,15 @@ La solución 1 no nos asegura que el Jefe de un Empleado trabaje en el mismo Dep
 
 **Solución 1**
 
-.. image:: images/Tema2-Cuestion10a.png
+.. image:: Diagramas/Tema2-Cuestion10a.png
 
 **Solución 2**
 
-.. image:: images/Tema2-Cuestion10b.png
+.. image:: Diagramas/Tema2-Cuestion10b.png
 
 **Solución 3**
 
-.. image:: images/Tema2-Cuestion10c.png
+.. image:: Diagramas/Tema2-Cuestion10c.png
 
 
 11. Obtén el diagrama E/R para el siguiente supuesto.
@@ -247,7 +247,7 @@ Una empresa dedicada a la instalación de dormitorios juveniles a medida quiere 
 - De un montador nos interesa su NIF, nombre, dirección, teléfono de contacto y el número de dormitorios que ha montado de cada modelo.
 - Cada modelo de dormitorio puede ser comprado por uno o varios clientes y el mismo cliente podrá comprar uno o varios dormitorios. De un cliente nos interesa su NIF, nombre, dirección, teléfono y fecha de compra de cada modelo.
 
-.. image:: images/Tema2-Cuestion11.png
+.. image:: Diagramas/Tema2-Cuestion11.png
 
 .. note:: 
    
@@ -264,7 +264,7 @@ Una empresa dedicada a la instalación de dormitorios juveniles a medida quiere 
 - Además en una reserva se pueden incluir varios coches de alquiler. Queremos saber los coches que incluye cada reserva y los litros de gasolina en el depósito en el momento de realizar la reserva, pues se cobrarán aparte.
 - Cada cliente puede ser avalado por otro cliente de la empresa.
 
-.. image:: images/Tema2-Cuestion12.png
+.. image:: Diagramas/Tema2-Cuestion12.png
 
 
 13. Tenemos esta información sobre una cadena editorial:
@@ -277,7 +277,7 @@ Una empresa dedicada a la instalación de dormitorios juveniles a medida quiere 
 - Para cada revista, almacenaremos información de cada número, que incluirá la fecha, número de páginas y el número de ejemplares vendidos.
 
 
-.. image:: images/Tema2-Cuestion13.png
+.. image:: Diagramas/Tema2-Cuestion13.png
 
 .. note:: 
    
@@ -297,7 +297,7 @@ Esta información es la siguiente:
 Los atributos discriminantes de las entidades débiles se muestran con un círculo verde oscuro.
 
 
-.. image:: images/Tema2-Cuestion14.png
+.. image:: Diagramas/Tema2-Cuestion14.png
 
 15. Diseñar un esquema E/R que recoja la organización de un sistema de información en el que se quiere tener los datos sobre municipios, viviendas y personas. 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -305,7 +305,7 @@ Los atributos discriminantes de las entidades débiles se muestran con un círcu
 Cada persona sólo puede habitar una vivienda, pero puede ser propietaria de varias. También nos interesa la relación de las personas con su cabeza de familia.
 
 
-.. image:: images/Tema2-Cuestion15.png
+.. image:: Diagramas/Tema2-Cuestion15.png
 
 .. note::
    
@@ -323,7 +323,7 @@ Construir el Modelo E/R teniendo en cuenta las siguientes restricciones:
 - Una cuenta puede ser de muchos clientes.
 - Una cuenta sólo puede estar en una sucursal.
 
-.. image:: images/Tema2-Cuestion16.png
+.. image:: Diagramas/Tema2-Cuestion16.png
 
 .. note:: 
    
@@ -342,7 +342,7 @@ Hasta el momento se registran los siguientes datos en documentos varios:
 - Además, se ha determinado que se debe almacenar la información de las fábricas. Sin embargo, dado el uso de distribuidores, se usará: Número de la fábrica (único) y Teléfono de contacto.
 - Y se desean ver cuántos artículos (en total) provee la fábrica. También, por información estratégica, se podría incluir información de fábricas alternativas respecto de las que ya fabrican artículos para esta empresa.
 
-.. image:: images/Tema2-Cuestion17.png
+.. image:: Diagramas/Tema2-Cuestion17.png
 
 18. Se pide hacer el diagrama ER para la base de datos que represente esta información. Le contratan para hacer una BD que permita apoyar la gestión de un sistema de ventas.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -351,7 +351,7 @@ La empresa necesita llevar un control de proveedores, clientes, productos y vent
 
 Un producto tiene un id único, nombre, precio actual, stock y nombre del proveedor. Además se organizan en categorías, y cada producto va sólo en una categoría. Una categoría tiene id, nombre y descripción. Por razones de contabilidad, se debe registrar la información de cada venta con un id, fecha, cliente, descuento y monto final. Además se debe guardar el precio al momento de la venta, la cantidad vendida y el monto total por el producto. 
 
-.. image:: images/Tema2-Cuestion18.png
+.. image:: Diagramas/Tema2-Cuestion18.png
 
 **MODELO ENTIDAD-RELACIÓN EXTENDIDO**
 
@@ -372,7 +372,7 @@ Un mismo empleado puede ser docente en una edición de un curso y alumno en otra
 
 Realiza el Modelo Entidad/Relación
 
-.. image:: images/Tema2-Cuestion19.png
+.. image:: Diagramas/Tema2-Cuestion19.png
 
 > Los atributos discriminantes de las entidades débiles se muestran con un círculo verde oscuro.
 > Suponemos que cada edición de un curso puede ser impartida por un único docente.
@@ -395,7 +395,7 @@ Realiza el Modelo Entidad/Relación
 
 Realiza el Modelo Entidad/Relación
 
-.. image:: images/Tema2-Cuestion20.png
+.. image:: Diagramas/Tema2-Cuestion20.png
 
 .. note:: 
 
@@ -423,7 +423,7 @@ Después de realizar un detallado análisis, se ha llegado a las siguientes conc
 - Por comodidad, suponemos que un visitante tiene, obligatoriamente, que alojarse en el parque. Suponemos también, que cada vigilante tiene su vehículo propio que sólo utiliza él. 
 
 
-.. image:: images/Tema2-Cuestion21.png
+.. image:: Diagramas/Tema2-Cuestion21.png
 
 .. note::
  
@@ -464,11 +464,11 @@ En las soluciones aparece primero el diagrama Entidad-Relación de referencia po
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion08.png
+.. image:: Diagramas/Tema2-Cuestion08.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion22.png
+.. image:: Diagramas/Tema2-Cuestion22.png
 
 .. note:: Si la clave primaria de Alumno fuese NumExpediente en lugar de NumMatrícula entonces la tabla para la relación Recibe tendría como clave primaria (NumExpediente, CodAsignatura, CursoEscolar). 
 
@@ -477,11 +477,11 @@ Su diagrama Relacional es:
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion09.png
+.. image:: Diagramas/Tema2-Cuestion09.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion23.png
+.. image:: Diagramas/Tema2-Cuestion23.png
 
 
 24. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 10.
@@ -491,33 +491,33 @@ Su diagrama Relacional es:
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion10a.png
+.. image:: Diagramas/Tema2-Cuestion10a.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion24a.png
+.. image:: Diagramas/Tema2-Cuestion24a.png
 
 
 **Solución 2**
 
 Su diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion10b.png
+.. image:: Diagramas/Tema2-Cuestion10b.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion24b.png
+.. image:: Diagramas/Tema2-Cuestion24b.png
 
 
 **Solución 3**
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion10c.png
+.. image:: Diagramas/Tema2-Cuestion10c.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion24c.png
+.. image:: Diagramas/Tema2-Cuestion24c.png
 
 
 
@@ -526,11 +526,11 @@ Su diagrama Relacional es:
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion11.png
+.. image:: Diagramas/Tema2-Cuestion11.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion25.png
+.. image:: Diagramas/Tema2-Cuestion25.png
 
 
 .. note::
@@ -543,11 +543,11 @@ Su diagrama Relacional es:
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion12.png
+.. image:: Diagramas/Tema2-Cuestion12.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion26.png
+.. image:: Diagramas/Tema2-Cuestion26.png
 
 
 27. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 13.
@@ -555,11 +555,11 @@ Su diagrama Relacional es:
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion13.png
+.. image:: Diagramas/Tema2-Cuestion13.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion27.png
+.. image:: Diagramas/Tema2-Cuestion27.png
 
 
 28. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 14.
@@ -567,11 +567,11 @@ Su diagrama Relacional es:
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion14.png
+.. image:: Diagramas/Tema2-Cuestion14.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion28.png
+.. image:: Diagramas/Tema2-Cuestion28.png
 
 
 
@@ -580,11 +580,11 @@ Su diagrama Relacional es:
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion15.png
+.. image:: Diagramas/Tema2-Cuestion15.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion29.png
+.. image:: Diagramas/Tema2-Cuestion29.png
 
 
 
@@ -593,11 +593,11 @@ Su diagrama Relacional es:
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion16.png
+.. image:: Diagramas/Tema2-Cuestion16.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion30.png
+.. image:: Diagramas/Tema2-Cuestion30.png
 
 
 31. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 17.
@@ -605,11 +605,11 @@ Su diagrama Relacional es:
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion17.png
+.. image:: Diagramas/Tema2-Cuestion17.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion31.png
+.. image:: Diagramas/Tema2-Cuestion31.png
 
 
 32. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 18.
@@ -617,11 +617,11 @@ Su diagrama Relacional es:
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion18.png
+.. image:: Diagramas/Tema2-Cuestion18.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion32.png
+.. image:: Diagramas/Tema2-Cuestion32.png
 
 
 33. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 19.
@@ -629,11 +629,11 @@ Su diagrama Relacional es:
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion19.png
+.. image:: Diagramas/Tema2-Cuestion19.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion33.png
+.. image:: Diagramas/Tema2-Cuestion33.png
 
 
 34. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 20.
@@ -641,7 +641,7 @@ Su diagrama Relacional es:
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion20.png
+.. image:: Diagramas/Tema2-Cuestion20.png
 
 Su diagrama Relacional es:
 
@@ -652,14 +652,14 @@ Vamos a realizar una aproximación inicial y después simplificaremos el esquema
 
 Dentro de la tabla Empleado descomponemos el atributo compuesto Cuenta en 3 campos. Como resulta, además, que la Cuenta participa en otras relaciones, creamos una tabla para ella.
 
-.. image:: images/Tema2-Cuestion34a.png
+.. image:: Diagramas/Tema2-Cuestion34a.png
 
 **Solución 2**
 
 Como se puede observar en la solución anterior nos quedaban claves primarias compuestas por numerosos campos. Podemos simplificar esto creando un nueva clave primaria para su identificación (posteriormente puede implementarse mediante un código autononúmerico) y pasando la clave primaria compuesta anterior a clave alternativa. Para no perder contenido semántico debemos establecer una restricción de unicidad en dicha clave alternativa. 
 Asimismo hemos eliminado la tabla Línea, puesto que no participa en ninguna relación fuera la jerarquía, y sus campos han pasado a las entidades subtipo.
 
-.. image:: images/Tema2-Cuestion34b.png
+.. image:: Diagramas/Tema2-Cuestion34b.png
 
 
 35. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 21.
@@ -667,11 +667,11 @@ Asimismo hemos eliminado la tabla Línea, puesto que no participa en ninguna rel
 
 El diagrama E/R es:
 
-.. image:: images/Tema2-Cuestion21.png
+.. image:: Diagramas/Tema2-Cuestion21.png
 
 Su diagrama Relacional es:
 
-.. image:: images/Tema2-Cuestion35.png
+.. image:: Diagramas/Tema2-Cuestion35.png
 
 
 
@@ -697,7 +697,7 @@ Para ello deberás seguir los siguientes pasos:
 2. Procede a su instalación.
 3. Ejecutalo por primera vez para que se cree una subcarpeta .dia en tu directorio personal.
 
-.. image:: images/tema2-072.png
+.. image:: Diagramas/tema2-072.png
 
 4. Descarga de la plataforma Moodle el archivo EER.zip que contiene los símbolos necesarios para diagramas E/R extendidos (Extended Entity-Relationship).
 
@@ -707,14 +707,14 @@ https://github.com/jamj2000/GestionBasesDatos/blob/master/Tema2/EER.zip
 
 5. Copia este archivo a la subcarpeta .dia y descomprímelo ahí.
 
-.. image:: images/tema2-073.png
+.. image:: Diagramas/tema2-073.png
 
 6. Se generará un nuevo archivo LICENSE y dos carpetas:  shapes y sheets.
 7. Reinicia el programa Dia.
 8. Debajo de las herramientas, selecciona Otras hojas → EER.
 
-.. image:: images/tema2-074.png
-.. image:: images/tema2-075.png
+.. image:: Diagramas/tema2-074.png
+.. image:: Diagramas/tema2-075.png
 
 
 
@@ -810,12 +810,12 @@ PRÁCTICA 5
 
 A continuación mostramos un modelo E/R (hemos simplificado el número de atributos) del que se ha obtenido el correspondiente esquema relacional.
 
-.. image:: images/tema2-076.png
+.. image:: Diagramas/tema2-076.png
 
 
 a) Crea la BD en un SGBD doméstico (Microsoft ACCESS o LibreOffice BASE) teniendo en cuenta la siguiente información adicional:
 
-.. image:: images/tema2-078.png
+.. image:: Diagramas/tema2-078.png
 
 .. csv-table:: CLIENTE	
    :header: CAMPO, TIPO, TAMAÑO, PREDETERMINADO, VALIDACIÓN
@@ -897,7 +897,7 @@ b) Introduce los datos siguientes en la BD.
 c) Diseña un formulario para introducir los datos de cada compra.
 d) Diseña un informe donde se resuman los pedidos para cada cliente.
 
-.. image:: images/tema2-080.png
+.. image:: Diagramas/tema2-080.png
 
 
 e) Realiza las siguientes consultas de la BD.
@@ -921,7 +921,7 @@ PRÁCTICA 6
 
 Queremos un sistema de gestión de datos de un hospital. En él queremos guardar la información para cada uno de los ingresos hospitalarios indicando el paciente objeto del ingreso y el médico que autoriza el mismo. A continuación mostramos el modelo E/R que resulta del análisis de datos.
 
-.. image:: images/tema2-081.png
+.. image:: Diagramas/tema2-081.png
 
 Las tablas que resultan para dicha BD tendrán los campos que se muestran a continuación:
 
