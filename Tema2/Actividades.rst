@@ -471,9 +471,6 @@ Su diagrama Relacional es:
 .. image:: images/Tema2-Cuestion22.png
 
 .. note:: Si la clave primaria de Alumno fuese NumExpediente en lugar de NumMatrícula entonces la tabla para la relación Recibe tendría como clave primaria (NumExpediente, CodAsignatura, CursoEscolar). 
-   
-   Hemos añadido CursoEscolar como parte de la clave principal de la tabla Recibe porque un alumno puede estar matriculado varias veces de la misma asignatura. Esto haría que la pareja (NumMat,CodAsignatura) se pudiese repetir y, por tanto, no sirviese como clave principal.
-
 
 23. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 9.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
