@@ -485,6 +485,16 @@ Ejemplo de caso 2 (y 3): Realicemos el paso a tablas de la relación 1:1 entre A
 .. image:: images/tema2-056.png
 
 
+------
+
+.. tip:: A continuación se muestra un resumen de los casos disponibles en relaciones N:M, 1:N y 1:1.
+
+  .. image:: images/Esquema-Paso-ER-a-Relacional_(simplificado).png
+
+
+------
+
+
 Relaciones de dependencia (Siempre de grado 2 y cardinalidad 1:N)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
