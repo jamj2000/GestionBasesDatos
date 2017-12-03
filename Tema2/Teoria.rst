@@ -382,7 +382,7 @@ Estructura de datos relacional
 ------------------------------
 
 .. csv-table:: PERSONAS
-   :header: "D.N.I.", "Nombre", "Apellido", "Nacimiento", "Sexo", "Estado Civil"
+   :header: "D.N.I.", "Nombre", "Apellido", "Nacimiento", "Sexo", "Estado civil"
 
    "52.768.987", "Juan", "Loza", "15/06/1976", "H", "Soltero"
    "06.876.983", "Isabel", "Gálvez", "23/12/1969", "M", "Casada"
@@ -427,6 +427,11 @@ Transformación de un esquema E/R a esquema relacional
 Pasamos ya a enumerar las normas para traducir del Modelo E/R al modelo relacional, ayudándonos del siguiente ejemplo:
 
 .. image:: images/tema2-049.png
+
+
+.. note:: Al pasar del esquema E/R al esquema Relacional deberemos añadir las __claves foráneas__ necesarias para establecer las interrelaciones entre las tablas. Dichas claves foráneas no aparecen representadas en el esquema E/R.
+
+.. important:: Se deben elaborar los diagramas relacionales de tal forma que, posteriormente al introducir datos, __no quede ninguna clave foránea a valor nulo (NULL)__. Para ello se siguen las reglas que se muestran a continuación.
 
 
 Entidades
