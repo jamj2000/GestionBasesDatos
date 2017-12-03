@@ -429,9 +429,9 @@ Pasamos ya a enumerar las normas para traducir del Modelo E/R al modelo relacion
 .. image:: images/tema2-049.png
 
 
-.. note:: Al pasar del esquema E/R al esquema Relacional deberemos añadir las __claves foráneas__ necesarias para establecer las interrelaciones entre las tablas. Dichas claves foráneas no aparecen representadas en el esquema E/R.
+.. note:: Al pasar del esquema E/R al esquema Relacional deberemos añadir las **claves foráneas** necesarias para establecer las interrelaciones entre las tablas. Dichas claves foráneas no aparecen representadas en el esquema E/R.
 
-.. important:: Se deben elaborar los diagramas relacionales de tal forma que, posteriormente al introducir datos, __no quede ninguna clave foránea a valor nulo (NULL)__. Para ello se siguen las reglas que se muestran a continuación.
+.. important:: Se deben elaborar los diagramas relacionales de tal forma que, posteriormente al introducir datos, **no quede ninguna clave foránea a valor nulo (NULL)**. Para ello se siguen las reglas que se muestran a continuación.
 
 
 Entidades
