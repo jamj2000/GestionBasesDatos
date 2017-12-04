@@ -111,12 +111,12 @@ Una relación es la asociación que existe entre dos a más entidades. Cada rela
 Las entidades que están involucradas en una determinada relación se denominan entidades participantes.
 El número de participantes en una relación es lo que se denomina grado de la relación. Por ejemplo la relación CLIENTE-COCHE es de grado 2 o binaria, ya que intervienen dos entidades.
 
-.. image:: images/tema2-009.png
+.. image:: images/tema2-010.png
 
 Observa que el nombre que ponemos a la relación usa las primeras letras de cada entidad. En este caso como ambas empiezan por "C" se añade algunas letras más para hacer referencia a CLIENTES. También podríamos haber puesto como nombre de la relación uno más descriptivo de la misma, por ejemplo "Compra" (CLIENTE compra COCHE), pero esta nomenclatura puede conducir a confusión a la hora de determinar la cardinalidad de la relación cuando estamos aprendiendo.
 La relación PUBLICAR, es de grado 3, ya que involucra las entidades LIBRO, EDITORIAL y AUTOR.
 
-.. image:: images/tema2-010.png
+.. image:: images/tema2-009.png
 
 
 Cuando una entidad está relacionada consigo misma, hablamos de relación reflexiva.
