@@ -697,7 +697,7 @@ Para ello deberás seguir los siguientes pasos:
 2. Procede a su instalación.
 3. Ejecutalo por primera vez para que se cree una subcarpeta .dia en tu directorio personal.
 
-.. image:: Diagramas/tema2-072.png
+.. image:: images/tema2-072.png
 
 4. Descarga de la plataforma Moodle el archivo EER.zip que contiene los símbolos necesarios para diagramas E/R extendidos (Extended Entity-Relationship).
 
@@ -707,14 +707,14 @@ https://github.com/jamj2000/GestionBasesDatos/blob/master/Tema2/EER.zip
 
 5. Copia este archivo a la subcarpeta .dia y descomprímelo ahí.
 
-.. image:: Diagramas/tema2-073.png
+.. image:: images/tema2-073.png
 
 6. Se generará un nuevo archivo LICENSE y dos carpetas:  shapes y sheets.
 7. Reinicia el programa Dia.
 8. Debajo de las herramientas, selecciona Otras hojas → EER.
 
-.. image:: Diagramas/tema2-074.png
-.. image:: Diagramas/tema2-075.png
+.. image:: images/tema2-074.png
+.. image:: images/tema2-075.png
 
 
 
