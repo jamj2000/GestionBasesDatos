@@ -810,12 +810,12 @@ PRÁCTICA 5
 
 A continuación mostramos un modelo E/R (hemos simplificado el número de atributos) del que se ha obtenido el correspondiente esquema relacional.
 
-.. image:: Diagramas/tema2-076.png
+.. image:: images/tema2-076.png
 
 
 a) Crea la BD en un SGBD doméstico (Microsoft ACCESS o LibreOffice BASE) teniendo en cuenta la siguiente información adicional:
 
-.. image:: Diagramas/tema2-078.png
+.. image:: images/tema2-078.png
 
 .. csv-table:: CLIENTE	
    :header: CAMPO, TIPO, TAMAÑO, PREDETERMINADO, VALIDACIÓN
@@ -897,7 +897,7 @@ b) Introduce los datos siguientes en la BD.
 c) Diseña un formulario para introducir los datos de cada compra.
 d) Diseña un informe donde se resuman los pedidos para cada cliente.
 
-.. image:: Diagramas/tema2-080.png
+.. image:: images/tema2-080.png
 
 
 e) Realiza las siguientes consultas de la BD.
@@ -921,7 +921,7 @@ PRÁCTICA 6
 
 Queremos un sistema de gestión de datos de un hospital. En él queremos guardar la información para cada uno de los ingresos hospitalarios indicando el paciente objeto del ingreso y el médico que autoriza el mismo. A continuación mostramos el modelo E/R que resulta del análisis de datos.
 
-.. image:: Diagramas/tema2-081.png
+.. image:: images/tema2-081.png
 
 Las tablas que resultan para dicha BD tendrán los campos que se muestran a continuación:
 
