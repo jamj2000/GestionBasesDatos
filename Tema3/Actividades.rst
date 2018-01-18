@@ -646,6 +646,7 @@ La tabla JEFE podría haberse creado también de esta forma:
     IDDEP        NUMBER(5),
     PRIMARY KEY  (ID),
     UNIQUE       (DNI),  
+    UNIQUE       (IDDEP),  
     FOREIGN KEY  (IDDEP) REFERENCES DEPARTAMENTO(ID)
   );
 
