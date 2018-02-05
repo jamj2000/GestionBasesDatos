@@ -1045,8 +1045,8 @@ Ejemplo:
 .. code-block:: plpgsql
 	
 	CREATE SEQUENCE numeroPlanta
-	INCREMENT 100
-	STARTS WITH 100
+	INCREMENT BY 100
+	START WITH 100
 	MAXVALUE 2000;
 
 En el diccionario de datos de Oracle tenemos la **vista USER_SEQUENCES** que muestra la lista de secuencias actuales. La columna LAST_NUMBER muestra cual será el siguiente número de secuencia disponible uso de la secuencia
