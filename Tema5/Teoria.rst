@@ -55,7 +55,8 @@ Es obligatorio introducir valores para los campos COD y NOMBRE. Dichos campos no
   INSERT INTO EMPLEADOS(NOMBRE, COD) VALUES ('Ana', 5);
 
 
-Inserción de datos obtenidos de una consulta
+**Inserción de datos obtenidos de una consulta**
+
 También es posible insertar datos en una tabla que hayan sido obtenidos de una consulta realizada a otra tabla/vista u otras tablas/vistas. Su forma es:
 
 .. code-block:: plpgsql
@@ -125,8 +126,12 @@ Ejemplos:
   SET NOMBRE=INITCAP(NOMBRE), LOCALIDAD='Marchena'
   WHERE FECHANAC >= '01/01/1970';
 
-  Actualización de datos usando una subconsulta
-  También se admiten subconsultas. Por ejemplo:
+**Actualización de datos usando una subconsulta**
+  
+También se admiten subconsultas. Por ejemplo:
+
+.. code-block:: plpgsql
+
   UPDATE empleados
   SET sueldo=sueldo*1.10
   WHERE id_seccion = (SELECT id_seccion FROM secciones
