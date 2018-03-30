@@ -801,6 +801,7 @@ Práctica 1
 
    ENUNCIADO: Dado el siguiente esquema E/R:
 
+
 .. image:: images/tema3-049.png
 
 a) Obtén el esquema relacional correspondiente.
@@ -845,6 +846,7 @@ Práctica 2
    OBJETIVOS:  Realizar el diseño físico de bases de datos utilizando asistentes, herramientas gráficas y el lenguaje de definición de datos.
 
    ENUNCIADO: Dado el siguiente esquema E/R:
+
 
 .. image:: images/tema3-050.png
 
