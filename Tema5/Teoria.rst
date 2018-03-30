@@ -329,7 +329,7 @@ Concurrencia de varias transacciones (Bloqueos)
 Cuando se realizan varias transacciones de forma simultánea, pueden darse diversas situaciones en el acceso concurrente a los datos, es decir, cuando se accede a un mismo dato en dos transacciones distintas. Estas situaciones son:
 
 - **Lectura sucia** (Dirty Read). Se permite a una transacción leer datos de una fila que ha sido modificada por otra transacción aún no confirmada.  
-- **Lectura no repetible** (Nonrepeateable Read). Se permite a una transacción leer datos de una fila modificados por otra transacción confirmada. Sucede cuando una transacción recupera dos veces los datos y los valores dentro de la fila difieren entre lecturas.
+- **Lectura no repetible** (Non-repeateable Read). Se permite a una transacción leer datos de una fila modificados por otra transacción confirmada. Sucede cuando una transacción recupera dos veces los datos y los valores dentro de la fila difieren entre lecturas.
 - **Lectura fantasma** (Phantom Read). Se permite a una transacción leer unos datos (nuevas filas) que no existían cuando se inició la transacción y que han sido agregados por otra transacción a los registros que se leen.
 
 De las cuatro propiedades de ACID de un SGBD, la **propiedad de aislamiento** es la más laxa. Un nivel de aislamiento bajo aumenta la capacidad de muchos usuarios para acceder a los mismos datos al mismo tiempo, pero también aumenta el número de efectos de concurrencia (como lecturas sucias). Un mayor nivel de aislamiento puede dar como resultado una pérdida de concurrencia y el aumento de las posibilidades de que una transacción bloquee a otra. 
@@ -342,6 +342,7 @@ Es posible solicitar al SGBD cuatro niveles de aislamiento. De menor a mayor niv
 - **SERIALIZABLE**. Las transacciones ocurren de forma totalmente aislada a otras transacciones. Se bloquean las transacciones de tal manera que ocurren unas detrás de otras, sin capacidad de concurrencia. El SGBD las ejecuta concurrentemente si puede asegurar que no hay conflicto con el acceso a los datos.
 
 **Nivel de aislamiento y Lecturas**
+
 ==================== =============== ====================== ===================
 Nivel de aislamiento Lecturas sucias Lecturas no repetibles Lecturas fantasma
 ==================== =============== ====================== ===================
