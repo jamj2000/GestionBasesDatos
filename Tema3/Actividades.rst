@@ -10,8 +10,6 @@ Cuestiones (I)
 --------------
 
 
-
-
 2. Pon un ejemplo de un tipo de dato numérico, otro alfanumérico y otro fecha/hora.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   
@@ -137,7 +135,7 @@ Como usuario y contraseña de APEX, por motivos de comodidad, utilizaremos siemp
 .. image:: images/tema3-033.png
 
 
-Cuestiones  (III)
+Cuestiones  (II)
 -------------------
 
 
@@ -372,7 +370,7 @@ Crea las tablas sin restricciones y añádelas después con el comando ALTER TAB
    :language: sql
 
 
-Cuestiones (II)
+Cuestiones (III)
 -------------------
 
 
