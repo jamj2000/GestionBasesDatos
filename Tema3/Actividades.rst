@@ -808,6 +808,8 @@ PRÁCTICA 1
 
 a) Obtén el esquema relacional correspondiente.
 
+.. image:: images/tema3-Partidos.png
+
 b) Comprueba que está en 3FN.
 
   Todas las tablas están en 3FN puesto que cumplen:
@@ -828,11 +830,6 @@ c) Crea las tablas en ORACLE procurando que las columnas tengan el tipo y tamañ
   8. Los teléfonos empiezan por 6 o por 9.
   9. El precio de un coche está entre 10000 y 40000.
 
-
-**Solución**
-
-.. image:: images/tema3-Partidos.png
-
 .. literalinclude:: scripts/P31.SQL
    :language: sql
 
@@ -850,6 +847,8 @@ PRÁCTICA 2
 .. image:: images/tema3-050.png
 
 a) Obtén el esquema relacional correspondiente.
+
+.. image:: images/tema3-Revisiones.png
 
 b) Comprueba que está en 3FN.
 
@@ -877,11 +876,6 @@ d) Una vez creadas las tablas:
   3. Añade la restricción: Todos los equipos se han fundado después del año1890.
   4. Añade la restricción: La hora de comienzo de los partidos estará entre las 12:00 y las 22:00 horas.
 
-
-
-**Solución**
-
-.. image:: images/tema3-Revisiones.png
 
 .. literalinclude:: scripts/P32.SQL
    :language: sql
