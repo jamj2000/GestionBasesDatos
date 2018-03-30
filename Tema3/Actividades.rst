@@ -416,10 +416,10 @@ Cuestiones (III)
 .. code-block:: sql
    
    ALTER TABLE tabla  
-   ADD/MODIFY (campo tipo restricciones, campo tipo restricciones, …);
+   ADD/MODIFY (campo tipo restricciones, campo tipo restricciones, ...);
    
    ALTER TABLE tabla 
-   DROP (campo, campo, …) [CASCADE CONSTRAINTS];  
+   DROP (campo, campo, ...) [CASCADE CONSTRAINTS];  
 
 
 - **Añadir/Borrar/Modificar restricciones**
