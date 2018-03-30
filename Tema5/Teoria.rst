@@ -317,12 +317,46 @@ Estado de los datos durante la transacción
 -------------------------------------------
 
 Si se inicia una transacción usando comandos DML hay que tener en cuenta que:
-Se puede volver a la instrucción anterior a la transacción cuando se desee.
-Las instrucciones de consulta SELECT realizadas por el usuario que inició la transacción muestran los datos ya modificados por las instrucciones DML.
 
-El resto de usuarios ven los datos tal cual estaban antes de la transacción, de hecho los registros afectados por la transacción aparecen bloqueados hasta que la transacción finalice. Esos usuarios no podrán modificar los valores de dichos registros.
+- Se puede volver a la instrucción anterior a la transacción cuando se desee.
+- Las instrucciones de consulta SELECT realizadas por el usuario que inició la transacción muestran los datos ya modificados por las instrucciones DML.
+- El resto de usuarios ven los datos tal cual estaban antes de la transacción, de hecho los registros afectados por la transacción aparecen bloqueados hasta que la transacción finalice. Esos usuarios no podrán modificar los valores de dichos registros.
+- Tras la transacción todos los usuarios ven los datos tal cual quedan tras el fin de transacción. Los bloqueos son liberados y los puntos de ruptura borrados.
 
-Tras la transacción todos los usuarios ven los datos tal cual quedan tras el fin de transacción. Los bloqueos son liberados y los puntos de ruptura borrados.
+Concurrencia de varias transacciones (Bloqueos)
+-------------------------------------------
+
+Cuando se realizan varias transacciones de forma simultánea, pueden darse diversas situaciones en el acceso concurrente a los datos, es decir, cuando se accede a un mismo dato en dos transacciones distintas. Estas situaciones son:
+
+- **Dirty Read** (Lectura sucia). Se permite a una transacción leer datos de una fila que ha sido modificada por otra transacción aún no confirmada. 
+- **Nonrepeateable Read** (Lectura no repetible). Se permite a una transacción leer datos de una fila modificados por otra transacción confirmada. Sucede cuando una transacción recupera dos veces los datos y los valores dentro de la fila difieren entre lecturas.
+- **Phantom Read** (Lectura fantasma). Se permite a una transacción leer unos datos (nuevas filas) que no existían cuando se inició la transacción y que han sido agregados por otra transacción a los registros que se leen.
+
+De las cuatro propiedades de ACID en un SGBD, la **propiedad de aislamiento** es la más relajada. Un nivel de aislamiento bajo aumenta la capacidad de muchos usuarios para acceder a los mismos datos al mismo tiempo, pero aumenta el número de efectos de concurrencia (como lecturas sucias). Al intentar mantener el mayor nivel de aislamiento, un SGBD generalmente adquiere **bloqueos** en los datos que pueden dar como resultado una pérdida de concurrencia y el aumento de las posibilidades de que una transacción bloquee a otra.
+
+Es posible solicitar al SGBD cuatro niveles de aislamiento. De menor a mayor nivel de aislamiento, tenemos:
+
+- **READ UNCOMMITTED** (Lectura no confirmada). Las sentencias SELECT son efectuadas sin realizar bloqueos, por tanto, todos los cambios hechos por una transacción pueden verlos las otras transacciones. Permite que sucedan las 3 situaciones indicadas previamente: lecturas fantasma, no repetibles y sucias. 
+- **READ COMMITTED** (Lectura confirmada). Los datos leídos por una transacción pueden ser modificados por otras transacciones. Se pueden dar lectuas fantasma y lecturas no repetibles.
+- **REPEATEABLE READ** (Lectura repetible). Consiste en que ningún registro leído con un SELECT se puede cambiar en otra transacción. Solo pueden darse lecturas fantasma. 
+- **SERIALIZABLE**. Las transacciones ocurren de forma totalmente aislada a otras transacciones. Se bloquean las transacciones de tal manera que ocurren unas detrás de otras, sin capacidad de concurrencia. El SGBD las ejecuta concurrentemente si puede asegurar que no hay conflicto con el acceso a los datos.
+
+**Nivel de aislamiento y Lecturas**
+
+Nivel de aislamiento  Lecturas sucias Lecturas no repetibles  Lecturas fantasma
+====================  =============== ======================= ===================
+READ UNCOMMITTED      SÍ              SÍ                      SÍ   
+READ COMMITTED 	      NO              SÍ                      SÍ
+REPEATEABLE READ 	    NO              NO                      SÍ
+SERIALIZABLE 	        NO              NO                      NO
+====================  =============== ======================= ===================
+
+En Oracle, el nivel por defecto es **READ COMMITED**. Además de éste, solo permite SERIALIZABLE. Se puede cambiar ejecutando el comando:
+
+.. code-block:: plpgsql
+
+  SET TRANSACTION ISOLATION LEVEL {READ COMMITTED | SERIALIZABLE};
+
 
 
 INTRODUCCIÓN A PL/SQL
