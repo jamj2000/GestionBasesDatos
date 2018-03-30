@@ -828,6 +828,11 @@ c) Crea las tablas en ORACLE procurando que las columnas tengan el tipo y tamañ
   8. Los teléfonos empiezan por 6 o por 9.
   9. El precio de un coche está entre 10000 y 40000.
 
+
+**Solución**
+
+.. image:: images/tema3-Partidos.png
+
 .. literalinclude:: scripts/P31.SQL
    :language: sql
 
@@ -871,6 +876,12 @@ d) Una vez creadas las tablas:
   2. Elimina la columna Ciudad.
   3. Añade la restricción: Todos los equipos se han fundado después del año1890.
   4. Añade la restricción: La hora de comienzo de los partidos estará entre las 12:00 y las 22:00 horas.
+
+
+
+**Solución**
+
+.. image:: images/tema3-Revisiones.png
 
 .. literalinclude:: scripts/P32.SQL
    :language: sql
