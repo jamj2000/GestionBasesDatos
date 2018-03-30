@@ -10,26 +10,6 @@ Cuestiones (I)
 --------------
 
 
-1. Nombra los distintos tipos de instrucciones DDL que puede haber, distinguiendo el tipo de objeto que se puede crear, borrar o modificar.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-.. code-block:: sql
-
-                DATABASE
-
-                USER
-  CREATE
-                TABLE
-  DROP                                nombre ... ;
-                VIEW
-  ALTER
-                SEQUENCE
-
-                INDEX
-
-                SYNONYM
-
 
 
 2. Pon un ejemplo de un tipo de dato numérico, otro alfanumérico y otro fecha/hora.
@@ -46,49 +26,6 @@ Tanto CHAR como VARCHAR2 se utilizan para almacenar valores de cadena de caracte
 
 - CHAR se debe utilizar para almacenar cadenas de caracteres de longitud fija. Siempre se reserva en memoria el espacio indicado. Los valores de cadena serán espaciados (puestos en blanco) hasta la longitud especificada antes de almacenarse en el disco. 
 - VARCHAR2 se utiliza para almacenar cadenas de caracteres de longitud variable. Se reserva unicamente la memoria necesaria hasta el máximo indicado en la longitud.
-
-4. Realiza un esquema resumen de las cláusulas SQL utilizadas en la modificación de tablas. 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-- **Eliminar todo el contenido**
-
-.. code-block:: sql
-   
-   TRUNCATE TABLE tabla;
-
-- **Renombar tabla**
-
-.. code-block:: sql
-   
-   RENAME tabla TO tabla2;
-
-
-- **Añadir/Borrar/Modificar campos**
-
-.. code-block:: sql
-   
-   ALTER TABLE tabla  
-   ADD/MODIFY (campo tipo restricciones, campo tipo restricciones, …);
-   
-   ALTER TABLE tabla 
-   DROP (campo, campo, …) [CASCADE CONSTRAINTS];  
-
-
-- **Añadir/Borrar/Modificar restricciones**
-
-.. code-block:: sql
-
-   ALTER TABLE tabla  
-   ADD/MODIFY CONSTRAINT nombre_restriccion ...;
-   
-   ALTER TABLE tabla 
-   DROP CONSTRAINT nombre_restriccion [CASCADE]; 
-   
-   ALTER TABLE tabla 
-   RENAME CONSTRAINT nombre_restriccion TO nuevo_nombre;  
-   
-   ALTER TABLE tabla  
-   ENABLE/DISABLE CONSTRAINT nombre_restriccion ...;
 
 
 5. Realiza la instalación de Oracle Database 11g Express Edition sobre Windows.
@@ -200,370 +137,9 @@ Como usuario y contraseña de APEX, por motivos de comodidad, utilizaremos siemp
 .. image:: images/tema3-033.png
 
 
-
-Cuestiones (II)
+Cuestiones  (II)
 -------------------
 
-
-1. Desde SQLPlus crea un esquema (usuario) llamado TIENDAS con contraseña TIENDAS. Concédele los roles CONNECT y RESOURCE. Accede con dicho usuario/contraseña.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-.. code-block:: sql
-
-  CHCP 1252
-  sqlplus / as sysdba
-  ...
-  SQL> create user TIENDAS identified by "TIENDAS";
-  User created.
-  SQL> grant connect,resource to TIENDAS;
-  Grant succeeded.
-  SQL> connect TIENDAS/TIENDAS;
-  Connected.
-
-
-
-2. Crear las siguientes tablas de acuerdo con las restricciones que se mencionan:
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-.. csv-table:: TIENDAS
-  :header: Columna, Tipo de dato
-
-  NIF, VARCHAR2(10)
-  NOMBRE, VARCHAR2(20)
-  DIRECCION, VARCHAR2(20)
-  POBLACION, VARCHAR2(20)
-  PROVINCIA, VARCHAR2(20)
-  CODPOSTAL, NUMBER(5)
-
-Crear tabla sin restricciones. Después añadir las siguientes restricciones:
-
--  La clave primaria es NIF.
-- PROVINCIA ha de almacenarse en mayúscula.
-- Cambia la longitud de NOMBRE a 30 caracteres y no nulo.
-
-.. csv-table:: FABRICANTES
-  :header: Columna, Tipo de dato
-
-  COD_FABRICANTE, NUMBER(3)
-  NOMBRE, VARCHAR2(15)
-  PAIS, VARCHAR2(15)
-
-Restricciones:
-
-- La clave primaria es COD_FABRICANTE.
-- Las columnas NOMBRE y PAIS han de almacenarse en mayúscula.
-
-
-.. csv-table:: ARTICULOS
-   :header: Columna, Tipo de dato
-
-   ARTICULO, VARCHAR2(20)
-   COD_FABRICANTE, NUMBER(3)
-   PESO, NUMBER(3)
-   CATEGORIA, VARCHAR2(10)
-   PRECIO_VENTA, NUMBER(6,2)
-   PRECIO_COSTO, NUMBER(6,2)
-   EXISTENCIAS, NUMBER(5)
-
-Restricciones:
-
-- La clave primaria está formada por las columnas:  ARTICULO, COD_FABRICANTE, PESO y CATEGORIA.
-- COD_FABRICANTE es clave ajena que referencia a la tabla FABRICANTES.
-- PRECIO_VENTA, PRECIO_COSTO y PESO han de ser > 0.
-- CATEGORIA ha de ser ‘Primera’, ‘Segunda’ o ‘Tercera’.
-
-
-.. csv-table:: VENTAS
-   :header: Columna, Tipo de dato
-
-   NIF, VARCHAR2(10)
-   ARTICULO, VARCHAR2(20)
-   COD_FABRICANTE, NUMBER(3)
-   PESO, NUMBER(3)
-   CATEGORIA, VARCHAR2(10)
-   FECHA_VENTA, DATE
-   UNIDADES_VENDIDAS, NUMBER(4)
-
-Restricciones:
-
-- La clave primaria está formada por las columnas:  NIF, ARTICULO, COD_FABRICANTE, PESO, CATEGORIA y FECHA_VENTA.
-- NIF es clave ajena que referencia a la tabla TIENDAS.
-- ARTICULO, COD_FABRICANTE, PESO y CATEGORIA es clave ajena que referencia a la tablas ARTICULOS.
-- UNIDADES_VENDIDAS han de ser > 0.
-- CATEGORIA  ha de ser ‘Primera’, ‘Segunda’ o ‘Tercera’. 
-
-
-.. csv-table:: PEDIDOS
-   :header: Columna, Tipo de dato
-
-   NIF, VARCHAR2(10)
-   ARTICULO, VARCHAR2(20)
-   COD_FABRICANTE, NUMBER(3)
-   PESO, NUMBER(3)
-   CATEGORIA, VARCHAR2(10)
-   FECHA_PEDIDO, DATE
-   UNIDADES_PEDIDAS, NUMBER(4)
-   EXISTENCIAS, NUMBER(5)
-
-Restricciones:
-
-- La clave primaria está formada por las columnas:  NIF, ARTICULO, COD_FABRICANTE, PESO, CATEGORIA y FECHA_PEDIDO.
-- NIF es clave ajena que referencia a la tabla TIENDAS.
-- ARTICULO, COD_FABRICANTE, PESO y CATEGORIA es clave ajena que referencia a la tablas ARTICULOS.
-- UNIDADES_PEDIDAS han de ser > 0.
-- CATEGORIA ha de ser ‘Primera’, ‘Segunda’ o ‘Tercera’. 
-
-
-.. code-block:: sql
-
-  -- Tabla TIENDAS
-  CREATE TABLE TIENDAS
-  (
-    NIF        VARCHAR2 (10),
-    NOMBRE     VARCHAR2 (20),
-    DIRECCION  VARCHAR2 (20),
-    POBLACION  VARCHAR2 (20),
-    PROVINCIA  VARCHAR2(20),
-    CODPOSTAL  NUMBER (5)
-  );
-
-  ALTER TABLE TIENDAS
-  ADD CONSTRAINT PK_ELNIF PRIMARY KEY (NIF);
-
-  ALTER TABLE TIENDAS
-  ADD CONSTRAINT MAYUSCU CHECK (PROVINCIA = UPPER (PROVINCIA));
-
-  ALTER TABLE TIENDAS
-  MODIFY (NOMBRE VARCHAR2 (30) NOT NULL);
-
-
-  -- Tabla FABRICANTES
-  CREATE TABLE FABRICANTES
-  (
-    COD_FABRICANTE  NUMBER (3) ,
-    NOMBRE          VARCHAR2 (15) ,
-    PAIS            VARCHAR2 (15) ,
-    CONSTRAINT CODFAB_PK PRIMARY KEY (COD_FABRICANTE),
-    CONSTRAINT NOMBRE_MAYUSCULA CHECK (NOMBRE = UPPER(NOMBRE)),
-    CONSTRAINT PAIS_MAYUSCULAS CHECK (PAIS = UPPER (PAIS))
-  );
-
-
-  -- Tabla ARTICULOS
-  CREATE TABLE ARTICULOS
-  (
-    ARTICULO        VARCHAR2 (20),
-    COD_FABRICANTE  NUMBER (3),
-    PESO            NUMBER (3),
-    CATEGORIA       VARCHAR2 (10),
-    PRECIO_VENTA    NUMBER (6,2),
-    PRECIO_COSTO    NUMBER (6,2),
-    EXISTENCIAS     NUMBER (5),
-    CONSTRAINT FK_CODFAB FOREIGN KEY (COD_FABRICANTE) 
-      REFERENCES FABRICANTES ON DELETE CASCADE,
-    CONSTRAINT PK_CLAVEP 
-      PRIMARY KEY (ARTICULO, COD_FABRICANTE, PESO,  CATEGORIA),
-    CONSTRAINT MAYORQUE0 
-      CHECK (PRECIO_VENTA > 0 AND PRECIO_COSTO > 0 AND PESO > 0),
-    CONSTRAINT CATEGORI 
-      CHECK (CATEGORIA IN ('PRIMERA', 'SEGUNDA', 'TERCERA'))
-  );
-
-
-  -- Tabla VENTAS
-  CREATE TABLE VENTAS
-  (
-    NIF                VARCHAR2 (10),
-    ARTICULO           VARCHAR2 (20),
-    COD_FABRICANTE     NUMBER (3),
-    PESO               NUMBER (3),
-    CATEGORIA          VARCHAR2 (10),
-    FECHA_VENTA        DATE,
-    UNIDADES_VENDIDAS  NUMBER (4),
-    CONSTRAINT PK_CLAVEPV PRIMARY KEY 
-      (NIF, ARTICULO, COD_FABRICANTE, PESO, CATEGORIA,FECHA_VENTA),
-    CONSTRAINT VENDIDAS_MAY0 CHECK (UNIDADES_VENDIDAS >0),
-    CONSTRAINT CATEGORIV 
-      CHECK (CATEGORIA IN ('PRIMERA', 'SEGUNDA', 'TERCERA')),
-    CONSTRAINT FK_CLAVEAJEV 
-      FOREIGN KEY (ARTICULO, COD_FABRICANTE, PESO, CATEGORIA)
-      REFERENCES ARTICULOS ON DELETE CASCADE,
-    CONSTRAINT FK_NIFV FOREIGN KEY (NIF) 
-      REFERENCES TIENDAS ON DELETE CASCADE
-  );
-
-
-  -- Tabla PEDIDOS
-  CREATE TABLE PEDIDOS
-  (
-    NIF               VARCHAR2 (10),
-    ARTICULO          VARCHAR2 (20),
-    COD_FABRICANTE    NUMBER (3),
-    PESO              NUMBER (3),
-    CATEGORIA         VARCHAR2 (10),
-    FECHA_PEDIDO      DATE,
-    UNIDADES_PEDIDAS  NUMBER (4),
-    EXISTENCIAS       NUMBER (5),
-    CONSTRAINT PK_CLAVEPP PRIMARY KEY 
-      (NIF, ARTICULO, COD_FABRICANTE, PESO, CATEGORIA,FECHA_PEDIDO),
-    CONSTRAINT FK_CLAVENIFP FOREIGN KEY (NIF) 
-      REFERENCES TIENDAS ON DELETE CASCADE,
-    CONSTRAINT FK_CLAVEAJEP 
-      FOREIGN KEY (ARTICULO, COD_FABRICANTE, PESO, CATEGORIA)
-      REFERENCES ARTICULOS ON DELETE CASCADE,
-    CONSTRAINT CATEGORIP 
-      CHECK (CATEGORIA IN ('PRIMERA', 'SEGUNDA', 'TERCERA'))
-  );
-
-
-
-3. Añadir una restricción a la tabla TIENDAS para que el NOMBRE de la tienda sea de tipo título (InitCap).
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: sql
-
-  ALTER TABLE TIENDAS
-  ADD CONSTRAINT NOMBRETIENDAMAY CHECK (NOMBRE = INITCAP (NOMBRE));
-
-  INSERT INTO TIENDAS
-  VALUES (16789654, 'romero', 'Valderejo 5', 'VIZCAYA', 'EREMUA', 56342);
-
-
-4. Visualizar las CONSTRAINTS definidas para las tablas anteriores.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: sql
-
-  SELECT CONSTRAINT_NAME, COLUMN_NAME FROM USER_CONS_COLUMNS WHERE TABLE_NAME = 'TIENDAS';
-
-
-5. Modificar las columnas de las tablas PEDIDOS y VENTAS para que las UNIDADES_VENDIDAS y las UNIDADES_PEDIDAS puedan almacenar cantidades numéricas de 6 dígitos.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-.. code-block:: sql
-
-  ALTER TABLE PEDIDOS
-  MODIFY (UNIDADES_PEDIDAS NUMBER (6));
-
-  ALTER TABLE VENTAS
-  MODIFY (UNIDADES_VENDIDAS NUMBER (6));
-
-
-6. Impedir que se den de alta más tiendas en la provincia de 'TOLEDO'.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: sql
-
-  ALTER TABLE TIENDAS
-  ADD CONSTRAINT PROVNOTOLEDO CHECK (PROVINCIA != 'TOLEDO');
-
-
-7. Añadir a las tablas PEDIDOS y VENTAS una nueva columna para que almacenen el PVP del artículo.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: sql
-
-  ALTER TABLE PEDIDOS ADD (PVP NUMBER (9));
-
-  ALTER TABLE VENTAS  ADD (PVP NUMBER (9));
-
-
-8. Crear una vista que se llame CONSERJES que contenga el nombre del centro y el nombre de sus conserjes.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: sql
-
-  CREATE VIEW CONSERJES(CENTRO, NOMBRE_CONSERJE)
-  AS SELECT C.NOMBRE, P.APELLIDOS FROM CENTROS C, PERSONAL P
-  WHERE C.COD_CENTRO = P.COD_CENTRO AND P.FUNCION = 'CONSERJE';
-
-
-9. Crear un sinónimo llamado CONSER asociado a la vista creada antes.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: sql
-
-  CREATE SYNONYM CONSER FOR CONSERJES;
-
-
-
-10. Añadir a la tabla PROFESORES una columna llamada COD_ASIG con dos posiciones numéricas.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: sql
-
-  ALTER TABLE PROFESORES ADD (COD_ASIG NUMBER (2));
-
-
-11. Crear la tabla TASIG con las siguientes columnas: COD_ASIG numérico, 2 posiciones y NOM_ASIG cadena de 20 caracteres.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: sql
-
-  CREATE TABLE TASIG
-  (
-    NOM_ASIG VARCHAR2 (20),
-    COD_ASIG NUMBER (2)
-  );
-
-
-12. Añadir la restricción de clave primaria a la columna COD_ASIG de la tabla TASIG.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: sql
-
-  ALTER TABLE TASIG
-  ADD CONSTRAINT PK_CODASIG PRIMARY KEY (COD_ASIG);
-
-
-13. Añadir la restricción de clave ajena a la columna COD_ASIG de la tabla PROFESORES.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: sql
-
-  ALTER TABLE PROFESORES
-  ADD CONSTRAINT FK_CODASIG FOREIGN KEY (COD_ASIG)
-  REFERENCES TASIG ON DELETE CASCADE;
-
-
-Se pone ON DELETE CASCADE si queremos que se borre en las dos al actualizar.
-Visualizar los nombres de CONSTRAINTS y las columnas afectadas para las tablas TASIG y PROFESORES.
-
-14. Cambiar de nombre la tabla PROFESORES y llamarla PROFES.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: sql
-
-  RENAME PROFESORES TO PROFES;
-
-
-15. Borrar la tabla TASIG.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: sql
-
-  DROP TABLE TASIG;
-
-
-16. Devolver la tabla PROFESORES a su situación inicial.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: sql
-
-  RENAME PROFES TO PROFESORES;
-
-
-
-Cuestiones  (III)
--------------------
-
-
-
-
-**REPASO Y REFUERZO**
 
 1. Realiza el diseño físico para el siguiente modelo relacional. Asigna el tipo de datos que consideres más adecuado. Realiza el diseño sin poner nombres a las restricciones. Esquema E01, contraseña "E01".
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -794,6 +370,427 @@ Crea las tablas sin restricciones y añádelas después con el comando ALTER TAB
 
 .. literalinclude:: scripts/E14.SQL
    :language: sql
+
+
+Cuestiones (II)
+-------------------
+
+
+1. Nombra los distintos tipos de instrucciones DDL que puede haber, distinguiendo el tipo de objeto que se puede crear, borrar o modificar.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+.. code-block:: sql
+
+                DATABASE
+
+                USER
+  CREATE
+                TABLE
+  DROP                                nombre ... ;
+                VIEW
+  ALTER
+                SEQUENCE
+
+                INDEX
+
+                SYNONYM
+                
+
+2. Realiza un esquema resumen de las cláusulas SQL utilizadas en la modificación de tablas. 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+- **Eliminar todo el contenido**
+
+.. code-block:: sql
+   
+   TRUNCATE TABLE tabla;
+
+- **Renombar tabla**
+
+.. code-block:: sql
+   
+   RENAME tabla TO tabla2;
+
+
+- **Añadir/Borrar/Modificar campos**
+
+.. code-block:: sql
+   
+   ALTER TABLE tabla  
+   ADD/MODIFY (campo tipo restricciones, campo tipo restricciones, …);
+   
+   ALTER TABLE tabla 
+   DROP (campo, campo, …) [CASCADE CONSTRAINTS];  
+
+
+- **Añadir/Borrar/Modificar restricciones**
+
+.. code-block:: sql
+
+   ALTER TABLE tabla  
+   ADD/MODIFY CONSTRAINT nombre_restriccion ...;
+   
+   ALTER TABLE tabla 
+   DROP CONSTRAINT nombre_restriccion [CASCADE]; 
+   
+   ALTER TABLE tabla 
+   RENAME CONSTRAINT nombre_restriccion TO nuevo_nombre;  
+   
+   ALTER TABLE tabla  
+   ENABLE/DISABLE CONSTRAINT nombre_restriccion ...;
+
+
+
+3. Desde SQLPlus crea un esquema (usuario) llamado TIENDAS con contraseña TIENDAS. Concédele los roles CONNECT y RESOURCE. Accede con dicho usuario/contraseña.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+.. code-block:: sql
+
+  CHCP 1252
+  sqlplus / as sysdba
+  ...
+  SQL> create user TIENDAS identified by "TIENDAS";
+  User created.
+  SQL> grant connect,resource to TIENDAS;
+  Grant succeeded.
+  SQL> connect TIENDAS/TIENDAS;
+  Connected.
+
+
+
+4. Crear las siguientes tablas de acuerdo con las restricciones que se mencionan:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+.. csv-table:: TIENDAS
+  :header: Columna, Tipo de dato
+
+  NIF, VARCHAR2(10)
+  NOMBRE, VARCHAR2(20)
+  DIRECCION, VARCHAR2(20)
+  POBLACION, VARCHAR2(20)
+  PROVINCIA, VARCHAR2(20)
+  CODPOSTAL, NUMBER(5)
+
+Crear tabla sin restricciones. Después añadir las siguientes restricciones:
+
+-  La clave primaria es NIF.
+- PROVINCIA ha de almacenarse en mayúscula.
+- Cambia la longitud de NOMBRE a 30 caracteres y no nulo.
+
+.. csv-table:: FABRICANTES
+  :header: Columna, Tipo de dato
+
+  COD_FABRICANTE, NUMBER(3)
+  NOMBRE, VARCHAR2(15)
+  PAIS, VARCHAR2(15)
+
+Restricciones:
+
+- La clave primaria es COD_FABRICANTE.
+- Las columnas NOMBRE y PAIS han de almacenarse en mayúscula.
+
+
+.. csv-table:: ARTICULOS
+   :header: Columna, Tipo de dato
+
+   ARTICULO, VARCHAR2(20)
+   COD_FABRICANTE, NUMBER(3)
+   PESO, NUMBER(3)
+   CATEGORIA, VARCHAR2(10)
+   PRECIO_VENTA, NUMBER(6,2)
+   PRECIO_COSTO, NUMBER(6,2)
+   EXISTENCIAS, NUMBER(5)
+
+Restricciones:
+
+- La clave primaria está formada por las columnas:  ARTICULO, COD_FABRICANTE, PESO y CATEGORIA.
+- COD_FABRICANTE es clave ajena que referencia a la tabla FABRICANTES.
+- PRECIO_VENTA, PRECIO_COSTO y PESO han de ser > 0.
+- CATEGORIA ha de ser ‘Primera’, ‘Segunda’ o ‘Tercera’.
+
+
+.. csv-table:: VENTAS
+   :header: Columna, Tipo de dato
+
+   NIF, VARCHAR2(10)
+   ARTICULO, VARCHAR2(20)
+   COD_FABRICANTE, NUMBER(3)
+   PESO, NUMBER(3)
+   CATEGORIA, VARCHAR2(10)
+   FECHA_VENTA, DATE
+   UNIDADES_VENDIDAS, NUMBER(4)
+
+Restricciones:
+
+- La clave primaria está formada por las columnas:  NIF, ARTICULO, COD_FABRICANTE, PESO, CATEGORIA y FECHA_VENTA.
+- NIF es clave ajena que referencia a la tabla TIENDAS.
+- ARTICULO, COD_FABRICANTE, PESO y CATEGORIA es clave ajena que referencia a la tablas ARTICULOS.
+- UNIDADES_VENDIDAS han de ser > 0.
+- CATEGORIA  ha de ser ‘Primera’, ‘Segunda’ o ‘Tercera’. 
+
+
+.. csv-table:: PEDIDOS
+   :header: Columna, Tipo de dato
+
+   NIF, VARCHAR2(10)
+   ARTICULO, VARCHAR2(20)
+   COD_FABRICANTE, NUMBER(3)
+   PESO, NUMBER(3)
+   CATEGORIA, VARCHAR2(10)
+   FECHA_PEDIDO, DATE
+   UNIDADES_PEDIDAS, NUMBER(4)
+   EXISTENCIAS, NUMBER(5)
+
+Restricciones:
+
+- La clave primaria está formada por las columnas:  NIF, ARTICULO, COD_FABRICANTE, PESO, CATEGORIA y FECHA_PEDIDO.
+- NIF es clave ajena que referencia a la tabla TIENDAS.
+- ARTICULO, COD_FABRICANTE, PESO y CATEGORIA es clave ajena que referencia a la tablas ARTICULOS.
+- UNIDADES_PEDIDAS han de ser > 0.
+- CATEGORIA ha de ser ‘Primera’, ‘Segunda’ o ‘Tercera’. 
+
+
+.. code-block:: sql
+
+  -- Tabla TIENDAS
+  CREATE TABLE TIENDAS
+  (
+    NIF        VARCHAR2 (10),
+    NOMBRE     VARCHAR2 (20),
+    DIRECCION  VARCHAR2 (20),
+    POBLACION  VARCHAR2 (20),
+    PROVINCIA  VARCHAR2(20),
+    CODPOSTAL  NUMBER (5)
+  );
+
+  ALTER TABLE TIENDAS
+  ADD CONSTRAINT PK_ELNIF PRIMARY KEY (NIF);
+
+  ALTER TABLE TIENDAS
+  ADD CONSTRAINT MAYUSCU CHECK (PROVINCIA = UPPER (PROVINCIA));
+
+  ALTER TABLE TIENDAS
+  MODIFY (NOMBRE VARCHAR2 (30) NOT NULL);
+
+
+  -- Tabla FABRICANTES
+  CREATE TABLE FABRICANTES
+  (
+    COD_FABRICANTE  NUMBER (3) ,
+    NOMBRE          VARCHAR2 (15) ,
+    PAIS            VARCHAR2 (15) ,
+    CONSTRAINT CODFAB_PK PRIMARY KEY (COD_FABRICANTE),
+    CONSTRAINT NOMBRE_MAYUSCULA CHECK (NOMBRE = UPPER(NOMBRE)),
+    CONSTRAINT PAIS_MAYUSCULAS CHECK (PAIS = UPPER (PAIS))
+  );
+
+
+  -- Tabla ARTICULOS
+  CREATE TABLE ARTICULOS
+  (
+    ARTICULO        VARCHAR2 (20),
+    COD_FABRICANTE  NUMBER (3),
+    PESO            NUMBER (3),
+    CATEGORIA       VARCHAR2 (10),
+    PRECIO_VENTA    NUMBER (6,2),
+    PRECIO_COSTO    NUMBER (6,2),
+    EXISTENCIAS     NUMBER (5),
+    CONSTRAINT FK_CODFAB FOREIGN KEY (COD_FABRICANTE) 
+      REFERENCES FABRICANTES ON DELETE CASCADE,
+    CONSTRAINT PK_CLAVEP 
+      PRIMARY KEY (ARTICULO, COD_FABRICANTE, PESO,  CATEGORIA),
+    CONSTRAINT MAYORQUE0 
+      CHECK (PRECIO_VENTA > 0 AND PRECIO_COSTO > 0 AND PESO > 0),
+    CONSTRAINT CATEGORI 
+      CHECK (CATEGORIA IN ('PRIMERA', 'SEGUNDA', 'TERCERA'))
+  );
+
+
+  -- Tabla VENTAS
+  CREATE TABLE VENTAS
+  (
+    NIF                VARCHAR2 (10),
+    ARTICULO           VARCHAR2 (20),
+    COD_FABRICANTE     NUMBER (3),
+    PESO               NUMBER (3),
+    CATEGORIA          VARCHAR2 (10),
+    FECHA_VENTA        DATE,
+    UNIDADES_VENDIDAS  NUMBER (4),
+    CONSTRAINT PK_CLAVEPV PRIMARY KEY 
+      (NIF, ARTICULO, COD_FABRICANTE, PESO, CATEGORIA,FECHA_VENTA),
+    CONSTRAINT VENDIDAS_MAY0 CHECK (UNIDADES_VENDIDAS >0),
+    CONSTRAINT CATEGORIV 
+      CHECK (CATEGORIA IN ('PRIMERA', 'SEGUNDA', 'TERCERA')),
+    CONSTRAINT FK_CLAVEAJEV 
+      FOREIGN KEY (ARTICULO, COD_FABRICANTE, PESO, CATEGORIA)
+      REFERENCES ARTICULOS ON DELETE CASCADE,
+    CONSTRAINT FK_NIFV FOREIGN KEY (NIF) 
+      REFERENCES TIENDAS ON DELETE CASCADE
+  );
+
+
+  -- Tabla PEDIDOS
+  CREATE TABLE PEDIDOS
+  (
+    NIF               VARCHAR2 (10),
+    ARTICULO          VARCHAR2 (20),
+    COD_FABRICANTE    NUMBER (3),
+    PESO              NUMBER (3),
+    CATEGORIA         VARCHAR2 (10),
+    FECHA_PEDIDO      DATE,
+    UNIDADES_PEDIDAS  NUMBER (4),
+    EXISTENCIAS       NUMBER (5),
+    CONSTRAINT PK_CLAVEPP PRIMARY KEY 
+      (NIF, ARTICULO, COD_FABRICANTE, PESO, CATEGORIA,FECHA_PEDIDO),
+    CONSTRAINT FK_CLAVENIFP FOREIGN KEY (NIF) 
+      REFERENCES TIENDAS ON DELETE CASCADE,
+    CONSTRAINT FK_CLAVEAJEP 
+      FOREIGN KEY (ARTICULO, COD_FABRICANTE, PESO, CATEGORIA)
+      REFERENCES ARTICULOS ON DELETE CASCADE,
+    CONSTRAINT CATEGORIP 
+      CHECK (CATEGORIA IN ('PRIMERA', 'SEGUNDA', 'TERCERA'))
+  );
+
+
+
+5. Añadir una restricción a la tabla TIENDAS para que el NOMBRE de la tienda sea de tipo título (InitCap).
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: sql
+
+  ALTER TABLE TIENDAS
+  ADD CONSTRAINT NOMBRETIENDAMAY CHECK (NOMBRE = INITCAP (NOMBRE));
+
+  INSERT INTO TIENDAS
+  VALUES (16789654, 'romero', 'Valderejo 5', 'VIZCAYA', 'EREMUA', 56342);
+
+
+6. Visualizar las CONSTRAINTS definidas para las tablas anteriores.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: sql
+
+  SELECT CONSTRAINT_NAME, COLUMN_NAME FROM USER_CONS_COLUMNS WHERE TABLE_NAME = 'TIENDAS';
+
+
+7. Modificar las columnas de las tablas PEDIDOS y VENTAS para que las UNIDADES_VENDIDAS y las UNIDADES_PEDIDAS puedan almacenar cantidades numéricas de 6 dígitos.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+.. code-block:: sql
+
+  ALTER TABLE PEDIDOS
+  MODIFY (UNIDADES_PEDIDAS NUMBER (6));
+
+  ALTER TABLE VENTAS
+  MODIFY (UNIDADES_VENDIDAS NUMBER (6));
+
+
+8. Impedir que se den de alta más tiendas en la provincia de 'TOLEDO'.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: sql
+
+  ALTER TABLE TIENDAS
+  ADD CONSTRAINT PROVNOTOLEDO CHECK (PROVINCIA != 'TOLEDO');
+
+
+9. Añadir a las tablas PEDIDOS y VENTAS una nueva columna para que almacenen el PVP del artículo.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: sql
+
+  ALTER TABLE PEDIDOS ADD (PVP NUMBER (9));
+
+  ALTER TABLE VENTAS  ADD (PVP NUMBER (9));
+
+
+10. Crear una vista que se llame CONSERJES que contenga el nombre del centro y el nombre de sus conserjes.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: sql
+
+  CREATE VIEW CONSERJES(CENTRO, NOMBRE_CONSERJE)
+  AS SELECT C.NOMBRE, P.APELLIDOS FROM CENTROS C, PERSONAL P
+  WHERE C.COD_CENTRO = P.COD_CENTRO AND P.FUNCION = 'CONSERJE';
+
+
+11. Crear un sinónimo llamado CONSER asociado a la vista creada antes.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: sql
+
+  CREATE SYNONYM CONSER FOR CONSERJES;
+
+
+
+12. Añadir a la tabla PROFESORES una columna llamada COD_ASIG con dos posiciones numéricas.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: sql
+
+  ALTER TABLE PROFESORES ADD (COD_ASIG NUMBER (2));
+
+
+13. Crear la tabla TASIG con las siguientes columnas: COD_ASIG numérico, 2 posiciones y NOM_ASIG cadena de 20 caracteres.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: sql
+
+  CREATE TABLE TASIG
+  (
+    NOM_ASIG VARCHAR2 (20),
+    COD_ASIG NUMBER (2)
+  );
+
+
+14. Añadir la restricción de clave primaria a la columna COD_ASIG de la tabla TASIG.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: sql
+
+  ALTER TABLE TASIG
+  ADD CONSTRAINT PK_CODASIG PRIMARY KEY (COD_ASIG);
+
+
+15. Añadir la restricción de clave ajena a la columna COD_ASIG de la tabla PROFESORES.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: sql
+
+  ALTER TABLE PROFESORES
+  ADD CONSTRAINT FK_CODASIG FOREIGN KEY (COD_ASIG)
+  REFERENCES TASIG ON DELETE CASCADE;
+
+
+Se pone ON DELETE CASCADE si queremos que se borre en las dos al actualizar.
+Visualizar los nombres de CONSTRAINTS y las columnas afectadas para las tablas TASIG y PROFESORES.
+
+16. Cambiar de nombre la tabla PROFESORES y llamarla PROFES.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: sql
+
+  RENAME PROFESORES TO PROFES;
+
+
+17. Borrar la tabla TASIG.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: sql
+
+  DROP TABLE TASIG;
+
+
+18. Devolver la tabla PROFESORES a su situación inicial.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: sql
+
+  RENAME PROFES TO PROFESORES;
 
 
 
