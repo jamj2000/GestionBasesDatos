@@ -10,14 +10,14 @@ Cuestiones (I)
 --------------
 
 
-2. Pon un ejemplo de un tipo de dato numérico, otro alfanumérico y otro fecha/hora.
+1. Pon un ejemplo de un tipo de dato numérico, otro alfanumérico y otro fecha/hora.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   
 - Dato numérico: PRECIO, IVA, EDAD, …
 - Dato alfanumérico: DNI, DIRECCIÓN, …
 - Dato tipo fecha: FECHA_NACIMIENTO, FECHA_INICIO, FECHA_FIN, ...
 
-3. ¿Qué diferencia hay entre VARCHAR y CHAR?
+2. ¿Qué diferencia hay entre VARCHAR y CHAR?
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Tanto CHAR como VARCHAR2 se utilizan para almacenar valores de cadena de caracteres, sin embargo, se comportan de manera muy diferente. 
@@ -26,18 +26,18 @@ Tanto CHAR como VARCHAR2 se utilizan para almacenar valores de cadena de caracte
 - VARCHAR2 se utiliza para almacenar cadenas de caracteres de longitud variable. Se reserva unicamente la memoria necesaria hasta el máximo indicado en la longitud.
 
 
-5. Realiza la instalación de Oracle Database 11g Express Edition sobre Windows.
+3. Realiza la instalación de Oracle Database 11g Express Edition sobre Windows.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-6. Una vez instalado dicho Sistema Gestor de Bases de Datos Relacional (RDBMS), lo iniciaremos pulsando en "Start Database". 
+4. Una vez instalado dicho Sistema Gestor de Bases de Datos Relacional (RDBMS), lo iniciaremos pulsando en "Start Database". 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 .. image:: images/tema3-003.png
 
 
-7. Y después iniciamos la interfaz web APEX  (APplication EXpress) para trabajar con dicho SGBD. 
+5. Y después iniciamos la interfaz web APEX  (APplication EXpress) para trabajar con dicho SGBD. 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Para ello pulsamos sobre "Get Started". Y se abrirá el navegador web con esta URL: http://127.0.0.1:8080/apex/f?p=4950.
@@ -45,7 +45,7 @@ Para ello pulsamos sobre "Get Started". Y se abrirá el navegador web con esta U
 .. image:: images/tema3-006.png
 
 
-8. A continuación configuraremos el Terminal CMD. En Windows, ejecuta el programa CMD.EXE y realiza la configuración siguiente:
+6. A continuación configuraremos el Terminal CMD. En Windows, ejecuta el programa CMD.EXE y realiza la configuración siguiente:
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 - Pulsa con el botón secundario del ratón en la barra de título y luego haz clic en Propiedades.
@@ -60,14 +60,14 @@ Para ello pulsamos sobre "Get Started". Y se abrirá el navegador web con esta U
 
 - Pulsa OK.
 
-9. Cambia la "Página de Código" a Windows-1252.
+7. Cambia la "Página de Código" a Windows-1252.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Para que se muestren correctamente las tildes y ciertos caracteres como la letra Ñ y similares deberemos ejecutar el comando CHCP 1252 (CHange CodePage). Esto cambia la CP850 por la CP1252 que soporta el conjunto de caracteres ISO 8859, necesarios por los motivos indicados anteriormente. Esta configuración no se queda guardada, por lo que deberemos ejecutarla cada vez que iniciemos el terminal.
 
 .. image:: images/tema3-015.png
 
-10. Ya podemos lanzar el cliente SQL*Plus como aparece en la imagen. Lo haremos como SYSDBA (permisos de DataBase Administrator).
+8. Ya podemos lanzar el cliente SQL*Plus como aparece en la imagen. Lo haremos como SYSDBA (permisos de DataBase Administrator).
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. image:: images/tema3-017.png
@@ -84,18 +84,18 @@ Para comprobar que SQL\*Plus y la base de datos Oracle están funcionando bien, 
   Grant succeeded.
 
 
-11.  Ahora conectamos con usuario/contraseña anterior y vemos las tablas que tiene dicho esquema (usuario).
+9.  Ahora conectamos con usuario/contraseña anterior y vemos las tablas que tiene dicho esquema (usuario).
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. image:: images/tema3-019.png
 
 
-12. Insertamos algunos datos con tildes y caracteres tales como la letra Ñ.
+10. Insertamos algunos datos con tildes y caracteres tales como la letra Ñ.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. image:: images/tema3-021.png
 
-13. Comprobamos ahora la interfaz web APEX. Pulsamos en Application Express. Luego introducimos la clave del usuario SYSTEM que establecimos durante la instalación.
+11. Comprobamos ahora la interfaz web APEX. Pulsamos en Application Express. Luego introducimos la clave del usuario SYSTEM que establecimos durante la instalación.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. image:: images/tema3-025.png
@@ -109,7 +109,7 @@ Para comprobar que SQL\*Plus y la base de datos Oracle están funcionando bien, 
 
 
 
-14. Una vez dentro nos creamos un espacio de trabajo (Workspace) como aparece en la siguiente imagen. Luego pulsaremos "Create Workspace".
+12. Una vez dentro nos creamos un espacio de trabajo (Workspace) como aparece en la siguiente imagen. Luego pulsaremos "Create Workspace".
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. image:: images/tema3-028.png
@@ -120,7 +120,7 @@ Como usuario y contraseña de APEX, por motivos de comodidad, utilizaremos siemp
 - Password: YO
 
 
-15. Ya podemos trabajar con el esquema HR en APEX. Para ello pulsamos en "Already have an acount? Login Here"
+13. Ya podemos trabajar con el esquema HR en APEX. Para ello pulsamos en "Already have an acount? Login Here"
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -129,7 +129,7 @@ Como usuario y contraseña de APEX, por motivos de comodidad, utilizaremos siemp
 
 
 
-16. Después pulsamos sobre "SQL WorkShop" y "SQL Commands". Realizamos la consulta `SELECT * FROM COUNTRIES;` para comprobar que aparece el registro introducido anteriormente con las tildes correctas.
+14. Después pulsamos sobre "SQL WorkShop" y "SQL Commands". Realizamos la consulta `SELECT * FROM COUNTRIES;` para comprobar que aparece el registro introducido anteriormente con las tildes correctas.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. image:: images/tema3-033.png
@@ -792,8 +792,11 @@ Visualizar los nombres de CONSTRAINTS y las columnas afectadas para las tablas T
 
 
 
-Práctica 1
+Prácticas
 ------------
+
+Práctica 1
+++++++++++
 
 .. admonition:: PLANTEAMIENTO
 
@@ -839,7 +842,7 @@ d) Una vez creadas las tablas:
 
 
 Práctica 2
-------------
+++++++++++
 
 .. admonition:: PLANTEAMIENTO
 
@@ -880,7 +883,7 @@ c) Crea las tablas en ORACLE procurando que las columnas tengan el tipo y tamañ
 
 
 Práctica 3
-------------
+++++++++++
 
 .. admonition:: PLANTEAMIENTO
 
