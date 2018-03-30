@@ -792,11 +792,8 @@ Visualizar los nombres de CONSTRAINTS y las columnas afectadas para las tablas T
 
 
 
-Prácticas
+Práctica 1
 ------------
-
-PRÁCTICA 1
-+++++++++++
 
 .. admonition:: PLANTEAMIENTO
 
@@ -840,9 +837,8 @@ d) Una vez creadas las tablas:
    :language: sql
 
 
-
-PRÁCTICA 2
-+++++++++++
+Práctica 2
+------------
 
 .. admonition:: PLANTEAMIENTO
 
@@ -881,8 +877,8 @@ c) Crea las tablas en ORACLE procurando que las columnas tengan el tipo y tamañ
 
 
 
-PRÁCTICA 3
-+++++++++++
+Práctica 3
+------------
 
 .. admonition:: PLANTEAMIENTO
 
