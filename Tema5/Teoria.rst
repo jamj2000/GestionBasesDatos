@@ -328,11 +328,11 @@ Concurrencia de varias transacciones (Bloqueos)
 
 Cuando se realizan varias transacciones de forma simultánea, pueden darse diversas situaciones en el acceso concurrente a los datos, es decir, cuando se accede a un mismo dato en dos transacciones distintas. Estas situaciones son:
 
-- **Dirty Read** (Lectura sucia). Se permite a una transacción leer datos de una fila que ha sido modificada por otra transacción aún no confirmada. 
-- **Nonrepeateable Read** (Lectura no repetible). Se permite a una transacción leer datos de una fila modificados por otra transacción confirmada. Sucede cuando una transacción recupera dos veces los datos y los valores dentro de la fila difieren entre lecturas.
-- **Phantom Read** (Lectura fantasma). Se permite a una transacción leer unos datos (nuevas filas) que no existían cuando se inició la transacción y que han sido agregados por otra transacción a los registros que se leen.
+- **Lectura sucia** (Dirty Read). Se permite a una transacción leer datos de una fila que ha sido modificada por otra transacción aún no confirmada.  
+- **Lectura no repetible** (Nonrepeateable Read). Se permite a una transacción leer datos de una fila modificados por otra transacción confirmada. Sucede cuando una transacción recupera dos veces los datos y los valores dentro de la fila difieren entre lecturas.
+- **Lectura fantasma** (Phantom Read). Se permite a una transacción leer unos datos (nuevas filas) que no existían cuando se inició la transacción y que han sido agregados por otra transacción a los registros que se leen.
 
-De las cuatro propiedades de ACID en un SGBD, la **propiedad de aislamiento** es la más relajada. Un nivel de aislamiento bajo aumenta la capacidad de muchos usuarios para acceder a los mismos datos al mismo tiempo, pero aumenta el número de efectos de concurrencia (como lecturas sucias). Al intentar mantener el mayor nivel de aislamiento, un SGBD generalmente adquiere **bloqueos** en los datos que pueden dar como resultado una pérdida de concurrencia y el aumento de las posibilidades de que una transacción bloquee a otra.
+De las cuatro propiedades de ACID de un SGBD, la **propiedad de aislamiento** es la más laxa. Un nivel de aislamiento bajo aumenta la capacidad de muchos usuarios para acceder a los mismos datos al mismo tiempo, pero también aumenta el número de efectos de concurrencia (como lecturas sucias). Un mayor nivel de aislamiento puede dar como resultado una pérdida de concurrencia y el aumento de las posibilidades de que una transacción bloquee a otra. 
 
 Es posible solicitar al SGBD cuatro niveles de aislamiento. De menor a mayor nivel de aislamiento, tenemos:
 
@@ -342,20 +342,22 @@ Es posible solicitar al SGBD cuatro niveles de aislamiento. De menor a mayor niv
 - **SERIALIZABLE**. Las transacciones ocurren de forma totalmente aislada a otras transacciones. Se bloquean las transacciones de tal manera que ocurren unas detrás de otras, sin capacidad de concurrencia. El SGBD las ejecuta concurrentemente si puede asegurar que no hay conflicto con el acceso a los datos.
 
 **Nivel de aislamiento y Lecturas**
+==================== =============== ====================== ===================
+Nivel de aislamiento Lecturas sucias Lecturas no repetibles Lecturas fantasma
+==================== =============== ====================== ===================
+READ UNCOMMITTED     SÍ              SÍ                     SÍ   
+READ COMMITTED 	     NO              SÍ                     SÍ
+REPEATEABLE READ 	   NO              NO                     SÍ
+SERIALIZABLE 	       NO              NO                     NO
+==================== =============== ====================== ===================
 
-Nivel de aislamiento  Lecturas sucias Lecturas no repetibles  Lecturas fantasma
-====================  =============== ======================= ===================
-READ UNCOMMITTED      SÍ              SÍ                      SÍ   
-READ COMMITTED 	      NO              SÍ                      SÍ
-REPEATEABLE READ 	    NO              NO                      SÍ
-SERIALIZABLE 	        NO              NO                      NO
-====================  =============== ======================= ===================
+Internamente el SGBD proporciona dicho nivel de aislamiento mediante **bloqueos** en los datos.
 
-En Oracle, el nivel por defecto es **READ COMMITED**. Además de éste, solo permite SERIALIZABLE. Se puede cambiar ejecutando el comando:
+En Oracle, el nivel por defecto es **READ COMMITED**. Además de éste, solo permite **SERIALIZABLE**. Se puede cambiar ejecutando el comando:
 
 .. code-block:: plpgsql
 
-  SET TRANSACTION ISOLATION LEVEL {READ COMMITTED | SERIALIZABLE};
+  SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 
 
 
