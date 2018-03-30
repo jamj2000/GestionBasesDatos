@@ -800,7 +800,7 @@ PRÁCTICA 1
 
 .. admonition:: PLANTEAMIENTO
 
-   OBJETIVOS:  Realizar el diseño físico de bases de datos utilizando asistentes, herramientas gráficas y el lenguaje de definición de datos.
+   OBJETIVO: Realizar el diseño físico de bases de datos utilizando asistentes, herramientas gráficas y el lenguaje de definición de datos.
 
    ENUNCIADO: Dado el siguiente esquema E/R:
 
@@ -809,46 +809,6 @@ PRÁCTICA 1
 a) Obtén el esquema relacional correspondiente.
 
 .. image:: images/tema3-Partidos.png
-
-b) Comprueba que está en 3FN.
-
-  Todas las tablas están en 3FN puesto que cumplen:
-  
-  - 1FN: Todos los campos toman valores atómicos.
-  - 2FN: Todos los atributos no clave dependen funcionalmente de forma completa de su clave primaria.
-  - 3FN: No existen atributos con dependencias funcionales transitivas.
-
-c) Crea las tablas en ORACLE procurando que las columnas tengan el tipo y tamaño adecuado y con las siguientes restricciones:
-
-  1. El Color de los coches es verde, rojo o azul.
-  2. La matrícula está formada por cuatro números y tres letras.
-  3. Los DNI terminan en letra.
-  4. Las Horas de mano de obra de una operación nunca pasan de 10.
-  5. Señala todas las claves primarias, ajenas y candidatas.
-  6. La cantidad de Piezas por Operación por defecto es 1.
-  7. La marca y modelo del coche no pueden dejarse en blanco.
-  8. Los teléfonos empiezan por 6 o por 9.
-  9. El precio de un coche está entre 10000 y 40000.
-
-.. literalinclude:: scripts/P31.SQL
-   :language: sql
-
-
-PRÁCTICA 2
-+++++++++++
-
-.. admonition:: PLANTEAMIENTO
-
-   OBJETIVO: Realizar el diseño físico de bases de datos utilizando asistentes, herramientas gráficas y el lenguaje de definición de datos.
-
-   ENUNCIADO: Dado el siguiente esquema E/R:
-
-
-.. image:: images/tema3-050.png
-
-a) Obtén el esquema relacional correspondiente.
-
-.. image:: images/tema3-Revisiones.png
 
 b) Comprueba que está en 3FN.
 
@@ -876,9 +836,49 @@ d) Una vez creadas las tablas:
   3. Añade la restricción: Todos los equipos se han fundado después del año1890.
   4. Añade la restricción: La hora de comienzo de los partidos estará entre las 12:00 y las 22:00 horas.
 
+.. literalinclude:: scripts/P31.SQL
+   :language: sql
+
+
+
+PRÁCTICA 2
++++++++++++
+
+.. admonition:: PLANTEAMIENTO
+
+   OBJETIVOS:  Realizar el diseño físico de bases de datos utilizando asistentes, herramientas gráficas y el lenguaje de definición de datos.
+
+   ENUNCIADO: Dado el siguiente esquema E/R:
+
+.. image:: images/tema3-050.png
+
+a) Obtén el esquema relacional correspondiente.
+
+.. image:: images/tema3-Revisiones.png
+
+b) Comprueba que está en 3FN.
+
+  Todas las tablas están en 3FN puesto que cumplen:
+  
+  - 1FN: Todos los campos toman valores atómicos.
+  - 2FN: Todos los atributos no clave dependen funcionalmente de forma completa de su clave primaria.
+  - 3FN: No existen atributos con dependencias funcionales transitivas.
+
+c) Crea las tablas en ORACLE procurando que las columnas tengan el tipo y tamaño adecuado y con las siguientes restricciones:
+
+  1. El Color de los coches es verde, rojo o azul.
+  2. La matrícula está formada por cuatro números y tres letras.
+  3. Los DNI terminan en letra.
+  4. Las Horas de mano de obra de una operación nunca pasan de 10.
+  5. Señala todas las claves primarias, ajenas y candidatas.
+  6. La cantidad de Piezas por Operación por defecto es 1.
+  7. La marca y modelo del coche no pueden dejarse en blanco.
+  8. Los teléfonos empiezan por 6 o por 9.
+  9. El precio de un coche está entre 10000 y 40000.
 
 .. literalinclude:: scripts/P32.SQL
    :language: sql
+
 
 
 PRÁCTICA 3
