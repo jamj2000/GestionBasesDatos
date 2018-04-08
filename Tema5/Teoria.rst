@@ -375,10 +375,12 @@ PL/SQL es implementado por el precompilador de Oracle que permite utilizar condi
 
 En otros sistemas gestores de bases de datos existen otros lenguajes procedimentales: 
 
-- SQL Server utiliza **Transact SQL**
+- Microsoft SQL Server utiliza **Transact SQL**
 - PostgreSQL usa **PL/pgSQL**
-- Informix usa **Informix 4GL**
-- ...
+- IBM Informix usa **SPL**
+- Firebird usa **PSQL**
+- MySQL usa **SQL/PSM**
+- ANSI/ISO usa **SQL/PSM**
 
 El código PL/SQL puede almacenarse:
 
