@@ -380,7 +380,7 @@ En otros sistemas gestores de bases de datos existen otros lenguajes procediment
 - IBM Informix usa **SPL**
 - Firebird usa **PSQL**
 - MySQL usa **SQL/PSM**
-- ANSI/ISO usa **SQL/PSM**
+- El estándar ANSI/ISO indica **SQL/PSM**
 
 El código PL/SQL puede almacenarse:
 
