@@ -1151,6 +1151,10 @@ Ejemplo:
 
   Observa que sólo se pone punto y coma al final.
 
+.. note::
+  
+  La palabra `MINUS` es utiliza en el SGBD Oracle. El estándar SQL establece la palabra `EXCEPT`.
+  
 Se podrían hacer varias combinaciones anidadas (una unión a cuyo resultado se restará de otro SELECT por ejemplo), en ese caso es conveniente utilizar paréntesis para indicar qué combinación se hace primero:
 
 .. code-block:: plpgsql
