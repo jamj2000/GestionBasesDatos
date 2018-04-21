@@ -1647,7 +1647,7 @@ Puesto que un trigger es un código que se dispara, al crearle se deben indicar 
   DELETE
 
 
-2) Cuando se lanza el evento en relación a dicho evento:
+2) Cuándo se lanza el evento en relación a dicho evento:
 
 .. code-block:: plpgsql
 
