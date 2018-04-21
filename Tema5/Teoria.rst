@@ -1637,6 +1637,7 @@ Elementos de los triggers
 ++++++++++++++++++++++++++
 
 Puesto que un trigger es un código que se dispara, al crearle se deben indicar las siguientes cosas:
+
 1) El evento que da lugar a la ejecución del trigger:
 
 .. code-block:: plpgsql
@@ -1659,12 +1660,13 @@ Puesto que un trigger es un código que se dispara, al crearle se deben indicar 
 - AFTER: El código del trigger se ejecuta después de haber ejecutado la instrucción DML que causó el lanzamiento del trigger.
 - INSTEAD OF: El trigger sustituye a la operación DML . Se utiliza para vistas que no admiten instrucciones DML.
 
-3)  Las veces que el trigger se ejecuta o tipo de trigger:
+3) Las veces que el trigger se ejecuta o tipo de trigger:
 
 - **de Instrucción**. El cuerpo del trigger se ejecuta una sola vez por cada evento que lance el trigger. Esta es la opción por defecto. El código se ejecuta aunque la instrucción DML no genere resultados.
 - **de Fila**. El código se ejecuta una vez por cada fila afectada por el evento. Por ejemplo si hay una cláusula UPDATE que desencadena un trigger y dicho UPDATE actualiza 10 filas; si el trigger es de fila se ejecuta una vez por cada fila, si es de instrucción se ejecuta sólo una vez.
 
-4) El cuerpo del trigger, es decir el código que ejecuta dicho trigger
+4) El cuerpo del trigger, es decir el código que ejecuta dicho trigueros. 
+
 Ejemplo:
 
 .. code-block:: plpgsql
