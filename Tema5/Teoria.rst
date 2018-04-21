@@ -1893,12 +1893,13 @@ La columna TYPE puede tomar uno de los siguientes valores:
 
 .. code-block:: plpgsql
 
+```
 PROCEDURE
 FUNCTION
 PACKAGE
 PACKAGE BODY
 TRIGGER
-
+```
 
 Por ejemplo, para ver los errores producidos en el siguiente trigger:
 
