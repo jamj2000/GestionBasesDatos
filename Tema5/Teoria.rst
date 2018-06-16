@@ -834,202 +834,6 @@ Ejemplo:
 
 Este código inserta 10 filas en la tabla Tabla_Temp con valores  10, 20, 30, … , 100.
 
-Procedimientos
---------------------------------
-
-Un procedimiento es un bloque que puede recibir parámetros, lo cual permite trabajar con unos datos de entrada, realizar las operaciones deseadas con dichos datos y, en algunos casos guardar ciertos resultados como parámetros de salida.
-Se usa la palabra reservada PROCEDURE. Su estructura simplificada es:
-
-.. code-block:: plpgsql
-
-  PROCEDURE nombre IS
-  bloque sin palabra DECLARE
-
-Su estructura en detalle es:
-
-.. code-block:: plpgsql
-
-  PROCEDURE nombre 
-  [(parámetro1 [modo] tipoDatos[,parámetro2 [modo] tipoDatos [,...])]
-  {IS|AS}
-  bloque sin palabra DECLARE
-
-
-Los procedimientos permiten utilizar parámetros para realizar su tarea. El modo, que es opcional, puede ser de 3 tipos: **IN, OUT o  IN OUT**. Si no se indica nada, por defecto es IN.
-
-- Parámetros IN. Son los parámetros que en otros lenguajes se denominan como parámetros por valor. El procedimiento recibe una copia del valor o variable que se utiliza como parámetro al llamar al procedimiento. Estos parámetros pueden ser: valores literales (18 por ejemplo), variables (v_num por ejemplo) o expresiones (como v_num+18). A estos parámetros se les puede asignar un valor por defecto.
-- Parámetros OUT. Relacionados con el paso por variable de otros lenguajes. Sólo pueden ser variables y no pueden tener un valor por defecto. Se utilizan para que el procedimiento almacene en ellas algún valor. Es decir, los parámetros OUT son variables sin declarar que se envían al procedimiento de modo que si en el procedimiento cambian su valor, ese valor permanece en ellas cuando el procedimiento termina.
-- Parámetros IN OUT. Son una mezcla de los dos anteriores. Se trata de variables declaradas anteriormente cuyo valor puede ser utilizado por el procedimiento que, además, puede almacenar un valor en ellas. No se las puede asignar un valor por defecto.
-
-Para crear el procedimiento debemos anteponer la sentencia 
-
-.. code-block:: plpgsql
-
-  CREATE [ OR REPLACE ]
-
-
-La opción REPLACE hace que si ya existe un procedimiento con ese nombre, se reemplaza con el que se crea ahora. Los parámetros son la lista de variables que necesita el procedimiento para realizar su tarea. 
-Para invocar al procedimiento o procedimientos definidos debemos hacerlo dentro de un bloque BEGIN … END; o también con la sentencia EXEC si lo ejecutamos desde SQL\*Plus.
-
-.. code-block:: plpgsql
-  
-  BEGIN
-    procedimiento1;
-    procedimiento2();
-    procedimiento3(parametro1, parametro2);
-    ...
-  END;
-  /
-
-
-o también en SQL\*Plus:
-
-.. code-block:: plpgsql
-
-  EXEC procedimiento1;
-  EXEC procedimiento2();
-  EXEC procedimiento3(parametro1, parametro2);
-
-
-Cuando se invoca a un procedimiento, si éste no tiene parámetros, se pueden omitir los paréntesis (es decir la llamada al procedimiento procedimiento2() se puede hacer simplemente escribiendo procedimiento2, sin paréntesis)
-
-Para eliminar un procedimiento utilizamos la sentencia DROP PROCEDURE.
-
-.. code-block:: plpgsql
-
-  DROP PROCEDURE procedimiento;
-
-
-Ejemplo:
-
-.. code-block:: plpgsql
-
-  CREATE OR REPLACE
-  PROCEDURE muestra_fecha IS 
-    fecha  DATE;
-  BEGIN
-    DBMS_OUTPUT.PUT_LINE ('Salida de información');
-    SELECT SYSDATE INTO fecha FROM DUAL;
-    DBMS_OUTPUT.PUT_LINE ('Fecha:  ' || fecha);
-  END muestra_fecha;
-  /
-
-Para crear el procedimiento muestra_fecha sin parámetros.
-
-
-Para invocar el procedimiento muestra_fecha:
-
-.. code-block:: plpgsql
-
-  BEGIN
-    muestra_fecha;
-  END;
-  /
-
-
-o también en SQL\*Plus:
-
-.. code-block:: plpgsql
-
-  EXEC muestra_fecha;
-
-
-Ejemplo de procedimiento con parámetros:
-
-.. code-block:: plpgsql
-
-  CREATE OR REPLACE 
-  PROCEDURE escribe (texto VARCHAR2)
-  IS
-  BEGIN
-    DBMS_OUTPUT.PUT_LINE(texto);
-  END;
-  /
-
-  BEGIN
-    ESCRIBE('HOLA');
-  END;
-  /
-
-
-o también en SQL*Plus:
-
-.. code-block:: plpgsql
-
-  EXEC ESCRIBE('HOLA');
-
-
-Al declarar cada parámetro se indica el tipo de los mismos, pero no su tamaño; es decir sería VARCHAR2 y no VARCHAR2(50).
-
-Funciones
---------------------------------
-
-Una función es prácticamente idéntica a un procedimiento. También puede recibir parámetros de entrada y realizar operaciones con dichos datos. Lo que distingue a una función de un procedimiento es que la función siempre devuelve algún valor.
-Se usa la palabra reservada FUNCTION. Su estructura simplificada es:
-
-.. code-block:: plpgsql
-
-  FUNCTION nombre RETURN tipoDedatos IS
-  bloque sin palabra DECLARE
-
-
-Su estructura en detalle es:
-
-.. code-block:: plpgsql
-
-  FUNCTION nombre 
-  [(parámetro1 [modelo] tipoDatos
-  [,parámetro2 [modelo] tipoDatos [,...]])]
-  RETURN tipoDeDatos
-  {IS|AS}
-  bloque sin palabra DECLARE
-
-
-Para crear la función debemos anteponer la sentencia 
-
-.. code-block:: plpgsql
-
-  CREATE [ OR REPLACE ]
-
-
-La opción REPLACE hace que si ya existe una función con ese nombre, se reemplaza con la que se crea ahora. Los parámetros son la lista de variables que necesita la función para realizar su tarea. 
-Para invocar la función debemos hacerlo dentro de una expresión. Ejemplo:
-
-.. code-block:: plpgsql
-
-  SELECT ...función... FROM DUAL;
-
-
-Para eliminar una función utilizamos la sentencia DROP FUNCTION.
-
-.. code-block:: plpgsql
-
-  DROP FUNCTION función;
-
-
-Ejemplo:
-
-.. code-block:: plpgsql
-
- CREATE OR REPLACE
- FUNCTION SUMA (NUM1 NUMBER, NUM2 NUMBER)
- RETURN NUMBER
- IS
- BEGIN
-   RETURN NUM1+NUM2;
- END SUMA;
- / 
-
-
-Para invocar la función definida debemos hacerlo dentro de una expresión. Ejemplos:
-
-.. code-block:: plpgsql
-
-  SELECT SUMA(5.7, 9.3)           FROM DUAL;
-  SELECT SUMA(5.7, 9.3)*3         FROM DUAL;
-  SELECT 150/(SUMA(5.7, 9.3)*3)   FROM DUAL;
-  SELECT SYSDATE+SUMA(10,2)-2     FROM DUAL;
-
 
 Variables
 --------------------------------
@@ -1450,6 +1254,205 @@ En el siguiente ejemplo, usamos %ROWCOUNT para lanzar una excepción si se borra
      END LOOP;
      CLOSE c;
   END;
+
+
+
+Procedimientos
+--------------------------------
+
+Un procedimiento es un bloque que puede recibir parámetros, lo cual permite trabajar con unos datos de entrada, realizar las operaciones deseadas con dichos datos y, en algunos casos guardar ciertos resultados como parámetros de salida.
+Se usa la palabra reservada PROCEDURE. Su estructura simplificada es:
+
+.. code-block:: plpgsql
+
+  PROCEDURE nombre IS
+  bloque sin palabra DECLARE
+
+Su estructura en detalle es:
+
+.. code-block:: plpgsql
+
+  PROCEDURE nombre 
+  [(parámetro1 [modo] tipoDatos[,parámetro2 [modo] tipoDatos [,...])]
+  {IS|AS}
+  bloque sin palabra DECLARE
+
+
+Los procedimientos permiten utilizar parámetros para realizar su tarea. El modo, que es opcional, puede ser de 3 tipos: **IN, OUT o  IN OUT**. Si no se indica nada, por defecto es IN.
+
+- Parámetros IN. Son los parámetros que en otros lenguajes se denominan como parámetros por valor. El procedimiento recibe una copia del valor o variable que se utiliza como parámetro al llamar al procedimiento. Estos parámetros pueden ser: valores literales (18 por ejemplo), variables (v_num por ejemplo) o expresiones (como v_num+18). A estos parámetros se les puede asignar un valor por defecto.
+- Parámetros OUT. Relacionados con el paso por variable de otros lenguajes. Sólo pueden ser variables y no pueden tener un valor por defecto. Se utilizan para que el procedimiento almacene en ellas algún valor. Es decir, los parámetros OUT son variables sin declarar que se envían al procedimiento de modo que si en el procedimiento cambian su valor, ese valor permanece en ellas cuando el procedimiento termina.
+- Parámetros IN OUT. Son una mezcla de los dos anteriores. Se trata de variables declaradas anteriormente cuyo valor puede ser utilizado por el procedimiento que, además, puede almacenar un valor en ellas. No se las puede asignar un valor por defecto.
+
+Para crear el procedimiento debemos anteponer la sentencia 
+
+.. code-block:: plpgsql
+
+  CREATE [ OR REPLACE ]
+
+
+La opción REPLACE hace que si ya existe un procedimiento con ese nombre, se reemplaza con el que se crea ahora. Los parámetros son la lista de variables que necesita el procedimiento para realizar su tarea. 
+Para invocar al procedimiento o procedimientos definidos debemos hacerlo dentro de un bloque BEGIN … END; o también con la sentencia EXEC si lo ejecutamos desde SQL\*Plus.
+
+.. code-block:: plpgsql
+  
+  BEGIN
+    procedimiento1;
+    procedimiento2();
+    procedimiento3(parametro1, parametro2);
+    ...
+  END;
+  /
+
+
+o también en SQL\*Plus:
+
+.. code-block:: plpgsql
+
+  EXEC procedimiento1;
+  EXEC procedimiento2();
+  EXEC procedimiento3(parametro1, parametro2);
+
+
+Cuando se invoca a un procedimiento, si éste no tiene parámetros, se pueden omitir los paréntesis (es decir la llamada al procedimiento procedimiento2() se puede hacer simplemente escribiendo procedimiento2, sin paréntesis)
+
+Para eliminar un procedimiento utilizamos la sentencia DROP PROCEDURE.
+
+.. code-block:: plpgsql
+
+  DROP PROCEDURE procedimiento;
+
+
+Ejemplo:
+
+.. code-block:: plpgsql
+
+  CREATE OR REPLACE
+  PROCEDURE muestra_fecha IS 
+    fecha  DATE;
+  BEGIN
+    DBMS_OUTPUT.PUT_LINE ('Salida de información');
+    SELECT SYSDATE INTO fecha FROM DUAL;
+    DBMS_OUTPUT.PUT_LINE ('Fecha:  ' || fecha);
+  END muestra_fecha;
+  /
+
+Para crear el procedimiento muestra_fecha sin parámetros.
+
+
+Para invocar el procedimiento muestra_fecha:
+
+.. code-block:: plpgsql
+
+  BEGIN
+    muestra_fecha;
+  END;
+  /
+
+
+o también en SQL\*Plus:
+
+.. code-block:: plpgsql
+
+  EXEC muestra_fecha;
+
+
+Ejemplo de procedimiento con parámetros:
+
+.. code-block:: plpgsql
+
+  CREATE OR REPLACE 
+  PROCEDURE escribe (texto VARCHAR2)
+  IS
+  BEGIN
+    DBMS_OUTPUT.PUT_LINE(texto);
+  END;
+  /
+
+  BEGIN
+    ESCRIBE('HOLA');
+  END;
+  /
+
+
+o también en SQL*Plus:
+
+.. code-block:: plpgsql
+
+  EXEC ESCRIBE('HOLA');
+
+
+Al declarar cada parámetro se indica el tipo de los mismos, pero no su tamaño; es decir sería VARCHAR2 y no VARCHAR2(50).
+
+Funciones
+--------------------------------
+
+Una función es prácticamente idéntica a un procedimiento. También puede recibir parámetros de entrada y realizar operaciones con dichos datos. Lo que distingue a una función de un procedimiento es que la función siempre devuelve algún valor.
+Se usa la palabra reservada FUNCTION. Su estructura simplificada es:
+
+.. code-block:: plpgsql
+
+  FUNCTION nombre RETURN tipoDedatos IS
+  bloque sin palabra DECLARE
+
+
+Su estructura en detalle es:
+
+.. code-block:: plpgsql
+
+  FUNCTION nombre 
+  [(parámetro1 [modelo] tipoDatos
+  [,parámetro2 [modelo] tipoDatos [,...]])]
+  RETURN tipoDeDatos
+  {IS|AS}
+  bloque sin palabra DECLARE
+
+
+Para crear la función debemos anteponer la sentencia 
+
+.. code-block:: plpgsql
+
+  CREATE [ OR REPLACE ]
+
+
+La opción REPLACE hace que si ya existe una función con ese nombre, se reemplaza con la que se crea ahora. Los parámetros son la lista de variables que necesita la función para realizar su tarea. 
+Para invocar la función debemos hacerlo dentro de una expresión. Ejemplo:
+
+.. code-block:: plpgsql
+
+  SELECT ...función... FROM DUAL;
+
+
+Para eliminar una función utilizamos la sentencia DROP FUNCTION.
+
+.. code-block:: plpgsql
+
+  DROP FUNCTION función;
+
+
+Ejemplo:
+
+.. code-block:: plpgsql
+
+ CREATE OR REPLACE
+ FUNCTION SUMA (NUM1 NUMBER, NUM2 NUMBER)
+ RETURN NUMBER
+ IS
+ BEGIN
+   RETURN NUM1+NUM2;
+ END SUMA;
+ / 
+
+
+Para invocar la función definida debemos hacerlo dentro de una expresión. Ejemplos:
+
+.. code-block:: plpgsql
+
+  SELECT SUMA(5.7, 9.3)           FROM DUAL;
+  SELECT SUMA(5.7, 9.3)*3         FROM DUAL;
+  SELECT 150/(SUMA(5.7, 9.3)*3)   FROM DUAL;
+  SELECT SYSDATE+SUMA(10,2)-2     FROM DUAL;
+
 
 
 Paquetes
@@ -1930,206 +1933,5 @@ Otra forma más cómoda de hacerlo es con la sentencia:
 .. code-block:: plpgsql
 
   SHOW ERRORS;
-
-
-Gestión de excepciones
---------------------------------
-
-Se llama excepción a todo hecho que le sucede a un programa que causa que la ejecución del mismo finalice. Lógicamente eso causa que el programa termine de forma anormal.
-Las excepciones se deben a:
-
-Que ocurra un error detectado por Oracle (por ejemplo si un SELECT no devuelve datos ocurre el error ORA-01403 llamado NO_DATA_FOUND).
-Que el propio programador las lance (comando RAISE).
-Las excepciones se pueden capturar a fin de que el programa controle mejor la existencia de las mismas.
-
-Captura de excepciones
-+++++++++++++++++++++++
-
-La captura se realiza utilizando el bloque EXCEPTION que es el bloque que está justo antes del END del bloque. Cuando una excepción ocurre, se comprueba el bloque EXCEPTION para ver si ha sido capturada, si no se captura, el error se propaga a Oracle que se encargará de indicar el error existente.
-
-Las excepciones pueden ser de estos tipos:
-
-- Excepciones predefinidas de Oracle. Que tienen ya asignado un nombre de excepción.
-- Excepciones de Oracle sin definir. No tienen nombre asignado pero se les puede asignar. 
-- Definidas por el usuario. Las lanza el programador.
-
-La captura de excepciones se realiza con esta sintaxis:
-
-.. code-block:: plpgsql
-
-  DECLARE
-    sección de declaraciones
-  BEGIN
-    instrucciones
-    EXCEPTION
-      WHEN excepción1 [OR excepción2 ...] THEN
-        instrucciones que se ejcutan si suceden esas excepciones
-      [WHEN excepción3 [OR...] THEN
-        instrucciones que se ejcutan si suceden esas excepciones]
-      [WHEN OTHERS THEN
-        instrucciones que se ejecutan si suceden otras excepciones]
-  END;
-
-
-Cuando ocurre una determinada excepción, se comprueba el primer WHEN para comprobar si el nombre de la excepción ocurrida coincide con el que dicho WHEN captura; si es así se ejecutan las instrucciones, si no es así se comprueba el siguiente WHEN y así sucesivamente.
-
-Si existen cláusula WHEN OTHERS, entonces las excepciones que no estaban reflejadas en los demás apartados WHEN ejecutan las instrucciones del WHEN OTHERS. Ésta cláusula debe ser la última.
-
-Excepciones predefinidas
-+++++++++++++++++++++++++
-
-Oracle tiene muchas excepciones predefinidas. Son errores a los que Oracle asigna un nombre de excepción. Algunas de las que aparecen con mayor frecuencia son:
-
-==================== ========== =================================================================================
-Nombre de excepción  Número     Ocurre cuando...
-==================== ========== =================================================================================
-CASE_NOT_FOUND       ORA-06592  Ninguna opción WHEN dentro de la instrucción CASE captura el valor, y no hay instrucción ELSE
-DUP_VAL_ON_INDEX     ORA-00001  Se intentó añadir una fila que provoca que un índice único repita valores
-INVALID_NUMBER       ORA-01722  Falla la conversión de carácter a número
-NO_DATA_FOUND        ORA-01403  El SELECT de fila única no devolvió valores
-TOO_MANY_ROWS        ORA-01422  El SELECT de fila única devuelve más de una fila
-VALUE_ERROR          ORA-06502  Hay un error aritmético, de conversión, de redondeo o de tamaño en una operación
-ZERO_DIVIDE          ORA-01476  Se intenta dividir entre el número cero.
-==================== ========== =================================================================================
-
-Ejemplos:
-
-En el siguiente ejemplo  se producirá una excepción ZERO_DIVIDE puesto que el divisor x es igual a 0.
-
-.. code-block:: plpgsql
-
-  DECLARE
-    x NUMBER := 0;
-    y NUMBER := 3;
-    res NUMBER;
-  BEGIN
-    res:=y/x;
-    DBMS_OUTPUT.PUT_LINE(res);
-
-    EXCEPTION
-      WHEN ZERO_DIVIDE THEN
-        DBMS_OUTPUT.PUT_LINE('No se puede dividir por cero') ;
-
-      WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('Error inesperado') ;
-  END;
-  /
-
-
-En el siguiente ejemplo el cursor implícito Hotel99 sólo puede recibir una única fila o registro como resultado de una consulta. En este caso podrían producirse 2 excepciones: NO_DATA_FOUND (la consulta select no devuelve ningún registro) o TO_MANY_ROWS (la consulta select devuelve más de un registro). En el primer caso insertamos un nuevo registro. En el segundo caso borramos el registro duplicado.
-
-.. code-block:: plpgsql
-
-  DECLARE
-    Hotel99 Hotel%ROWTYPE;
-  BEGIN
-   SELECT * INTO Hotel99 WHERE Nombre='Costanera';
-   -- IF  SQL%NOTFOUND THEN ...     // Esto no tiene sentido aquí
-   -- IF  SQL%ROWCOUNT > 1 THEN ... // Tampoco tiene sentido aquí 
-
-   EXCEPTION
-     WHEN NO_DATA_FOUND THEN  -- Cuando no se recupera ninguna fila
-       INSERT INTO Hotel VALUES (99, 'Costanera', 110, 60, 'S', 3 );
-
-     WHEN TOO_MANY_ROWS THEN  -- Cuando se recuperan varias filas
-        DELETE Hotel WHERE Nombre='Costanera' AND HotelID<>99;
-  END;
-
-
-Si una instrucción SELECT INTO no devuelve una fila, PL/SQL lanza la excepción predefinida NO_DATA_FOUND tanto si se comprueba SQL%NOTFOUND en la línea siguiente como si no. Si una instrucción  SELECT INTO devuelve más de una fila, PL/SQL lanza la excepción predefinida TOO_MANY_ROWS tanto si se comprueba SQL%ROWCOUNT en la línea siguiente como si no.
-
-Funciones de uso con excepciones
-+++++++++++++++++++++++++++++++++
-
-Se suelen usar dos funciones cuando se trabaja con excepciones:
-
-- **SQLCODE**. Retorna el código de error del error ocurrido
-- **SQLERRM**. Devuelve el mensaje de error de Oracle asociado a ese número de error.
-
-Ejemplo:
-
-.. code-block:: plpgsql
-
-  EXCEPTION
-    ...
-    WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE
-        ('Ocurrió el error ' ||  SQLCODE ||'mensaje: ' || SQLERRM);
-  END;
-
-
-Excepciones de usuario
-+++++++++++++++++++++++
-
-El programador puede lanzar sus propias excepciones simulando errores del programa.
-Para ello hay que:
-
-1) Declarar un nombre para la excepción en el apartado DECLARE, al igual que para las excepciones sin definir:
-
-.. code-block:: plpgsql
-
-  miExcepcion EXCEPTION;
-
-
-2) En la sección ejecutable (BEGIN … END) utilizar la instrucción RAISE para lanzar la excepción:
-
-.. code-block:: plpgsql
-
-  RAISE miExcepcion;
-
-
-3) En el apartado de excepciones capturar el nombre de excepción declarado:
-
-.. code-block:: plpgsql
-
-  EXCEPTION
-    ...
-    WHEN miExcepcion THEN
-    ...
-
-
-
-Ejemplo:
-
-.. code-block:: plpgsql
-
-  DECLARE
-    error_al_eliminar EXCEPTION;
-  BEGIN
-    DELETE piezas WHERE tipo='ZU' AND modelo=26;
-    IF  SQL%NOTFOUND THEN
-      RAISE error_al_eliminar;
-    END IF;
-    EXCEPTION
-      WHEN error_al_eliminar THEN
-        DBMS_OUTPUT.PUT_LINE ('Error -20001: No existe esa pieza');
-  END;
-  /
-
-
-Otra forma es utilizar la función RAISE_APPLICATION_ERROR que simplifica los tres pasos anteriores. Sintaxis:
-
-.. code-block:: plpgsql
-
-  RAISE_APPLICATION_ERROR (noDeError, mensaje, [,{TRUE|FALSE}]);
-
-
-Esta instrucción se coloca en la sección ejecutable o en la de excepciones y sustituye a los tres pasos anteriores. Lo que hace es lanzar un error cuyo número debe de estar entre el -20000 y el -20999 y hace que Oracle muestre el mensaje indicado. El tercer parámetro opciones puede ser TRUE o FALSE (por defecto TRUE) e indica si el error se añade a la pila de errores existentes.
-
-**Ejemplo con RAISE_APPLICATION_ERROR:**
-
-.. code-block:: plpgsql
-
-  DECLARE
-  BEGIN
-    DELETE piezas WHERE tipo='ZU' AND modelo=26;
-    IF  SQL%NOTFOUND THEN
-      RAISE_APPLICATION_ERROR(-20001,'No existe esa pieza');
-    END IF;
-  END;
-  /
-
-
-En el ejemplo, si la pieza no existe, entonces SQL%NOTFOUND devuelve verdadero ya que el DELETE no elimina ninguna pieza. Se lanza la excepción de usuario -20001 haciendo que Oracle utilice el mensaje indicado. Oracle lanzará el mensaje: ORA-20001: No existe esa pieza.
 
 
