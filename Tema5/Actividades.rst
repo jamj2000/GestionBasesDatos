@@ -381,7 +381,7 @@ Crea una función NOTA que reciba un parámetros que será una nota numérica en
 Práctica 5
 --------------
 
-**PL/SQL: Variables, registros y cursores**
+**PL/SQL: Procedimientos y Funciones**
 
 Escribe un procedimiento que muestre el número de empleados y el salario mínimo, máximo y medio del departamento de FINANZAS. Debe hacerse uso de cursores implícitos, es decir utilizar SELECT ... INTO. 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -410,7 +410,7 @@ Escribe un procedimiento con un parámetro para el nombre de empleado, que nos m
 Práctica 6
 ----------------
 
-**PL/SQL: Paquetes y Excepciones**
+**PL/SQL: Paquetes**
 
 Desarrolla el paquete ARITMETICA cuyo código fuente viene en este tema. Crea un archivo para la especificación y otro para el cuerpo. Realiza varias pruebas para comprobar que las llamadas a funciones y procedimiento funcionan correctamente.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -439,7 +439,7 @@ Desarrolla el paquete GESTION. En un principio tendremos los procedimientos para
 Práctica 7
 --------------
 
-**PL/SQL: Triggers y Excepciones**
+**PL/SQL: Triggers**
 
 Previamente deberemos crear una tabla AUDITORIA_EMPLEADOS para registrar los eventos a auditar que ocurran sobre la tabla EMPLEADOS.
 
