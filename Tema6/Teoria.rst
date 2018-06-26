@@ -600,13 +600,13 @@ Después ya podemos usar las herramientas **EXPDP** e **IMPDP** desde el termina
 
 .. note::
 
-   Si no indicamos la opción directory, los backups se guardan por defecto en **C:\oraclexe\app\oracle\admin\XE\dpdump**. O similar, dependiendo del directorio donde se tenga instalado Oracle.
+   Si no indicamos la opción directory, los backups se guardan por defecto en **C:\\oraclexe\\app\\oracle\\admin\\XE\\dpdump**. O similar, dependiendo del directorio donde se tenga instalado Oracle.
  
 
 Copía física en caliente (en línea)
 +++++++++++++++++++++++++++++++++++
 
-<< Por desarrollar >>
+<< --- Por desarrollar --- >> 
 CON RMAN. 
 
 
@@ -614,7 +614,7 @@ CON RMAN.
 Copia física en frío (fuera de línea)
 +++++++++++++++++++++++++++++++++++++
  
-<< Por desarrollar >> 
+<< --- Por desarrollar --- >> 
 
 Abrimos SQLPLUS y paramos la BD:
 
