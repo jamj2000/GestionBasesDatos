@@ -465,6 +465,189 @@ Para ver los roles en activo para el usuario y sesión actuales ejecutamos la se
 
 	SELECT * FROM SESSION_ROLES;
 
+
+COPIAS DE SEGURIDAD
+===================
+
+La realización de copias de seguridad de los datos es una tarea imprescindible y altamente recomendable que todo administrador de bases de datos debe conocer y realizar con asiduidad. A continuación comentamos como se realizan para el SGBD Oracle.
+
+Tipos de copias de seguridad
+----------------------------
+
+Según la forma de realizar la copia de seguridad se distingue 2 tipos:
+
+- **Copia lógica**: Se copia el contenido de la BD pero sin almacenar la posición física de los datos.
+- **Copia físca**: Se copian físicamente los datos. A su vez, la copía física puede ser:
+
+  - **Copia en frío**: también llamada copia off-line. Hay que parar previamente la BD y las aplicaciones que estén trabajando con la BD. Una vez realizada la copia de los ficheros, la BD se puede volver a arrancar. 
+  - **Copia en caliente**: también llamada copia on-line. Se realiza mientras la BD está abierta y funcionando en modo ARCHIVELOG. Se realiza cuando se requiere disponibilidad de los datos 24h al día, 7 dias a la semana. Habrá que tener cuidado de realizarlo cuando la carga de la BD sea pequeña. 
+
+
+Herramientas de Oracle
+-----------------------
+
+En Oracle podemos usar 2 herramientas para realizar copias de seguridad:
+
+- **Data Pump** (**EXPDP** e **IMPDP**): permite realizar una **copia de seguridad "lógica"**, que normalmente se realiza al especificar tablas específicas. Si no realiza una exportación "coherente", o si no incluye las tablas relacionadas y utiliza el modo RESTRICTED y CONSISTENT (con restricciones de integridad referencial), es posible que no pueda recuperar correctamente. La exportación se utiliza a menudo como un complemento de RMAN, generalmente para la restauración de tablas específicas.
+
+- **Recovery manager** (**RMAN**): RMAN está diseñado para copia de seguridad y recuperación, una extensión de Enterprise Backup Utility (EBU). RMAN realiza **copias de seguridad completas, físicas y consistentes** de los archivos de su base de datos.
+
+**Ventajas y desventajas de Data Pump:**
+
+-    Gratis y fácil de usa.
+-    Muy lento, en comparación con RMAN (examina cada bloque de datos).
+-    Restauración fácil de una tabla específica.
+-    No requiere modo ARCHIVELOG.
+
+**Ventajas y desventajas de RMAN:**
+
+-    RMAN tiene recuperación de medios a nivel de bloque.
+-    Tiene un catálogo para el seguimiento de respaldo y una utilidad de informe.
+-    Rápido: si dedica un dispositivo de copia de seguridad para cada disco de producción, puede hacer una copia de seguridad de los terabytes en el tiempo que lleva realizar una copia de seguridad de un solo disco.
+-    Hace copias de seguridad en caliente o en frío.
+-    Copias de seguridad y restauraciones se pueden hacer en paralelo.
+-    Permite copias de seguridad incrementales (seguimiento de cambio de bloque).
+-    Interfaces con sistemas de gestión de medios (TMS).
+
+
+Ejemplos
+--------
+
+Copia lógica
+++++++++++++
+
+Se realiza con **Data Pump**. Es una copia en caliente. Las aplicaciones usadas son:
+
+- EXPDP para exportación.
+- IMPDP para importación.
+
+
+**Pasos previos**
+
+Antes de crear las copias de seguridad es aconsejable tener configurado un directorio de destino donde se almacenarán dichas copias. A continuación se muestra cómo.
+
+
+Primero debemos crear dicho directorio. Puede usarse las herramientas del sistema operativo. Por ejemplo en un terminal de texto de Windows, para crear una carpeta podemos hacer:
+
+.. code::
+	
+	MKDIR  C:\BACKUP-ORACLE
+
+
+A continuación registramo dicho directorio en el SGBD de Oracle.
+
+.. code-block:: plpgsql
+
+	SQLPLUS /NOLOG
+	CONNECT / AS SYSDBA
+
+	-- Indicamos directorio donde almacenar los backups
+	-- Dicho directorio debe haberse creado previamente. Si no dará error.
+        CREATE DIRECTORY BACKUP AS 'C:\BACKUP-ORACLE';
+	
+	-- Damos permisos de lectura y escritura sobre dicho directorio
+	-- al usuario deseado.
+	GRANT READ, WRITE ON DIRECTORY BACKUP TO usuario; 
+
+        -- Podemos comprobar que se ha registrado correctamente el directorio.
+	SELECT DIRECTORY_NAME FROM DBA_DIRECTORIES;
+	
+	-- Salimos del SGBD
+	EXIT
+
+Después ya podemos usar las herramientas **EXPDP** e **IMPDP** desde el terminal de texto del sistema operativo. A continuación se muestra el formato simplificado de uso y algunos ejemplos.
+
+**Formato para exportación** 
+
+.. code::
+
+  expdp  *usuario*/*clave*  dumpfile=*archivo_backup*  logfile=*archivo_log*  *opciones*
+  
+  
+**Copia de la base de datos completa al directorio de backup por defecto**
+
+.. code::
+
+  expdp  SYSTEM/SYSTEM  dumpfile=BD_COMPLETA.dmp  logfile=BD_COMPLETA.log  full=y
+ 
+ 
+**Copia del esquema EMPLEADOS al directorio de backup por defecto**:
+
+.. code::
+  
+  expdp  SYSTEM/SYSTEM  dumpfile=ESQUEMA-EMPLEADOS.dmp  logfile=ESQUEMA-EMPLEADOS.log  schemas=EMPLEADOS
+
+
+**Copia del esquema EMPLEADOS al directorio de backup definido**:
+
+.. code::
+  
+  expdp  SYSTEM/SYSTEM  directory=BACKUP  dumpfile=ESQUEMA-EMPLEADOS.dmp  logfile=ESQUEMA-EMPLEADOS.log  schemas=EMPLEADOS
+
+
+**Restauración del esquema empleados con la copia del directorio de backup definido**:
+
+.. code::
+
+  impdp  SYSTEM/SYSTEM  directory=BACKUP  dumpfile=ESQUEMA-EMPLEADOS.dmp
+
+
+.. note::
+
+   Si no indicamos la opción directory, los backups se guardan por defecto en **C:\oraclexe\app\oracle\admin\XE\dpdump**. O similar, dependiendo del directorio donde se tenga instalado Oracle.
+ 
+
+Copía física en caliente (en línea)
++++++++++++++++++++++++++++++++++++
+
+<< Por desarrollar >>
+CON RMAN. 
+
+
+
+Copia física en frío (fuera de línea)
++++++++++++++++++++++++++++++++++++++
+ 
+<< Por desarrollar >> 
+
+Abrimos SQLPLUS y paramos la BD:
+
+.. code::
+
+  SQLPLUS /nolog
+  CONNECT / AS sysdba
+  SHUTDOWN immediate;
+ 
+Realizamos la copia de seguridad.
+
+.. code::
+
+  ---------
+  Copiar manualmente las carpetas:
+  -
+  -
+  Copiar manualmente los archivos:
+  -  
+  -
+  ------------
+
+Volvemos a SQLPLUS e inicicamos la BD:
+
+.. code::
+
+  STARTUP
+
+ 
+
+
+Más información en los siguientes enlaces
+------------------------------------------
+
+- http://www.ajpdsoft.com/modules.php?name=News&file=article&sid=560
+- https://oracle-base.com/articles/10g/oracle-data-pump-10g
+
+
+
 IMPORTACIÓN Y EXPORTACIÓN DE DATOS
 ======================================
 
