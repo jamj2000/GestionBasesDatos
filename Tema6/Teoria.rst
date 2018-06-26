@@ -524,8 +524,8 @@ Copia lógica
 
 Se realiza con **Data Pump**. Es una copia en caliente. Las aplicaciones usadas son:
 
-- EXPDP para exportación.
-- IMPDP para importación.
+- **EXPDP** para exportación.
+- **IMPDP** para importación.
 
 
 **Pasos previos**
@@ -567,7 +567,7 @@ Después ya podemos usar las herramientas **EXPDP** e **IMPDP** desde el termina
 
 .. code::
 
-  expdp  usuario/clave  dumpfile=_archivo_backup_  logfile=_archivo_log_   _opciones_
+  expdp  _usuario_/_clave_  dumpfile=_archivo_backup_  logfile=_archivo_log_   _opciones_
   
   
 **Copia de la base de datos completa al directorio de backup por defecto**
