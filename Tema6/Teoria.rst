@@ -402,10 +402,13 @@ Se realiza con la instrucción **GRANT**. A los roles se les asignan privilegios
 
 	-- Asignación de privilegios de sistema al rol
 	GRANT privilegios_de_sistema TO nombre_rol;
+	
 	-- Asignación de privilegios de objeto al rol
 	GRANT privilegios_de_objeto ON objeto TO nombre_rol;
+	
 	-- Retirada de privilegios de sistema al rol
 	REVOKE privilegios_de_sistema FROM nombre_rol;
+	
 	-- Retirada de privilegios de objeto al rol
 	REVOKE privilegios_de_objeto ON objeto FROM nombre_rol;
 
@@ -422,10 +425,13 @@ Ejemplo:
 
 	-- Creación de rol
 	CREATE ROLE JEFE;
+	
 	-- Añadimos privilegios de objeto al rol
 	GRANT INSERT, SELECT, UPDATE, DELETE ON EMPLEADOS.departamentos TO JEFE;
+	
 	-- Añadimos privilegios de sistema al rol
 	GRANT CREATE SESSION, CREATE TABLE, CREATE VIEW TO JEFE;
+	
 	-- Eliminación de rol
 	DROP ROLE JEFE;
 
@@ -561,7 +567,7 @@ Después ya podemos usar las herramientas **EXPDP** e **IMPDP** desde el termina
 
 .. code::
 
-  expdp  *usuario*/*clave*  dumpfile=*archivo_backup*  logfile=*archivo_log*  *opciones*
+  expdp  usuario/clave  dumpfile=_archivo_backup_  logfile=_archivo_log_   _opciones_
   
   
 **Copia de la base de datos completa al directorio de backup por defecto**
