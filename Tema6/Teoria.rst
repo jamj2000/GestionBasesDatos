@@ -631,7 +631,7 @@ Podemos poner la base de datos en modo ARCHIVELOG con las sentencias:
   SQL> alter database open;
      Database altered.
   
-Se puede realizar una copia de seguridad completa de la base de datos con la base de datos montada o abierta. Para realizar una copia de seguridad de la base de datos completa, desde el indicador RMAN, debemos usar el comando BACKUP DATABASE.
+Para realizar una copia de seguridad de la base de datos completa, desde el indicador RMAN, debemos usar el comando BACKUP DATABASE.
 
 
 .. code::
@@ -642,7 +642,7 @@ Se puede realizar una copia de seguridad completa de la base de datos con la bas
   
   RMAN> EXIT;
   
-La copia de seguridad se guardará en `C:\\oraclexe\\app\\oracle\\fast_recovery_area\\XE\\backupset`, o similar, dependiendo del directorio donde se tenga instalado Oracle.
+La copia de seguridad se guardará en **C:\\oraclexe\\app\\oracle\\fast_recovery_area\\XE\\backupset**, o similar, dependiendo del directorio donde se tenga instalado Oracle.
 
 .. image:: images/oracle-backup-1.png 
 
@@ -650,7 +650,7 @@ La copia de seguridad se guardará en `C:\\oraclexe\\app\\oracle\\fast_recovery_
 Copia física en frío (fuera de línea)
 +++++++++++++++++++++++++++++++++++++
  
-Si la base de datos está en modo NOARCHIVELOG, deberemos detener la base de datos, realizar la copia (`BACKUP`) y volver a abrir la base de datos.
+Si la base de datos está en modo NOARCHIVELOG, deberemos detener la base de datos, realizar la copia (```BACKUP```) y volver a abrir la base de datos.
 
 **Para crear copia de seguridad**
 
@@ -668,9 +668,9 @@ Si la base de datos está en modo NOARCHIVELOG, deberemos detener la base de dat
   RMAN> ALTER DATABASE OPEN;
 
 
-Para restaurar la copia debemos parar la base de datos, restaurar y recuperar (`RESTORE` , `RECOVER`) y volver a abrir la BD.
-
 **Para restaurar copia de seguridad**
+
+Para restaurar la copia debemos parar la base de datos, restaurar y recuperar (```RESTORE``` , ```RECOVER```) y volver a abrir la BD.
 
 .. code::
 
