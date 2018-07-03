@@ -600,57 +600,103 @@ Después ya podemos usar las herramientas **EXPDP** e **IMPDP** desde el termina
 
 .. note::
 
-   Si no indicamos la opción directory, los backups se guardan por defecto en **C:\\oraclexe\\app\\oracle\\admin\\XE\\dpdump**. O similar, dependiendo del directorio donde se tenga instalado Oracle.
+   Si no indicamos la opción directory, los backups se guardan por defecto en **C:\\oraclexe\\app\\oracle\\admin\\XE\\dpdump**,  o similar, dependiendo del directorio donde se tenga instalado Oracle.
  
+
+En los siguientes apartados se ve de forma muy resumida como realizar copias físicas de la base de datos con la aplicación de terminal `RMAN`. No se verá su uso detallado puesto que dispone de innumerables opciones. Por tanto se indicarán los comandos principales.
+
 
 Copía física en caliente (en línea)
 +++++++++++++++++++++++++++++++++++
 
-<< --- Por desarrollar --- >> 
-CON RMAN. 
+La copia física en caliente sólo es posible en el modo ARCHIVELOG.
 
+Por defecto, la base de datos Oracle no está configurada para trabajar en este modo. Para ver si la base de datos está en el modo ARCHIVELOG o no, se puede usar en SQLPLUS el comando que se muestra a continuación:
+
+.. code::
+  
+  SQL> ARCHIVE LOG LIST;
+
+.. image:: images/oracle-backup-0.png
+
+Podemos poner la base de datos en modo ARCHIVELOG con las sentencias:
+
+.. code::
+  
+  SQL> shutdown immediate
+  SQL> startup mount
+  SQL> alter database archivelog;
+      Database altered.
+ 
+  SQL> alter database open;
+     Database altered.
+  
+Se puede realizar una copia de seguridad completa de la base de datos con la base de datos montada o abierta. Para realizar una copia de seguridad de la base de datos completa, desde el indicador RMAN, debemos usar el comando BACKUP DATABASE.
+
+
+.. code::
+
+  RMAN  TARGET  /
+  
+  RMAN> BACKUP DATABASE;
+  
+  RMAN> EXIT;
+  
+La copia de seguridad se guardará en `C:\\oraclexe\\app\\oracle\\fast_recovery_area\\XE\\backupset`, o similar, dependiendo del directorio donde se tenga instalado Oracle.
+
+.. image:: images/oracle-backup-1.png 
 
 
 Copia física en frío (fuera de línea)
 +++++++++++++++++++++++++++++++++++++
  
-<< --- Por desarrollar --- >> 
+Si la base de datos está en modo NOARCHIVELOG, deberemos detener la base de datos, realizar la copia (`BACKUP`) y volver a abrir la base de datos.
 
-Abrimos SQLPLUS y paramos la BD:
-
-.. code::
-
-  SQLPLUS /nolog
-  CONNECT / AS sysdba
-  SHUTDOWN immediate;
- 
-Realizamos la copia de seguridad.
+**Para crear copia de seguridad**
 
 .. code::
 
-  ---------
-  Copiar manualmente las carpetas:
-  -
-  -
-  Copiar manualmente los archivos:
-  -  
-  -
-  ------------
+  RMAN  TARGET  /
+  
+  RMAN> SHUTDOWN IMMEDIATE;
+  RMAN> STARTUP FORCE DBA;
+  RMAN> SHUTDOWN IMMEDIATE;
+  RMAN> STARTUP MOUNT;
+  
+  RMAN> BACKUP DATABASE;
+  
+  RMAN> ALTER DATABASE OPEN;
 
-Volvemos a SQLPLUS e inicicamos la BD:
+
+Para restaurar la copia debemos parar la base de datos, restaurar y recuperar (`RESTORE` , `RECOVER`) y volver a abrir la BD.
+
+**Para restaurar copia de seguridad**
 
 .. code::
 
-  STARTUP
+  RMAN  TARGET  /
 
- 
+  RMAN> SHUTDOWN IMMEDIATE;
+  RMAN> STARTUP MOUNT;
 
+  RMAN> RESTORE DATABASE PREVIEW;
+  RMAN> RESTORE DATABASE;
+  RMAN> RECOVER DATABASE;
+  
+  RMAN> ALTER DATABASE OPEN RESETLOGS;
+  
+  
+.. image:: images/oracle-backup-2.png  
 
-Más información en los siguientes enlaces
-------------------------------------------
+.. image:: images/oracle-backup-3.png
 
-- http://www.ajpdsoft.com/modules.php?name=News&file=article&sid=560
-- https://oracle-base.com/articles/10g/oracle-data-pump-10g
+.. image:: images/oracle-backup-4.png  
+  
+.. admonition:: Enlaces de interés 
+
+  - http://www.ajpdsoft.com/modules.php?name=News&file=article&sid=560
+  - https://oracle-base.com/articles/10g/oracle-data-pump-10g
+  - https://docs.oracle.com/cd/B28359_01/backup.111/b28270/rcmquick.htm#BRADV90058
 
 
 
