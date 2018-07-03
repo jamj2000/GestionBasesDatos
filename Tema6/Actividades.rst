@@ -114,10 +114,23 @@ Inicia sesión como usuario E01. Crea un sinónimo corto para cada tabla del esq
 
 Práctica 7
 ----------------
+En el modo ARCHIVELOG, con la herramienta RMAN, haz una copia de seguridad de toda la base de datos de Oracle.
+A continuación realiza su restauración. Documenta todo el proceso.
+
+
+Práctica 8
+----------------
+En el modo NOARCHIVELOG, con la herramienta RMAN, haz una copia de seguridad de toda la base de datos de Oracle.
+A continuación realiza su restauración. Documenta todo el proceso.
+
+
+Práctica 9
+----------------
 
 Borra el contenido de las tablas EMPLEADOS, DEPARTAMENTOS y CENTROS del esquema EMPLEADOS. Importa los datos de estas tablas desde los archivos empleados.csv, departamentos.csv y centros.csv, disponibles en la plataforma Moodle.
 
-Práctica 8
+
+Práctica 10
 ----------------
 
 Exporta el contenido de las tablas EMPLEADOS, DEPARTAMENTOS y CENTROS del esquema EMPLEADOS a archivos xml. Busca un programa que al abrir dichos archivos los muestre en forma de tabla.
