@@ -516,11 +516,8 @@ En Oracle podemos usar 2 herramientas para realizar copias de seguridad:
 -    Interfaces con sistemas de gestión de medios (TMS).
 
 
-Ejemplos
---------
-
 Copia lógica
-++++++++++++
+----------------
 
 Se realiza con **Data Pump**. Es una copia en caliente. Las aplicaciones usadas son:
 
@@ -607,7 +604,7 @@ En los siguientes apartados se ve de forma muy resumida como realizar copias fí
 
 
 Copía física en caliente (en línea)
-+++++++++++++++++++++++++++++++++++
+----------------------------------------
 
 La copia física en caliente sólo es posible en el modo ARCHIVELOG.
 
@@ -648,7 +645,7 @@ La copia de seguridad se guardará en **C:\\oraclexe\\app\\oracle\\fast_recovery
 
 
 Copia física en frío (fuera de línea)
-+++++++++++++++++++++++++++++++++++++
+----------------------------------------
  
 Si la base de datos está en modo NOARCHIVELOG, deberemos detener la base de datos, realizar la copia (```BACKUP```) y volver a abrir la base de datos.
 
