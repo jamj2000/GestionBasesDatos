@@ -1,4 +1,4 @@
-ACTIVIDADES RESUELTAS
+ACTIVIDADES PROPUESTAS
 ========================
 
 
