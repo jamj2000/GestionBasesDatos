@@ -57,61 +57,6 @@ Práctica 1: Creación de BD e inserción de Datos.
    NUMHI, ,NUMBER(1),Número de hijos
    NOMEM, ,VARCHAR2(10),Nombre de empleado
    NUMDE, ,NUMBER(3),Número de departamento
-
-
-
-.. code-block:: sql
-
-  CREATE TABLE CENTROS(
-    Numce NUMBER(4) NOT NULL,
-    Nomce VARCHAR2(25) NOT NULL UNIQUE,
-    Dirce VARCHAR2(25),
-    CONSTRAINT PK_CENTROS PRIMARY KEY(numce)
-  ); 
-
-  -- Fijaos que no creo la restricción de clave foránea para la relación reflexiva, 
-  -- para así evitar que sea necesario un orden concreto de inserción de datos
-  CREATE TABLE DEPARTAMENTOS(
-    numde NUMBER(3) NOT NULL,
-    numce NUMBER(4),
-    direc NUMBER(3),
-    tidir CHAR(1),
-    presu NUMBER(3,1),
-    depde NUMBER(3),
-    NOMDE VARCHAR2(20),
-    CONSTRAINT PK_DEPARTAMENTOS PRIMARY KEY(numde),
-    CONSTRAINT FK1_DEPARTAMENTOS FOREIGN KEY(numce) 
-      REFERENCES CENTROS(numce)
-      ON DELETE CASCADE
-  ); 
-
-  -- NO PUEDO DEFINIR LA FORÁNEA REFLEXIVA PORQUE
-  -- NO PUEDO HACER REFERENCIA A UNA TABLA QUE 
-  -- NO EXISTE. LA CREO AHORA CON UN ALTER TABLE
-
-  /*Ahora introduzco la clave foránea*/
-
-  ALTER TABLE DEPARTAMENTOS
-  ADD CONSTRAINT FK2_DEPARTAMENTOS
-  FOREIGN KEY(depde)
-  REFERENCES DEPARTAMENTOS(numde); 
-
-
-  CREATE TABLE EMPLEADOS(
-    Numem NUMBER(3) NOT NULL,
-    Extel NUMBER(3),
-    Fecna DATE,
-    Fecin DATE,
-    Salar NUMBER(5),
-    Comis NUMBER(3),
-    Numhi NUMBER(1),
-    NOMEM VARCHAR2(10),
-    Numde NUMBER(3),
-    CONSTRAINT PK_EMPLEADOS PRIMARY KEY(numem),
-    CONSTRAINT FK1_EMPLEADOS FOREIGN KEY(numde)
-      REFERENCES DEPARTAMENTOS(numde)
-      ON DELETE CASCADE
-  ); 
  
 
 3. Inserta los siguientes datos en la tabla DEPARTAMENTOS.
@@ -130,14 +75,6 @@ Práctica 1: Creación de BD e inserción de Datos.
 
 4. ¿Qué ocurre al insertar el primer registro? ¿Por qué? Plantea la solución.
 
-.. code-block:: sql
-
-  --TENGO QUE INTRODUCIR PRIMERO LOS DATOS DE CENTROS
-  --EN EL EJERCICIO NOS HEMOS DADO CUENTA QUE SI INTENTAMOS
-  --HACER PRIMERO LA INSERCIÓN DE LOS DATOS DE DEPARTAMENTOS
-  --NO PODEMOS, PORQUE NO SE PUEDE INTRODUCIR UNA FORÁNEA
-  --ANTES DE INTRODUCIR LA PRINCIPAL CORRESPONDIENTE
-
 
 5. Inserta los siguientes datos en la tabla CENTROS
 
@@ -146,29 +83,6 @@ Práctica 1: Creación de BD e inserción de Datos.
 
    10, SEDE CENTRAL, "C/ ATOCHA, 820, MADRID"
    20, RELACIÓN CON CLIENTES, "C/ ATOCHA, 405, MADRID"
-
-.. code-block:: sql
-
-  INSERT INTO CENTROS VALUES(10,'SEDE CENTRAL','C/ATOCHA,820,MADRID'); 
-  INSERT INTO CENTROS VALUES(20, 'RELACION CON CLIENTES', 'C/ATOCHA,405,MADRID'); 
-
-  --YA PUEDO INSERTAR LOS DATOS DE DEPARTAMENTOS
-  INSERT INTO DEPARTAMENTOS
-  VALUES(100, 10,260,'P',72,NULL, 'DIRECCIÓN GENERAL'); 
-  INSERT INTO DEPARTAMENTOS
-  VALUES(110, 20,180,'P',90,100, 'DIRECC.COMERCIAL'); 
-  INSERT INTO DEPARTAMENTOS
-  VALUES(111, 20,180,'F',66,110, 'SECTOR INDUSTRIAL'); 
-  INSERT INTO DEPARTAMENTOS
-  VALUES(112, 20,270,'P',54,110, 'SECTOR SERVICIOS'); 
-  INSERT INTO DEPARTAMENTOS
-  VALUES(120, 10,150,'F',18,100, 'ORGANIZACIÓN'); 
-  INSERT INTO DEPARTAMENTOS
-  VALUES(121, 10,150,'P',12,120, 'PERSONAL'); 
-  INSERT INTO DEPARTAMENTOS
-  VALUES(122, 10,350,'P',36,120, 'PROCESO DE DATOS'); 
-  INSERT INTO DEPARTAMENTOS
-  VALUES(130, 10,310,'P',12,100, 'FINANZAS'); 
 
 
 6. Inserta los siguientes datos en la tabla EMPLEADOS. 
@@ -212,57 +126,6 @@ Práctica 1: Creación de BD e inserción de Datos.
    550, 780, 10/01/1970, 21/01/1998, 600, 120, 0, SANCHO, 111
 
 
-.. code-block:: sql
-
-  -- YA INSERTAMOS EMPLEADOS
-  		
-  INSERT INTO EMPLEADOS VALUES(110,350,'10/11/1970','15/02/1985',1800,NULL,3,'CESAR',121); 
-  INSERT INTO EMPLEADOS VALUES(120,840,'09/06/1968','01/10/1988',1900,110,1,'MARIO',112); 
-  INSERT INTO EMPLEADOS VALUES(130,810,'09/09/1965','01/02/1981',1500,110,2,'LUCIANO',112); 
-  INSERT INTO EMPLEADOS VALUES(150,340,'10/08/1972','15/01/1997',2600,NULL,0,'JULIO',121); 
-  INSERT INTO EMPLEADOS VALUES(160,740,'09/07/1980','11/11/2005',1800,110,2,'AUREO',111); 
-  INSERT INTO EMPLEADOS VALUES(180,508,'18/10/1974','18/03/1996',2800,50,2,'MARCOS',110); 
-  INSERT INTO EMPLEADOS VALUES(190,350,'12/05/1972','11/02/1992',1750,NULL,4,'JULIANA',121); 
-  INSERT INTO EMPLEADOS VALUES(210,200,'28/09/1970','22/01/1999',1910,NULL,2,'PILAR',100); 
-  INSERT INTO EMPLEADOS VALUES(240,760,'26/02/1967','24/02/1989',1700,100,3,'LAVINIA',111); 
-  INSERT INTO EMPLEADOS VALUES(250,250,'27/10/1976','01/03/1997',2700,NULL,0,'ADRIANA',100); 
-  INSERT INTO EMPLEADOS VALUES(260,220,'03/12/1973','12/07/2001',720,NULL,6,'ANTONIO',100); 
-  INSERT INTO EMPLEADOS VALUES(270,800,'21/05/1975','10/09/2003',1910,80,3,'OCTAVIO',112); 
-  INSERT INTO EMPLEADOS VALUES(280,410,'10/01/1978','08/10/2010',1500,NULL,5,'DOROTEA',130); 
-  INSERT INTO EMPLEADOS VALUES(285,620,'25/10/1979','15/02/2011',1910,NULL,0,'OTILIA',122); 
-  INSERT INTO EMPLEADOS VALUES(290,910,'30/11/1967','14/02/1988',1790,NULL,3,'GLORIA',120); 
-  INSERT INTO EMPLEADOS VALUES(310,480,'21/11/1976','15/01/2001',1950,NULL,0,'AUGUSTO',130); 
-  INSERT INTO EMPLEADOS VALUES(320,620,'25/12/1977','05/02/2003',2400,NULL,2,'CORNELIO',122); 
-  INSERT INTO EMPLEADOS VALUES(330,850,'19/08/1958','01/03/1980',1700,90,0,'AMELIA',112); 
-  INSERT INTO EMPLEADOS VALUES(350,610,'13/04/1979','10/09/1999',2700,NULL,1,'AURELIO',122); 
-  INSERT INTO EMPLEADOS VALUES(360,750,'29/10/1978','10/10/1998',1800,100,2,'DORINDA',111); 
-  INSERT INTO EMPLEADOS VALUES(370,360,'22/06/1977','20/01/2000',1860,NULL,1,'FABIOLA',121); 
-  INSERT INTO EMPLEADOS VALUES(380,880,'30/03/1978','01/01/1999',1100,NULL,0,'MICAELA',112); 
-  INSERT INTO EMPLEADOS VALUES(390,500,'19/02/1976','08/10/2010',1290,NULL,1,'CARMEN',110); 
-  INSERT INTO EMPLEADOS VALUES(400,780,'18/08/1979','01/11/2011',1150,NULL,0,'LUCRECIA',111); 
-  INSERT INTO EMPLEADOS VALUES(410,660,'14/07/1968','13/10/1989',1010,NULL,0,'AZUCENA',122); 
-  INSERT INTO EMPLEADOS VALUES(420,450,'22/10/1966','19/11/1988',2400,NULL,0,'CLAUDIA',130); 
-  INSERT INTO EMPLEADOS VALUES(430,650,'26/10/1967','19/11/1988',1260,NULL,1,'VALERIANA',122); 
-  INSERT INTO EMPLEADOS VALUES(440,760,'26/09/1966','28/02/1986',1260,100,0,'LIVIA',111); 
-  INSERT INTO EMPLEADOS VALUES(450,880,'21/10/1966','28/02/1986',1260,100,0,'SABINA',112); 
-  INSERT INTO EMPLEADOS VALUES(480,760,'04/04/1965','28/02/1986',1260,100,1,'DIANA',111); 
-  INSERT INTO EMPLEADOS VALUES(490,880,'06/06/1964','01/01/1988',1090,100,0,'HORACIO',112); 
-  INSERT INTO EMPLEADOS VALUES(500,750,'08/10/1965','01/01/1987',1200,100,0,'HONORIA',111); 
-  INSERT INTO EMPLEADOS VALUES(510,550,'04/05/1966','01/11/1986',1200,NULL,1,'ROMULO',110); 
-  INSERT INTO EMPLEADOS VALUES(550,780,'10/01/1970','21/01/1998',600,120,0,'SANCHO',111); 
-
-
-.. note::
-
-  En lugar de la inserción de datos, puedes ahorrar tiempo descargando el script EMPLEADOS.SQL que está disponible en la plataforma Moodle. Este script contiene todas las tablas. Si utilizas el script deberás borrar las tablas previas. 
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P401.SQL
-   :language: sql
-
-
-
 Práctica 2: Consultas Sencillas
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -283,12 +146,12 @@ Práctica 2: Consultas Sencillas
 
 .. code:: 
 
-    NOMEM  NUMEM      EXTEL 
+    NOMEM                          NUMEM      EXTEL 
     ------------------------------ ---------- ----------  
-    CESAR    110        350  
-    FABIOLA  370        360    
-    JULIANA  190        350   
-    JULIO    150        340 
+    CESAR                          110        350  
+    FABIOLA                        370        360    
+    JULIANA                        190        350   
+    JULIO                          150        340 
 
 
 
@@ -299,9 +162,9 @@ Práctica 2: Consultas Sencillas
 
     Nombre                         Extensión Telefónica 
     ------------------------------ --------------------  
-    CARMEN 500  
-    MARCOS 508  
-    ROMULO 550  
+    CARMEN                         500  
+    MARCOS                         508  
+    ROMULO                         550  
 
 
 4. Hallar la comisión, nombre y salario de los empleados que tienen tres hijos, clasificados por comisión, y dentro de comisión por orden alfabético.
@@ -311,10 +174,10 @@ Práctica 2: Consultas Sencillas
 
          COMIS NOMEM                          SALAR  
     ---------- ------------------------------ ----------    
-            80 OCTAVIO 1910    
-           100 LAVINIA 1700     
-               CESAR   1800  
-               GLORIA  1790        
+            80 OCTAVIO                              1910    
+           100 LAVINIA                              1700     
+               CESAR                                1800  
+               GLORIA                               1790        
 
 
 5. Hallar la comisión, nombre y salario de los empleados que tienen tres hijos, clasificados por comisión, y dentro de comisión por orden alfabético, para aquellos empleados que tienen comisión.
@@ -323,8 +186,8 @@ Práctica 2: Consultas Sencillas
 
          COMIS NOMEM                          SALAR  
     ---------- ------------------------------ ----------  
-            80 OCTAVIO 1910 
-           100 LAVINIA 1700  
+            80 OCTAVIO                              1910 
+           100 LAVINIA                              1700  
 
  
 
@@ -362,13 +225,7 @@ Práctica 2: Consultas Sencillas
             50 
 
 
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P402.SQL
-   :language: sql
-
-
-	    
+    
 Práctica 3:  Consultas con Predicados Básicos
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -400,8 +257,8 @@ Práctica 3:  Consultas con Predicados Básicos
 
   Nombre                         Salario 2014 Salario 2015 Salario 2016 
   ------------------------------ ------------ ------------ ------------ 
-  ANTONIO   8640       8812,8     8989,056 
-  DOROTEA  18000        18360      18727,2 
+  ANTONIO                                8640       8812,8     8989,056 
+  DOROTEA                               18000        18360      18727,2 
 
 
 4. Hallar, por orden alfabético, los nombres de los empleados tales que si se les da una gratificación de 120 € por hijo, el total de esta gratificación supera el 20% de su salario.
@@ -426,12 +283,12 @@ Práctica 3:  Consultas con Predicados Básicos
   NOMBRE                         SALARIO TOTAL               
   ------------------------------ -------------               
   MICAELA                  
-  MARIO      2010               
-  OCTAVIO    1990               
-  AMELIA     1790               
-  LUCIANO    1610               
-  SABINA     1360               
-  HORACIO    1190               
+  MARIO                                   2010               
+  OCTAVIO                                 1990               
+  AMELIA                                  1790               
+  LUCIANO                                 1610               
+  SABINA                                  1360               
+  HORACIO                                 1190               
 
 
 6. Vemos que para Micaela no se muestra nada en Salario Total, esto es debido a que su comisión es Nula (Lo que no significa que sea 0--> significa que no se ha introducido ningún valor). Esto impide hacer el cálculo de la suma. Muestra entonces la misma consulta anterior pero sólo para aquellos empleados cuya comisión no sea nula.
@@ -441,12 +298,12 @@ Práctica 3:  Consultas con Predicados Básicos
 
   NOMBRE                         SALARIO TOTAL               
   ------------------------------ -------------               
-  MARIO      2010               
-  OCTAVIO    1990               
-  AMELIA     1790               
-  LUCIANO    1610               
-  SABINA     1360               
-  HORACIO    1190               
+  MARIO                                   2010               
+  OCTAVIO                                 1990               
+  AMELIA                                  1790               
+  LUCIANO                                 1610               
+  SABINA                                  1360               
+  HORACIO                                 1190               
 
 
 7. Repite la consulta anterior para mostrarla como sigue:
@@ -506,15 +363,6 @@ Práctica 3:  Consultas con Predicados Básicos
   NOMDE                    
   ------------------------------
   DIRECCIÓN GENERAL        
-
-
-
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P403.SQL
-   :language: sql
-
 
 
 
@@ -598,40 +446,33 @@ Práctica 4: Consultas con Predicados Cuantificados. ALL, SOME o ANY.
 
 .. code::
 
-  NOMEM  SALAR                  
+  NOMEM                          SALAR                  
   ------------------------------ ----------                  
-  MICAELA 1100                  
-  ROMULO  1200                  
-  HONORIA 1200                  
+  MICAELA                              1100                  
+  ROMULO                               1200                  
+  HONORIA                              1200                  
 
 
 5. Obtener por orden alfabético los nombres y salarios de los empleados cuyo salario es superior a la comisión máxima existente multiplicada por 20.
 
 .. code::
 
-  NOMEM  SALAR                  
+  NOMEM                          SALAR                  
   ------------------------------ ----------                  
-  ADRIANA 2700                  
-  AURELIO 2700                  
-  JULIO   2600                  
-  MARCOS  2800                  
+  ADRIANA                              2700                  
+  AURELIO                              2700                  
+  JULIO                                2600                  
+  MARCOS                               2800                  
 
 
 6. Obtener por orden alfabético los nombres y salarios de los empleados cuyo salario es inferior a veinte veces la comisión más baja existente.
 
 .. code::
 
-  NOMEM  SALAR                  
+  NOMEM                          SALAR                  
   ------------------------------ ----------                  
-  ANTONIO  720                  
-  SANCHO   600                  
-
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P404.SQL
-   :language: sql
-
+  ANTONIO                               720                  
+  SANCHO                                600                  
 
 
 
@@ -655,22 +496,17 @@ Práctica 5: Consultas con Predicados BETWEEN
 
 .. code::
 
-  NOMEM  SALAR                  
+  NOMEM                          SALAR                  
   ------------------------------ ----------                  
-  AMELIA  1700                  
-  HONORIA 1200                  
-  HORACIO 1090                  
-  LAVINIA 1700                  
-  LIVIA   1260                  
-  OCTAVIO 1910                  
-  SABINA  1260                  
-  SANCHO   600           
+  AMELIA                               1700                  
+  HONORIA                              1200                  
+  HORACIO                              1090                  
+  LAVINIA                              1700                  
+  LIVIA                                1260                  
+  OCTAVIO                              1910                  
+  SABINA                               1260                  
+  SANCHO                                600           
 
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P405.SQL
-   :language: sql
 
 
 Práctica 6: Consultas con Predicados LIKE
@@ -703,17 +539,10 @@ Práctica 6: Consultas con Predicados LIKE
 
 .. code::
 
-  Departamento      Presupuesto 
+  Departamento                                   Presupuesto 
   ---------------------------------------------- ------------------------------------  
   DEPARTAMENTO DE SECTOR INDUSTRIAL              66.000 €    
   DEPARTAMENTO DE SECTOR SERVICIOS               54.000 €    
-
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P406.SQL
-   :language: sql
-
 
 
 Práctica 7: Consultas con Predicados IN
@@ -750,18 +579,10 @@ Práctica 7: Consultas con Predicados IN
 
   Nombres Departamentos          Identificador de su director
   ------------------------------ ----------------------------
-  SECTOR INDUSTRIAL          180
-  DIRECC.COMERCIAL           180
-  PERSONAL 150
-  ORGANIZACIÓN   150
-
-
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P407.SQL
-   :language: sql
-
+  SECTOR INDUSTRIAL              180
+  DIRECC.COMERCIAL               180
+  PERSONAL                       150
+  ORGANIZACIÓN                   150
 
 
 
@@ -782,11 +603,11 @@ Práctica 8: Consultas con Predicados EXISTS
 
 .. code::
 
-  NOMEM  SALAR                  
+  NOMEM                          SALAR                  
   ------------------------------ ----------                  
-  PILAR   1910                  
-  ADRIANA 2700                  
-  ANTONIO  720                  
+  PILAR                                1910                  
+  ADRIANA                              2700                  
+  ANTONIO                               720                  
 
 
 3. Obtener los nombres y el salario de los empleados del departamento 100 si en él hay alguno que gane más de 2750 €.
@@ -803,13 +624,6 @@ Práctica 8: Consultas con Predicados EXISTS
   -- no rows selected
 
 
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P408.SQL
-   :language: sql
-
-
-
 
 Práctica 9: Más Consultas con Predicados
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -818,10 +632,10 @@ Práctica 9: Más Consultas con Predicados
 
 .. code::
 
-  NOMEM  COMIS                  
+  NOMEM                          COMIS                  
   ------------------------------ ----------                  
   CARMEN                   
-  MARCOS    50                  
+  MARCOS                         50                  
   ROMULO                   
 
 
@@ -865,15 +679,15 @@ Práctica 9: Más Consultas con Predicados
 
 .. code::
 
-  NOMEM  SALAR                  
+  NOMEM                          SALAR                  
   ------------------------------ ----------                  
-  AUREO   1800                  
-  DIANA   1260                  
-  DORINDA 1800                  
-  HONORIA 1200                  
-  LAVINIA 1700                  
-  LIVIA   1260                  
-  SANCHO   600                  
+  AUREO                                1800                  
+  DIANA                                1260                  
+  DORINDA                              1800                  
+  HONORIA                              1200                  
+  LAVINIA                              1700                  
+  LIVIA                                1260                  
+  SANCHO                                600                  
 
 
 6. Hallar los nombres de departamentos, el tipo de director y su presupuesto, para aquellos departamentos que tienen directores en funciones, o bien en propiedad y su presupuesto anual excede a 30.000 € o no dependen de ningún otro.
@@ -903,12 +717,6 @@ Práctica 9: Más Consultas con Predicados
   ORGANIZACIÓN                   F 18.000 €                  
   PROCESO DE DATOS               P 36.000 €                  
 
-
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P409.SQL
-   :language: sql
 
 
 Práctica 10: Consultas con Fechas
@@ -1067,13 +875,6 @@ Práctica 10: Consultas con Fechas
   SANCHO                         ENERO                       
 
 
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P410.SQL
-   :language: sql
-
-
-
 
 Práctica 11: Consultas con funciones colectivas
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1122,9 +923,9 @@ Práctica 11: Consultas con funciones colectivas
 
 .. code::
 
-  NOMEM   Edad                  
+  NOMEM                          Edad                  
   ------------------------------ ----------                  
-  ROMULO    50                  
+  ROMULO                                 50                  
 
 
 5. Hallar el número de empleados del departamento 112, cuántas comisiones distintas hay en ese departamento y la suma de las comisiones.
@@ -1134,13 +935,6 @@ Práctica 11: Consultas con funciones colectivas
   COUNT(NUMEM) COUNT(DISTINCTCOMIS) SUM(COMIS)               
   ------------ -------------------- ----------               
              6                    4        590           
-
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P411.SQL
-   :language: sql
-
 
 
 
@@ -1251,11 +1045,6 @@ Práctica 12: Agrupamiento de filas. GROUP BY
          122            5       9280                         
 
 
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P412.SQL
-   :language: sql
-
 
 
 Práctica 13: Agrupamiento de filas. CLÁUSULA HAVING
@@ -1318,12 +1107,6 @@ Práctica 13: Agrupamiento de filas. CLÁUSULA HAVING
        NUMDE SUM(SALAR)    
   ---------- ----------    
          111      10770    
-
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P413.SQL
-   :language: sql
 
 
 
@@ -1410,10 +1193,10 @@ Práctica 14: Consultas sobre varias tablas
 
 .. code::
 
-  NOMEM  NUMHI                  
+  NOMEM                          NUMHI                  
   ------------------------------ ----------                  
-  JULIO      0                  
-  MARCOS     2                  
+  JULIO                                   0                  
+  MARCOS                                  2                  
 
 
 7. Hallar si hay algún departamento (suponemos que sería de reciente creación) que aún no tenga empleados asignados ni director en propiedad.
@@ -1486,7 +1269,7 @@ Práctica 14: Consultas sobre varias tablas
 
   NOMDE                          NOMEM                       
   ------------------------------ ------------------------------ 
-  NORBERTO                    
+                                 NORBERTO                    
   NUEVO                    
 
 
@@ -1626,14 +1409,6 @@ Práctica 14: Consultas sobre varias tablas
 
 
 
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P414.SQL
-   :language: sql
-
-
-
-
 -----------------------
 
 .. code-block:: sql
@@ -1734,11 +1509,6 @@ Práctica 15: Vistas
 
 10. Borra la fila anterior
 
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P415.SQL
-   :language: sql
 
 
 
@@ -1890,10 +1660,4 @@ Práctica 16: Repaso
   C/ ATOCHA, 820, MADRID         JULIANA              PERSONAL 150              
   C/ ATOCHA, 820, MADRID         JULIO                PERSONAL 150     
 
-
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P416.SQL
-   :language: sql
 

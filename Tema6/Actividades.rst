@@ -1,5 +1,5 @@
-ACTIVIDADES
-============
+ACTIVIDADES PROPUESTAS
+======================
 
 
 Práctica 1

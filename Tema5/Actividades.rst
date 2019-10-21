@@ -1,4 +1,4 @@
-ACTIVIDADES RESUELTAS
+ACTIVIDADES PROPUESTAS
 =======================
 
 Práctica 1
@@ -73,10 +73,6 @@ Borra todos los alumnos. ¿Qué sucede? ¿Por qué? ¿Como lo solucionarías? ¿
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P51.SQL
-   :language: plpgsql
 
 
 Práctica 2
@@ -165,11 +161,6 @@ Elimina 2 películas, las que desees.¿Qué sucede?¿Por qué?¿Como lo solucion
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P52.SQL
-   :language: plpgsql
 
 
 Práctica 3
@@ -332,10 +323,6 @@ Ejecuta el siguiente bloque. Indica cuál es la salida.
    END;
    /
 
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P53.SQL
-   :language: plpgsql
 
 
 Práctica 4
@@ -372,12 +359,6 @@ Crea una función NOTA que reciba un parámetros que será una nota numérica en
 
 
 
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P54.SQL
-   :language: plpgsql
-
-
 Práctica 5
 --------------
 
@@ -400,12 +381,6 @@ Escribe un procedimiento con un parámetro para el nombre de empleado, que nos m
 
 
 
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P55.SQL
-   :language: plpgsql
-
-
 
 Práctica 6
 ----------------
@@ -426,12 +401,6 @@ Al paquete anterior añade un procedimiento sin parámetros llamado AYUDA que mu
 
 Desarrolla el paquete GESTION. En un principio tendremos los procedimientos para gestionar los departamentos. Dado el archivo de especificación mostrado más abajo crea el archivo para el cuerpo. Realiza varias pruebas para comprobar que las llamadas a funciones y procedimientos funcionan correctamente.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P56.SQL
-   :language: plpgsql
 
 
 
@@ -485,9 +454,3 @@ Al tratarse de una vista que involucra más de una tabla, necesitaremos crear un
 
 Realiza las siguientes operaciones para comprobar si el disparador anterior funciona correctamente.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-**SOLUCIÓN**
-
-.. literalinclude:: scripts/P57.SQL
-   :language: plpgsql

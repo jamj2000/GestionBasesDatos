@@ -1,4 +1,4 @@
-ACTIVIDADES RESUELTAS
+ACTIVIDADES PROPUESTAS
 ======================
 
 
@@ -55,85 +55,39 @@ Cuestiones
 
 a) Entidad.
 
-   Una entidad es cualquier objeto o elemento acerca del cual se pueda almacenar información en la BD. Las entidades pueden ser concretas como una persona o abstractas como una fecha.
-
 b) Relación.
-
-   Una relación es la asociación que existe entre dos a más entidades. Cada relación tiene un nombre que describe su función. 
 
 c) Atributo de una entidad.
 
-   Un atributo es una propiedad o campo, que representa alguna característica de una entidad. Los atributos de una entidad pueden tomar un conjunto de valores permitidos al que se le conoce como dominio del atributo.
-
 d) Identificador de una entidad.
-
-   Es un atributo o conjunto de atributos que identifican de manera unívoca cada ocurrencia de una entidad. También se llaman clave primaria o clave principal.
 
 e) Atributo de una relación.
 
-   Es aquel cuyo valor sólo se puede obtener en la relación, puesto que dependen de todas las entidades que participan en la relación. Se denominan atributos propios. 
-
 f) Rol de una entidad en una relación.
-
-   Es la función que tiene la entidad en una relación. También se conoce como papel. En el siguiente ejemplo se representa en texto color verde:
 
 g) Participación de una entidad en una relación.
 
-   Se conoce también como cardinalidad de la entidad dentro de una relación. La participación de una entidad nos indica las ocurrencias mínimas y máximas de dicha entidad dentro de una relación concreta. En el siguiente ejemplo se representa en texto color azul:
-
 h) Cardinalidad de una relación.
-
-   Es el número de ocurrencias de una entidad asociadas a una ocurrencia de la otra entidad. Se obtiene a partir de las participaciones máximas de las entidades involucradas.
 
 
 2. Indica cuáles son los dos tipos posibles de entidades y explica brevemente cada una de ellas.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Hay dos tipos de entidades: 
-
-- **Fuertes**: es una entidad que no depende de ninguna otra para su existencia.
-- **Débiles**: es una entidad cuya existencia depende de la existencia de otra entidad. 
-
 
 3. Clasifica los distintos tipos de relaciones existentes entre dos entidades según su cardinalidad y pon un ejemplo de cada una de ellas distinto de los vistos en el tema.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Existen 3 tipos:
-
-- **Relación uno a uno 1:1**  → A cada elemento de la primera entidad le corresponde no más de un elemento de la segunda entidad, y a la inversa. Por ejemplo una relación entre PRESIDENTE y el PAÍS que gobierna.
-- **Relación uno a muchos 1:N** → Significa que cada elemento de una entidad del tipo A puede relacionarse con cualquier cantidad de elementos de una entidad del tipo B, y un elemento de una entidad del tipo B solo puede estar relacionado con un elemento de una entidad del tipo A. Por ejemplo una relación entre un PAIS y sus distintas REGIONES.
-- **Muchos a muchos N:M** →  Establece que cualquier cantidad de elementos de una entidad del tipo A pueden estar relacionados con cualquier cantidad de elementos de una entidad del tipo B. Por ejemplo una relación entre los CLIENTES y los tipos de PRODUCTOS comprados en un mercado.
 
 
 4. Clasifica los distintos tipos de relaciones de dependencia existentes y pon un ejemplo de cada una de ellas distinto de los vistos en el tema.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Hay dos tipos de relaciones de dependencia:
-
-- **Dependencia en existencia**
-
-  Se produce cuando una entidad débil necesita de la presencia de una fuerte para existir. Si desaparece la existencia de la entidad fuerte, la de la débil carece de sentido. Suele darse pocas veces. Un caso sería el de una SUBCONTRATA con sus propios TRABAJADORES.  Si nuestra empresa no necesita más los servicios de dicha SUBCONTRATA, entonces no tiene sentido registrar en nuestra base de datos dichos TRABAJADORES.
-
-- **Dependencia en identificación**
-
-  Se produce cuando una entidad débil necesita de la fuerte para identificarse. Por sí sola la débil no es capaz de identificar de manera unívoca sus ocurrencias. Por ejemplo si tenemos una entidad fuerte HOTEL y una entidad débil HABITACIÓN. Para identificar de forma unívoca cada HABITACIÓN, dentro de un conjunto de hoteles, necesitamos la combinación CodHotel + NumHabitación.
-
 
 5. Explica brevemente la Restricción de exclusividad entre dos tipos de relaciones R1 y R2 respecto a la entidad E1. Pon un ejemplo distinto del visto en el tema.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-La restricción de exclusividad entre dos tipos de relaciones R1 y R2 respecto a la entidad E1 significa que E1 está relacionada, o bien con E2 o bien con E3, pero  no pueden darse ambas relaciones simultáneamente.
-
-Un ejemplo sería el de una aerolínea donde el PERSONAL trabaja como PILOTO o como AZAFATA, pero no puede trabajar en los 2 puestos.
-
 
 6. Explica brevemente la Restricción de inclusión entre dos tipos de relaciones R1 y R2. Pon un ejemplo distinto del visto en el tema.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-La restricción de inclusión entre dos tipos de relaciones R1 y R2 significa que la entidad E1 participa en la relación R2 con E2 solo si antes previamente ha participado en  la relación R1.
-
-
-Siguiendo con el caso anterior, un ejemplo sería el de una aerolínea donde se registran las salidas y llegadas de aviones. Un PILOTO sale hacia un DESTINO. Solo puede registrarse la llegada a ese DESTINO si previamente el PILOTO había salido hacia él.
 
 
 7. Dado el siguiente esquema:
@@ -141,35 +95,15 @@ Siguiendo con el caso anterior, un ejemplo sería el de una aerolínea donde se 
 
 .. image:: images/tema2-070.png
 
-
 a. Indica cuáles son las entidades del modelo, diferenciado entre entidades fuertes y débiles, si las hubiera.
-
-   Las entidades del modelo son: EQUIPO, JUGADOR y PARTIDO. Todas son entidades fuertes pues se representan con un rectángulo con borde simple. 
 
 b. Señala las relaciones e indica cual es la cardinalidad de cada una. Trata de indicar también la participación de cada entidad en las relaciones así como su rol.
 
-   Se representan en color rojo la cardinalidad de cada relación y de color azul la participación de cada entidad dentro de cada relación. Podemos observar que la entidad JUGADOR tiene  2 participaciones distintas, una para cada relación en la que participa.
-
-   Un equipo tiene en plantilla varios jugadores (11 o más), pero un jugador sólo puede estar en un equipo como máximo (podría estar en periodo de fichaje y por tanto no estar asignado a ningún equipo aún). Es una relación 1:N.
-   Un jugador puede jugar en varios partidos y un partido es jugado por varios jugadores (relación N:M). Se necesitan un mínimo de 22 jugadores para disputar un partido. Si hay sustituciones pueden ser más jugadores. Un jugador podría no disputar ningún partido (si tiene mala suerte por lesión u otro motivo) o disputar varios.
-
 c. Señala si hay alguna relación de dependencia o reflexiva.
-
-   No hay ninguna relación de dependencia puesto que no existen entidades débiles, y tampoco existe ninguna relación reflexiva donde una entidad tenga una relación consigo misma.
 
 d. Trata de escribir atributos lógicos para cada una de las entidades e indica en cada caso cual podría ser el identificador.
 
-   Se resalta el atributo que podemos utilizar como identificador.
-   - EQUIPO (**CIF**, Nombre, Presidente, Sede)
-   - JUGADOR (**NIF**, Nombre, Apellidos, FechaNacimiento, Nacionalidad)
-   - PARTIDO (**Número**, Fecha, Estadio, TotalGoles)
-   El identificador ha de ser único para cada ocurrencia dentro de la entidad.
-
 e. ¿Qué significado tiene el atributo “NºGoles”?¿Por qué está en la relación en lugar de estar en JUGADOR o en PARTIDO? 
-
-   El atributo NºGoles es un atributo relativo a un JUGADOR concreto en un PARTIDO concreto. Por tanto es un atributo propio de la relación. En este caso representa los goles que realiza un jugador en un partido determinado. 
-   Si el atributo NºGoles apareciese sólo en JUGADOR, indicaría los goles totales que lleva ese jugador.
-   Si el atributo NºGoles apareciese sólo en PARTIDO, indicaría los goles que se han producido en ese partido.
 
 
 8. Obtén el diagrama E/R con las tres entidades siguientes:
@@ -188,8 +122,6 @@ Teniendo en cuenta:
 - Una asignatura es impartida por un único profesor.
 - Un profesor podrá impartir varias asignaturas.
 
-.. image:: Diagramas/Tema2-Cuestion08.png
-
 
 9. Obtén el diagrama E/R con las cuatro entidades siguientes:
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -205,8 +137,6 @@ Se quiere guardar información de la localidad donde ha nacido cada uno de los e
 - Cada localidad pertenece a una única provincia.
 - Cada provincia pertenece a una única región del país.
 
-.. image:: Diagramas/Tema2-Cuestion09.png
-
 
 10. Obtén el diagrama E/R con las dos entidades siguientes:
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -218,21 +148,6 @@ Teniendo en cuenta:
 
 - Un empleado pertenece a un único departamento y en un departamento puede haber varios empleados. Pero sólo uno será el jefe del departamento.
 - Un empleado podrá ser jefe o no. Si no es jefe, su jefe será el del departamento al que pertenece.
-
-A continuación se presentan 3 soluciones. Las dos primeras no son satisfactorias.  
-La solución 1 no nos asegura que el Jefe de un Empleado trabaje en el mismo Departamento. La solución 2 nos asegura que el jefe de un departamento trabaja en dicho departamento, pero puede dar lugar a que existan varios jefes por departamento. La solución es la correcta, para ello utilizamos una restricción de inclusión.
-
-**Solución 1**
-
-.. image:: Diagramas/Tema2-Cuestion10a.png
-
-**Solución 2**
-
-.. image:: Diagramas/Tema2-Cuestion10b.png
-
-**Solución 3**
-
-.. image:: Diagramas/Tema2-Cuestion10c.png
 
 
 11. Obtén el diagrama E/R para el siguiente supuesto.
@@ -247,11 +162,6 @@ Una empresa dedicada a la instalación de dormitorios juveniles a medida quiere 
 - De un montador nos interesa su NIF, nombre, dirección, teléfono de contacto y el número de dormitorios que ha montado de cada modelo.
 - Cada modelo de dormitorio puede ser comprado por uno o varios clientes y el mismo cliente podrá comprar uno o varios dormitorios. De un cliente nos interesa su NIF, nombre, dirección, teléfono y fecha de compra de cada modelo.
 
-.. image:: Diagramas/Tema2-Cuestion11.png
-
-.. note:: 
-   
-   Para obtener la cantidad total de dormitorios de un modelo montados por un montador no debemos poner ningún atributo. En la base de datos final sumaremos los registros que aparecen en la tabla "monta" correspondientes al montador y modelo deseados. 
 
 12. Se desea diseñar una base de datos sobre la información de las reservas de una empresa dedicada al alquiler de automóviles teniendo en cuenta que:
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -264,8 +174,6 @@ Una empresa dedicada a la instalación de dormitorios juveniles a medida quiere 
 - Además en una reserva se pueden incluir varios coches de alquiler. Queremos saber los coches que incluye cada reserva y los litros de gasolina en el depósito en el momento de realizar la reserva, pues se cobrarán aparte.
 - Cada cliente puede ser avalado por otro cliente de la empresa.
 
-.. image:: Diagramas/Tema2-Cuestion12.png
-
 
 13. Tenemos esta información sobre una cadena editorial:
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -276,12 +184,6 @@ Una empresa dedicada a la instalación de dormitorios juveniles a medida quiere 
 - La editorial tiene periodistas (que no trabajan en las sucursales) que pueden escribir artículos para varias revistas. Almacenaremos los mismos datos que para los empleados, añadiendo su especialidad.
 - Para cada revista, almacenaremos información de cada número, que incluirá la fecha, número de páginas y el número de ejemplares vendidos.
 
-
-.. image:: Diagramas/Tema2-Cuestion13.png
-
-.. note:: 
-   
-   Los atributos discriminantes de las entidades débiles se muestran con un círculo verde oscuro.
 
 14. La cadena de Video-Clubs Glob-Gusters ha decidido, para mejorar su servicio, emplear una base de datos para almacenar la información referente a las películas que ofrece en alquiler. 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -294,23 +196,13 @@ Esta información es la siguiente:
 - De cada película se dispone de uno o varios ejemplares diferenciados por un número de ejemplar y caracterizados por su estado de conservación.
 - Un ejemplar se puede encontrar alquilado a algún socio (DNI, nombre, dirección, teléfono) . Se desea almacenar la fecha de comienzo del alquiler y la de devolución.
 - Un socio tiene que ser avalado por otro socio que responda de él en caso de tener problemas en el alquiler.
-Los atributos discriminantes de las entidades débiles se muestran con un círculo verde oscuro.
 
-
-.. image:: Diagramas/Tema2-Cuestion14.png
 
 15. Diseñar un esquema E/R que recoja la organización de un sistema de información en el que se quiere tener los datos sobre municipios, viviendas y personas. 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Cada persona sólo puede habitar una vivienda, pero puede ser propietaria de varias. También nos interesa la relación de las personas con su cabeza de familia.
 
-
-.. image:: Diagramas/Tema2-Cuestion15.png
-
-.. note::
-   
-   Suponemos que existe un único cabeza de familia por vivienda y establecemos una restricción de relación de inclusión para exigir que dicho cabeza de familia viva en dicha vivienda. Pueden existir viviendas vacías, en las que no viva nadie.
-   Hemos supuesto que una persona sólo puede vivir en una casa. 
 
 16. Se desea diseñar una BD de una entidad bancaria que contenga información sobre los clientes, las cuentas, las sucursales y las transacciones producidas. 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -323,11 +215,6 @@ Construir el Modelo E/R teniendo en cuenta las siguientes restricciones:
 - Una cuenta puede ser de muchos clientes.
 - Una cuenta sólo puede estar en una sucursal.
 
-.. image:: Diagramas/Tema2-Cuestion16.png
-
-.. note:: 
-   
-   Los atributos discriminantes de las entidades débiles se muestran con un círculo verde oscuro.
 
 17. Una base de datos para una pequeña empresa debe contener información acerca de clientes, artículos y pedidos. 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -342,7 +229,6 @@ Hasta el momento se registran los siguientes datos en documentos varios:
 - Además, se ha determinado que se debe almacenar la información de las fábricas. Sin embargo, dado el uso de distribuidores, se usará: Número de la fábrica (único) y Teléfono de contacto.
 - Y se desean ver cuántos artículos (en total) provee la fábrica. También, por información estratégica, se podría incluir información de fábricas alternativas respecto de las que ya fabrican artículos para esta empresa.
 
-.. image:: Diagramas/Tema2-Cuestion17.png
 
 18. Se pide hacer el diagrama ER para la base de datos que represente esta información. Le contratan para hacer una BD que permita apoyar la gestión de un sistema de ventas.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -351,7 +237,6 @@ La empresa necesita llevar un control de proveedores, clientes, productos y vent
 
 Un producto tiene un id único, nombre, precio actual, stock y nombre del proveedor. Además se organizan en categorías, y cada producto va sólo en una categoría. Una categoría tiene id, nombre y descripción. Por razones de contabilidad, se debe registrar la información de cada venta con un id, fecha, cliente, descuento y monto final. Además se debe guardar el precio al momento de la venta, la cantidad vendida y el monto total por el producto. 
 
-.. image:: Diagramas/Tema2-Cuestion18.png
 
 **MODELO ENTIDAD-RELACIÓN EXTENDIDO**
 
@@ -372,11 +257,6 @@ Un mismo empleado puede ser docente en una edición de un curso y alumno en otra
 
 Realiza el Modelo Entidad/Relación
 
-.. image:: Diagramas/Tema2-Cuestion19.png
-
-> Los atributos discriminantes de las entidades débiles se muestran con un círculo verde oscuro.
-> Suponemos que cada edición de un curso puede ser impartida por un único docente.
-> Establecemos una restricción de exclusión entre las relaciones recibe e imparte.
 
 20. Una Empresa decide informatizar su gestión de nóminas. Del resultado del análisis realizado, se obtienen las siguientes informaciones:
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -395,12 +275,6 @@ Realiza el Modelo Entidad/Relación
 
 Realiza el Modelo Entidad/Relación
 
-.. image:: Diagramas/Tema2-Cuestion20.png
-
-.. note:: 
-
-   Los atributos discriminantes de las entidades débiles se muestran con un círculo verde oscuro.
-   Suponemos que en una misma sede se ubica un único departamento. Si hubiésemos supuesto que podría haber varios, la relación sería N:M. Suponemos que para cada empleado tenemos una sola cuenta para el ingreso de nómina.
 
 21. La ministra de Medio Ambiente ha decidido crear un sistema de información sobre los parques naturales gestionados por cada comunidad autónoma. 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -423,255 +297,63 @@ Después de realizar un detallado análisis, se ha llegado a las siguientes conc
 - Por comodidad, suponemos que un visitante tiene, obligatoriamente, que alojarse en el parque. Suponemos también, que cada vigilante tiene su vehículo propio que sólo utiliza él. 
 
 
-.. image:: Diagramas/Tema2-Cuestion21.png
-
-.. note::
- 
-   Por motivos de claridad no representaremos en el diagrama los atributos de las entidades. Sólo aparecerán en él los atributos propios de las relaciones.
-   Los atributos de cada entidad son los siguientes (clave principal en negrita):
-
-
-	- ComunidadAutónoma → **CodCA**, Nombre, OrgResponsable.
-	- ParqueNatural → **CodPN**, Nombre, FechaDeclaración.
-	- Entrada → **CodEntrada**.
-	- Área → **Nombre**, Extensión.
-	- Personal → **DNI**, NSS, Nombre, Dirección, TfnoDomicilio, TfnoMóvil, Sueldo.
-	- Investigador → Titulación.
-	- Conservador → Tarea.
-	- Gestor → .
-	- Vigilante → .
-	- Vehículo → **Matrícula**, Tipo. 
-	- Proyecto → **CodProy**, Presupuesto, FechaInicio, FechaFin.
-	- Especie → **CodEspecie**, NombreCientífico, NombreVulgar.
-	- Animal → Alimentación (carnívoro, herbívoro, omnívoro), PeriodoCelo.
-	- Vegetal → Floración (sí,no), PeriodoFloración.
-	- Mineral → Tipo (cristal, roca).
-	- Visitante → **DNI**, Nombre, Domicilio, Profesión.
-	- Alojamiento → **CodAlojamiento**, Categoría, Capacidad.
-	- Excursión → **CodExcursión**, Fecha, Hora, Pie (sí/no).
-    
-    
-Para algunos atributos hemos puesto entre paréntesis el dominio de valores que admite.
-
-
-
 **MODELO RELACIONAL**
 
-En las soluciones aparece primero el diagrama Entidad-Relación de referencia por motivos de completitud.
 
 22. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 8.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion08.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion22.png
-
-.. note:: Si la clave primaria de Alumno fuese NumExpediente en lugar de NumMatrícula entonces la tabla para la relación Recibe tendría como clave primaria (NumExpediente, CodAsignatura, CursoEscolar). 
 
 23. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 9.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion09.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion23.png
 
 
 24. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 10.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-**Solución 1**
-
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion10a.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion24a.png
-
-
-**Solución 2**
-
-Su diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion10b.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion24b.png
-
-
-**Solución 3**
-
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion10c.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion24c.png
-
-
 
 25. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 11.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion11.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion25.png
-
-
-.. note::
-
-  Un mismo cliente puede comprar un modelo en distintas fechas. Por tanto la combinación (NIF_C, Modelo) puede repetirse, por tanto no podría funcionar como PK. Si añadimos FechaCompra a la clave primaria sí, siempre que entendamos que no puede comprar el mismo modelo varias veces el mismo día.  Igualmente ocurre en la relación del montador con el modelo de dormitorio.
 
 
 26. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 12.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion12.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion26.png
-
 
 27. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 13.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion13.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion27.png
 
 
 28. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 14.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion14.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion28.png
-
-
 
 29. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 15.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion15.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion29.png
-
 
 
 30. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 16.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion16.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion30.png
-
 
 31. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 17.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion17.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion31.png
 
 
 32. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 18.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion18.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion32.png
-
 
 33. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 19.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion19.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion33.png
 
 
 34. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 20.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion20.png
-
-Su diagrama Relacional es:
-
-
-Vamos a realizar una aproximación inicial y después simplificaremos el esquema.
-
-**Solución 1**
-
-Dentro de la tabla Empleado descomponemos el atributo compuesto Cuenta en 3 campos. Como resulta, además, que la Cuenta participa en otras relaciones, creamos una tabla para ella.
-
-.. image:: Diagramas/Tema2-Cuestion34a.png
-
-**Solución 2**
-
-Como se puede observar en la solución anterior nos quedaban claves primarias compuestas por numerosos campos. Podemos simplificar esto creando un nueva clave primaria para su identificación (posteriormente puede implementarse mediante un código autononúmerico) y pasando la clave primaria compuesta anterior a clave alternativa. Para no perder contenido semántico debemos establecer una restricción de unicidad en dicha clave alternativa. 
-Asimismo hemos eliminado la tabla Línea, puesto que no participa en ninguna relación fuera la jerarquía, y sus campos han pasado a las entidades subtipo.
-
-.. image:: Diagramas/Tema2-Cuestion34b.png
-
 
 35. Obtén el diagrama Relacional a partir el E/R obtenido en la cuestión 21.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-El diagrama E/R es:
-
-.. image:: Diagramas/Tema2-Cuestion21.png
-
-Su diagrama Relacional es:
-
-.. image:: Diagramas/Tema2-Cuestion35.png
 
 
 
