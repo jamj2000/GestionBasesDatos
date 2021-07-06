@@ -32,7 +32,7 @@ SQL se basa en la Teoría Matemática del Álgebra Relacional. El lenguaje SQL c
 - **Lenguaje de definición de datos (DDL)**: proporciona órdenes para definir, modificar o eliminar los distintos objetos de la base de datos (tablas, vistas, índices...).
 - **Lenguaje de Manipulación de Datos (DML)**: proporciona órdenes para insertar, suprimir y modificar registros o filas de las tablas. También contempla la realización de consultas sobre la BD.
 - **Lenguaje de Control de Datos (DCL)**: permite establecer derechos de acceso de los usuarios sobre los distintos objetos de la base de datos. Lo forman las instrucciones **GRANT** y **REVOKE**.
-- Oracle contempla además s**entencias para transacciones**. Administran las modificaciones creadas por las instrucciones DML. Lo forman las instrucciones **ROLLBACK**, **COMMIT** y **SAVEPOINT**.
+- Oracle contempla además **sentencias para transacciones**. Administran las modificaciones creadas por las instrucciones DML. Lo forman las instrucciones **ROLLBACK**, **COMMIT** y **SAVEPOINT**.
 
 Proceso de ejecución de sentencia SQL
 --------------------------------------
@@ -851,8 +851,6 @@ Tras esa definición la siguiente instrucción produce error:
 
 
 Para ello habría que utilizar esta instrucción:
-
-.. code-block:: plpgsql
 
 .. code-block:: plpgsql
 
